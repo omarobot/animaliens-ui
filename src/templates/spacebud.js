@@ -26,12 +26,16 @@ import {
 import { SmallCloseIcon, RepeatIcon } from "@chakra-ui/icons";
 import { useStoreState } from "easy-peasy";
 import Market from "../cardano/market";
-import secrets from "../../secrets";
+// import secrets from "../../secrets";
 import { UnitDisplay } from "../components/UnitDisplay";
 import Loader from "../cardano/loader";
+import Show from "../images/assets/show.svg";
+
+const secrets = {
+  PROJECT_ID: "mainnetFEnBQkYa33cYHGr2w96tA0BvYILBqfXm",
+};
 
 //assets
-import Show from "../images/assets/show.svg";
 
 export const toHex = (bytes) => Buffer.from(bytes).toString("hex");
 
@@ -147,8 +151,11 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
       .then((res) => res.json())
       .then((res) => res.lastSale);
 
-    const bidUtxo = await market.current.getBid(spacebud.id);
-    let offerUtxo = await market.current.getOffer(spacebud.id);
+    // const bidUtxo = await market.current.getBid(spacebud.id);
+    // let offerUtxo = await market.current.getOffer(spacebud.id);
+
+    const bidUtxo = null;
+    let offerUtxo = null;
 
     // check if twin
     if (Array.isArray(offerUtxo)) {
