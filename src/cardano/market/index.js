@@ -9,8 +9,12 @@ import {
   toHex,
   valueToAssets,
 } from "./utils.js";
-import { languageViews } from "./languageViews.js";
-import { contract } from "./plutus.js";
+import {
+  languageViews
+} from "./languageViews.js";
+import {
+  contract
+} from "./plutus.js";
 import CoinSelection from "./coinSelection.js";
 import {
   Address,
@@ -43,7 +47,10 @@ const START_BID = () => {
   );
   return datum;
 };
-const BID = ({ tradeOwner, budId }) => {
+const BID = ({
+  tradeOwner,
+  budId
+}) => {
   const fieldsInner = Loader.Cardano.PlutusList.new();
   fieldsInner.add(Loader.Cardano.PlutusData.new_bytes(fromHex(tradeOwner)));
   fieldsInner.add(
@@ -69,7 +76,11 @@ const BID = ({ tradeOwner, budId }) => {
   );
   return datum;
 };
-const OFFER = ({ tradeOwner, budId, requestedAmount }) => {
+const OFFER = ({
+  tradeOwner,
+  budId,
+  requestedAmount
+}) => {
   const fieldsInner = Loader.Cardano.PlutusList.new();
   fieldsInner.add(Loader.Cardano.PlutusData.new_bytes(fromHex(tradeOwner)));
   fieldsInner.add(
@@ -181,8 +192,14 @@ const CANCEL = (index) => {
 const toFraction = (p) => Math.floor(1 / (p / 1000));
 
 class SpaceBudzMarket {
-  constructor({ base, projectId }, extraFeeRecipient) {
-    this.provider = { base, projectId };
+  constructor({
+    base,
+    projectId
+  }, extraFeeRecipient) {
+    this.provider = {
+      base,
+      projectId
+    };
     this.extraFeeRecipient = extraFeeRecipient;
   }
 
@@ -216,6 +233,8 @@ class SpaceBudzMarket {
    * @returns {TradeUtxo[]}
    */
   async getUtxo(policy, prefix, budId) {
+
+
     const asset = policy + fromAscii(prefix + budId);
     //TODO fix blockfrost
     // const txs = await this.blockfrostRequest(
@@ -253,8 +272,8 @@ class SpaceBudzMarket {
           if (datum != toHex(START_BID().to_bytes()))
             //STARTBID doesn't have a tradeOwner
             tradeOwnerAddress = metadata
-              .find((m) => m.label == ADDRESS_LABEL)
-              .json_metadata.address.slice(2);
+            .find((m) => m.label == ADDRESS_LABEL)
+            .json_metadata.address.slice(2);
         } catch (e) {
           throw new Error("Some required metadata entries were not found");
         }
@@ -267,8 +286,7 @@ class SpaceBudzMarket {
 
         return {
           datum,
-          tradeOwnerAddress:
-            tradeOwnerAddress &&
+          tradeOwnerAddress: tradeOwnerAddress &&
             Loader.Cardano.Address.from_bytes(fromHex(tradeOwnerAddress)),
           utxo: Loader.Cardano.TransactionUnspentOutput.new(
             Loader.Cardano.TransactionInput.new(
@@ -309,9 +327,17 @@ class SpaceBudzMarket {
       Loader.Cardano.LanguageViews.new(Buffer.from(languageViews, "hex"))
     );
     const datums = Loader.Cardano.PlutusList.new();
-    const metadata = { [DATUM_LABEL]: {}, [ADDRESS_LABEL]: {} };
+    const metadata = {
+      [DATUM_LABEL]: {},
+      [ADDRESS_LABEL]: {}
+    };
     const outputs = Loader.Cardano.TransactionOutputs.new();
-    return { txBuilder, datums, metadata, outputs };
+    return {
+      txBuilder,
+      datums,
+      metadata,
+      outputs
+    };
   }
 
   /**
@@ -335,10 +361,10 @@ class SpaceBudzMarket {
     return assetsToValue(
       assets.filter(
         (asset) =>
-          asset.unit !=
-            this.contractInfo.policyBid +
-              fromAscii(this.contractInfo.prefixSpaceBudBid + budId) &&
-          asset.unit.startsWith(this.contractInfo.policyBid)
+        asset.unit !=
+        this.contractInfo.policyBid +
+        fromAscii(this.contractInfo.prefixSpaceBudBid + budId) &&
+        asset.unit.startsWith(this.contractInfo.policyBid)
       )
     );
   }
@@ -348,8 +374,12 @@ class SpaceBudzMarket {
    */
   createOutput(
     address,
-    value,
-    { datum, index, tradeOwnerAddress, metadata } = {}
+    value, {
+      datum,
+      index,
+      tradeOwnerAddress,
+      metadata
+    } = {}
   ) {
     const v = value;
     const minAda = Loader.Cardano.min_ada_required(
@@ -395,7 +425,10 @@ class SpaceBudzMarket {
     action,
   }) {
     const transactionWitnessSet = Loader.Cardano.TransactionWitnessSet.new();
-    let { input, change } = CoinSelection.randomImprove(
+    let {
+      input,
+      change
+    } = CoinSelection.randomImprove(
       utxos,
       outputs,
       8,
@@ -592,9 +625,9 @@ class SpaceBudzMarket {
           address,
           Loader.Cardano.Value.new(
             lovelaceAmount
-              .checked_sub(amount1)
-              .checked_sub(amount2)
-              .checked_sub(amount3)
+            .checked_sub(amount1)
+            .checked_sub(amount2)
+            .checked_sub(amount3)
           )
         )
       );
@@ -650,11 +683,12 @@ class SpaceBudzMarket {
     };
 
     this.contractInfo = {
-      policySpaceBudz:
-        "fe263c946464aa892b39e2bf802d71f081a6ff6cac269b63876bfbd0",
-      policyBid: "fe263c946464aa892b39e2bf802d71f081a6ff6cac269b63876bfbd0",
-      prefixSpaceBud: "SpaceBud",
-      prefixSpaceBudBid: "SpaceBudBid",
+      policySpaceBudz: "1ff89104c2c3826b21ea8a8471e383c26f31257f3b2d7889b8fe1763",
+      policyBid: "1ff89104c2c3826b21ea8a8471e383c26f31257f3b2d7889b8fe1763",
+      prefixSpaceBud: "Animaliens",
+      prefixSpaceBudBid: "Animaliens",
+      // prefixSpaceBud: "SpaceBud",
+      // prefixSpaceBudBid: "SpaceBudBid",
       owner1: {
         address: Loader.Cardano.Address.from_bech32(
           "addr_test1qq4a3zhfwdk4nw74w98smmg5vj8cel7f7h5wsh8280asx0m5m8rexkuvsx8csg0xjq06dsa7f4yvdphq85yhnm9t7ghsul68rf"
@@ -698,14 +732,20 @@ class SpaceBudzMarket {
     if (offerUtxo.length === 1) {
       const lovelace = getTradeDetails(offerUtxo[0].datum).requestedAmount;
       if (lovelace.compare(this.contractInfo.minPrice) == -1) return null;
-      return { ...offerUtxo[0], lovelace: lovelace.to_str() };
+      return {
+        ...offerUtxo[0],
+        lovelace: lovelace.to_str()
+      };
     }
     if (offerUtxo.length === 2 && (budId == 1903 || budId == 6413)) {
       const utxos = offerUtxo
         .map((utxo) => {
           const lovelace = getTradeDetails(utxo.datum).requestedAmount;
           if (lovelace.compare(this.contractInfo.minPrice) == -1) return null;
-          return { ...utxo, lovelace: lovelace.to_str() };
+          return {
+            ...utxo,
+            lovelace: lovelace.to_str()
+          };
         })
         .filter((utxo) => utxo != null);
       // if both twins are offered, but one < minPrice filter it out and do not return an array
@@ -731,7 +771,10 @@ class SpaceBudzMarket {
     );
     if (bidUtxo.length !== 1) return null;
     const lovelace = bidUtxo[0].utxo.output().amount().coin().to_str();
-    return { ...bidUtxo[0], lovelace };
+    return {
+      ...bidUtxo[0],
+      lovelace
+    };
   }
 
   /**
@@ -740,7 +783,12 @@ class SpaceBudzMarket {
    * @returns {string} Transaction Id
    */
   async bid(bidUtxo, bidAmount) {
-    const { txBuilder, datums, metadata, outputs } = await this.initTx();
+    const {
+      txBuilder,
+      datums,
+      metadata,
+      outputs
+    } = await this.initTx();
     const budId = bidUtxo.budId;
 
     const walletAddress = Loader.Cardano.BaseAddress.from_address(
@@ -772,16 +820,16 @@ class SpaceBudzMarket {
         outputs.add(
           this.createOutput(
             CONTRACT_ADDRESS(),
-            assetsToValue([
-              { unit: "lovelace", quantity: bidAmount },
+            assetsToValue([{
+                unit: "lovelace",
+                quantity: bidAmount
+              },
               {
-                unit:
-                  this.contractInfo.policyBid +
+                unit: this.contractInfo.policyBid +
                   fromAscii(this.contractInfo.prefixSpaceBudBid + budId),
                 quantity: "1",
               },
-            ]),
-            {
+            ]), {
               datum: bidDatum,
               index: 0,
               tradeOwnerAddress: walletAddress,
@@ -793,8 +841,7 @@ class SpaceBudzMarket {
         outputs.add(
           this.createOutput(
             CONTRACT_ADDRESS(),
-            this.policyBidRemaining(bidUtxo.utxo.output().amount(), budId),
-            {
+            this.policyBidRemaining(bidUtxo.utxo.output().amount(), budId), {
               datum: START_BID(),
               index: 1,
               metadata,
@@ -806,16 +853,16 @@ class SpaceBudzMarket {
         outputs.add(
           this.createOutput(
             CONTRACT_ADDRESS(),
-            assetsToValue([
-              { unit: "lovelace", quantity: bidAmount },
+            assetsToValue([{
+                unit: "lovelace",
+                quantity: bidAmount
+              },
               {
-                unit:
-                  this.contractInfo.policyBid +
+                unit: this.contractInfo.policyBid +
                   fromAscii(this.contractInfo.prefixSpaceBudBid + budId),
                 quantity: "1",
               },
-            ]),
-            {
+            ]), {
               datum: bidDatum,
               index: 0,
               tradeOwnerAddress: walletAddress,
@@ -835,16 +882,16 @@ class SpaceBudzMarket {
       outputs.add(
         this.createOutput(
           CONTRACT_ADDRESS(),
-          assetsToValue([
-            { unit: "lovelace", quantity: bidAmount },
+          assetsToValue([{
+              unit: "lovelace",
+              quantity: bidAmount
+            },
             {
-              unit:
-                this.contractInfo.policyBid +
+              unit: this.contractInfo.policyBid +
                 fromAscii(this.contractInfo.prefixSpaceBudBid + budId),
               quantity: "1",
             },
-          ]),
-          {
+          ]), {
             datum: bidDatum,
             index: 0,
             tradeOwnerAddress: walletAddress,
@@ -890,7 +937,12 @@ class SpaceBudzMarket {
    * @returns {string} Transaction Id
    */
   async sell(bidUtxo) {
-    const { txBuilder, datums, metadata, outputs } = await this.initTx();
+    const {
+      txBuilder,
+      datums,
+      metadata,
+      outputs
+    } = await this.initTx();
     const budId = bidUtxo.budId;
 
     const walletAddress = Loader.Cardano.BaseAddress.from_address(
@@ -910,15 +962,11 @@ class SpaceBudzMarket {
     outputs.add(
       this.createOutput(
         CONTRACT_ADDRESS(),
-        assetsToValue([
-          {
-            unit:
-              this.contractInfo.policyBid +
-              fromAscii(this.contractInfo.prefixSpaceBudBid + budId),
-            quantity: "1",
-          },
-        ]),
-        {
+        assetsToValue([{
+          unit: this.contractInfo.policyBid +
+            fromAscii(this.contractInfo.prefixSpaceBudBid + budId),
+          quantity: "1",
+        }, ]), {
           datum: START_BID(),
           index: 0,
           metadata,
@@ -930,14 +978,11 @@ class SpaceBudzMarket {
     outputs.add(
       this.createOutput(
         bidUtxo.tradeOwnerAddress,
-        assetsToValue([
-          {
-            unit:
-              this.contractInfo.policySpaceBudz +
-              fromAscii(this.contractInfo.prefixSpaceBud + budId),
-            quantity: "1",
-          },
-        ])
+        assetsToValue([{
+          unit: this.contractInfo.policySpaceBudz +
+            fromAscii(this.contractInfo.prefixSpaceBud + budId),
+          quantity: "1",
+        }, ])
       )
     ); // bidder receiving SpaceBud
 
@@ -965,7 +1010,12 @@ class SpaceBudzMarket {
    * @returns {string} Transaction Id
    */
   async offer(budId, requestedAmount) {
-    const { txBuilder, datums, metadata, outputs } = await this.initTx();
+    const {
+      txBuilder,
+      datums,
+      metadata,
+      outputs
+    } = await this.initTx();
     budId = budId.toString();
     if (
       Loader.Cardano.BigNum.from_str(requestedAmount).compare(
@@ -990,15 +1040,11 @@ class SpaceBudzMarket {
     outputs.add(
       this.createOutput(
         CONTRACT_ADDRESS(),
-        assetsToValue([
-          {
-            unit:
-              this.contractInfo.policySpaceBudz +
-              fromAscii(this.contractInfo.prefixSpaceBud + budId),
-            quantity: "1",
-          },
-        ]),
-        {
+        assetsToValue([{
+          unit: this.contractInfo.policySpaceBudz +
+            fromAscii(this.contractInfo.prefixSpaceBud + budId),
+          quantity: "1",
+        }, ]), {
           datum: offerDatum,
           index: 0,
           tradeOwnerAddress: walletAddress,
@@ -1024,7 +1070,11 @@ class SpaceBudzMarket {
    * @returns {string} Transaction Id
    */
   async buy(offerUtxo) {
-    const { txBuilder, datums, outputs } = await this.initTx();
+    const {
+      txBuilder,
+      datums,
+      outputs
+    } = await this.initTx();
     const walletAddress = Loader.Cardano.BaseAddress.from_address(
       Loader.Cardano.Address.from_bytes(
         fromHex((await window.cardano.getUsedAddresses())[0])
@@ -1067,7 +1117,11 @@ class SpaceBudzMarket {
    * @returns {string} Transaction Id
    */
   async cancelOffer(offerUtxo) {
-    const { txBuilder, datums, outputs } = await this.initTx();
+    const {
+      txBuilder,
+      datums,
+      outputs
+    } = await this.initTx();
 
     const walletAddress = Loader.Cardano.BaseAddress.from_address(
       Loader.Cardano.Address.from_bytes(
@@ -1105,7 +1159,12 @@ class SpaceBudzMarket {
    * @returns {string} Transaction Id
    */
   async cancelBid(bidUtxo) {
-    const { txBuilder, datums, metadata, outputs } = await this.initTx();
+    const {
+      txBuilder,
+      datums,
+      metadata,
+      outputs
+    } = await this.initTx();
     const budId = bidUtxo.budId;
     const walletAddress = Loader.Cardano.BaseAddress.from_address(
       Loader.Cardano.Address.from_bytes(
@@ -1124,15 +1183,11 @@ class SpaceBudzMarket {
     outputs.add(
       this.createOutput(
         CONTRACT_ADDRESS(),
-        assetsToValue([
-          {
-            unit:
-              this.contractInfo.policyBid +
-              fromAscii(this.contractInfo.prefixSpaceBudBid + budId),
-            quantity: "1",
-          },
-        ]),
-        {
+        assetsToValue([{
+          unit: this.contractInfo.policyBid +
+            fromAscii(this.contractInfo.prefixSpaceBudBid + budId),
+          quantity: "1",
+        }, ]), {
           datum: START_BID(),
           index: 0,
           metadata,

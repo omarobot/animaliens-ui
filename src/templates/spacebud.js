@@ -28,11 +28,14 @@ import {
 import { SmallCloseIcon, RepeatIcon } from "@chakra-ui/icons";
 import { useStoreState } from "easy-peasy";
 import Market from "../cardano/market";
-import secrets from "../../secrets";
 
 //assets
 import Show from "../images/assets/show.svg";
 import { UnitDisplay } from "../components/UnitDisplay";
+
+const secrets = {
+  PROJECT_ID: "testnet1RD4umD3NGsxuutiWpxzJLjwv0O7j8Tp",
+};
 
 export const toHex = (bytes) => Buffer.from(bytes).toString("hex");
 
@@ -61,7 +64,7 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
   const market = React.useRef();
 
   // const POLICY = "d5e6bf0500378d4f0da4e8dde6becec7621cd8cbf5cbb9b87013d4cc"; // mainnet
-  const POLICY = "fe263c946464aa892b39e2bf802d71f081a6ff6cac269b63876bfbd0";
+  const POLICY = "1ff89104c2c3826b21ea8a8471e383c26f31257f3b2d7889b8fe1763";
 
   React.useEffect(() => {
     loadMarket();
@@ -98,9 +101,11 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
   };
 
   const loadSpaceBudData = async () => {
+    console.log(Buffer.from("Animaliens").toString("hex"));
+
     setIsLoadingMarket(true);
     setOwner([]);
-    const token = POLICY + toHex(`SpaceBud${spacebud.id}`);
+    const token = POLICY + toHex(`Animaliens${spacebud.id}`);
     let addresses = await fetch(
       `https://cardano-testnet.blockfrost.io/api/v0/assets/${token}/addresses`,
       { headers: { project_id: secrets.PROJECT_ID } }
@@ -110,8 +115,10 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
     )
       .then((res) => res.json())
       .then((res) => res.cardano["usd"]);
-    const bidUtxo = await market.current.getBid(spacebud.id);
-    let offerUtxo = await market.current.getOffer(spacebud.id);
+    const bidUtxo = null;
+    // const bidUtxo = await market.current.getBid(spacebud.id);
+    // let offerUtxo = await market.current.getOffer(spacebud.id);
+    let offerUtxo = null;
     // check if twin
     if (Array.isArray(offerUtxo)) {
       if (
@@ -147,20 +154,20 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
     console.log(bidUtxo);
     console.log(offerUtxo);
     // ignore if state is StartBid
-    if (toHex(bidUtxo.datum.to_bytes()) !== "d866820080") {
-      if (bidUtxo.tradeOwnerAddress.to_bech32() === connected)
-        details.bid.owner = true;
-      details.bid.lovelace = bidUtxo.lovelace;
-      details.bid.usd = (bidUtxo.lovelace / 10 ** 6) * fiatPrice * 10 ** 2;
-    }
-    if (addresses.find((address) => address.address == connected))
-      details.offer.owner = true;
-    if (offerUtxo) {
-      if (offerUtxo.tradeOwnerAddress.to_bech32() === connected)
-        details.offer.owner = true;
-      details.offer.lovelace = offerUtxo.lovelace;
-      details.offer.usd = (offerUtxo.lovelace / 10 ** 6) * fiatPrice * 10 ** 2;
-    }
+    // if (toHex(bidUtxo.datum.to_bytes()) !== "d866820080") {
+    //   if (bidUtxo.tradeOwnerAddress.to_bech32() === connected)
+    //     details.bid.owner = true;
+    //   details.bid.lovelace = bidUtxo.lovelace;
+    //   details.bid.usd = (bidUtxo.lovelace / 10 ** 6) * fiatPrice * 10 ** 2;
+    // }
+    // if (addresses.find((address) => address.address == connected))
+    //   details.offer.owner = true;
+    // if (offerUtxo) {
+    //   if (offerUtxo.tradeOwnerAddress.to_bech32() === connected)
+    //     details.offer.owner = true;
+    //   details.offer.lovelace = offerUtxo.lovelace;
+    //   details.offer.usd = (offerUtxo.lovelace / 10 ** 6) * fiatPrice * 10 ** 2;
+    // }
 
     setDetails(details);
     setOwner(addresses);
