@@ -1,24 +1,17 @@
-import React from "react";
-import { LaunchButton } from "../components/Button";
-import Metadata from "../components/Metadata";
-
-//assets
-import BuySellIcon from "../images/assets/buysell.svg";
-import CollectHoldIcon from "../images/assets/collecthold.svg";
-import ShareGiftIcon from "../images/assets/sharegift.svg";
-import BudRepresent from "../images/assets/spacebud.svg";
-import { navigate } from "gatsby";
-import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import { graphql, useStaticQuery } from "gatsby";
 import BackgroundImage from "gatsby-background-image";
+import { useBreakpoint } from "gatsby-plugin-breakpoints";
+import React from "react";
 import styled from "styled-components";
-import Icon from "@mdi/react";
-import { mdiDiscord, mdiTelegram, mdiTwitter } from "@mdi/js";
-import { Box, SimpleGrid } from "@chakra-ui/layout";
-import * as homeStyles from "../styles/Home.module.css";
+import Metadata from "../components/Metadata";
 import alien from "../images/assets/alien-with-text.png";
-import royalties from "../images/assets/Royalties-Animalien-1.svg";
 import raffels from "../images/assets/Raffles-1.svg";
+import royalties from "../images/assets/Royalties-Animalien-1.svg";
+import * as homeStyles from "../styles/Home.module.css";
+
+import roadMap1 from "../images/assets/road-map-1.jpg";
+import roadMap2 from "../images/assets/road-map-2.jpg";
+import roadMap3 from "../images/assets/road-map-3.jpg";
 
 const Landing = (props) => {
   const matches = useBreakpoint();
@@ -112,6 +105,39 @@ const Landing = (props) => {
             </div>
           </div>
           {/* Raffles */}
+          {/* road map  */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 60,
+              flexDirection: "column",
+              padding: "40px 0",
+            }}
+          >
+            <div>
+              <img
+                style={{ width: "70%", margin: "auto" }}
+                src={roadMap1}
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                style={{ width: "70%", margin: "auto" }}
+                src={roadMap2}
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                style={{ width: "70%", margin: "auto" }}
+                src={roadMap3}
+                alt=""
+              />
+            </div>
+          </div>
         </div>
       </main>
     </>
