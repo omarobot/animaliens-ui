@@ -6,12 +6,15 @@ import styled from "styled-components";
 import Metadata from "../components/Metadata";
 import alien from "../images/assets/alien-with-text.png";
 import raffels from "../images/assets/Raffles-1.svg";
-import royalties from "../images/assets/Royalties-Animalien-1.svg";
-import * as homeStyles from "../styles/Home.module.css";
-
 import roadMap1 from "../images/assets/road-map-1.jpg";
 import roadMap2 from "../images/assets/road-map-2.jpg";
 import roadMap3 from "../images/assets/road-map-3.jpg";
+import royalties from "../images/assets/Royalties-Animalien-1.svg";
+import * as homeStyles from "../styles/Home.module.css";
+import boots from "../images/assets/boots.png";
+import leen from "../images/assets/leen.png";
+import zame from "../images/assets/zame.png";
+import maq from "../images/assets/maq.png";
 
 const Landing = (props) => {
   const matches = useBreakpoint();
@@ -136,6 +139,62 @@ const Landing = (props) => {
                 src={roadMap3}
                 alt=""
               />
+            </div>
+          </div>
+          {/* road map */}
+
+          {/* THE TEAM */}
+          <div className={homeStyles.teamSection}>
+            <h2
+              style={{
+                fontSize: 44,
+                fontWeight: 500,
+                marginBottom: 60,
+                textAlign: "center",
+              }}
+            >
+              THE TEAM
+            </h2>
+            <div className={homeStyles.team}>
+              <div className={homeStyles.teamMember}>
+                <div className={homeStyles.memberImg}>
+                  <img src={boots} alt="" />
+                </div>
+                <div>
+                  <h3>BOOTS</h3>
+                  <h4>The Explorer</h4>
+                </div>
+              </div>
+
+              <div className={homeStyles.teamMember}>
+                <div className={homeStyles.memberImg}>
+                  <img src={leen} alt="" />
+                </div>
+                <div>
+                  <h3>LENN</h3>
+                  <h4>The Creator</h4>
+                </div>
+              </div>
+
+              <div className={homeStyles.teamMember}>
+                <div className={homeStyles.memberImg}>
+                  <img src={zame} alt="" />
+                </div>
+                <div>
+                  <h3>ZAME</h3>
+                  <h4>The Hero</h4>
+                </div>
+              </div>
+
+              <div className={homeStyles.teamMember}>
+                <div className={homeStyles.memberImg}>
+                  <img src={maq} alt="" />
+                </div>
+                <div>
+                  <h3>MAQ</h3>
+                  <h4>The Wise</h4>
+                </div>
+              </div>
             </div>
           </div>
         </div>

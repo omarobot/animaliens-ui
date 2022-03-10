@@ -40,3 +40,28 @@
   width: 70%;
   margin-top: -35px;
 }
+
+/* team  */
+.teamSection {
+  padding: 40px 0;
+}
+.team {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.teamMember {
+  text-align: center;
+}
+.memberImg {
+  border: 1px solid #c4c4c4;
+  border-radius: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.teamMember h3,
+h4 {
+  font-size: 20px;
+}
