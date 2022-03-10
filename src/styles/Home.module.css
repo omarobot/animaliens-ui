@@ -1,0 +1,20 @@
+.alien img {
+  width: 50%;
+  margin: auto;
+}
+
+.project {
+  padding: 40px 0;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.project h3 {
+  font-size: 44px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.project p {
+  text-align: justify;
+}

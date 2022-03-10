@@ -25,9 +25,9 @@ const Layout = (props) => {
         >
           <Header />
         </div>
-        <div style={{ width: "85%" }}>
+        <div style={{ width: "85%", backgroundColor: "#000", color: "#fff" }}>
           {props.children}
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     </StoreProvider>
