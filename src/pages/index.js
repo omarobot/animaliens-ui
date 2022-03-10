@@ -15,6 +15,11 @@ import boots from "../images/assets/boots.png";
 import leen from "../images/assets/leen.png";
 import zame from "../images/assets/zame.png";
 import maq from "../images/assets/maq.png";
+import learning from "../images/assets/learning-equality.png";
+import nyaka from "../images/assets/nyaka.png";
+import tech2Connect from "../images/assets/tech2Connect.png";
+import cause from "../images/assets/cause.png";
+import eayikies from "../images/assets/eayikies.png";
 
 const Landing = (props) => {
   const matches = useBreakpoint();
@@ -108,7 +113,7 @@ const Landing = (props) => {
             </div>
           </div>
           {/* Raffles */}
-          {/* road map  */}
+          {/* road map  start */}
           <div
             style={{
               display: "flex",
@@ -141,9 +146,9 @@ const Landing = (props) => {
               />
             </div>
           </div>
-          {/* road map */}
+          {/* road map end */}
 
-          {/* THE TEAM */}
+          {/* THE TEAM start */}
           <div className={homeStyles.teamSection}>
             <h2
               style={{
@@ -197,6 +202,38 @@ const Landing = (props) => {
               </div>
             </div>
           </div>
+          {/* the team end  */}
+          {/* PROUDLY SUPPORTING start  */}
+          <div style={{ padding: "80px 0" }}>
+            <h3
+              style={{
+                fontSize: 44,
+                fontWeight: 500,
+                marginBottom: 60,
+                textAlign: "center",
+              }}
+            >
+              PROUDLY SUPPORTING
+            </h3>
+            <div className={homeStyles.supportLogo}>
+              <div>
+                <img src={learning} alt="" />
+              </div>
+              <div>
+                <img src={nyaka} alt="" />
+              </div>
+              <div>
+                <img src={tech2Connect} alt="" />
+              </div>
+              <div>
+                <img src={cause} alt="" />
+              </div>
+              <div>
+                <img src={eayikies} alt="" />
+              </div>
+            </div>
+          </div>
+          {/* PROUDLY SUPPORTING end  */}
         </div>
       </main>
     </>
