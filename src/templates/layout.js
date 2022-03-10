@@ -25,7 +25,14 @@ const Layout = (props) => {
         >
           <Header />
         </div>
-        <div style={{ width: "85%", backgroundColor: "#000", color: "#fff" }}>
+        <div
+          style={{
+            width: "85%",
+            backgroundColor: "#000",
+            color: "#fff",
+            padding: "10px 50px",
+          }}
+        >
           {props.children}
           {/* <Footer /> */}
         </div>

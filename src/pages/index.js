@@ -17,6 +17,8 @@ import { mdiDiscord, mdiTelegram, mdiTwitter } from "@mdi/js";
 import { Box, SimpleGrid } from "@chakra-ui/layout";
 import * as homeStyles from "../styles/Home.module.css";
 import alien from "../images/assets/alien-with-text.png";
+import royalties from "../images/assets/Royalties-Animalien-1.svg";
+import raffels from "../images/assets/Raffles-1.svg";
 
 const Landing = (props) => {
   const matches = useBreakpoint();
@@ -49,8 +51,68 @@ const Landing = (props) => {
             opportunities.
           </p>
         </div>
-        {/* ROYALTIES  */}
-        <div className={homeStyles.royalities}></div>
+        {/* ROYALTIES & RAFFLES */}
+        <div className={homeStyles.royalitiesRaffles}>
+          {/* royalities */}
+          <div className={homeStyles.royalitiesRafflexBox}>
+            <div>
+              <h3>ROYALTIES</h3>
+              <div
+                style={{
+                  display: "flex",
+                  gap: 24,
+                  alignItems: "center",
+                  marginBottom: 10,
+                }}
+              >
+                <h4 style={{ fontSize: 30, fontWeight: 700 }}>4%</h4>
+                <span>BACK TO THE COMMUNITY</span>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  gap: 24,
+                  alignItems: "center",
+                  marginBottom: 10,
+                }}
+              >
+                <h4 style={{ fontSize: 30, fontWeight: 700 }}>2%</h4>
+                <span>PROJECT FUNDING</span>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  gap: 24,
+                  alignItems: "center",
+                  marginBottom: 10,
+                }}
+              >
+                <h4 style={{ fontSize: 30, fontWeight: 700 }}>2%</h4>
+                <span>BACK TO THE TEAM</span>
+              </div>
+            </div>
+            <div>
+              <img src={royalties} alt="" />
+            </div>
+          </div>
+          {/* royalities */}
+          {/* Raffles */}
+          <div className={homeStyles.royalitiesRafflexBox}>
+            <div>
+              <img src={raffels} alt="" />
+            </div>
+            <div style={{ width: "40%", margin: "auto" }}>
+              <h3>RAFFLES</h3>
+              <p>
+                Each one of your NFTs is a ticket to 2 different raffles: -
+                Opportunity to get a portion of ADA from the community wallet or
+                Blue Chip CNFTs. - If you have a @edu you’ll be able to
+                participate to get your tuition paid for the semester.
+              </p>
+            </div>
+          </div>
+          {/* Raffles */}
+        </div>
       </main>
     </>
   );

@@ -2,7 +2,7 @@
   width: 50%;
   margin: auto;
 }
-
+/* project  */
 .project {
   padding: 40px 0;
   width: 50%;
@@ -17,4 +17,26 @@
 }
 .project p {
   text-align: justify;
+}
+
+/* royalitiesRaffles */
+.royalitiesRaffles {
+  padding: 40px;
+}
+
+.royalitiesRafflexBox {
+  margin: 80px 0;
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+}
+.royalitiesRafflexBox h3 {
+  font-size: 44px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  display: block;
+}
+.royalitiesRafflexBox img {
+  width: 70%;
+  margin-top: -35px;
 }
