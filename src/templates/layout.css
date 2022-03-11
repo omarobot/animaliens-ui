@@ -1,0 +1,18 @@
+#sidebar {
+  width: 15%;
+}
+
+#bodyContent {
+  width: 85%;
+  background: #000;
+  color: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+  #sidebar {
+    width: auto;
+  }
+  #bodyContent {
+    width: 100%;
+  }
+}

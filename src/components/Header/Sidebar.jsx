@@ -69,7 +69,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       pos="fixed"
       h="full"
       {...rest}>
-      <Flex  alignItems="center" mx="10" justifyContent="space-between">
+      <Flex  alignItems="center" mx="8" justifyContent="space-around">
 
              {/* Logo */}
              <div
@@ -146,7 +146,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
       />
 
            {/* Logo */}
-           <div
+           {/* <div
           style={{
             display: "flex",
             alignItems: "center",
@@ -161,7 +161,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
           }}
         >
           <img draggable={false} src={newLogo} />
-        </div>
+        </div> */}
 
       <HStack spacing={{ base: '0', md: '6' }}>
         <Flex alignItems={'center'}>

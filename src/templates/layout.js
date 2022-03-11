@@ -1,9 +1,8 @@
-import React from "react";
 import { StoreProvider } from "easy-peasy";
-import store from "../store";
-import Footer from "../components/Footer";
-import Header from "../components/Header/Header";
+import React from "react";
 import SidebarWithHeader from "../components/Header/Sidebar";
+import store from "../store";
+import "./layout.css";
 
 const Layout = (props) => {
   return (
@@ -17,24 +16,11 @@ const Layout = (props) => {
           justifyContent: "center",
         }}
       >
-        <div
-          style={{
-            width: "15%",
-            // backgroundColor: "#171717",
-            color: "#fff",
-          }}
-        >
+        <div id="sidebar">
           {/* <Header /> */}
           <SidebarWithHeader />
         </div>
-        <div
-          style={{
-            width: "85%",
-            backgroundColor: "#000",
-            color: "#fff",
-            // padding: "10px 50px",
-          }}
-        >
+        <div id="bodyContent">
           {props.children}
           {/* <Footer /> */}
         </div>
