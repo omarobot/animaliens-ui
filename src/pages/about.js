@@ -7,6 +7,9 @@ import * as aboutStyles from "../styles/About.module.css";
 
 //assets
 import zeen from "../images/assets/zame.png";
+import leen from "../images/assets/leen.png";
+import boots from "../images/assets/boots.png";
+import maq from "../images/assets/maq.png";
 
 const About = () => {
   return (
@@ -59,7 +62,7 @@ const About = () => {
           >
             OUR TEAM
           </h3>
-          {/* team members  */}
+          {/* team members 1  */}
           <div className={aboutStyles.teamMember}>
             <div className={aboutStyles.memberDes}>
               <h3>ZENN THE HERO</h3>
@@ -74,6 +77,60 @@ const About = () => {
             </div>
             <div>
               <img src={zeen} alt="" />
+            </div>
+          </div>
+
+          {/* team members 2  */}
+          <div className={aboutStyles.teamMember}>
+            <div>
+              <img src={leen} alt="" />
+            </div>
+            <div className={aboutStyles.memberDes}>
+              <h3>LENN THE CREATOR</h3>
+              <p>
+                The mastermind behind the brush, Lenn focuses on art with a
+                purpose. Lenn is bold risk taker of using color and brings forth
+                the artistic designs that mesmerize the eyes. Focused on the
+                purity of art, Lenn uses cotemporary ideas while blending
+                different cultural perspectives to produce individualized
+                masterpieces. Lenn is the creator of opportunities for children
+                all over the world.
+              </p>
+            </div>
+          </div>
+
+          {/* team members 3  */}
+          <div className={aboutStyles.teamMember}>
+            <div className={aboutStyles.memberDes}>
+              <h3>BOOTS THE EXPLORER</h3>
+              <p>
+                The master behind the technicals of the project. Boots is a deep
+                learner of anything in computer development and betters himself
+                by learning different coding languages to tackle any problems
+                that come his way. Boots is the explorer of the semantic web to
+                ensure children can thrive in the next digital frontier.
+              </p>
+            </div>
+            <div>
+              <img src={boots} alt="" />
+            </div>
+          </div>
+
+          {/* team members 4  */}
+          <div className={aboutStyles.teamMember}>
+            <div>
+              <img src={maq} alt="" />
+            </div>
+            <div className={aboutStyles.memberDes}>
+              <h3>MAQ THE WISE</h3>
+              <p>
+                The mastermind behind the rarity of each artistic piece. Maq is
+                an introverted and mysterious soul focused on progressing the
+                human race. In his ripe old age, he has seen numerous people
+                squandering their dreams because of the lack of educational
+                opportunities. Maq the wise focuses on teaching the lessons of
+                the past to ensure progress of humanity in the future.
+              </p>
             </div>
           </div>
         </div>
