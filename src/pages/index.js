@@ -10,7 +10,9 @@ import roadMap1 from "../images/assets/road-map-1.jpg";
 import roadMap2 from "../images/assets/road-map-2.jpg";
 import roadMap3 from "../images/assets/road-map-3.jpg";
 import royalties from "../images/assets/Royalties-Animalien-1.svg";
+// css
 import * as homeStyles from "../styles/Home.module.css";
+// assets
 import boots from "../images/assets/boots.png";
 import leen from "../images/assets/leen.png";
 import zame from "../images/assets/zame.png";
