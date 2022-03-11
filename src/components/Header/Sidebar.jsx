@@ -1,46 +1,21 @@
-import React, { ReactNode } from 'react';
-import { navigate } from "gatsby";
 import {
-  IconButton,
-  Avatar,
-  Box,
-  CloseButton,
-  Flex,
-  HStack,
-  VStack,
-  Icon,
-  useColorModeValue,
-  Link,
-  Drawer,
-  DrawerContent,
-  Text,
-  useDisclosure,
-  BoxProps,
-  FlexProps,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
+    Box,
+    CloseButton, Drawer,
+    DrawerContent, Flex,
+    HStack, IconButton, Menu,
+    MenuButton, MenuList, useDisclosure
 } from '@chakra-ui/react';
-import {
-  FiHome,
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
-  FiSettings,
-  FiMenu,
-  FiBell,
-  FiChevronDown,
-} from 'react-icons/fi';
-import { IconType } from 'react-icons';
-import { ReactText } from 'react';
+import { navigate } from "gatsby";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
+import React from 'react';
+import {
+    FiMenu
+} from 'react-icons/fi';
 import * as style from "../../components/Header/Tab.module.css";
+import newLogo from '../../images/assets/logo_face_white.svg';
 
 
 
-import newLogo from '../../images/assets/logo_face_white.svg'
 
 
 const LinkItems = [
@@ -111,9 +86,9 @@ const SidebarContent = ({ onClose, ...rest }) => {
             window.scrollTo(0, 0);
           }}
         >
-          <img draggable={false} width={!matches.md ? 120 : 45} src={newLogo} />
+          <img draggable={false} width={!matches.md ? 150 : 120}  src={newLogo} />
         </div>
-        <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
+        <CloseButton display={{ base: 'flex', md: 'none', }} style={{color: '#fff'}} onClick={onClose} />
       </Flex>
           <div style={{marginTop:40,}}>
           {LinkItems.map((link) => (
@@ -137,6 +112,7 @@ const NavItem = ({ link, children, ...rest }) => {
     }}
   >
       <Flex
+      style={{color: '#fff'}}
         align="center"
         p="1"
         mx="8"
@@ -161,6 +137,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
       justifyContent={{ base: 'space-between', md: 'flex-end' }}
       {...rest}>
       <IconButton
+      style={{color: '#fff'}}
         display={{ base: 'flex', md: 'none' }}
         onClick={onOpen}
         variant="outline"
@@ -176,34 +153,33 @@ const MobileNav = ({ onOpen, ...rest }) => {
             cursor: "pointer",
             zIndex: 2,
             textAlign: 'center',
-            // marginBottom: 40
-            marginTop:20
+
           }}
           onClick={() => {
             navigate("/");
             window.scrollTo(0, 0);
           }}
         >
-          <img draggable={false} width={!matches.md ? 120 : 45} src={newLogo} />
+          <img draggable={false} src={newLogo} />
         </div>
 
       <HStack spacing={{ base: '0', md: '6' }}>
         <Flex alignItems={'center'}>
           <Menu>
             <MenuButton
+            style={{color: '#fff'}}
               py={2}
-              transition="all 0.3s"
-              _focus={{ boxShadow: 'none' }}>
+              >
              
             </MenuButton>
             <MenuList
-              bg={useColorModeValue('white', 'gray.900')}
-              borderColor={useColorModeValue('gray.200', 'gray.700')}>
-              <MenuItem>Profile</MenuItem>
+              bg="#fff"
+              >
+              {/* <MenuItem>Profile</MenuItem>
               <MenuItem>Settings</MenuItem>
               <MenuItem>Billing</MenuItem>
               <MenuDivider />
-              <MenuItem>Sign out</MenuItem>
+              <MenuItem>Sign out</MenuItem> */}
             </MenuList>
           </Menu>
         </Flex>
