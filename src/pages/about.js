@@ -135,6 +135,43 @@ const About = () => {
           </div>
         </div>
         {/* OUR TEAM end */}
+        {/* NFTS start  */}
+        <div style={{ padding: "50px 0" }}>
+          <h3
+            style={{
+              fontSize: 44,
+              fontWeight: 500,
+              marginBottom: 60,
+              textAlign: "center",
+            }}
+          >
+            NFTS
+          </h3>
+          <div style={{ width: "50%", marginBottom: 40, margin: "auto" }}>
+            <h4 style={{ fontSize: 28, fontWeight: 500, marginBottom: 20 }}>
+              Aesthetics
+            </h4>
+            <p>
+              Beauty, colors and brightness. We believe in the natural
+              proportions and the symmetry the universe shows.
+            </p>
+          </div>
+          <div style={{ width: "50%", marginBottom: 40, margin: "auto" }}>
+            <h4 style={{ fontSize: 28, fontWeight: 500, marginBottom: 20 }}>
+              Uniqueness
+            </h4>
+            <p>
+              We believe in the uniqueness of each individual in the universe.
+            </p>
+          </div>
+          <div style={{ width: "50%", marginBottom: 40, margin: "auto" }}>
+            <h4 style={{ fontSize: 28, fontWeight: 500, marginBottom: 20 }}>
+              Unexpected
+            </h4>
+            <p>We think the unexpected is the best.</p>
+          </div>
+        </div>
+        {/* NFTS end */}
       </main>
     </>
   );
