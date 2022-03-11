@@ -3,6 +3,7 @@ import { StoreProvider } from "easy-peasy";
 import store from "../store";
 import Footer from "../components/Footer";
 import Header from "../components/Header/Header";
+import SidebarWithHeader from "../components/Header/Sidebar";
 
 const Layout = (props) => {
   return (
@@ -19,18 +20,19 @@ const Layout = (props) => {
         <div
           style={{
             width: "15%",
-            backgroundColor: "#171717",
+            // backgroundColor: "#171717",
             color: "#fff",
           }}
         >
-          <Header />
+          {/* <Header /> */}
+          <SidebarWithHeader />
         </div>
         <div
           style={{
             width: "85%",
             backgroundColor: "#000",
             color: "#fff",
-            padding: "10px 50px",
+            // padding: "10px 50px",
           }}
         >
           {props.children}
