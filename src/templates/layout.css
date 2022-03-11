@@ -11,6 +11,9 @@
 @media only screen and (max-width: 768px) {
   #sidebar {
     width: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
   #bodyContent {
     width: 100%;

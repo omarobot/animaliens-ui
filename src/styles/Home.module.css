@@ -78,3 +78,13 @@ h4 {
   width: 20%;
   margin: auto;
 }
+
+/* responsiveness  */
+@media only screen and (max-width: 768px) {
+  .alien img {
+    width: 80%;
+  }
+  .project {
+    width: 80%;
+  }
+}
