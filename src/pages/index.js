@@ -57,10 +57,13 @@ const Landing = (props) => {
         {/* ROYALTIES & RAFFLES */}
         <div className={homeStyles.royalitiesRaffles}>
           {/* royalities */}
-          <div className={homeStyles.royalitiesRafflexBox}>
+          <div
+            className={`${homeStyles.royalitiesRafflexBox} ${homeStyles.royalities}`}
+          >
             <div>
               <h3>ROYALTIES</h3>
               <div
+                className={homeStyles.royalitiesDes}
                 style={{
                   display: "flex",
                   gap: 24,
@@ -72,6 +75,7 @@ const Landing = (props) => {
                 <span>BACK TO THE COMMUNITY</span>
               </div>
               <div
+                className={homeStyles.royalitiesDes}
                 style={{
                   display: "flex",
                   gap: 24,
@@ -83,6 +87,7 @@ const Landing = (props) => {
                 <span>PROJECT FUNDING</span>
               </div>
               <div
+                className={homeStyles.royalitiesDes}
                 style={{
                   display: "flex",
                   gap: 24,
@@ -104,7 +109,10 @@ const Landing = (props) => {
             <div>
               <img src={raffels} alt="" />
             </div>
-            <div style={{ width: "40%", margin: "auto" }}>
+            <div
+              className={homeStyles.raffels}
+              style={{ width: "40%", margin: "auto" }}
+            >
               <h3>RAFFLES</h3>
               <p>
                 Each one of your NFTs is a ticket to 2 different raffles: -
@@ -126,21 +134,21 @@ const Landing = (props) => {
               padding: "40px 0",
             }}
           >
-            <div>
+            <div className={homeStyles.roadmap}>
               <img
                 style={{ width: "70%", margin: "auto" }}
                 src={roadMap1}
                 alt=""
               />
             </div>
-            <div>
+            <div className={homeStyles.roadmap}>
               <img
                 style={{ width: "70%", margin: "auto" }}
                 src={roadMap2}
                 alt=""
               />
             </div>
-            <div>
+            <div className={homeStyles.roadmap}>
               <img
                 style={{ width: "70%", margin: "auto" }}
                 src={roadMap3}
@@ -206,7 +214,7 @@ const Landing = (props) => {
           </div>
           {/* the team end  */}
           {/* PROUDLY SUPPORTING start  */}
-          <div style={{ padding: "80px 0" }}>
+          <div className={homeStyles.supporting} style={{ padding: "80px 0" }}>
             <h3
               style={{
                 fontSize: 44,

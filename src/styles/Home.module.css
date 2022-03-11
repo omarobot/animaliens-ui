@@ -84,7 +84,52 @@ h4 {
   .alien img {
     width: 80%;
   }
+  /* project responsive */
   .project {
     width: 80%;
+  }
+  .project h3 {
+    font-size: 30px !important;
+  }
+  /* titles  */
+  .royalitiesRafflexBox h3 {
+    font-size: 30px !important;
+  }
+  .teamSection h2 {
+    font-size: 30px !important;
+  }
+  .supporting h3 {
+    font-size: 30px !important;
+  }
+  /* royalities raffels responsive  */
+
+  .royalitiesRafflexBox {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .royalitiesRafflexBox img {
+    margin: auto;
+  }
+  .royalities {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .royalitiesDes {
+    display: flex;
+    justify-content: center;
+  }
+  .raffels {
+    width: 80% !important;
+  }
+  /* roadmap */
+  .roadmap img {
+    width: 80% !important;
+  }
+  /* team responsive  */
+  .team {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
