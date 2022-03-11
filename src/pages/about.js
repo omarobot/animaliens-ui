@@ -63,7 +63,7 @@ const About = () => {
             OUR TEAM
           </h3>
           {/* team members 1  */}
-          <div className={aboutStyles.teamMember}>
+          <div className={`${aboutStyles.teamMember} ${aboutStyles.zeen}`}>
             <div className={aboutStyles.memberDes}>
               <h3>ZENN THE HERO</h3>
               <p>
@@ -100,7 +100,7 @@ const About = () => {
           </div>
 
           {/* team members 3  */}
-          <div className={aboutStyles.teamMember}>
+          <div className={`${aboutStyles.teamMember} ${aboutStyles.boots}`}>
             <div className={aboutStyles.memberDes}>
               <h3>BOOTS THE EXPLORER</h3>
               <p>
@@ -136,7 +136,7 @@ const About = () => {
         </div>
         {/* OUR TEAM end */}
         {/* NFTS start  */}
-        <div style={{ padding: "50px 0" }}>
+        <div className={aboutStyles.nfts} style={{ padding: "50px 0" }}>
           <h3
             style={{
               fontSize: 44,

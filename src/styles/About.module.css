@@ -32,3 +32,40 @@
 .memberDes p {
   text-align: justify;
 }
+
+/* responsiveness  */
+
+@media only screen and (max-width: 768px) {
+  /* mission  */
+  .mission {
+    width: 80%;
+  }
+  /* titles  */
+  .mission h2 {
+    font-size: 36px !important;
+  }
+  .ourTeam h3 {
+    font-size: 36px !important;
+  }
+  .nfts h3 {
+    font-size: 36px !important;
+  }
+  /* team  */
+  .teamMember {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .zeen,
+  .boots {
+    flex-direction: column-reverse;
+  }
+  .memberDes {
+    width: 60%;
+    margin: auto;
+  }
+  .memberDes h3 {
+    font-size: 24px !important;
+    margin-bottom: 10px;
+  }
+}
