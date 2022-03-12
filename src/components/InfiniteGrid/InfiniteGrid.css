@@ -1,9 +1,19 @@
+.grid-container {
+  /* display: grid;
+  grid-template-columns: repeat(1fr, 4); */
+}
 .itemGrid {
   width: 280px;
   opacity: 1;
   cursor: pointer;
   animation-duration: 1s;
   animation: fadeIn;
+  border: 1px solid #bababa;
+  margin: 20px;
+  /* position: inherit !important;
+  left: inherit !important;
+  top: inherit !important;
+  display: flex; */
 }
 .itemGrid .thumbnail {
   height: 280px;
@@ -15,7 +25,9 @@
   flex-direction: column;
 }
 .itemGrid .thumbnail img {
-  width: 100%;
+  width: 280px;
+  height: 260px;
+  object-fit: cover;
   /* border-radius: 50%; */
 }
 
@@ -25,10 +37,11 @@
 
 .itemGrid .info {
   text-align: center;
-  margin-top: -26px;
+  /* margin-top: -26px; */
   margin-bottom: 20px;
-  font-weight: bold;
-  color: #777;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
 }
 .itemGrid.animate {
   transition: opacity ease 1s;
