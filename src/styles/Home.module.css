@@ -1,6 +1,14 @@
+.alien {
+  background: url(../images/assets/animaliens-text-bg.png) no-repeat center
+    center;
+  background-size: cover;
+  padding: 180px 0;
+}
+
 .alien img {
   width: 50%;
   margin: auto;
+  margin-bottom: -4px;
 }
 /* project  */
 .project {

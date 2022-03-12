@@ -530,10 +530,8 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
                             !Boolean(details.bid.lovelace) || loadingButton.sell
                           }
                           isLoading={loadingButton.sell}
-                          rounded="3xl"
                           size="md"
                           colorScheme="purple"
-                          width="min"
                           bgcolor="#263238"
                           rounded="3xl"
                           width="min"

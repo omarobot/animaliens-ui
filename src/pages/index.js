@@ -4,7 +4,7 @@ import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import React from "react";
 import styled from "styled-components";
 import Metadata from "../components/Metadata";
-import alien from "../images/assets/alien-with-text.png";
+import alien from "../images/assets/ezgif.com-gif-maker.gif";
 import raffels from "../images/assets/Raffles-1.svg";
 import roadMap1 from "../images/assets/road-map-1.jpg";
 import roadMap2 from "../images/assets/road-map-2.jpg";
