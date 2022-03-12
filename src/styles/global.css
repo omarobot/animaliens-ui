@@ -2,3 +2,24 @@ body {
   background: #000 !important;
   color: #fff;
 }
+.howToBuy {
+  font-size: 64px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.video iframe {
+  width: 560px;
+  height: 315px;
+  margin: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .howToBuy {
+    font-size: 36px;
+  }
+  .video iframe {
+    width: 250px;
+    height: 200px;
+  }
+}
