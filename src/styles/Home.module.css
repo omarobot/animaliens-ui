@@ -19,11 +19,12 @@
 }
 
 .project h3 {
-  font-size: 44px;
-  font-weight: 500;
+  font-size: 64px;
+  font-weight: 700;
   margin-bottom: 20px;
 }
 .project p {
+  font-size: 24px;
   text-align: justify;
 }
 
@@ -39,14 +40,25 @@
   gap: 40px;
 }
 .royalitiesRafflexBox h3 {
-  font-size: 44px;
-  font-weight: 500;
+  font-size: 64px;
+  font-weight: 700;
   margin-bottom: 20px;
   display: block;
 }
 .royalitiesRafflexBox img {
   width: 70%;
   margin-top: -35px;
+}
+.royalitiesDes h4 {
+  font-size: 64px;
+  font-weight: 700;
+}
+.royalitiesDes span {
+  font-size: 24px;
+}
+
+.raffels p {
+  font-size: 24px;
 }
 
 /* team  */
@@ -71,7 +83,7 @@
 
 .teamMember h3,
 h4 {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 /* supportLogo */

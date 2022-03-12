@@ -106,7 +106,7 @@ const NavItem = ({ link, children, ...rest }) => {
     <div
     color="gray.600"
     className={style.tabItem}
-    style={{fontWeight: 500, fontSize:16, marginBottom:10, textTransform: 'uppercase'}}
+    style={{fontWeight: 500, fontSize:24, marginBottom:10, textTransform: 'uppercase'}}
     onClick={() => {
       navigate(`${link}`);
     }}

@@ -71,7 +71,7 @@ const Landing = (props) => {
                   marginBottom: 10,
                 }}
               >
-                <h4 style={{ fontSize: 30, fontWeight: 700 }}>4%</h4>
+                <h4>4%</h4>
                 <span>BACK TO THE COMMUNITY</span>
               </div>
               <div
@@ -83,7 +83,7 @@ const Landing = (props) => {
                   marginBottom: 10,
                 }}
               >
-                <h4 style={{ fontSize: 30, fontWeight: 700 }}>2%</h4>
+                <h4>2%</h4>
                 <span>PROJECT FUNDING</span>
               </div>
               <div
@@ -95,7 +95,7 @@ const Landing = (props) => {
                   marginBottom: 10,
                 }}
               >
-                <h4 style={{ fontSize: 30, fontWeight: 700 }}>2%</h4>
+                <h4>2%</h4>
                 <span>BACK TO THE TEAM</span>
               </div>
             </div>
@@ -136,21 +136,21 @@ const Landing = (props) => {
           >
             <div className={homeStyles.roadmap}>
               <img
-                style={{ width: "70%", margin: "auto" }}
+                style={{ width: "100%", margin: "auto" }}
                 src={roadMap1}
                 alt=""
               />
             </div>
             <div className={homeStyles.roadmap}>
               <img
-                style={{ width: "70%", margin: "auto" }}
+                style={{ width: "100%", margin: "auto" }}
                 src={roadMap2}
                 alt=""
               />
             </div>
             <div className={homeStyles.roadmap}>
               <img
-                style={{ width: "70%", margin: "auto" }}
+                style={{ width: "100%", margin: "auto" }}
                 src={roadMap3}
                 alt=""
               />
@@ -162,8 +162,8 @@ const Landing = (props) => {
           <div className={homeStyles.teamSection}>
             <h2
               style={{
-                fontSize: 44,
-                fontWeight: 500,
+                fontSize: 64,
+                fontWeight: 700,
                 marginBottom: 60,
                 textAlign: "center",
               }}
@@ -217,8 +217,8 @@ const Landing = (props) => {
           <div className={homeStyles.supporting} style={{ padding: "80px 0" }}>
             <h3
               style={{
-                fontSize: 44,
-                fontWeight: 500,
+                fontSize: 64,
+                fontWeight: 700,
                 marginBottom: 60,
                 textAlign: "center",
               }}
