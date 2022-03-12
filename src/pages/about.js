@@ -25,8 +25,8 @@ const About = () => {
         <div className={aboutStyles.mission}>
           <h2
             style={{
-              fontSize: 44,
-              fontWeight: 500,
+              fontSize: 64,
+              fontWeight: 700,
               marginBottom: 60,
               textAlign: "center",
             }}
@@ -54,8 +54,8 @@ const About = () => {
         <div className={aboutStyles.ourTeam}>
           <h3
             style={{
-              fontSize: 44,
-              fontWeight: 500,
+              fontSize: 64,
+              fontWeight: 700,
               marginBottom: 60,
               textAlign: "center",
             }}
@@ -139,16 +139,16 @@ const About = () => {
         <div className={aboutStyles.nfts} style={{ padding: "50px 0" }}>
           <h3
             style={{
-              fontSize: 44,
-              fontWeight: 500,
+              fontSize: 64,
+              fontWeight: 700,
               marginBottom: 60,
               textAlign: "center",
             }}
           >
             NFTS
           </h3>
-          <div style={{ width: "50%", marginBottom: 40, margin: "auto" }}>
-            <h4 style={{ fontSize: 28, fontWeight: 500, marginBottom: 20 }}>
+          <div style={{ width: "50%", marginBottom: 60, margin: "auto" }}>
+            <h4 style={{ fontSize: 48, fontWeight: 700, marginBottom: 20 }}>
               Aesthetics
             </h4>
             <p>
@@ -156,16 +156,16 @@ const About = () => {
               proportions and the symmetry the universe shows.
             </p>
           </div>
-          <div style={{ width: "50%", marginBottom: 40, margin: "auto" }}>
-            <h4 style={{ fontSize: 28, fontWeight: 500, marginBottom: 20 }}>
+          <div style={{ width: "50%", marginBottom: 60, margin: "auto" }}>
+            <h4 style={{ fontSize: 48, fontWeight: 700, marginBottom: 20 }}>
               Uniqueness
             </h4>
             <p>
               We believe in the uniqueness of each individual in the universe.
             </p>
           </div>
-          <div style={{ width: "50%", marginBottom: 40, margin: "auto" }}>
-            <h4 style={{ fontSize: 28, fontWeight: 500, marginBottom: 20 }}>
+          <div style={{ width: "50%", marginBottom: 60, margin: "auto" }}>
+            <h4 style={{ fontSize: 48, fontWeight: 700, marginBottom: 20 }}>
               Unexpected
             </h4>
             <p>We think the unexpected is the best.</p>

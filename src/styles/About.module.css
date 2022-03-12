@@ -4,6 +4,7 @@
   margin: auto;
 }
 .mission p {
+  font-size: 24px;
   text-align: justify;
 }
 
@@ -24,18 +25,24 @@
   width: 40%;
 }
 .memberDes h3 {
-  font-size: 30px;
+  font-size: 46px;
   font-weight: 500;
   margin-bottom: 20px;
   text-align: center;
 }
 .memberDes p {
+  font-size: 24px;
   text-align: justify;
 }
-
+.nfts p {
+  font-size: 24px;
+}
 /* responsiveness  */
 
 @media only screen and (max-width: 768px) {
+  p {
+    font-size: 20px !important;
+  }
   /* mission  */
   .mission {
     width: 80%;
