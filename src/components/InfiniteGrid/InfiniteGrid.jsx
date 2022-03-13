@@ -8,6 +8,7 @@ import styled, { keyframes } from "styled-components";
 import { Box } from "@chakra-ui/layout";
 import { UnitDisplay } from "../UnitDisplay";
 import { Spinner } from "@chakra-ui/spinner";
+import cardano from "../../images/assets/CARDANO-LOGO.svg";
 
 var converterEngine = function (input) {
   // fn BLOB => Binary => Base64 ?
@@ -199,7 +200,30 @@ const Item = ({ bud, im, type, hasDouble }) => {
               />
             )}
           </div>
-          <div className="info">{`SpaceBud #${bud.id}`}</div>
+          <div style={{padding: '0px 15px'}}>
+            <div className="info">{`SpaceBud #${bud.id}`}</div>
+            <button
+                  style={{
+                    border: "1px solid #30F100",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 5,
+                    fontSize: 20,
+                    fontWeight: 700,
+                    marginTop: 20,
+                    padding: "5px 30px",
+                    borderRadius: 50,
+                    marginBottom: 20,
+                  }}
+                >
+                  <img
+                    style={{ objectFit: "cover", width: "40%" }}
+                    src={cardano}
+                    alt=""
+                  />
+                  4000
+                </button>
+          </div>
         </Link>
       </div>
     </div>

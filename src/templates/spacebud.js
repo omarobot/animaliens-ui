@@ -363,7 +363,7 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
                   fontWeight: 700,
                   marginTop: 20,
                   padding: "5px 40px",
-                  borderRadius: 40,
+                  borderRadius: 50,
                   marginBottom: 20,
                 }}
               >

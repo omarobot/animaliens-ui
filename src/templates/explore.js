@@ -12,6 +12,9 @@ import Icon from "@mdi/react";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Checkbox } from "@chakra-ui/checkbox";
 import { Spinner } from "@chakra-ui/spinner";
+import { Stack } from "@chakra-ui/react";
+import { StackDivider } from "@chakra-ui/react";
+import arrow from "../images/assets/Arrow.svg";
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -262,6 +265,43 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
             </div>
           </div>
           {/* </Headroom> */}
+
+          {/* new tabs  */}
+
+          <Stack
+            className="tab-stack"
+            style={{
+              backgroundColor: "#414040",
+              width: "49%",
+              margin: "auto",
+              justifyContent: "center",
+              alignItems: "center",
+              boxShadow: " 0px 4px 4px rgba(0, 0, 0, 0.25)",
+              padding: "5px 20px",
+              borderRadius: 50,
+            }}
+            direction={["column", "row"]}
+            spacing="24px"
+            divider={<StackDivider borderColor="#000000" />}
+          >
+            <Box>PRICE</Box>
+            <Box>SKIN TYPE</Box>
+            <Box>ACCESORIES</Box>
+            <Box>SEARCH ID</Box>
+            <Box
+              style={{
+                backgroundColor: "#30F100",
+                color: "#fff",
+                padding: "5px 25px",
+                borderRadius: 50,
+              }}
+            >
+              <img src={arrow} alt="" />
+            </Box>
+          </Stack>
+
+          {/* new tabs  */}
+
           <div>
             <Box h={5} />
             <div
