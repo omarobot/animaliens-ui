@@ -30,6 +30,7 @@ import Market from "../cardano/market";
 import { UnitDisplay } from "../components/UnitDisplay";
 import Loader from "../cardano/loader";
 import Show from "../images/assets/show.svg";
+import cardano from "../images/assets/CARDANO-LOGO.svg";
 
 const secrets = {
   PROJECT_ID: "mainnetFEnBQkYa33cYHGr2w96tA0BvYILBqfXm",
@@ -258,17 +259,19 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
         <div
           style={{
             position: "relative",
-            paddingBottom: 35,
-            width: "95%",
+            // paddingBottom: 35,
+            width: "60%",
             borderRadius: 10,
-            backgroundImage: `url(${Show})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
+            // backgroundImage: `url(${Show})`,
+            // backgroundRepeat: "no-repeat",
+            // backgroundSize: "cover",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
+            // justifyContent: "center",
+            // flexDirection: "column",
+            gap: 20,
             color: "white",
+            border: "2px solid #636363",
           }}
         >
           <div
@@ -303,8 +306,9 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
               width: !matches.md ? 410 : 350,
               height: !matches.md ? 410 : 350,
               borderRadius: "50%",
-              marginTop: -15,
-              marginBottom: -50,
+              // marginTop: -15,
+              // marginBottom: -50,
+              padding: 20,
             }}
           >
             <div style={{ width: "100%", position: "relative" }}>
@@ -328,13 +332,50 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
             </div>
           </div>
           <Box h={5} />
-          <div style={{ fontWeight: 600, fontSize: 30 }}>
-            SpaceBud #{spacebud.id}
+          <div>
+            <div style={{ fontWeight: 600, fontSize: 48, marginBottom: 20 }}>
+              SpaceBud <br /> #{spacebud.id}
+            </div>
+            <LinkName
+              style={{ color: "#636363", fontSize: 18 }}
+              onClick={() => navigate(`/explore/?type=${spacebud.type}`)}
+            >
+              {spacebud.type} Astronaut
+            </LinkName>
+            <div>
+              <button
+                style={{
+                  border: "1px solid #30F100",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 5,
+                  fontSize: 20,
+                  fontWeight: 700,
+                  marginTop: 20,
+                  padding: "5px 40px",
+                  borderRadius: 40,
+                  marginBottom: 20,
+                }}
+              >
+                <img
+                  style={{ objectFit: "cover", width: "40%" }}
+                  src={cardano}
+                  alt=""
+                />
+                4000
+              </button>
+            </div>
+            <div>
+              <Button
+                size="lg"
+                isFullWidth={true}
+                style={{ backgroundColor: "#30F100", color: "#000" }}
+                variant="solid"
+              >
+                BUY NOW
+              </Button>
+            </div>
           </div>
-
-          <LinkName onClick={() => navigate(`/explore/?type=${spacebud.type}`)}>
-            {spacebud.type} Astronaut
-          </LinkName>
         </div>
         <Box h={6} />
         {(spacebud.id === 1903 || spacebud.id === 6413) && (
