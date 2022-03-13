@@ -31,6 +31,11 @@ import { UnitDisplay } from "../components/UnitDisplay";
 import Loader from "../cardano/loader";
 import Show from "../images/assets/show.svg";
 import cardano from "../images/assets/CARDANO-LOGO.svg";
+import greenDot from "../images/assets/green-dot.svg";
+import redDot from "../images/assets/red-dot.svg";
+import blueDot from "../images/assets/blue-dot.svg";
+import yellowDot from "../images/assets/yellow-dot.svg";
+import indigoDot from "../images/assets/indigo-dot.svg";
 
 const secrets = {
   PROJECT_ID: "mainnetFEnBQkYa33cYHGr2w96tA0BvYILBqfXm",
@@ -432,6 +437,191 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
               TRADING HISTORY
             </Button>
           </ButtonGroup>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "3fr 1fr",
+              marginTop: 30,
+            }}
+          >
+            <div style={{ display: "flex", gap: 50 }}>
+              {/* left side  */}
+              <div>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    marginBottom: 10,
+                  }}
+                >
+                  <h4 style={{ fontSize: 11, fontWeight: 700 }}>
+                    SKIN : CLEAN 41.38%{" "}
+                  </h4>
+                  <img src={greenDot} alt="" />
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    marginBottom: 10,
+                  }}
+                >
+                  <h4 style={{ fontSize: 11, fontWeight: 700 }}>
+                    MOUTH : OG BLUE 1.08%
+                  </h4>
+                  <img src={redDot} alt="" />
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    marginBottom: 10,
+                  }}
+                >
+                  <h4 style={{ fontSize: 11, fontWeight: 700 }}>
+                    EYES : DEAD 14.56%
+                  </h4>
+                  <img src={blueDot} alt="" />
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    marginBottom: 10,
+                  }}
+                >
+                  <h4 style={{ fontSize: 11, fontWeight: 700 }}>
+                    EYES COLOR : GREEN 2.07%
+                  </h4>
+                  <img src={yellowDot} alt="" />
+                </div>
+              </div>
+              {/* right side  */}
+              <div>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    marginBottom: 10,
+                  }}
+                >
+                  <h4 style={{ fontSize: 11, fontWeight: 700 }}>
+                    HEAD : SOMBRERO 2.17%
+                  </h4>
+                  <img src={blueDot} alt="" />
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    marginBottom: 10,
+                  }}
+                >
+                  <h4 style={{ fontSize: 11, fontWeight: 700 }}>
+                    HEAD : SOMBRERO 2.17%
+                  </h4>
+                  <img src={yellowDot} alt="" />
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    marginBottom: 10,
+                  }}
+                >
+                  <h4 style={{ fontSize: 11, fontWeight: 700 }}>
+                    CHEST : BLACK ALIEN TSHIRT 4.83%
+                  </h4>
+                  <img src={greenDot} alt="" />
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    marginBottom: 10,
+                  }}
+                >
+                  <h4 style={{ fontSize: 11, fontWeight: 700 }}>
+                    CHAINS : ALIEN 7.31%
+                  </h4>
+                  <img src={greenDot} alt="" />
+                </div>
+              </div>
+            </div>
+            <div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  marginBottom: 10,
+                }}
+              >
+                <img src={greenDot} alt="" />
+                <h4 style={{ fontSize: 9, fontWeight: 700 }}>COMMON</h4>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  marginBottom: 10,
+                }}
+              >
+                <img src={yellowDot} alt="" />
+                <h4 style={{ fontSize: 9, fontWeight: 700 }}>UNCOMMON</h4>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  marginBottom: 10,
+                }}
+              >
+                <img src={redDot} alt="" />
+                <h4 style={{ fontSize: 9, fontWeight: 700 }}>RARE</h4>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  marginBottom: 10,
+                }}
+              >
+                <img src={blueDot} alt="" />
+                <h4 style={{ fontSize: 9, fontWeight: 700 }}>ALIEN</h4>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  marginBottom: 10,
+                }}
+              >
+                <img src={indigoDot} alt="" />
+                <h4 style={{ fontSize: 9, fontWeight: 700 }}>
+                  EXTRATERRESTRIAL
+                </h4>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
