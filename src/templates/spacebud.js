@@ -377,511 +377,61 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
             </div>
           </div>
         </div>
-        <Box h={6} />
-        {(spacebud.id === 1903 || spacebud.id === 6413) && (
-          <>
-            <div
-              style={{
-                fontWeight: 600,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <div style={{ marginTop: -5 }}>Twins</div>
-              <Box w={2} />
-            </div>{" "}
-            <Box h={3} />
-          </>
-        )}
-        {owner.length > 0 ? (
-          owner.map((item, i) => (
-            <div
-              key={i}
-              style={{
-                marginBottom: 5,
-                paddingTop: 8,
-                paddingBottom: 8,
-                paddingLeft: 12,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 16,
-                border: "solid 2px #311b92",
-                borderRadius: 25,
-                color: "#777777",
-              }}
-            >
-              <span>
-                <b>Owner:</b>{" "}
-              </span>
-              <div
-                style={{
-                  width: "200px",
-                  whiteSpace: "nowrap",
-                  textAlign: "center",
-                }}
-              >
-                <MiddleEllipsis>
-                  <Link
-                    underline
-                    color="purple.600"
-                    onClick={(e) => {
-                      if (owner) navigate(`/profile?address=${item.address}`);
-                    }}
-                  >
-                    {item.address}
-                  </Link>
-                </MiddleEllipsis>
-              </div>
-            </div>
-          ))
-        ) : (
-          <>
-            <Box h={3} />
-            <Box display="flex" alignItems="center">
-              <Text color="GrayText" mr="4">
-                Owner
-              </Text>{" "}
-              <Spinner size="sm" color="purple" />
-            </Box>
-          </>
-        )}
-
-        <Box h={8} />
+        {/* static content */}
         <div
           style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            position: "relative",
+            width: "60%",
+            marginTop: 50,
+            backgroundColor: "#171717",
+            padding: 20,
+            borderRadius: 5,
           }}
         >
-          {isLoadingMarket ? (
-            <Box display="flex" alignItems="center">
-              <Text color="GrayText" mr="4">
-                Loading Market
-              </Text>{" "}
-              <Spinner size="sm" color="purple" />
-            </Box>
-          ) : (
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              flexDirection="column"
+          <ButtonGroup spacing="8">
+            <Button
+              style={{
+                border: "1px solid #30F100",
+                borderRadius: 50,
+                padding: "5px 30px",
+                fontSize: 11,
+                fontWeight: 500,
+              }}
+              colorScheme="none"
+              variant={"outline"}
             >
-              <Box textAlign="center">
-                <div
-                  style={{ fontSize: 12, fontWeight: "bold", marginBottom: 4 }}
-                >
-                  Last Sale
-                </div>
-                <UnitDisplay
-                  showQuantity={!Boolean(details.lastSale.lovelace)}
-                  fontWeight="medium"
-                  quantity={details.lastSale.lovelace || 0}
-                  symbol="ADA"
-                  decimals={6}
-                />
-                <UnitDisplay
-                  showQuantity={!Boolean(details.lastSale.usd)}
-                  fontSize={12}
-                  color="#777777"
-                  quantity={details.lastSale.usd || 0}
-                  symbol="USD"
-                  decimals={2}
-                />
-              </Box>
-              <Box h={6} />
-              <Box position="absolute">
-                <Box position="absolute" top="-30px" left={-40}>
-                  {" "}
-                  <RepeatIcon cursor="pointer" onClick={loadSpaceBudData} />
-                </Box>
-              </Box>
-              <Box display="flex" alignItems="center">
-                {details.offer.owner ? (
-                  <>
-                    <Box
-                      width={matches.md ? "100px" : "150px"}
-                      textAlign="right"
-                    >
-                      <div style={{ fontSize: 12 }}>Sell now price</div>
-                      <UnitDisplay
-                        showQuantity={!Boolean(details.bid.lovelace)}
-                        fontWeight="medium"
-                        quantity={details.bid.lovelace || 0}
-                        symbol="ADA"
-                        decimals={6}
-                      />
-                      <UnitDisplay
-                        showQuantity={!Boolean(details.bid.usd)}
-                        fontSize={12}
-                        color="#777777"
-                        quantity={details.bid.usd || 0}
-                        symbol="USD"
-                        decimals={2}
-                      />
-                    </Box>
-                    <Box w={5} />
-                    {details.bid.owner ? (
-                      <Tooltip label="Cancel Bid" rounded="3xl">
-                        <Button
-                          isDisabled={loadingButton.cancelBid}
-                          isLoading={loadingButton.cancelBid}
-                          onClick={async () => {
-                            if (!connected) return;
-                            setLoadingButton((l) => ({
-                              ...l,
-                              cancelBid: true,
-                            }));
-                            const txHash = await market.current
-                              .cancelBid(details.bid.bidUtxo)
-                              .catch((e) => tradeErrorHandler(e, toast));
-                            setLoadingButton((l) => ({
-                              ...l,
-                              cancelBid: false,
-                            }));
-                            checkTransaction(txHash);
-                          }}
-                          rounded="3xl"
-                          size="md"
-                          color="white"
-                          bgColor="red.300"
-                          colorScheme="red"
-                        >
-                          Cancel
-                        </Button>
-                      </Tooltip>
-                    ) : (
-                      <Tooltip
-                        label={
-                          details.offer.offerUtxo &&
-                          isOwner(
-                            details.offer.offerUtxo.tradeOwnerAddress.to_bech32()
-                          ) &&
-                          "Cancel Offer first"
-                        }
-                        rounded="3xl"
-                      >
-                        <Button
-                          isDisabled={
-                            !Boolean(details.bid.lovelace) || loadingButton.sell
-                          }
-                          isLoading={loadingButton.sell}
-                          size="md"
-                          colorScheme="purple"
-                          bgcolor="#263238"
-                          rounded="3xl"
-                          width="min"
-                          onClick={async () => {
-                            if (
-                              !connected ||
-                              (details.offer.offerUtxo &&
-                                isOwner(
-                                  details.offer.offerUtxo.tradeOwnerAddress.to_bech32()
-                                ))
-                            )
-                              return;
-                            setLoadingButton((l) => ({
-                              ...l,
-                              sell: true,
-                            }));
-                            const txHash = await market.current
-                              .sell(details.bid.bidUtxo)
-                              .catch((e) => tradeErrorHandler(e, toast));
-                            setLoadingButton((l) => ({
-                              ...l,
-                              sell: false,
-                            }));
-                            checkTransaction(txHash, {
-                              type: "sold",
-                              lovelace: details.bid.lovelace,
-                            });
-                          }}
-                        >
-                          Sell
-                        </Button>
-                      </Tooltip>
-                    )}
-                    <Box w={4} />
-                    <Box
-                      display="flex"
-                      flexDirection="column"
-                      alignItems="center"
-                      justifyContent="center"
-                    >
-                      {details.offer.lovelace &&
-                      details.offer.offerUtxo &&
-                      isOwner(
-                        details.offer.offerUtxo.tradeOwnerAddress.to_bech32()
-                      ) ? (
-                        <Tooltip label="Cancel Offer" rounded="3xl">
-                          <Button
-                            isDisabled={loadingButton.cancelOffer}
-                            isLoading={loadingButton.cancelOffer}
-                            onClick={async () => {
-                              if (!connected) return;
-                              setLoadingButton((l) => ({
-                                ...l,
-                                cancelOffer: true,
-                              }));
-                              const txHash = await market.current
-                                .cancelOffer(details.offer.offerUtxo)
-                                .catch((e) => tradeErrorHandler(e, toast));
-                              setLoadingButton((l) => ({
-                                ...l,
-                                cancelOffer: false,
-                              }));
-                              checkTransaction(txHash);
-                            }}
-                            color="white"
-                            bgColor="red.300"
-                            colorScheme="red"
-                            rounded="3xl"
-                            aria-label="Add to friends"
-                            icon={<SmallCloseIcon />}
-                          >
-                            Cancel
-                          </Button>
-                        </Tooltip>
-                      ) : (
-                        <Button
-                          variant="outline"
-                          rounded="3xl"
-                          colorScheme="gray"
-                          onClick={() => {
-                            if (!connected) return;
-                            tradeRef.current.openModal({
-                              minPrice: "70000000",
-                              type: "OFFER",
-                            });
-                          }}
-                        >
-                          {/* Offer */}
-                          List
-                        </Button>
-                      )}
-                    </Box>
-                    <Box w={5} />
-                    <Box width={matches.md ? "100px" : "150px"}>
-                      <div style={{ fontSize: 12 }}>Ask price</div>
-                      <UnitDisplay
-                        showQuantity={!Boolean(details.offer.lovelace)}
-                        fontWeight="medium"
-                        quantity={details.offer.lovelace || 0}
-                        symbol="ADA"
-                        decimals={6}
-                      />
-                      <UnitDisplay
-                        showQuantity={!Boolean(details.offer.usd)}
-                        fontSize={12}
-                        color="#777777"
-                        quantity={details.offer.usd || 0}
-                        symbol="USD"
-                        decimals={2}
-                      />
-                    </Box>{" "}
-                  </>
-                ) : (
-                  <>
-                    {" "}
-                    <Box
-                      width={matches.md ? "100px" : "150px"}
-                      textAlign="right"
-                    >
-                      <div style={{ fontSize: 12 }}>Buy now price</div>
-                      <UnitDisplay
-                        showQuantity={!Boolean(details.offer.lovelace)}
-                        fontWeight="medium"
-                        quantity={details.offer.lovelace || 0}
-                        symbol="ADA"
-                        decimals={6}
-                      />
-                      <UnitDisplay
-                        showQuantity={!Boolean(details.offer.usd)}
-                        fontSize={12}
-                        color="#777777"
-                        quantity={details.offer.usd || 0}
-                        symbol="USD"
-                        decimals={2}
-                      />
-                    </Box>
-                    <Box w={5} />
-                    <Tooltip
-                      label={
-                        (!connected && "Connect wallet") ||
-                        (details.bid.owner &&
-                          details.bid.lovelace &&
-                          "Cancel Bid first")
-                      }
-                      rounded="3xl"
-                    >
-                      <Button
-                        isDisabled={
-                          !Boolean(details.offer.lovelace) || loadingButton.buy
-                        }
-                        isLoading={loadingButton.buy}
-                        onClick={async () => {
-                          if (!connected || details.bid.owner) return;
-                          setLoadingButton((l) => ({
-                            ...l,
-                            buy: true,
-                          }));
-                          const txHash = await market.current
-                            .buy(details.offer.offerUtxo)
-                            .catch((e) => tradeErrorHandler(e, toast));
-                          setLoadingButton((l) => ({
-                            ...l,
-                            buy: false,
-                          }));
-                          checkTransaction(txHash, {
-                            type: "bought",
-                            lovelace: details.offer.lovelace,
-                          });
-                        }}
-                        rounded="3xl"
-                        size="md"
-                        colorScheme="purple"
-                        width="min"
-                      >
-                        Buy
-                      </Button>
-                    </Tooltip>
-                    <Box w={4} />
-                    <Box
-                      display="flex"
-                      flexDirection="column"
-                      alignItems="center"
-                      justifyContent="center"
-                    >
-                      <ButtonGroup size="md" isAttached variant="outline">
-                        <Tooltip
-                          label={!connected && "Connect wallet"}
-                          rounded="3xl"
-                        >
-                          <Button
-                            onClick={() => {
-                              if (!connected) return;
-                              tradeRef.current.openModal({
-                                minPrice: details.bid.lovelace
-                                  ? (
-                                      isBrowser() &&
-                                      window.BigInt(details.bid.lovelace) +
-                                        window.BigInt("10000")
-                                    ).toString()
-                                  : "70000000",
-                                type: "BID",
-                              });
-                            }}
-                            bgcolor="#263238"
-                            rounded="3xl"
-                            colorScheme="gray"
-                            width="min"
-                          >
-                            Bid
-                          </Button>
-                        </Tooltip>
-                        {details.bid.owner && (
-                          <Tooltip label="Cancel Bid" rounded="3xl">
-                            <IconButton
-                              isDisabled={loadingButton.cancelBid}
-                              isLoading={loadingButton.cancelBid}
-                              onClick={async () => {
-                                if (!connected) return;
-                                setLoadingButton((l) => ({
-                                  ...l,
-                                  cancelBid: true,
-                                }));
-                                const txHash = await market.current
-                                  .cancelBid(details.bid.bidUtxo)
-                                  .catch((e) => tradeErrorHandler(e, toast));
-                                setLoadingButton((l) => ({
-                                  ...l,
-                                  cancelBid: false,
-                                }));
-                                checkTransaction(txHash);
-                              }}
-                              bgColor="red.300"
-                              variant="solid"
-                              rounded="3xl"
-                              aria-label="Add to friends"
-                              icon={<SmallCloseIcon />}
-                            />
-                          </Tooltip>
-                        )}
-                      </ButtonGroup>
-                    </Box>
-                    <Box w={5} />
-                    <Box width={matches.md ? "100px" : "150px"}>
-                      <div style={{ fontSize: 12 }}>Bid price</div>
-                      <UnitDisplay
-                        showQuantity={!Boolean(details.bid.lovelace)}
-                        fontWeight="medium"
-                        quantity={details.bid.lovelace || 0}
-                        symbol="ADA"
-                        decimals={6}
-                      />
-                      <UnitDisplay
-                        showQuantity={!Boolean(details.bid.usd)}
-                        fontSize={12}
-                        color="#777777"
-                        quantity={details.bid.usd || 0}
-                        symbol="USD"
-                        decimals={2}
-                      />
-                    </Box>
-                  </>
-                )}
-              </Box>
-            </Box>
-          )}
-        </div>
-        {!isLoadingMarket && (
-          <>
-            <Box h={3} />
-            <Box fontSize={12} color="GrayText">
-              Service Fee ~2.4%
-            </Box>{" "}
-          </>
-        )}
-        <Box h={8} />
-        <div style={{ fontSize: 26, color: "#777777", fontWeight: 600 }}>
-          Gadgets
-        </div>
-        <Box h={3} />
-        <div
-          style={{
-            width: 250,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Box
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            {spacebud.gadgets.length > 0 ? (
-              spacebud.gadgets.map((gadget) => (
-                <Box key={gadget} p="1">
-                  <Attribute
-                    onClick={() => navigate(`/explore/?gadget=${gadget}`)}
-                  >
-                    {gadget}
-                  </Attribute>
-                </Box>
-              ))
-            ) : (
-              <div style={{ fontSize: 14, opacity: 0.3 }}>No Gadgets</div>
-            )}
-          </Box>
+              TRAITS
+            </Button>
+            <Button
+              style={{
+                // border: "1px solid #30F100",
+                backgroundColor: "#30F100",
+                color: "#000",
+                borderRadius: 50,
+                padding: "2px 15px",
+                fontSize: 11,
+                fontWeight: 500,
+              }}
+              colorScheme="none"
+              variant={"solid"}
+            >
+              PRICING HISTORY
+            </Button>
+            <Button
+              style={{
+                // border: "1px solid #30F100",
+                backgroundColor: "#30F100",
+                color: "#000",
+                borderRadius: 50,
+                padding: "2px 15px",
+                fontSize: 11,
+                fontWeight: 500,
+              }}
+              colorScheme="none"
+              variant={"solid"}
+            >
+              TRADING HISTORY
+            </Button>
+          </ButtonGroup>
         </div>
       </div>
     </>
