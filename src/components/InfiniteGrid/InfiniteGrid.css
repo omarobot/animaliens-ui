@@ -1,7 +1,3 @@
-.grid-container {
-  /* display: grid;
-  grid-template-columns: repeat(1fr, 4); */
-}
 .itemGrid {
   width: 280px;
   opacity: 1;
@@ -72,9 +68,13 @@
 
 @media only screen and (max-width: 900px) {
   .itemGrid {
-    width: 180px;
+    width: 250px;
   }
   .itemGrid .thumbnail {
-    height: 180px;
+    height: 280px;
   }
 }
+
+/* @media only screen and (max-width:768px) {
+  
+} */

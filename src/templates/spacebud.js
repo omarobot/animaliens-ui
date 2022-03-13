@@ -36,6 +36,7 @@ import redDot from "../images/assets/red-dot.svg";
 import blueDot from "../images/assets/blue-dot.svg";
 import yellowDot from "../images/assets/yellow-dot.svg";
 import indigoDot from "../images/assets/indigo-dot.svg";
+import "../styles/spacebud.css";
 
 const secrets = {
   PROJECT_ID: "mainnetFEnBQkYa33cYHGr2w96tA0BvYILBqfXm",
@@ -262,6 +263,7 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
         }}
       >
         <div
+          className="spacebud-box"
           style={{
             position: "relative",
             // paddingBottom: 35,
@@ -338,7 +340,10 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
           </div>
           <Box h={5} />
           <div>
-            <div style={{ fontWeight: 600, fontSize: 48, marginBottom: 20 }}>
+            <div
+              className="bud-name"
+              style={{ fontWeight: 700, fontSize: 48, marginBottom: 20 }}
+            >
               SpaceBud <br /> #{spacebud.id}
             </div>
             <LinkName
@@ -392,7 +397,7 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
             borderRadius: 5,
           }}
         >
-          <ButtonGroup spacing="8">
+          <ButtonGroup className="buttons" spacing="8">
             <Button
               style={{
                 border: "1px solid #30F100",
@@ -438,6 +443,7 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
             </Button>
           </ButtonGroup>
           <div
+            className="color-indication-box"
             style={{
               display: "grid",
               gridTemplateColumns: "3fr 1fr",

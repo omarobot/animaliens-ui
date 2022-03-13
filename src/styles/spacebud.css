@@ -1,0 +1,22 @@
+@media only screen and (max-width: 768px) {
+  .spacebud-box {
+    width: 80% !important;
+    flex-direction: column;
+    padding: 10px !important;
+  }
+  .spacebud-box img {
+    width: 250px;
+  }
+  .bud-name {
+    font-size: 36px !important;
+  }
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .color-indication-box {
+    grid-template-columns: 1fr !important;
+  }
+}

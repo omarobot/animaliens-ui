@@ -113,6 +113,7 @@ const FilterModal = ({ isOpen, onOpen, onClose }) => {
 
   return (
     <Modal
+    
       isOpen={isOpen}
       onClose={onClose}
       size="6xl"
@@ -120,7 +121,7 @@ const FilterModal = ({ isOpen, onOpen, onClose }) => {
       isCentered
     >
       <ModalOverlay />
-      <ModalContent overflowY="scroll" height="80vh">
+      <ModalContent style={{backgroundColor: '#000', color: '#fff'}} overflowY="scroll" height="80vh">
         <ModalHeader>Filter</ModalHeader>
         <ModalCloseButton
           _hover={{ background: "none" }}
@@ -421,6 +422,7 @@ const FilterModal = ({ isOpen, onOpen, onClose }) => {
         </ModalBody>
         <ModalFooter>
           <Button
+          style={{color: '#000'}}
             rounded="2xl"
             onClick={() => {
               setGadgets(null);
