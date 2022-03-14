@@ -353,20 +353,7 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
               {spacebud.type} Astronaut
             </LinkName>
             <div>
-              <button
-                style={{
-                  border: "1px solid #30F100",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 5,
-                  fontSize: 20,
-                  fontWeight: 700,
-                  marginTop: 20,
-                  padding: "5px 40px",
-                  borderRadius: 50,
-                  marginBottom: 20,
-                }}
-              >
+              <button className="price-btn">
                 <img
                   style={{ objectFit: "cover", width: "40%" }}
                   src={cardano}
@@ -379,7 +366,11 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
               <Button
                 size="lg"
                 isFullWidth={true}
-                style={{ backgroundColor: "#30F100", color: "#000" }}
+                style={{
+                  backgroundColor: "#30F100",
+                  color: "#000",
+                  borderRadius: 50,
+                }}
                 variant="solid"
               >
                 BUY NOW
@@ -402,7 +393,7 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
               style={{
                 border: "1px solid #30F100",
                 borderRadius: 50,
-                padding: "5px 30px",
+                padding: "2px 15px",
                 fontSize: 11,
                 fontWeight: 500,
               }}
