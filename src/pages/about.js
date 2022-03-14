@@ -6,10 +6,10 @@ import { Box, Link } from "@chakra-ui/layout";
 import * as aboutStyles from "../styles/About.module.css";
 
 //assets
-import zeen from "../images/assets/zame.png";
-import leen from "../images/assets/leen.png";
-import boots from "../images/assets/boots.png";
-import maq from "../images/assets/maq.png";
+import zeen from "../images/assets/zame.webp";
+import leen from "../images/assets/lenn.webp";
+import boots from "../images/assets/boots.webp";
+import maq from "../images/assets/maq.webp";
 
 const About = () => {
   return (

@@ -272,12 +272,12 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
             className="tab-stack"
             style={{
               backgroundColor: "#414040",
-              width: "49%",
+              width: "50%",
               margin: "auto",
               justifyContent: "center",
               alignItems: "center",
               boxShadow: " 0px 4px 4px rgba(0, 0, 0, 0.25)",
-              padding: "5px 20px",
+              padding: "5px 0px 5px 10px",
               borderRadius: 50,
             }}
             direction={["column", "row"]}
@@ -292,8 +292,9 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
               style={{
                 backgroundColor: "#30F100",
                 color: "#fff",
-                padding: "5px 25px",
+                padding: "5px 20px",
                 borderRadius: 50,
+                marginLeft: 40,
               }}
             >
               <img src={arrow} alt="" />
