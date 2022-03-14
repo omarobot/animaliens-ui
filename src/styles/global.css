@@ -14,6 +14,10 @@ body {
   margin: auto;
 }
 
+.title {
+  color: #30F100;
+}
+
 .price-btn {
   border: 1px solid #30f100;
   display: flex;

@@ -32,36 +32,36 @@ const Landing = (props) => {
         titleTwitter="SpaceBudz: Collectible Astronauts"
         title="SpaceBudz"
         description="Collect your unique SpaceBud as NFT on the Cardano blockchain."
-      />
-      {/* main body  */}
+      />{" "}
+      {/* main body  */}{" "}
       <main>
-        {/* top banner  */}
+        {" "}
+        {/* top banner  */}{" "}
         <div className={homeStyles.alien}>
           <img src={alien} alt="" />
         </div>
-
         {/* project  */}
-
         <div className={homeStyles.project}>
-          <h3>THE PROJECT</h3>
+          <h3 className="title"> THE PROJECT </h3>{" "}
           <p>
-            Animaliens is a series of 8,888 hand drawn Chamaliens, each one of
-            them with unique characteristics which makes it a 1/1 Animalien only
-            you'll be able to have. The purpose of Animaliens is to help
+            Animaliens is a series of 8, 888 hand drawn Chamaliens, each one of
+            them with unique characteristics which makes it a 1 / 1 Animalien
+            only you 'll be able to have. The purpose of Animaliens is to help
             children all over the world have the opportunities to learn the
-            skills they need to live a meaningful life. Our mission is not to
+            skills they need to live a meaningful life.Our mission is not to
             change the world, but to actually improve it through educational
-            opportunities.
-          </p>
-        </div>
-        {/* ROYALTIES & RAFFLES */}
+            opportunities.{" "}
+          </p>{" "}
+        </div>{" "}
+        {/* ROYALTIES & RAFFLES */}{" "}
         <div className={homeStyles.royalitiesRaffles}>
-          {/* royalities */}
+          {" "}
+          {/* royalities */}{" "}
           <div
             className={`${homeStyles.royalitiesRafflexBox} ${homeStyles.royalities}`}
           >
             <div>
-              <h3>ROYALTIES</h3>
+              <h3 className="title"> ROYALTIES </h3>{" "}
               <div
                 className={homeStyles.royalitiesDes}
                 style={{
@@ -71,9 +71,8 @@ const Landing = (props) => {
                   marginBottom: 10,
                 }}
               >
-                <h4>4%</h4>
-                <span>BACK TO THE COMMUNITY</span>
-              </div>
+                <h4> 4 % </h4> <span> BACK TO THE COMMUNITY </span>{" "}
+              </div>{" "}
               <div
                 className={homeStyles.royalitiesDes}
                 style={{
@@ -83,9 +82,8 @@ const Landing = (props) => {
                   marginBottom: 10,
                 }}
               >
-                <h4>2%</h4>
-                <span>PROJECT FUNDING</span>
-              </div>
+                <h4> 2 % </h4> <span> PROJECT FUNDING </span>{" "}
+              </div>{" "}
               <div
                 className={homeStyles.royalitiesDes}
                 style={{
@@ -95,35 +93,35 @@ const Landing = (props) => {
                   marginBottom: 10,
                 }}
               >
-                <h4>2%</h4>
-                <span>BACK TO THE TEAM</span>
-              </div>
-            </div>
+                <h4> 2 % </h4> <span> BACK TO THE TEAM </span>{" "}
+              </div>{" "}
+            </div>{" "}
             <div>
               <img src={royalties} alt="" />
-            </div>
-          </div>
-          {/* royalities */}
-          {/* Raffles */}
+            </div>{" "}
+          </div>{" "}
+          {/* royalities */} {/* Raffles */}{" "}
           <div className={homeStyles.royalitiesRafflexBox}>
             <div>
               <img src={raffels} alt="" />
-            </div>
+            </div>{" "}
             <div
               className={homeStyles.raffels}
-              style={{ width: "40%", margin: "auto" }}
+              style={{
+                width: "40%",
+                margin: "auto",
+              }}
             >
-              <h3>RAFFLES</h3>
+              <h3 className="title"> RAFFLES </h3>{" "}
               <p>
                 Each one of your NFTs is a ticket to 2 different raffles: -
                 Opportunity to get a portion of ADA from the community wallet or
-                Blue Chip CNFTs. - If you have a @edu you’ll be able to
-                participate to get your tuition paid for the semester.
-              </p>
-            </div>
-          </div>
-          {/* Raffles */}
-          {/* road map  start */}
+                Blue Chip CNFTs. - If you have a @edu you will be able to
+                participate to get your tuition paid for the semester.{" "}
+              </p>{" "}
+            </div>{" "}
+          </div>{" "}
+          {/* Raffles */} {/* road map  start */}{" "}
           <div
             style={{
               display: "flex",
@@ -136,29 +134,37 @@ const Landing = (props) => {
           >
             <div className={homeStyles.roadmap}>
               <img
-                style={{ width: "100%", margin: "auto" }}
+                style={{
+                  width: "100%",
+                  margin: "auto",
+                }}
                 src={roadMap1}
                 alt=""
               />
-            </div>
+            </div>{" "}
             <div className={homeStyles.roadmap}>
               <img
-                style={{ width: "100%", margin: "auto" }}
+                style={{
+                  width: "100%",
+                  margin: "auto",
+                }}
                 src={roadMap2}
                 alt=""
               />
-            </div>
+            </div>{" "}
             <div className={homeStyles.roadmap}>
               <img
-                style={{ width: "100%", margin: "auto" }}
+                style={{
+                  width: "100%",
+                  margin: "auto",
+                }}
                 src={roadMap3}
                 alt=""
               />
-            </div>
-          </div>
+            </div>{" "}
+          </div>{" "}
           {/* road map end */}
-
-          {/* THE TEAM start */}
+          {/* THE TEAM start */}{" "}
           <div className={homeStyles.teamSection}>
             <h2
               style={{
@@ -167,54 +173,52 @@ const Landing = (props) => {
                 marginBottom: 60,
                 textAlign: "center",
               }}
+              className="title"
             >
-              THE TEAM
-            </h2>
+              THE TEAM{" "}
+            </h2>{" "}
             <div className={homeStyles.team}>
               <div className={homeStyles.teamMember}>
                 <div className={homeStyles.memberImg}>
                   <img src={boots} alt="" />
-                </div>
+                </div>{" "}
                 <div>
-                  <h3>BOOTS</h3>
-                  <h4>The Explorer</h4>
-                </div>
+                  <h3> BOOTS </h3> <h4> The Explorer </h4>{" "}
+                </div>{" "}
               </div>
-
               <div className={homeStyles.teamMember}>
                 <div className={homeStyles.memberImg}>
                   <img src={leen} alt="" />
-                </div>
+                </div>{" "}
                 <div>
-                  <h3>LENN</h3>
-                  <h4>The Creator</h4>
-                </div>
+                  <h3> LENN </h3> <h4> The Creator </h4>{" "}
+                </div>{" "}
               </div>
-
               <div className={homeStyles.teamMember}>
                 <div className={homeStyles.memberImg}>
                   <img src={zame} alt="" />
-                </div>
+                </div>{" "}
                 <div>
-                  <h3>ZAME</h3>
-                  <h4>The Hero</h4>
-                </div>
+                  <h3> ZAME </h3> <h4> The Hero </h4>{" "}
+                </div>{" "}
               </div>
-
               <div className={homeStyles.teamMember}>
                 <div className={homeStyles.memberImg}>
                   <img src={maq} alt="" />
-                </div>
+                </div>{" "}
                 <div>
-                  <h3>MAQ</h3>
-                  <h4>The Wise</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* the team end  */}
-          {/* PROUDLY SUPPORTING start  */}
-          <div className={homeStyles.supporting} style={{ padding: "80px 0" }}>
+                  <h3> MAQ </h3> <h4> The Wise </h4>{" "}
+                </div>{" "}
+              </div>{" "}
+            </div>{" "}
+          </div>{" "}
+          {/* the team end  */} {/* PROUDLY SUPPORTING start  */}{" "}
+          <div
+            className={homeStyles.supporting}
+            style={{
+              padding: "80px 0",
+            }}
+          >
             <h3
               style={{
                 fontSize: 64,
@@ -222,30 +226,31 @@ const Landing = (props) => {
                 marginBottom: 60,
                 textAlign: "center",
               }}
+              className="title"
             >
-              PROUDLY SUPPORTING
-            </h3>
+              PROUDLY SUPPORTING{" "}
+            </h3>{" "}
             <div className={homeStyles.supportLogo}>
               <div>
                 <img src={learning} alt="" />
-              </div>
+              </div>{" "}
               <div>
                 <img src={nyaka} alt="" />
-              </div>
+              </div>{" "}
               <div>
                 <img src={tech2Connect} alt="" />
-              </div>
+              </div>{" "}
               <div>
                 <img src={cause} alt="" />
-              </div>
+              </div>{" "}
               <div>
                 <img src={eayikies} alt="" />
-              </div>
-            </div>
-          </div>
-          {/* PROUDLY SUPPORTING end  */}
-        </div>
-      </main>
+              </div>{" "}
+            </div>{" "}
+          </div>{" "}
+          {/* PROUDLY SUPPORTING end  */}{" "}
+        </div>{" "}
+      </main>{" "}
     </>
   );
 };
@@ -273,7 +278,7 @@ const BackgroundSection = (props) => {
       fluid={imageData}
       backgroundColor={`#040e18`}
     >
-      {props.children}
+      {props.children}{" "}
     </BackgroundImage>
   );
 };

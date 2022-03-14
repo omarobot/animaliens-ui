@@ -20,7 +20,7 @@ const Tutorial = (props) => {
         }}
       >
         <div>
-          <h2 className="howToBuy">HOW TO BUY</h2>
+          <h2 className="howToBuy title"> COMING SOON </h2>{" "}
           <div className="video">
             <iframe
               // width="560"
@@ -30,10 +30,10 @@ const Tutorial = (props) => {
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
-            ></iframe>
-          </div>
-        </div>
-      </div>
+            ></iframe>{" "}
+          </div>{" "}
+        </div>{" "}
+      </div>{" "}
     </>
   );
 };
