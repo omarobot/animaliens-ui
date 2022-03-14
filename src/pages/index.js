@@ -13,10 +13,10 @@ import royalties from "../images/assets/Royalties-Animalien-1.svg";
 // css
 import * as homeStyles from "../styles/Home.module.css";
 // assets
-import boots from "../images/assets/boots.png";
-import leen from "../images/assets/leen.png";
-import zame from "../images/assets/zame.png";
-import maq from "../images/assets/maq.png";
+import boots from "../images/assets/boots.webp";
+import leen from "../images/assets/lenn.webp";
+import zame from "../images/assets/zame.webp";
+import maq from "../images/assets/maq.webp";
 import learning from "../images/assets/learning-equality.png";
 import nyaka from "../images/assets/nyaka.png";
 import tech2Connect from "../images/assets/tech2Connect.png";

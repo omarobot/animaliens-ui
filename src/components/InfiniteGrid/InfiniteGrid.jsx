@@ -203,18 +203,7 @@ const Item = ({ bud, im, type, hasDouble }) => {
           <div style={{padding: '0px 15px'}}>
             <div className="info">{`SpaceBud #${bud.id}`}</div>
             <button
-                  style={{
-                    border: "1px solid #30F100",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 5,
-                    fontSize: 20,
-                    fontWeight: 700,
-                    marginTop: 20,
-                    padding: "5px 30px",
-                    borderRadius: 50,
-                    marginBottom: 20,
-                  }}
+            className="price-btn"
                 >
                   <img
                     style={{ objectFit: "cover", width: "40%" }}
