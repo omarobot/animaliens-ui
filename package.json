@@ -1,6 +1,9 @@
 {
   "name": "space-budz",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.14.1"
+  },
   "private": true,
   "description": "SpaceBudz",
   "author": "Alessandro",
