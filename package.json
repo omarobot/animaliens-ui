@@ -67,5 +67,8 @@
     "react-reveal": "^1.2.2",
     "react-spinners": "^0.10.6",
     "styled-components": "^5.2.1"
+  },
+  "engines": {
+    "node": "12.22.8"
   }
 }
