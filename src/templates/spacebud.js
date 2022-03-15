@@ -64,6 +64,7 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
   const market = React.useRef();
 
   // const POLICY = "d5e6bf0500378d4f0da4e8dde6becec7621cd8cbf5cbb9b87013d4cc"; // mainnet
+  // const POLICY = "1ff89104c2c3826b21ea8a8471e383c26f31257f3b2d7889b8fe1763";
   const POLICY = "1ff89104c2c3826b21ea8a8471e383c26f31257f3b2d7889b8fe1763";
 
   React.useEffect(() => {
@@ -101,7 +102,7 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
   };
 
   const loadSpaceBudData = async () => {
-    console.log(Buffer.from("Animaliens").toString("hex"));
+    // console.log(Buffer.from("Animaliens").toString("hex"));
 
     setIsLoadingMarket(true);
     setOwner([]);
@@ -115,10 +116,10 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
     )
       .then((res) => res.json())
       .then((res) => res.cardano["usd"]);
-    const bidUtxo = null;
-    // const bidUtxo = await market.current.getBid(spacebud.id);
-    // let offerUtxo = await market.current.getOffer(spacebud.id);
-    let offerUtxo = null;
+    // const bidUtxo = null;
+    const bidUtxo = await market.current.getBid(spacebud.id);
+    let offerUtxo = await market.current.getOffer(spacebud.id);
+    // let offerUtxo = null;
     // check if twin
     if (Array.isArray(offerUtxo)) {
       if (
@@ -160,14 +161,14 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
     //   details.bid.lovelace = bidUtxo.lovelace;
     //   details.bid.usd = (bidUtxo.lovelace / 10 ** 6) * fiatPrice * 10 ** 2;
     // }
-    // if (addresses.find((address) => address.address == connected))
-    //   details.offer.owner = true;
-    // if (offerUtxo) {
-    //   if (offerUtxo.tradeOwnerAddress.to_bech32() === connected)
-    //     details.offer.owner = true;
-    //   details.offer.lovelace = offerUtxo.lovelace;
-    //   details.offer.usd = (offerUtxo.lovelace / 10 ** 6) * fiatPrice * 10 ** 2;
-    // }
+    if (addresses.find((address) => address.address == connected))
+      details.offer.owner = true;
+    if (offerUtxo) {
+      if (offerUtxo.tradeOwnerAddress.to_bech32() === connected)
+        details.offer.owner = true;
+      details.offer.lovelace = offerUtxo.lovelace;
+      details.offer.usd = (offerUtxo.lovelace / 10 ** 6) * fiatPrice * 10 ** 2;
+    }
 
     setDetails(details);
     setOwner(addresses);
@@ -182,6 +183,22 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
         description={`SpaceBud #${spacebud.id}`}
         image={spacebud.image}
       />
+      <Button
+        onClick={() => {
+          // if (!connected) return;
+          tradeRef.current.openModal({
+            minPrice: "70000000",
+            type: "OFFER",
+          });
+        }}
+        rounded="3xl"
+        size="md"
+        color="white"
+        bgColor="red.300"
+        colorScheme="red"
+      >
+        Offer
+      </Button>
       <div
         style={{
           width: "100%",

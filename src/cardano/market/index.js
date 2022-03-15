@@ -32,10 +32,17 @@ const CONTRACT = () => {
   return scripts;
 };
 
+// const CONTRACT_ADDRESS = () =>
+//   Loader.Cardano.Address.from_bech32(
+//     "addr_test1wp9uznrplv74jj9lh9fge5qswvdjc4yqfls9k6c2478catgjlxf8f"
+//   );
+
+
 const CONTRACT_ADDRESS = () =>
   Loader.Cardano.Address.from_bech32(
-    "addr_test1wp9uznrplv74jj9lh9fge5qswvdjc4yqfls9k6c2478catgjlxf8f"
+    "addr_test1wrfc08nm6zsrc5xncysezjhxkj30g0k2ushkfschgdky9dcamwdc8"
   );
+
 
 // Datums
 const START_BID = () => {
@@ -1017,6 +1024,7 @@ class SpaceBudzMarket {
       outputs
     } = await this.initTx();
     budId = budId.toString();
+    budId = "11";
     if (
       Loader.Cardano.BigNum.from_str(requestedAmount).compare(
         this.contractInfo.minPrice
