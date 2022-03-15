@@ -19,13 +19,13 @@ import newLogo from '../../images/assets/logo_face_white.svg';
 
 
 const LinkItems = [
-  // { name: 'MarketPlace', link: '/explore' },
-  // { name: 'RoadMap', link: '/tutorial'  },
+  { name: 'MarketPlace', link: '/explore' },
+  { name: 'RoadMap', link: '/tutorial'  },
   // { name: 'Rarities', link: '/tutorial'},
-  { name: 'Marketplace', link: '/tutorial'  },
+  // { name: 'Marketplace', link: '/tutorial'  },
 
   { name: 'About Us', link: '/about'},
-  // { name: 'How to Buy', link: '/tutorial'  },
+  { name: 'How to Buy', link: '/tutorial'  },
 ];
 
 
