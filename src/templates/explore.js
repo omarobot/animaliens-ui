@@ -268,7 +268,7 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
 
           {/* new tabs  */}
 
-          <Stack
+          {/*  <Stack
             className="tab-stack"
             style={{
               backgroundColor: "#414040",
@@ -299,7 +299,7 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
             >
               <img src={arrow} alt="" />
             </Box>
-          </Stack>
+          </Stack> */}
 
           {/* new tabs  */}
 
@@ -470,6 +470,7 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
               </SimpleGrid>
             </div>
           </div>
+          {/* grids  */}
           <Box h={8} />
           <div
             style={{
