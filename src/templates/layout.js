@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import { StoreProvider } from "easy-peasy";
 import React from "react";
 import SidebarWithHeader from "../components/Header/Sidebar";
@@ -17,8 +18,17 @@ const Layout = (props) => {
         }}
       >
         <div id="sidebar">
-          {/* <Header /> */}
+          {/* <Header  /> */}
           <SidebarWithHeader />
+        </div>
+        <div>
+          <Button
+            onClick={() => alert("Please add functionality as needed.")}
+            id="connect-btn"
+            variant={"solid"}
+          >
+            Connect
+          </Button>
         </div>
         <div id="bodyContent">
           {props.children}

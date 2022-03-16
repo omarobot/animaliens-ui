@@ -33,7 +33,7 @@ body {
 }
 .price-btn:hover {
   background: #30f100;
-  color: #fff;
+  color: #000;
 }
 
 @media only screen and (max-width: 768px) {

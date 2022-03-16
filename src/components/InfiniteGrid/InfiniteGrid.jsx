@@ -277,13 +277,16 @@ class InfiniteGrid extends React.Component {
   render() {
     return this.props.array.length > 0 ? (
       <div>
+        {/* grids  */}
         <GridLayout
+        className="test"
+        gap={0}
           options={{
             useRecycle: false,
             isConstantSize: true,
           }}
           layoutOptions={{
-            margin: !this.props.matches && -6,
+            // margin: !this.props.matches && -6,
             align: "center",
           }}
           onAppend={this.onAppend}
