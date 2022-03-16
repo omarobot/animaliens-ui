@@ -222,6 +222,7 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
                     colorScheme="purple"
                     variant="solid"
                     rounded="2xl"
+                    style={{ backgroundColor: "#30F100", color: "#000" }}
                     leftIcon={<Icon path={mdiFilterOutline} size={0.7} />}
                   >
                     {array &&
@@ -249,6 +250,7 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
                     colorScheme="purple"
                     variant="ghost"
                     rounded="2xl"
+                    style={{ color: "#30F100" }}
                     onClick={() => {
                       window.history.pushState({}, null, `/explore/`);
                       setFilters({

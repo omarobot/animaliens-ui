@@ -27,10 +27,11 @@ const Input = ({
       />
 
       <Icon
+      
         path={mdiMagnify}
         size={1}
         style={{ marginLeft: -40, marginRight: 20, cursor: "pointer" }}
-        color="white"
+        color="#000"
         onClick={(e) => onSearch(e)}
       />
     </div>
