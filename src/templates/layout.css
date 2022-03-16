@@ -8,6 +8,18 @@
   color: #fff;
 }
 
+#connect-btn {
+  background: #30f100;
+  color: #000;
+  position: absolute;
+  top: 20px;
+  right: 3%;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 10px 30px;
+  border-radius: 50px;
+}
+
 @media only screen and (max-width: 768px) {
   #sidebar {
     width: auto;
