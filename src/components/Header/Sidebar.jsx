@@ -74,7 +74,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
              {/* Logo */}
              <div
           style={{
-
+            marginTop:45,
             display: "flex",
             alignItems: "center",
             cursor: "pointer",
