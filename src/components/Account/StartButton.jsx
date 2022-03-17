@@ -145,41 +145,99 @@ const StartButton = (props) => {
     }
   };
 
+  const connectNami = async () => {
+    let walletName = "nami";
+    setIsLoading(true);
+    onClose();
+    const api = await window.cardano[walletName].enable().catch((e) => {
+      console.log(e);
+    });
+    if (api) {
+      if (!(await checkStatus(toast, api))) {
+        setIsLoading(false);
+        return;
+      }
+      if (walletName === "flint") {
+        window.cardano.selectedWallet = {
+          ...window.cardano[walletName],
+          ...api,
+          experimental: {
+            getCollateral: api.getCollateral,
+          },
+        };
+      } else {
+        window.cardano.selectedWallet = {
+          ...window.cardano[walletName],
+          ...api,
+        };
+      }
+      const address = await addressToBech32();
+      setConnected(address);
+      localStorage.setItem(
+        "session",
+        JSON.stringify({
+          time: Date.now().toString(),
+          walletName,
+        })
+      );
+    }
+    setIsLoading(false);
+  };
+
   React.useEffect(() => {
     checkConnection();
   }, []);
 
   return connected ? (
-    <Box display={"flex"} alignItems={"center"} justifyContent={"center"}>
-      <Image src={window.cardano.selectedWallet.icon} height={"18px"} />
-      <Box w={2} />
+    <Box>
       <div
-        className={style.accountButton}
+        // display={"flex"}
+        // alignItems={"center"}
+        // justifyContent={"center"}
         style={{
-          width: 100,
-          zoom: matches.md && "0.85",
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "pointer",
+          position: "absolute",
+          top: "20px",
+          right: "3%",
+          border: "2px solid #30f100",
+          borderRadius: "10px",
+          padding: "10px",
         }}
-        onClick={() => navigate(`/profile?address=${connected}`)}
       >
-        <Ellipsis connected={connected} />
-      </div>
-      <Box w={1} />
-      <Tooltip label={"Disconnect"}>
-        <IconButton
-          size={"xs"}
-          rounded={"full"}
-          icon={<SmallCloseIcon />}
-          onClick={() => {
-            delete window.cardano.selectedWallet;
-            localStorage.removeItem("session");
-            setConnected("");
-          }}
+        <Image
+          src={window.cardano.selectedWallet.icon}
+          height={"18px"}
+          style={{ marginRight: "5px" }}
         />
-      </Tooltip>
+        {/* <Box w={2} /> */}
+        <div
+          className={style.accountButton}
+          style={{
+            width: 100,
+            zoom: matches.md && "0.85",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+          }}
+          onClick={() => navigate(`/profile?address=${connected}`)}
+        >
+          <Ellipsis connected={connected} />
+        </div>
+        {/* <Box w={1} /> */}
+        <Tooltip label={"Disconnect"}>
+          <IconButton
+            size={"xs"}
+            rounded={"full"}
+            icon={<SmallCloseIcon />}
+            onClick={() => {
+              delete window.cardano.selectedWallet;
+              localStorage.removeItem("session");
+              setConnected("");
+            }}
+          />
+        </Tooltip>
+      </div>
     </Box>
   ) : (
     <Popover onOpen={onOpen} onClose={onClose} isOpen={isOpen}>
@@ -187,19 +245,25 @@ const StartButton = (props) => {
         <Button
           isDisabled={isLoading}
           isLoading={isLoading}
-          colorScheme="purple"
+          // colorScheme="green"
           rounded="3xl"
           position="relative"
           overflow="hidden"
           py="0.5"
           size={matches.md ? "sm" : "md"}
+          style={{
+            position: "absolute",
+            top: "20px",
+            right: "3%",
+            backgroundColor: "#30f100",
+          }}
         >
-          <Image
+          {/* <Image
             src={Background}
             width="full"
             height="full"
             position="absolute"
-          />
+          /> */}
           <Box zIndex="1">Connect</Box>
         </Button>
       </PopoverTrigger>
@@ -235,43 +299,7 @@ const StartButton = (props) => {
                       justifyContent={"center"}
                       flexDirection={"column"}
                       cursor={"pointer"}
-                      onClick={async () => {
-                        setIsLoading(true);
-                        onClose();
-                        const api = await window.cardano[walletName]
-                          .enable()
-                          .catch((e) => {});
-                        if (api) {
-                          if (!(await checkStatus(toast, api))) {
-                            setIsLoading(false);
-                            return;
-                          }
-                          if (walletName === "flint") {
-                            window.cardano.selectedWallet = {
-                              ...window.cardano[walletName],
-                              ...api,
-                              experimental: {
-                                getCollateral: api.getCollateral,
-                              },
-                            };
-                          } else {
-                            window.cardano.selectedWallet = {
-                              ...window.cardano[walletName],
-                              ...api,
-                            };
-                          }
-                          const address = await addressToBech32();
-                          setConnected(address);
-                          localStorage.setItem(
-                            "session",
-                            JSON.stringify({
-                              time: Date.now().toString(),
-                              walletName,
-                            })
-                          );
-                        }
-                        setIsLoading(false);
-                      }}
+                      onClick={connectNami}
                     >
                       <Image
                         src={window.cardano[walletName].icon}
@@ -317,6 +345,7 @@ const Ellipsis = ({ connected }) => {
     !change && (
       <div
         style={{
+          color: "white",
           width: "130px",
           whiteSpace: "nowrap",
           fontWeight: "bold",
@@ -377,7 +406,7 @@ const NoNami = (toast) => {
 };
 
 const WrongNetworkToast = async (toast, api) => {
-  if ((await api.getNetworkId()) === 1) return true;
+  if ((await api.getNetworkId()) === 0) return true;
   toast({
     position: "bottom-right",
     duration: 5000,

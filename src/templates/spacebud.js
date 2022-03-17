@@ -39,7 +39,7 @@ import indigoDot from "../images/assets/indigo-dot.svg";
 import "../styles/spacebud.css";
 
 const secrets = {
-  PROJECT_ID: "mainnetFEnBQkYa33cYHGr2w96tA0BvYILBqfXm",
+  PROJECT_ID: "testnet1RD4umD3NGsxuutiWpxzJLjwv0O7j8Tp",
 };
 
 //assets
@@ -72,9 +72,10 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
 
   const market = React.useRef();
 
-  const POLICY = "d5e6bf0500378d4f0da4e8dde6becec7621cd8cbf5cbb9b87013d4cc"; // mainnet
+  const POLICY = "1ff89104c2c3826b21ea8a8471e383c26f31257f3b2d7889b8fe1763";
+
   const CONTRACT_ADDRESS =
-    "addr1wyzynye0nksztrfzpsulsq7whr3vgh7uvp0gm4p0x42ckkqqq6kxq";
+    "addr_test1wrfc08nm6zsrc5xncysezjhxkj30g0k2ushkfschgdky9dcamwdc8";
 
   const connectedAddresses = React.useRef([]);
 
@@ -130,10 +131,10 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
   const loadMarket = async () => {
     market.current = new Market(
       {
-        base: "https://cardano-mainnet.blockfrost.io/api/v0",
+        base: "https://cardano-testnet.blockfrost.io/api/v0",
         projectId: secrets.PROJECT_ID,
       },
-      "addr1qxpxm8a0uxe6eu2m6fgdu6wqfclujtzyjdu9jw0qdxfjaz02h5ngjz7fftac5twlxj6jha4meenh6476m5xdwmeyh4hq0zeknx"
+      "addr_test1qq4a3zhfwdk4nw74w98smmg5vj8cel7f7h5wsh8280asx0m5m8rexkuvsx8csg0xjq06dsa7f4yvdphq85yhnm9t7ghsul68rf"
     );
     await market.current.load();
   };
@@ -142,9 +143,11 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
     await Loader.load();
     setIsLoadingMarket(true);
     setOwner([]);
-    const token = POLICY + toHex(`SpaceBud${spacebud.id}`);
+    const token = POLICY + toHex(`Animaliens${spacebud.id}`);
+    // const token = POLICY + toHex(`Animaliens11`);
+
     let addresses = await fetch(
-      `https://cardano-mainnet.blockfrost.io/api/v0/assets/${token}/addresses`,
+      `https://cardano-testnet.blockfrost.io/api/v0/assets/${token}/addresses`,
       { headers: { project_id: secrets.PROJECT_ID } }
     ).then((res) => res.json());
     const fiatPrice = await fetch(
@@ -154,15 +157,17 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
       .then((res) => res.cardano["usd"]);
     const lastSale = await fetch(
       `https://spacebudz.io/api/specificSpaceBud/${spacebud.id}`
+      // `https://spacebudz.io/api/specificSpaceBud/11`
     )
       .then((res) => res.json())
       .then((res) => res.lastSale);
 
     // const bidUtxo = await market.current.getBid(spacebud.id);
-    // let offerUtxo = await market.current.getOffer(spacebud.id);
+    let offerUtxo = await market.current.getOffer(spacebud.id);
+    // let offerUtxo = await market.current.getOffer("11");
 
     const bidUtxo = null;
-    let offerUtxo = null;
+    // let offerUtxo = null;
 
     // check if twin
     if (Array.isArray(offerUtxo)) {
@@ -201,18 +206,18 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
       offer: { offerUtxo: null, lovelace: null, usd: null, owner: false },
       lastSale: { lovelace: null, usd: null },
     };
-    details.bid.bidUtxo = bidUtxo;
+    // details.bid.bidUtxo = bidUtxo;
     details.offer.offerUtxo = offerUtxo;
-    console.log(bidUtxo);
+    // console.log(bidUtxo);
     console.log(offerUtxo);
     // ignore if state is StartBid
-    if (toHex(bidUtxo.datum.to_bytes()) !== "d866820080") {
-      if (isOwner(bidUtxo.tradeOwnerAddress.to_bech32())) {
-        details.bid.owner = true;
-      }
-      details.bid.lovelace = bidUtxo.lovelace;
-      details.bid.usd = (bidUtxo.lovelace / 10 ** 6) * fiatPrice * 10 ** 2;
-    }
+    // if (toHex(bidUtxo.datum.to_bytes()) !== "d866820080") {
+    //   if (isOwner(bidUtxo.tradeOwnerAddress.to_bech32())) {
+    //     details.bid.owner = true;
+    //   }
+    //   details.bid.lovelace = bidUtxo.lovelace;
+    //   details.bid.usd = (bidUtxo.lovelace / 10 ** 6) * fiatPrice * 10 ** 2;
+    // }
     if (addresses.find((address) => isOwner(address.address)))
       details.offer.owner = true;
     if (offerUtxo) {
@@ -269,10 +274,11 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
             // paddingBottom: 35,
             width: "60%",
             borderRadius: 10,
+            padding: "50px",
             // backgroundImage: `url(${Show})`,
             // backgroundRepeat: "no-repeat",
             // backgroundSize: "cover",
-            display: "flex",
+            // display: "flex",
             alignItems: "center",
             // justifyContent: "center",
             // flexDirection: "column",
@@ -310,41 +316,49 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
           {/* Modal End */}
           <div
             style={{
-              width: !matches.md ? 410 : 350,
-              height: !matches.md ? 410 : 350,
-              borderRadius: "50%",
-              // marginTop: -15,
-              // marginBottom: -50,
-              padding: 20,
+              display: "flex",
+              justifyContent: "center",
             }}
           >
-            <div style={{ width: "100%", position: "relative" }}>
-              {(spacebud.id === 1903 || spacebud.id === 6413) && (
+            <div
+              style={{
+                width: !matches.md ? 410 : 350,
+                height: !matches.md ? 410 : 350,
+                borderRadius: "50%",
+                // marginTop: -15,
+                // marginBottom: -50,
+                padding: 20,
+              }}
+            >
+              <div style={{ width: "100%", position: "relative" }}>
+                {(spacebud.id === 1903 || spacebud.id === 6413) && (
+                  <img
+                    src={spacebud.image}
+                    style={{
+                      position: "absolute",
+                      left: 20,
+                      top: -12,
+                      filter: "brightness(0.7)",
+                    }}
+                    width="100%"
+                  />
+                )}
                 <img
                   src={spacebud.image}
-                  style={{
-                    position: "absolute",
-                    left: 20,
-                    top: -12,
-                    filter: "brightness(0.7)",
-                  }}
+                  style={{ position: "absolute" }}
                   width="100%"
                 />
-              )}
-              <img
-                src={spacebud.image}
-                style={{ position: "absolute" }}
-                width="100%"
-              />
+              </div>
             </div>
           </div>
+
           <Box h={5} />
-          <div>
+          {/* <div>
             <div
               className="bud-name"
               style={{ fontWeight: 700, fontSize: 48, marginBottom: 20 }}
             >
-              SpaceBud <br /> #{spacebud.id}
+              Animaliens <br /> #{spacebud.id}
             </div>
             <LinkName
               style={{ color: "#636363", fontSize: 18 }}
@@ -376,250 +390,608 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
                 BUY NOW
               </Button>
             </div>
-          </div>
-        </div>
-        {/* static content */}
-        <div
-          style={{
-            width: "60%",
-            marginTop: 50,
-            backgroundColor: "#171717",
-            padding: 20,
-            borderRadius: 5,
-          }}
-        >
-          <ButtonGroup className="buttons" spacing="8">
-            <Button
-              style={{
-                border: "1px solid #30F100",
-                borderRadius: 50,
-                padding: "2px 15px",
-                fontSize: 11,
-                fontWeight: 500,
-              }}
-              colorScheme="none"
-              variant={"outline"}
+
+            <Box h={5} />
+            <div style={{ fontWeight: 600, fontSize: 30 }}>
+              SpaceBud #{spacebud.id}
+            </div>
+
+            <LinkName
+              onClick={() => navigate(`/explore/?type=${spacebud.type}`)}
             >
-              TRAITS
-            </Button>
-            <Button
-              style={{
-                // border: "1px solid #30F100",
-                backgroundColor: "#30F100",
-                color: "#000",
-                borderRadius: 50,
-                padding: "2px 15px",
-                fontSize: 11,
-                fontWeight: 500,
-              }}
-              colorScheme="none"
-              variant={"solid"}
-            >
-              PRICING HISTORY
-            </Button>
-            <Button
-              style={{
-                // border: "1px solid #30F100",
-                backgroundColor: "#30F100",
-                color: "#000",
-                borderRadius: 50,
-                padding: "2px 15px",
-                fontSize: 11,
-                fontWeight: 500,
-              }}
-              colorScheme="none"
-              variant={"solid"}
-            >
-              TRADING HISTORY
-            </Button>
-          </ButtonGroup>
+              {spacebud.type} Astronaut
+            </LinkName>
+          </div> */}
+          {/* <Box h={6} /> */}
+          {/* {(spacebud.id === 1903 || spacebud.id === 6413) && (
+            <>
+              <div
+                style={{
+                  fontWeight: 600,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <div style={{ marginTop: -5 }}>Twins</div>
+                <Box w={2} />
+              </div>{" "}
+              <Box h={3} />
+            </>
+          )}
+          {owner.length > 0 ? (
+            owner.map((item, i) => (
+              <div
+                key={i}
+                style={{
+                  marginBottom: 5,
+                  paddingTop: 8,
+                  paddingBottom: 8,
+                  paddingLeft: 12,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 16,
+                  border: "solid 2px #311b92",
+                  borderRadius: 25,
+                  color: "#777777",
+                }}
+              >
+                <span>
+                  <b>Owner:</b>{" "}
+                </span>
+                <div
+                  style={{
+                    width: "200px",
+                    whiteSpace: "nowrap",
+                    textAlign: "center",
+                  }}
+                >
+                  <MiddleEllipsis>
+                    <Link
+                      underline
+                      color="purple.600"
+                      onClick={(e) => {
+                        if (owner) navigate(`/profile?address=${item.address}`);
+                      }}
+                    >
+                      {item.address}
+                    </Link>
+                  </MiddleEllipsis>
+                </div>
+              </div>
+            ))
+          ) : (
+            <>
+              <Box h={3} />
+              <Box display="flex" alignItems="center">
+                <Text color="GrayText" mr="4">
+                  Owner
+                </Text>{" "}
+                <Spinner size="sm" color="purple" />
+              </Box>
+            </>
+          )} */}
+
+          {/* <Box h={8} /> */}
           <div
-            className="color-indication-box"
             style={{
-              display: "grid",
-              gridTemplateColumns: "3fr 1fr",
-              marginTop: 30,
+              width: "100%",
+              // display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
             }}
           >
-            <div style={{ display: "flex", gap: 50 }}>
-              {/* left side  */}
-              <div>
+            {(spacebud.id === 1903 || spacebud.id === 6413) && (
+              <>
                 <div
                   style={{
+                    fontWeight: 600,
                     display: "flex",
+                    justifyContent: "center",
                     alignItems: "center",
-                    gap: 10,
-                    marginBottom: 10,
                   }}
                 >
-                  <h4 style={{ fontSize: 11, fontWeight: 700 }}>
-                    SKIN : CLEAN 41.38%{" "}
-                  </h4>
-                  <img src={greenDot} alt="" />
+                  <div style={{ marginTop: -5 }}>Twins</div>
+                  <Box w={2} />
+                </div>{" "}
+                <Box h={3} />
+              </>
+            )}
+            {owner.length > 0 ? (
+              owner.map((item, i) => (
+                <div
+                  key={i}
+                  style={{
+                    marginBottom: 5,
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                    paddingLeft: 12,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 16,
+                    border: "solid 2px #311b92",
+                    borderRadius: 25,
+                    color: "#777777",
+                  }}
+                >
+                  <span>
+                    <b>Owner:</b>{" "}
+                  </span>
+                  <div
+                    style={{
+                      width: "200px",
+                      whiteSpace: "nowrap",
+                      textAlign: "center",
+                    }}
+                  >
+                    <MiddleEllipsis>
+                      <Link
+                        underline
+                        color="#30f100"
+                        onClick={(e) => {
+                          if (owner)
+                            navigate(`/profile?address=${item.address}`);
+                        }}
+                      >
+                        {item.address}
+                      </Link>
+                    </MiddleEllipsis>
+                  </div>
                 </div>
+              ))
+            ) : (
+              <>
+                {/* <Box h={3} />
+                <Box display="flex" alignItems="center"> */}
+                <Text color="GrayText" mr="4">
+                  Owner
+                </Text>{" "}
+                <Spinner size="sm" color="#30f100" />
+                {/* </Box> */}
+              </>
+            )}
 
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 10,
-                    marginBottom: 10,
-                  }}
-                >
-                  <h4 style={{ fontSize: 11, fontWeight: 700 }}>
-                    MOUTH : OG BLUE 1.08%
-                  </h4>
-                  <img src={redDot} alt="" />
-                </div>
-
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 10,
-                    marginBottom: 10,
-                  }}
-                >
-                  <h4 style={{ fontSize: 11, fontWeight: 700 }}>
-                    EYES : DEAD 14.56%
-                  </h4>
-                  <img src={blueDot} alt="" />
-                </div>
-
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 10,
-                    marginBottom: 10,
-                  }}
-                >
-                  <h4 style={{ fontSize: 11, fontWeight: 700 }}>
-                    EYES COLOR : GREEN 2.07%
-                  </h4>
-                  <img src={yellowDot} alt="" />
-                </div>
-              </div>
-              {/* right side  */}
-              <div>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 10,
-                    marginBottom: 10,
-                  }}
-                >
-                  <h4 style={{ fontSize: 11, fontWeight: 700 }}>
-                    HEAD : SOMBRERO 2.17%
-                  </h4>
-                  <img src={blueDot} alt="" />
-                </div>
-
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 10,
-                    marginBottom: 10,
-                  }}
-                >
-                  <h4 style={{ fontSize: 11, fontWeight: 700 }}>
-                    HEAD : SOMBRERO 2.17%
-                  </h4>
-                  <img src={yellowDot} alt="" />
-                </div>
-
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 10,
-                    marginBottom: 10,
-                  }}
-                >
-                  <h4 style={{ fontSize: 11, fontWeight: 700 }}>
-                    CHEST : BLACK ALIEN TSHIRT 4.83%
-                  </h4>
-                  <img src={greenDot} alt="" />
-                </div>
-
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 10,
-                    marginBottom: 10,
-                  }}
-                >
-                  <h4 style={{ fontSize: 11, fontWeight: 700 }}>
-                    CHAINS : ALIEN 7.31%
-                  </h4>
-                  <img src={greenDot} alt="" />
-                </div>
-              </div>
-            </div>
-            <div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  marginBottom: 10,
-                }}
+            {isLoadingMarket ? (
+              <Box display="flex" alignItems="center">
+                <Text color="GrayText" mr="4">
+                  Loading Market
+                </Text>{" "}
+                <Spinner size="sm" color="#30f100" />
+              </Box>
+            ) : (
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                flexDirection="column"
               >
-                <img src={greenDot} alt="" />
-                <h4 style={{ fontSize: 9, fontWeight: 700 }}>COMMON</h4>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  marginBottom: 10,
-                }}
-              >
-                <img src={yellowDot} alt="" />
-                <h4 style={{ fontSize: 9, fontWeight: 700 }}>UNCOMMON</h4>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  marginBottom: 10,
-                }}
-              >
-                <img src={redDot} alt="" />
-                <h4 style={{ fontSize: 9, fontWeight: 700 }}>RARE</h4>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  marginBottom: 10,
-                }}
-              >
-                <img src={blueDot} alt="" />
-                <h4 style={{ fontSize: 9, fontWeight: 700 }}>ALIEN</h4>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  marginBottom: 10,
-                }}
-              >
-                <img src={indigoDot} alt="" />
-                <h4 style={{ fontSize: 9, fontWeight: 700 }}>
-                  EXTRATERRESTRIAL
-                </h4>
-              </div>
-            </div>
+                <Box textAlign="center">
+                  <div
+                    style={{
+                      fontSize: 12,
+                      fontWeight: "bold",
+                      marginBottom: 4,
+                    }}
+                  >
+                    Last Sale
+                  </div>
+                  <UnitDisplay
+                    showQuantity={!Boolean(details.lastSale.lovelace)}
+                    fontWeight="medium"
+                    quantity={details.lastSale.lovelace || 0}
+                    symbol="ADA"
+                    decimals={6}
+                  />
+                  <UnitDisplay
+                    showQuantity={!Boolean(details.lastSale.usd)}
+                    fontSize={12}
+                    color="#777777"
+                    quantity={details.lastSale.usd || 0}
+                    symbol="USD"
+                    decimals={2}
+                  />
+                </Box>
+                <Box h={6} />
+                <Box position="absolute">
+                  <Box position="absolute" top="-30px" left={-40}>
+                    {" "}
+                    <RepeatIcon cursor="pointer" onClick={loadSpaceBudData} />
+                  </Box>
+                </Box>
+                <Box display="flex" alignItems="center">
+                  {details.offer.owner ? (
+                    <>
+                      <Box
+                        width={matches.md ? "100px" : "150px"}
+                        textAlign="right"
+                      >
+                        <div style={{ fontSize: 12 }}>Sell now price</div>
+                        <UnitDisplay
+                          showQuantity={!Boolean(details.bid.lovelace)}
+                          fontWeight="medium"
+                          quantity={details.bid.lovelace || 0}
+                          symbol="ADA"
+                          decimals={6}
+                        />
+                        <UnitDisplay
+                          showQuantity={!Boolean(details.bid.usd)}
+                          fontSize={12}
+                          color="#777777"
+                          quantity={details.bid.usd || 0}
+                          symbol="USD"
+                          decimals={2}
+                        />
+                      </Box>
+                      <Box w={5} />
+                      {details.bid.owner ? (
+                        <Tooltip label="Cancel Bid" rounded="3xl">
+                          <Button
+                            isDisabled={loadingButton.cancelBid}
+                            isLoading={loadingButton.cancelBid}
+                            onClick={async () => {
+                              if (!connected) return;
+                              setLoadingButton((l) => ({
+                                ...l,
+                                cancelBid: true,
+                              }));
+                              const txHash = await market.current
+                                .cancelBid(details.bid.bidUtxo)
+                                .catch((e) => tradeErrorHandler(e, toast));
+                              setLoadingButton((l) => ({
+                                ...l,
+                                cancelBid: false,
+                              }));
+                              checkTransaction(txHash);
+                            }}
+                            rounded="3xl"
+                            size="md"
+                            color="white"
+                            bgColor="red.300"
+                            colorScheme="red"
+                          >
+                            Cancel
+                          </Button>
+                        </Tooltip>
+                      ) : (
+                        <Tooltip
+                          label={
+                            details.offer.offerUtxo &&
+                            isOwner(
+                              details.offer.offerUtxo.tradeOwnerAddress.to_bech32()
+                            ) &&
+                            "Cancel Offer first"
+                          }
+                          rounded="3xl"
+                        >
+                          <Button
+                            isDisabled={
+                              !Boolean(details.bid.lovelace) ||
+                              loadingButton.sell
+                            }
+                            isLoading={loadingButton.sell}
+                            rounded="3xl"
+                            size="md"
+                            colorScheme="#30f100"
+                            width="min"
+                            bgcolor="#263238"
+                            rounded="3xl"
+                            width="min"
+                            onClick={async () => {
+                              if (
+                                !connected ||
+                                (details.offer.offerUtxo &&
+                                  isOwner(
+                                    details.offer.offerUtxo.tradeOwnerAddress.to_bech32()
+                                  ))
+                              )
+                                return;
+                              setLoadingButton((l) => ({
+                                ...l,
+                                sell: true,
+                              }));
+                              const txHash = await market.current
+                                .sell(details.bid.bidUtxo)
+                                .catch((e) => tradeErrorHandler(e, toast));
+                              setLoadingButton((l) => ({
+                                ...l,
+                                sell: false,
+                              }));
+                              checkTransaction(txHash, {
+                                type: "sold",
+                                lovelace: details.bid.lovelace,
+                              });
+                            }}
+                          >
+                            Sell
+                          </Button>
+                        </Tooltip>
+                      )}
+                      <Box w={4} />
+                      <Box
+                        display="flex"
+                        flexDirection="column"
+                        alignItems="center"
+                        justifyContent="center"
+                      >
+                        {details.offer.lovelace &&
+                        details.offer.offerUtxo &&
+                        isOwner(
+                          details.offer.offerUtxo.tradeOwnerAddress.to_bech32()
+                        ) ? (
+                          <Tooltip label="Cancel Offer" rounded="3xl">
+                            <Button
+                              isDisabled={loadingButton.cancelOffer}
+                              isLoading={loadingButton.cancelOffer}
+                              onClick={async () => {
+                                if (!connected) return;
+                                setLoadingButton((l) => ({
+                                  ...l,
+                                  cancelOffer: true,
+                                }));
+                                const txHash = await market.current
+                                  .cancelOffer(details.offer.offerUtxo)
+                                  .catch((e) => tradeErrorHandler(e, toast));
+                                setLoadingButton((l) => ({
+                                  ...l,
+                                  cancelOffer: false,
+                                }));
+                                checkTransaction(txHash);
+                              }}
+                              color="white"
+                              bgColor="red.300"
+                              colorScheme="red"
+                              rounded="3xl"
+                              aria-label="Add to friends"
+                              icon={<SmallCloseIcon />}
+                            >
+                              Cancel
+                            </Button>
+                          </Tooltip>
+                        ) : (
+                          <Button
+                            variant="outline"
+                            rounded="3xl"
+                            colorScheme="gray"
+                            onClick={() => {
+                              if (!connected) return;
+                              tradeRef.current.openModal({
+                                minPrice: "70000000",
+                                type: "OFFER",
+                              });
+                            }}
+                          >
+                            {/* Offer */}
+                            List
+                          </Button>
+                        )}
+                      </Box>
+                      <Box w={5} />
+                      <Box width={matches.md ? "100px" : "150px"}>
+                        <div style={{ fontSize: 12 }}>Ask price</div>
+                        <UnitDisplay
+                          showQuantity={!Boolean(details.offer.lovelace)}
+                          fontWeight="medium"
+                          quantity={details.offer.lovelace || 0}
+                          symbol="ADA"
+                          decimals={6}
+                        />
+                        <UnitDisplay
+                          showQuantity={!Boolean(details.offer.usd)}
+                          fontSize={12}
+                          color="#777777"
+                          quantity={details.offer.usd || 0}
+                          symbol="USD"
+                          decimals={2}
+                        />
+                      </Box>{" "}
+                    </>
+                  ) : (
+                    <>
+                      {" "}
+                      <Box
+                        width={matches.md ? "100px" : "150px"}
+                        textAlign="right"
+                      >
+                        <div style={{ fontSize: 12 }}>Buy now price</div>
+                        <UnitDisplay
+                          showQuantity={!Boolean(details.offer.lovelace)}
+                          fontWeight="medium"
+                          quantity={details.offer.lovelace || 0}
+                          symbol="ADA"
+                          decimals={6}
+                        />
+                        <UnitDisplay
+                          showQuantity={!Boolean(details.offer.usd)}
+                          fontSize={12}
+                          color="#777777"
+                          quantity={details.offer.usd || 0}
+                          symbol="USD"
+                          decimals={2}
+                        />
+                      </Box>
+                      <Box w={5} />
+                      <Tooltip
+                        label={
+                          (!connected && "Connect wallet") ||
+                          (details.bid.owner &&
+                            details.bid.lovelace &&
+                            "Cancel Bid first")
+                        }
+                        rounded="3xl"
+                      >
+                        <Button
+                          isDisabled={
+                            !Boolean(details.offer.lovelace) ||
+                            loadingButton.buy
+                          }
+                          isLoading={loadingButton.buy}
+                          onClick={async () => {
+                            if (!connected || details.bid.owner) return;
+                            setLoadingButton((l) => ({
+                              ...l,
+                              buy: true,
+                            }));
+                            const txHash = await market.current
+                              .buy(details.offer.offerUtxo)
+                              .catch((e) => tradeErrorHandler(e, toast));
+                            setLoadingButton((l) => ({
+                              ...l,
+                              buy: false,
+                            }));
+                            checkTransaction(txHash, {
+                              type: "bought",
+                              lovelace: details.offer.lovelace,
+                            });
+                          }}
+                          rounded="3xl"
+                          size="md"
+                          style={{
+                            backgroundColor: "#30f100",
+                          }}
+                          // colorScheme="purple"
+                          width="min"
+                        >
+                          Buy
+                        </Button>
+                      </Tooltip>
+                      <Box w={4} />
+                      <Box
+                        display="flex"
+                        flexDirection="column"
+                        alignItems="center"
+                        justifyContent="center"
+                      >
+                        <ButtonGroup size="md" isAttached variant="outline">
+                          <Tooltip
+                            label={!connected && "Connect wallet"}
+                            rounded="3xl"
+                          >
+                            <Button
+                              onClick={() => {
+                                if (!connected) return;
+                                tradeRef.current.openModal({
+                                  minPrice: details.bid.lovelace
+                                    ? (
+                                        isBrowser() &&
+                                        window.BigInt(details.bid.lovelace) +
+                                          window.BigInt("10000")
+                                      ).toString()
+                                    : "70000000",
+                                  type: "BID",
+                                });
+                              }}
+                              bgcolor="#263238"
+                              rounded="3xl"
+                              colorScheme="gray"
+                              width="min"
+                            >
+                              Bid
+                            </Button>
+                          </Tooltip>
+                          {details.bid.owner && (
+                            <Tooltip label="Cancel Bid" rounded="3xl">
+                              <IconButton
+                                isDisabled={loadingButton.cancelBid}
+                                isLoading={loadingButton.cancelBid}
+                                onClick={async () => {
+                                  if (!connected) return;
+                                  setLoadingButton((l) => ({
+                                    ...l,
+                                    cancelBid: true,
+                                  }));
+                                  const txHash = await market.current
+                                    .cancelBid(details.bid.bidUtxo)
+                                    .catch((e) => tradeErrorHandler(e, toast));
+                                  setLoadingButton((l) => ({
+                                    ...l,
+                                    cancelBid: false,
+                                  }));
+                                  checkTransaction(txHash);
+                                }}
+                                bgColor="red.300"
+                                variant="solid"
+                                rounded="3xl"
+                                aria-label="Add to friends"
+                                icon={<SmallCloseIcon />}
+                              />
+                            </Tooltip>
+                          )}
+                        </ButtonGroup>
+                      </Box>
+                      <Box w={5} />
+                      <Box width={matches.md ? "100px" : "150px"}>
+                        <div style={{ fontSize: 12 }}>Bid price</div>
+                        <UnitDisplay
+                          showQuantity={!Boolean(details.bid.lovelace)}
+                          fontWeight="medium"
+                          quantity={details.bid.lovelace || 0}
+                          symbol="ADA"
+                          decimals={6}
+                        />
+                        <UnitDisplay
+                          showQuantity={!Boolean(details.bid.usd)}
+                          fontSize={12}
+                          color="#777777"
+                          quantity={details.bid.usd || 0}
+                          symbol="USD"
+                          decimals={2}
+                        />
+                      </Box>
+                    </>
+                  )}
+                </Box>
+              </Box>
+            )}
           </div>
+          {/* {!isLoadingMarket && (
+            <>
+              <Box h={3} />
+              <Box fontSize={12} color="GrayText">
+                Service Fee ~2.4%
+              </Box>{" "}
+            </>
+          )} */}
+          {/* <Box h={8} />
+          <div style={{ fontSize: 26, color: "#777777", fontWeight: 600 }}>
+            Gadgets
+          </div>
+          <Box h={3} /> */}
+          {/* <div
+            style={{
+              width: 250,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Box
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              {spacebud.gadgets.length > 0 ? (
+                spacebud.gadgets.map((gadget) => (
+                  <Box key={gadget} p="1">
+                    <Attribute
+                      onClick={() => navigate(`/explore/?gadget=${gadget}`)}
+                    >
+                      {gadget}
+                    </Attribute>
+                  </Box>
+                ))
+              ) : (
+                <div style={{ fontSize: 14, opacity: 0.3 }}>No Gadgets</div>
+              )}
+            </Box>
+          </div> */}
         </div>
+        {}
       </div>
     </>
   );

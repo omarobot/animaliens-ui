@@ -19,13 +19,14 @@ import * as style from '../Header/sidebar.module.css'
 
 
 const LinkItems = [
+  {name: '          ', link: '/'},
   { name: 'MarketPlace', link: '/explore' },
   { name: 'RoadMap', link: '/tutorial'  },
   // { name: 'Rarities', link: '/tutorial'},
   // { name: 'Marketplace', link: '/tutorial'  },
 
   { name: 'About Us', link: '/about'},
-  { name: 'How to Buy', link: '/tutorial'  },
+  // { name: 'How to Buy', link: '/tutorial'  },
 ];
 
 

@@ -26,10 +26,10 @@ import Loader from "../cardano/loader";
 
 
 
-const POLICY = "d5e6bf0500378d4f0da4e8dde6becec7621cd8cbf5cbb9b87013d4cc";
+const POLICY = "1ff89104c2c3826b21ea8a8471e383c26f31257f3b2d7889b8fe1763";
 
 const secrets = {
-  PROJECT_ID: 'mainnetFEnBQkYa33cYHGr2w96tA0BvYILBqfXm'
+  PROJECT_ID: 'testnet1RD4umD3NGsxuutiWpxzJLjwv0O7j8Tp'
 }
 
 function fromHex(hex) {

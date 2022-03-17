@@ -3,6 +3,7 @@ import { StoreProvider } from "easy-peasy";
 import React from "react";
 import SidebarWithHeader from "../components/Header/Sidebar";
 import store from "../store";
+import { StartButton } from "../components/Account";
 import "./layout.css";
 
 const Layout = (props) => {
@@ -18,23 +19,24 @@ const Layout = (props) => {
         }}
       >
         <div id="sidebar">
-          {/* <Header  /> */}
-          <SidebarWithHeader />
-        </div>
+          {" "}
+          {/* <Header  /> */} <SidebarWithHeader />
+        </div>{" "}
         <div>
-          <Button
+          <StartButton id="connect-btn" />{" "}
+          {/* <Button
             onClick={() => alert("Please add functionality as needed.")}
             id="connect-btn"
             variant={"solid"}
           >
             Connect
-          </Button>
-        </div>
+          </Button>{" "} */}
+        </div>{" "}
         <div id="bodyContent">
-          {props.children}
-          {/* <Footer /> */}
-        </div>
-      </div>
+          {" "}
+          {props.children} {/* <Footer /> */}{" "}
+        </div>{" "}
+      </div>{" "}
     </StoreProvider>
   );
 };
