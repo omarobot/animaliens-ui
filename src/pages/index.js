@@ -17,11 +17,11 @@ import boots from "../images/assets/boots.webp";
 import leen from "../images/assets/lenn.webp";
 import zame from "../images/assets/zame.webp";
 import maq from "../images/assets/maq.webp";
-import learning from "../images/assets/learning-equality.png";
-import nyaka from "../images/assets/nyaka.png";
-import tech2Connect from "../images/assets/tech2Connect.png";
-import cause from "../images/assets/cause.png";
-import eayikies from "../images/assets/eayikies.png";
+import learning from "../images/assets/Learning_Equality.webp";
+import nyaka from "../images/assets/Nyaka-Logos.webp";
+import tech2Connect from "../images/assets/Tech2Connect.webp";
+import cause from "../images/assets/CAUSE LOGO.webp";
+import eayikies from "../images/assets/eayikes.webp";
 
 const Landing = (props) => {
   const matches = useBreakpoint();
