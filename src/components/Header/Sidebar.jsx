@@ -5,15 +5,15 @@ import {
     HStack, IconButton, Menu,
     MenuButton, MenuList, useDisclosure
 } from '@chakra-ui/react';
-import { navigate } from "gatsby";
+import { Link, navigate } from "gatsby";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import React from 'react';
 import {
     FiMenu
 } from 'react-icons/fi';
-import * as style from "../../components/Header/Tab.module.css";
+// import * as style from "../../components/Header/Tab.module.css";
 import newLogo from '../../images/assets/logo_face_white.svg';
-
+import * as style from '../Header/sidebar.module.css'
 
 
 
@@ -92,11 +92,14 @@ const SidebarContent = ({ onClose, ...rest }) => {
         </div>
         <CloseButton display={{ base: 'flex', md: 'none', }} style={{color: '#fff'}} onClick={onClose} />
       </Flex>
-          <div style={{marginTop:40,}}>
+          <div style={{marginTop:20,}}>
           {LinkItems.map((link) => (
-        <NavItem key={link.name} link={link.link}>
-          {link.name}
-        </NavItem>
+        // <NavItem key={link.name} link={link.link}>
+        //   {link.name}
+        // </NavItem>
+        <div className={style.allLinks}>
+          <Link className={style.linkItem} activeClassName={style.active} to={link.link} key={link.name}>{link.name}</Link>
+        </div>
       ))}
           </div>
     </Box>
@@ -105,13 +108,17 @@ const SidebarContent = ({ onClose, ...rest }) => {
 
 const NavItem = ({ link, children, ...rest }) => {
   return (
-    <div
-    color="gray.600"
-    className={style.tabItem}
+    // <div
+    <Link
+    // color="gray.600"
+    // className={style.tabItem}
     style={{fontWeight: 500, fontSize:24, marginBottom:10, textTransform: 'uppercase'}}
-    onClick={() => {
-      navigate(`${link}`);
-    }}
+    // onClick={() => {
+    //   navigate(`${link}`);
+    // }}
+    to={link}
+    className="link-item"
+    activeClassName="active"
   >
       <Flex
       style={{color: '#fff'}}
@@ -123,7 +130,7 @@ const NavItem = ({ link, children, ...rest }) => {
         
         {children}
       </Flex>
-    </div>
+    </Link>
   );
 };
 
