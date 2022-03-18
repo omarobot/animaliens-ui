@@ -30,14 +30,16 @@
 
 /* royalitiesRaffles */
 .royalitiesRaffles {
-  padding: 40px;
+  padding: 20px;
+  width: 80%;
+  margin: auto;
 }
 
 .royalitiesRafflexBox {
   margin: 80px 0;
   display: flex;
-  justify-content: space-around;
-  gap: 40px;
+  justify-content: center;
+  gap: 20px;
 }
 .royalitiesRafflexBox h3 {
   font-size: 64px;
@@ -46,7 +48,8 @@
   display: block;
 }
 .royalitiesRafflexBox img {
-  width: 70%;
+  width: 85%;
+  margin: auto;
   margin-top: -35px;
 }
 .royalitiesDes h4 {
@@ -91,7 +94,7 @@ h4 {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 60px;
   text-align: center;
 }
 .supportLogo img {
