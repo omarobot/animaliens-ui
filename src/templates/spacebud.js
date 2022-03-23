@@ -752,9 +752,13 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
                           </Tooltip>
                         ) : (
                           <Button
+                            style={{
+                              // backgroundColor: "#30f100",
+                              border: "1px solid #30f100",
+                            }}
                             variant="outline"
                             rounded="3xl"
-                            colorScheme="gray"
+                            // colorScheme="gray"
                             onClick={() => {
                               if (!connected) return;
                               tradeRef.current.openModal({

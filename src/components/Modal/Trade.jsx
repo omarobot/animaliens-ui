@@ -34,7 +34,8 @@ const toUnit = (amount, decimals = 6) => {
 };
 
 export const tradeErrorHandler = (e, toast) => {
-  console.log(e);
+  console.log(e.message);
+  
   if (e.message) {
     if (e.message.includes("budget was overspent"))
       FailedTransactionToast(toast, "Execution units too low.");
