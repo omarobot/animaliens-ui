@@ -197,9 +197,9 @@ const Profile = ({ pageContext: { spacebudz } }) => {
   return (
     <>
       <Metadata
-        titleTwitter="SpaceBudz: Collectible Astronauts"
-        title="SpaceBudz | Profile"
-        description="Collect your unique SpaceBud as NFT on the Cardano blockchain."
+        titleTwitter="Animaliens: The Alien Collective"
+        title="Animaliens | The Alien Collection"
+        description="Welcome to the alien collective invading the Cardano blockchain."
       />
       <div
         style={{

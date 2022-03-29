@@ -70,7 +70,7 @@ const Header = () => {
                 }
                 fontWeight={700}
               >
-                SpaceBudz
+                Animaliens
               </Box>
             </>
           )}

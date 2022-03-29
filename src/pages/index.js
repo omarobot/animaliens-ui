@@ -29,9 +29,9 @@ const Landing = (props) => {
   return (
     <>
       <Metadata
-        titleTwitter="SpaceBudz: Collectible Astronauts"
-        title="SpaceBudz"
-        description="Collect your unique SpaceBud as NFT on the Cardano blockchain."
+        titleTwitter="Animaliens: The Alien Collective"
+        title="Animaliens"
+        description="Welcome to the allien collective invading the Cardano blockchain."
       />{" "}
       {/* main body  */}{" "}
       <main>

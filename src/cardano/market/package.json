@@ -1,9 +1,9 @@
 {
-  "name": "spacebudz-marketplace",
+  "name": "animaliens-marketplace",
   "version": "1.0.0",
   "main": "index.js",
-  "description": "SpaceBudz-Market",
-  "author": "Alessandro",
+  "description": "Animaliens-Market",
+  "author": "Omar Saravia",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

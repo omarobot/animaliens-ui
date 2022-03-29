@@ -89,7 +89,7 @@ const TradeModal = React.forwardRef(
             {type == "BID" ? "Bid" : "Listing"}
           </ModalHeader>
           <Box textAlign="center" mt="-2" color="GrayText">
-            SPACEBUD #{budId}
+            Animaliens #{budId}
           </Box>
           <Box h={6} />
           <ModalBody

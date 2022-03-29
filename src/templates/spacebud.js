@@ -249,12 +249,31 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
     setIsLoadingMarket(false);
   };
 
+  const buyNFT = async () => {
+    if (!connected || details.bid.owner) return;
+    setLoadingButton((l) => ({
+      ...l,
+      buy: true,
+    }));
+    const txHash = await market.current
+      .buy(details.offer.offerUtxo)
+      .catch((e) => tradeErrorHandler(e, toast));
+    setLoadingButton((l) => ({
+      ...l,
+      buy: false,
+    }));
+    checkTransaction(txHash, {
+      type: "bought",
+      lovelace: details.offer.lovelace,
+    });
+  };
+
   return (
     <>
       <Metadata
-        titleTwitter="SpaceBudz: Collectible Astronauts"
-        title={"SpaceBudz | SpaceBud #" + spacebud.id}
-        description={`SpaceBud #${spacebud.id}`}
+        titleTwitter="Animaliens: The Alien Collective"
+        title={"Animaliens | Chamalien #" + spacebud.id}
+        description={`Animaliens #${spacebud.id}`}
         image={spacebud.image}
       />
       <div
@@ -512,7 +531,7 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
                     alignItems: "center",
                     justifyContent: "center",
                     fontSize: 16,
-                    border: "solid 2px #311b92",
+                    border: "2px solid rgb(137 120 215)",
                     borderRadius: 25,
                     color: "#777777",
                   }}
@@ -832,24 +851,7 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
                             loadingButton.buy
                           }
                           isLoading={loadingButton.buy}
-                          onClick={async () => {
-                            if (!connected || details.bid.owner) return;
-                            setLoadingButton((l) => ({
-                              ...l,
-                              buy: true,
-                            }));
-                            const txHash = await market.current
-                              .buy(details.offer.offerUtxo)
-                              .catch((e) => tradeErrorHandler(e, toast));
-                            setLoadingButton((l) => ({
-                              ...l,
-                              buy: false,
-                            }));
-                            checkTransaction(txHash, {
-                              type: "bought",
-                              lovelace: details.offer.lovelace,
-                            });
-                          }}
+                          onClick={buyNFT}
                           rounded="3xl"
                           size="md"
                           style={{
