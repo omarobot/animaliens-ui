@@ -155,12 +155,14 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
     )
       .then((res) => res.json())
       .then((res) => res.cardano["usd"]);
-    const lastSale = await fetch(
-      `https://spacebudz.io/api/specificSpaceBud/${spacebud.id}`
-      // `https://spacebudz.io/api/specificSpaceBud/11`
-    )
-      .then((res) => res.json())
-      .then((res) => res.lastSale);
+
+    const lastSale = 100000;
+    // const lastSale = await fetch(
+    //   `https://spacebudz.io/api/specificSpaceBud/${spacebud.id}`
+    //   // `https://spacebudz.io/api/specificSpaceBud/11`
+    // )
+    //   .then((res) => res.json())
+    //   .then((res) => res.lastSale);
 
     // const bidUtxo = await market.current.getBid(spacebud.id);
     let offerUtxo = await market.current.getOffer(spacebud.id);
