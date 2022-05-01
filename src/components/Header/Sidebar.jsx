@@ -21,7 +21,7 @@ import * as style from '../Header/sidebar.module.css'
 const LinkItems = [
   {name: '          ', link: '/'},
   { name: 'MarketPlace', link: '/explore' },
-  { name: 'RoadMap', link: '/tutorial'  },
+  { name: 'Raffles', link: '/tutorial'  },
   // { name: 'Rarities', link: '/tutorial'},
   // { name: 'Marketplace', link: '/tutorial'  },
 
