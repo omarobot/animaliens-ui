@@ -52,7 +52,7 @@
     "keep-alive-route": "^0.1.2",
     "lodash": "^4.17.21",
     "node-fetch": "^2.6.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^6.0.1",
     "rc-slider": "^9.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -69,6 +69,7 @@
     "react-qr-code": "^1.1.1",
     "react-reveal": "^1.2.2",
     "react-spinners": "^0.10.6",
+    "react-vertical-timeline-component": "^3.5.2",
     "styled-components": "^5.2.1"
   }
 }
