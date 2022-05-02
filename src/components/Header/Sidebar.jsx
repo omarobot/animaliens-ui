@@ -20,8 +20,8 @@ import * as style from '../Header/sidebar.module.css'
 
 const LinkItems = [
   {name: '          ', link: '/'},
-  { name: 'MarketPlace', link: '/explore' },
-  { name: 'Raffles', link: '/tutorial'  },
+  { name: 'Store', link: '/explore' },
+  { name: 'Lotto', link: '/tutorial'  },
   // { name: 'Rarities', link: '/tutorial'},
   // { name: 'Marketplace', link: '/tutorial'  },
 

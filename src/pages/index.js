@@ -9,9 +9,12 @@ import raffels from "../images/assets/Raffles-1.svg";
 import roadMap1 from "../images/assets/road-map-1.jpg";
 import roadMap2 from "../images/assets/road-map-2.jpg";
 import roadMap3 from "../images/assets/road-map-3.jpg";
-import royalties from "../images/assets/Royalties-Animalien-1.svg";
+import royalties from "../images/assets/market.gif";
+import lotto from "../images/assets/lotto.gif";
+
 // css
 import * as homeStyles from "../styles/Home.module.css";
+
 // assets
 import boots from "../images/assets/boots.webp";
 import leen from "../images/assets/lenn.webp";
@@ -63,6 +66,25 @@ const Landing = (props) => {
             opportunities.{" "}
           </p>{" "}
         </div>{" "}
+        {/* Marketplace  */}
+        {/* <div
+          className={homeStyles.project}
+          style={{
+            marginBottom: 50,
+          }}
+        >
+          <div>
+            <h3 className="title"> THE STORE </h3>{" "}
+            <ul className={`${homeStyles.marketList}`}>
+              <li>Marketplace (No service fees)</li>
+              <li>Buy NFT Raffle Tickets</li>
+              <li>Enter NFT Auctions</li>{" "}
+            </ul>{" "}
+          </div>
+          <div>
+            <img src={royalties} alt="" />
+          </div>{" "}
+        </div>{" "} */}
         {/* ROYALTIES & RAFFLES */}{" "}
         <div className={homeStyles.royalitiesRaffles}>
           {" "}
@@ -70,43 +92,49 @@ const Landing = (props) => {
           <div
             className={`${homeStyles.royalitiesRafflexBox} ${homeStyles.royalities}`}
           >
-            <div>
-              <h3 className="title"> ROYALTIES </h3>{" "}
-              <div
-                className={homeStyles.royalitiesDes}
-                style={{
-                  display: "flex",
-                  gap: 24,
-                  alignItems: "center",
-                  marginBottom: 10,
-                }}
-              >
-                <h4> 4 % </h4> <span> BACK TO THE COMMUNITY </span>{" "}
-              </div>{" "}
-              <div
-                className={homeStyles.royalitiesDes}
-                style={{
-                  display: "flex",
-                  gap: 24,
-                  alignItems: "center",
-                  marginBottom: 10,
-                }}
-              >
-                <h4> 2 % </h4> <span> PROJECT FUNDING </span>{" "}
-              </div>{" "}
-              <div
-                className={homeStyles.royalitiesDes}
-                style={{
-                  display: "flex",
-                  gap: 24,
-                  alignItems: "center",
-                  marginBottom: 10,
-                }}
-              >
-                <h4> 2 % </h4> <span> BACK TO THE TEAM </span>{" "}
-              </div>{" "}
+            <div
+              className={`${homeStyles.marketSection} ${homeStyles.marketList}`}
+            >
+              <div>
+                <h3 className="title"> THE STORE </h3>{" "}
+                <div
+                  className={homeStyles.royalitiesDes}
+                  style={{
+                    display: "flex",
+                    gap: 24,
+                    alignItems: "center",
+                    marginBottom: 10,
+                  }}
+                >
+                  <span> Marketplace </span>{" "}
+                </div>{" "}
+                <div
+                  className={homeStyles.royalitiesDes}
+                  style={{
+                    display: "flex",
+                    gap: 24,
+                    // alignItems: "center",
+                    marginBottom: 10,
+                  }}
+                >
+                  <span> Enter Weekly Raffles </span>{" "}
+                </div>{" "}
+                <div
+                  className={homeStyles.royalitiesDes}
+                  style={{
+                    display: "flex",
+                    gap: 24,
+                    alignItems: "center",
+                    marginBottom: 10,
+                  }}
+                >
+                  <span> Enter NFT Auctions </span>{" "}
+                </div>{" "}
+              </div>
             </div>{" "}
-            <div>
+            <div
+              className={`${homeStyles.marketSection} ${homeStyles.marketImg}`}
+            >
               <img src={royalties} alt="" />
             </div>{" "}
           </div>{" "}
@@ -132,6 +160,43 @@ const Landing = (props) => {
             </div>{" "}
           </div>{" "}
           {/* Raffles */}
+          {/* Lotto */}{" "}
+          <div
+            className={`${homeStyles.royalitiesRafflexBox} ${homeStyles.royalities} ${homeStyles.lottoSection}`}
+          >
+            <div
+              className={`${homeStyles.marketSection} ${homeStyles.marketList}`}
+            >
+              <div>
+                <div>
+                  <h3 className="title"> THE LOTTERY </h3>{" "}
+                  <div
+                    className={homeStyles.royalitiesDes}
+                    style={{
+                      display: "flex",
+                      gap: 24,
+                      alignItems: "center",
+                      marginBottom: 10,
+                    }}
+                  >
+                    <span>
+                      {" "}
+                      Each minted NFT will produce a lottery ticket; the more
+                      NFTs, the more chances to win. Once all our NFTs have been
+                      minted, we will livestream a tuition lottery. The winner
+                      of this lottery will decide to use the funds for tuition,
+                      student loans, or other. See FAQ for more info.{" "}
+                    </span>{" "}
+                  </div>{" "}
+                </div>
+              </div>
+            </div>{" "}
+            <div
+              className={`${homeStyles.marketSection} ${homeStyles.marketImg}`}
+            >
+              <img src={lotto} alt="" />
+            </div>{" "}
+          </div>{" "}
           {/* roadmap  */}
           <div
             className={homeStyles.project}
