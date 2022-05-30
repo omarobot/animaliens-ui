@@ -14,3 +14,28 @@
   transform: translateY(-10px);
   cursor: pointer;
 }
+.raffleBtn {
+  background: #30f100;
+  color: #171717;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.closedRaffleImg {
+  filter: grayscale(100%);
+}
+.ticketIcon {
+  color: #30f100;
+}
+.ticketIconGray {
+  color: #555555;
+}
+
+.raffleBtnGray {
+  background: #555555;
+  color: #30f100;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 10px 0;
+}

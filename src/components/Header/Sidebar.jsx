@@ -28,7 +28,7 @@ const LinkItems = [
 
   { name: "About Us", link: "/about" },
   { name: "New Raffle", link: "/new-raffle" },
-  { name: "Raffle", link: "/raffle" },
+  { name: "Raffles", link: "/raffles" },
   // { name: 'How to Buy', link: '/tutorial'  },
 ];
 

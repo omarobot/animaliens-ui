@@ -1,15 +1,20 @@
 import {
   Box,
+  Button,
   Container,
   Flex,
   Grid,
   GridItem,
+  Heading,
   SimpleGrid,
+  Text,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import Metadata from "../components/Metadata";
 import * as raffleStyles from "../styles/Raffle.module.css";
 import raffleImg from "../images/assets/pantha.webp";
+import { HiTicket } from "react-icons/hi";
+import Countdown from "react-countdown";
 
 const raffles = [
   {
@@ -395,8 +400,24 @@ const raffles = [
   },
 ];
 
-const Raffle = () => {
-  console.log(raffles);
+const Raffles = () => {
+  const [time, setTime] = useState("");
+  const Completionist = () => <span>Raffle closed!</span>;
+  const renderer = ({ hours, minutes, seconds, completed }) => {
+    if (completed) {
+      // Render a completed state
+      setTime("over");
+      return <Completionist />;
+    } else {
+      // Render a countdown
+      return (
+        <span>
+          Ends in: {hours}:{minutes}:{seconds}
+        </span>
+      );
+    }
+  };
+  console.log(time);
   return (
     <>
       <Metadata
@@ -411,13 +432,53 @@ const Raffle = () => {
             {raffles.map((raffle) => (
               <Box key={raffle._id} height="100%">
                 <div className={raffleStyles.raffleBox}>
-                  <img src={raffleImg} alt="" />
-                  <Box sx={{ p: 2 }}>
-                    <h3>{raffle.name}</h3>
-                    <Flex justifyContent="space-between">
-                      <span>d</span>
+                  <img
+                    className={`${
+                      time === "over" ? `${raffleStyles.closedRaffleImg}` : ""
+                    }`}
+                    src={raffleImg}
+                    alt=""
+                  />
+                  <Box sx={{ p: 2, textAlign: "center" }}>
+                    <Heading
+                      as="h3"
+                      size={"md"}
+                      sx={{ textAlign: "center", my: 4 }}
+                    >
+                      {raffle.name}
+                    </Heading>
+                    <Flex justifyContent="center" gap={20} sx={{ my: 4 }}>
+                      <Text
+                        sx={{ display: "flex", gap: 2, alignItems: "center" }}
+                      >
+                        <HiTicket
+                          className={`${
+                            time === "over"
+                              ? `${raffleStyles.ticketIconGray}`
+                              : `${raffleStyles.ticketIcon}`
+                          }`}
+                        />{" "}
+                        100
+                      </Text>
                       <span>20 winners</span>
                     </Flex>
+                    <Box>
+                      <Countdown
+                        date={Date.now() + 10000}
+                        renderer={renderer}
+                      />
+                    </Box>
+                    <Box>
+                      <button
+                        className={`${
+                          time === "over"
+                            ? `${raffleStyles.raffleBtnGray}`
+                            : `${raffleStyles.raffleBtn}`
+                        }`}
+                      >
+                        {time !== "over" ? "Join Raffle" : "View Winners"}
+                      </button>
+                    </Box>
                   </Box>
                 </div>
               </Box>
@@ -429,4 +490,4 @@ const Raffle = () => {
   );
 };
 
-export default Raffle;
+export default Raffles;
