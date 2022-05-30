@@ -28,6 +28,7 @@ const LinkItems = [
 
   { name: "About Us", link: "/about" },
   { name: "New Raffle", link: "/new-raffle" },
+  { name: "Raffle", link: "/raffle" },
   // { name: 'How to Buy', link: '/tutorial'  },
 ];
 
@@ -37,7 +38,7 @@ export default function SidebarWithHeader({ children }) {
     <Box minH="100vh">
       <SidebarContent
         onClose={() => onClose}
-        display={{ base: "none", md: "block" }}
+        display={{ base: "none", lg: "block" }}
       />
       <Drawer
         autoFocus={false}
@@ -54,7 +55,7 @@ export default function SidebarWithHeader({ children }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
+      <Box ml={{ base: 0, lg: 60 }} p="4">
         {children}
       </Box>
     </Box>
@@ -67,7 +68,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
     <Box
       transition="3s ease"
       bg="#171717"
-      w={{ base: "full", md: 60 }}
+      w={{ base: "full", lg: 60 }}
       pos="fixed"
       h="full"
       {...rest}
@@ -89,12 +90,12 @@ const SidebarContent = ({ onClose, ...rest }) => {
         >
           <img
             draggable={false}
-            width={!matches.md ? 150 : 120}
+            width={!matches.lg ? 150 : 120}
             src={newLogo}
           />
         </div>
         <CloseButton
-          display={{ base: "flex", md: "none" }}
+          display={{ base: "flex", lg: "none" }}
           style={{ color: "#fff" }}
           onClick={onClose}
         />
@@ -157,16 +158,16 @@ const MobileNav = ({ onOpen, ...rest }) => {
   const matches = useBreakpoint();
   return (
     <Flex
-      ml={{ base: 0, md: 60 }}
-      px={{ base: 4, md: 4 }}
+      ml={{ base: 0, lg: 60 }}
+      px={{ base: 4, lg: 4 }}
       height="20"
       alignItems="center"
-      justifyContent={{ base: "space-between", md: "flex-end" }}
+      justifyContent={{ base: "space-between", lg: "flex-end" }}
       {...rest}
     >
       <IconButton
         style={{ color: "#fff" }}
-        display={{ base: "flex", md: "none" }}
+        display={{ base: "flex", lg: "none" }}
         onClick={onOpen}
         variant="outline"
         aria-label="open menu"
@@ -191,7 +192,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
           <img draggable={false} src={newLogo} />
         </div> */}
 
-      <HStack spacing={{ base: "0", md: "6" }}>
+      <HStack spacing={{ base: "0", lg: "6" }}>
         <Flex alignItems={"center"}>
           <Menu>
             <MenuButton style={{ color: "#fff" }} py={2}></MenuButton>

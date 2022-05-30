@@ -1,0 +1,16 @@
+.raffleBox {
+  background: #171717;
+  box-shadow: 11px 13px 12px 10px rgba(0, 0, 0, 0.66);
+  padding: 20px;
+  border-radius: 10px;
+  transition: 0.4s;
+}
+
+.raffleBox img {
+  border-radius: 10px;
+}
+
+.raffleBox:hover {
+  transform: translateY(-10px);
+  cursor: pointer;
+}
