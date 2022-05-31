@@ -402,12 +402,12 @@ const raffles = [
 ];
 
 const Raffles = () => {
-  const [time, setTime] = useState("");
+  const [countdown, setCountdown] = useState("");
   const Completionist = () => <span>Raffle closed!</span>;
   const renderer = ({ hours, minutes, seconds, completed }) => {
     if (completed) {
       // Render a completed state
-      setTime("over");
+      setCountdown("over");
       return <Completionist />;
     } else {
       // Render a countdown
@@ -437,7 +437,9 @@ const Raffles = () => {
                 <div className={raffleStyles.raffleBox}>
                   <img
                     className={`${
-                      time === "over" ? `${raffleStyles.closedRaffleImg}` : ""
+                      countdown === "over"
+                        ? `${raffleStyles.closedRaffleImg}`
+                        : ""
                     }`}
                     src={raffleImg}
                     alt=""
@@ -456,7 +458,7 @@ const Raffles = () => {
                       >
                         <HiTicket
                           className={`${
-                            time === "over"
+                            countdown === "over"
                               ? `${raffleStyles.ticketIconGray}`
                               : `${raffleStyles.ticketIcon}`
                           }`}
@@ -475,12 +477,12 @@ const Raffles = () => {
                       <button
                         onClick={() => handleOnclick(raffle._id)}
                         className={`${
-                          time === "over"
+                          countdown === "over"
                             ? `${raffleStyles.raffleBtnGray}`
                             : `${raffleStyles.raffleBtn}`
                         }`}
                       >
-                        {time !== "over" ? "Join Raffle" : "View Winners"}
+                        {countdown !== "over" ? "Join Raffle" : "View Winners"}
                       </button>
                     </Box>
                   </Box>
