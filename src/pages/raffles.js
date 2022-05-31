@@ -15,6 +15,7 @@ import * as raffleStyles from "../styles/Raffle.module.css";
 import raffleImg from "../images/assets/pantha.webp";
 import { HiTicket } from "react-icons/hi";
 import Countdown from "react-countdown";
+import { navigate } from "gatsby";
 
 const raffles = [
   {
@@ -417,7 +418,9 @@ const Raffles = () => {
       );
     }
   };
-  console.log(time);
+  const handleOnclick = (id) => {
+    navigate(`/raffles/${id}`);
+  };
   return (
     <>
       <Metadata
@@ -470,6 +473,7 @@ const Raffles = () => {
                     </Box>
                     <Box>
                       <button
+                        onClick={() => handleOnclick(raffle._id)}
                         className={`${
                           time === "over"
                             ? `${raffleStyles.raffleBtnGray}`
