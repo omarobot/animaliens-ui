@@ -1,4 +1,6 @@
-import { Buffer } from "buffer";
+import {
+  Buffer
+} from "buffer";
 import {
   BigNum,
   PlutusData,
@@ -9,10 +11,10 @@ export const fromHex = (hex) => Buffer.from(hex, "hex");
 export const toHex = (bytes) => Buffer.from(bytes).toString("hex");
 export const toBytesNum = (num) =>
   num
-    .toString()
-    .split("")
-    .map((d) => "3" + d)
-    .join("");
+  .toString()
+  .split("")
+  .map((d) => "3" + d)
+  .join("");
 export const fromAscii = (hex) => Buffer.from(hex).toString("hex");
 
 export const assetsToValue = (assets) => {
@@ -21,8 +23,8 @@ export const assetsToValue = (assets) => {
   const policies = [
     ...new Set(
       assets
-        .filter((asset) => asset.unit !== "lovelace")
-        .map((asset) => asset.unit.slice(0, 56))
+      .filter((asset) => asset.unit !== "lovelace")
+      .map((asset) => asset.unit.slice(0, 56))
     ),
   ];
   policies.forEach((policy) => {
@@ -50,7 +52,10 @@ export const assetsToValue = (assets) => {
 
 export const valueToAssets = (value) => {
   const assets = [];
-  assets.push({ unit: "lovelace", quantity: value.coin().to_str() });
+  assets.push({
+    unit: "lovelace",
+    quantity: value.coin().to_str()
+  });
   if (value.multiasset()) {
     const multiAssets = value.multiasset().keys();
     for (let j = 0; j < multiAssets.len(); j++) {

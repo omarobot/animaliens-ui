@@ -34,7 +34,7 @@ const CONTRACT = () => {
 
 const CONTRACT_ADDRESS = () =>
   Loader.Cardano.Address.from_bech32(
-    "addr_test1wrfc08nm6zsrc5xncysezjhxkj30g0k2ushkfschgdky9dcamwdc8"
+    "addr_test1wpuw9hhp2lsc78dzjtcwhkg4lv4p98up74cqjn7zy6c0djcr0zfk0"
   );
 
 // Datums
@@ -541,6 +541,9 @@ class SpaceBudzMarket {
     console.log(size);
     if (size > this.protocolParameters.maxTxSize)
       throw new Error("MAX_SIZE_REACHED");
+    console.log("past max size error");
+    console.log(toHex(tx.to_bytes()));
+
     let txVkeyWitnesses = await window.cardano.selectedWallet.signTx(
       toHex(tx.to_bytes()),
       true
@@ -556,6 +559,8 @@ class SpaceBudzMarket {
     );
 
     console.log("Full Tx Size", signedTx.to_bytes().length);
+    console.log("Transaction:", toHex(signedTx.to_bytes()));
+
 
     const txHash = await window.cardano.selectedWallet.submitTx(
       toHex(signedTx.to_bytes())
@@ -567,45 +572,52 @@ class SpaceBudzMarket {
    * @private
    */
   splitAmount(lovelaceAmount, address, outputs) {
+
+    //owner1 is communit, 4%
+    //owner2 is team, 2%
+    //extrafee is project, 2%
+
     if (
-      lovelaceAmount.compare(Loader.Cardano.BigNum.from_str("400000000")) ==
-      1 ||
-      lovelaceAmount.compare(Loader.Cardano.BigNum.from_str("400000000")) == 0
+      true
+      // lovelaceAmount.compare(Loader.Cardano.BigNum.from_str("400000000")) ==
+      // 1 ||
+      // lovelaceAmount.compare(Loader.Cardano.BigNum.from_str("400000000")) == 0
     ) {
       const [amount1, amount2, amount3] = [
-        lovelacePercentage(lovelaceAmount, this.contractInfo.owner1.fee2),
+        lovelacePercentage(lovelaceAmount, this.contractInfo.owner1.fee1),
         lovelacePercentage(lovelaceAmount, this.contractInfo.owner2.fee),
         lovelacePercentage(lovelaceAmount, this.contractInfo.extraFee),
       ];
-      if (
-        this.extraFeeRecipient.to_bech32() ==
-        this.contractInfo.owner1.address.to_bech32() // if owner is same as fee recipient, no reason to split up utxo extra
-      ) {
-        outputs.add(
-          this.createOutput(
-            this.contractInfo.owner1.address,
-            Loader.Cardano.Value.new(amount1.checked_add(amount3))
-          )
-        );
-      } else {
-        outputs.add(
-          this.createOutput(
-            this.contractInfo.owner1.address,
-            Loader.Cardano.Value.new(amount1)
-          )
-        );
-        outputs.add(
-          this.createOutput(
-            this.extraFeeRecipient,
-            Loader.Cardano.Value.new(amount3)
-          )
-        );
-      }
+      // if (
+      //   this.extraFeeRecipient.to_bech32() ==
+      //   this.contractInfo.owner1.address.to_bech32() // if owner is same as fee recipient, no reason to split up utxo extra
+      // ) {
+      //   outputs.add(
+      //     this.createOutput(
+      //       this.contractInfo.owner1.address,
+      //       Loader.Cardano.Value.new(amount1.checked_add(amount3))
+      //     )
+      //   );
+      // } else {
+      outputs.add(
+        this.createOutput(
+          this.contractInfo.owner1.address,
+          Loader.Cardano.Value.new(amount1)
+        )
+      );
+      // }
 
       outputs.add(
         this.createOutput(
           this.contractInfo.owner2.address,
           Loader.Cardano.Value.new(amount2)
+        )
+      );
+
+      outputs.add(
+        this.createOutput(
+          this.extraFeeRecipient,
+          Loader.Cardano.Value.new(amount3)
         )
       );
 
@@ -621,22 +633,22 @@ class SpaceBudzMarket {
         )
       );
     } else {
-      const amount1 = lovelacePercentage(
-        lovelaceAmount,
-        this.contractInfo.owner1.fee1
-      );
-      outputs.add(
-        this.createOutput(
-          this.contractInfo.owner1.address,
-          Loader.Cardano.Value.new(amount1)
-        )
-      );
-      outputs.add(
-        this.createOutput(
-          address,
-          Loader.Cardano.Value.new(lovelaceAmount.checked_sub(amount1))
-        )
-      );
+      // const amount1 = lovelacePercentage(
+      //   lovelaceAmount,
+      //   this.contractInfo.owner1.fee1
+      // );
+      // outputs.add(
+      //   this.createOutput(
+      //     this.contractInfo.owner1.address,
+      //     Loader.Cardano.Value.new(amount1)
+      //   )
+      // );
+      // outputs.add(
+      //   this.createOutput(
+      //     address,
+      //     Loader.Cardano.Value.new(lovelaceAmount.checked_sub(amount1))
+      //   )
+      // );
     }
   }
 
@@ -676,20 +688,32 @@ class SpaceBudzMarket {
       policyBid: "800df05a0cc6b6f0d28aaa1812135bd9eebfbf5e8e80fd47da9989eb",
       prefixSpaceBud: "Animaliens",
       prefixSpaceBudBid: "Animaliens",
-      owner1: {
+      owner1: { //community
         address: Loader.Cardano.Address.from_bech32(
-          "addr1qxpxm8a0uxe6eu2m6fgdu6wqfclujtzyjdu9jw0qdxfjaz02h5ngjz7fftac5twlxj6jha4meenh6476m5xdwmeyh4hq0zeknx"
+          "addr_test1qztnrcmw7v7r4wmrdag6pwwws0d2hjclup5h0np5rrq3upc6l229l00k2vwzchctcrcvtfuwkhmz2gw0m7y73hg60sfqg5ypt9"
         ),
-        fee1: Loader.Cardano.BigNum.from_str("416"), // 2.4%
-        fee2: Loader.Cardano.BigNum.from_str("625"), // 1.6%
+        fee1: Loader.Cardano.BigNum.from_str("250"), // 2.4%
+        // fee2: Loader.Cardano.BigNum.from_str("625"), // 1.6%
       },
-      owner2: {
+      owner2: { // project
         address: Loader.Cardano.Address.from_bech32(
-          "addr1qxyzd8utq5d88ycqle6r57e32qn0gc2vuysk5ja5t4lapavecd72l0wcsvv6t3vgj097k6a5jr4lz5pppkkf6tp83s2q9sv7dv"
+          "addr_test1qr67x3mfp4lmj9w9lwr4j709up825agk7pgjkutp7smmdjnr7c2zvu4qhvdwvs2t02f7vp53efmumq9m9t0er546c27qeade94"
         ),
-        fee: Loader.Cardano.BigNum.from_str("2500"), // 0.4%
+        fee: Loader.Cardano.BigNum.from_str("500"), // 500
       },
-      extraFee: Loader.Cardano.BigNum.from_str("2500"), // 0.4%
+      extraFee: Loader.Cardano.BigNum.from_str("500"), // 0.4%  //team
+      // team: {
+      //   fee: Loader.Cardano.BigNum.from_str("500"),
+      //   address: "addr_test1qr4kgj9w74qjny85ekhncnawmtkzxrhts9wjwejr68zt5js7c8ds4tg8t4asr7gkcfjgh4gesygqpq73jxlvsjm24wzse0sy2w"
+      // },
+      // project: {
+      //   fee: Loader.Cardano.BigNum.from_str("500"),
+      //   address: "addr_test1qr4kgj9w74qjny85ekhncnawmtkzxrhts9wjwejr68zt5js7c8ds4tg8t4asr7gkcfjgh4gesygqpq73jxlvsjm24wzse0sy2w"
+      // },
+      // community: {
+      //   fee: Loader.Cardano.BigNum.from_str("250"),
+      //   address: "addr_test1qz2wcjjxl50u0vmqs399dhng94uc7q94j9l3qgmz464j52hmxclsxzjuzgj52rruu9l5jur9zvs4kljf82g6m24jucksuad240"
+      // },
       minPrice: Loader.Cardano.BigNum.from_str("70000000"),
       bidStep: Loader.Cardano.BigNum.from_str("10000"),
     };
@@ -1021,6 +1045,7 @@ class SpaceBudzMarket {
       outputs
     } = await this.initTx();
     budId = budId.toString();
+    console.log(budId);
     if (
       Loader.Cardano.BigNum.from_str(requestedAmount).compare(
         this.contractInfo.minPrice
@@ -1084,6 +1109,7 @@ class SpaceBudzMarket {
 
     const datumType = offerUtxo.datum.as_constr_plutus_data().tag().as_i32();
     const tradeDetails = getTradeDetails(offerUtxo.datum);
+    console.log(tradeDetails);
     const value = offerUtxo.utxo.output().amount();
     const lovelaceAmount = tradeDetails.requestedAmount;
     if (datumType !== DATUM_TYPE.Offer)

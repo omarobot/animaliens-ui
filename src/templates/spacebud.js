@@ -134,7 +134,7 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
         base: "https://cardano-testnet.blockfrost.io/api/v0",
         projectId: secrets.PROJECT_ID,
       },
-      "addr_test1qq4a3zhfwdk4nw74w98smmg5vj8cel7f7h5wsh8280asx0m5m8rexkuvsx8csg0xjq06dsa7f4yvdphq85yhnm9t7ghsul68rf"
+      "addr_test1qr0gfftzkefvl55twjn6r3rwdau28njf3q99cpumalf0nypauvyp0rjs3fcrspvwykhyd88z0zewr47n0epwnz292pksnena9q"
     );
     await market.current.load();
   };
