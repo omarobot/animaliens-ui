@@ -15,7 +15,7 @@ export default class HTML extends React.Component {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
           {this.props.headComponents}
-          <link rel="shortcut icon" href={favicon} />
+          {/* <link rel="shortcut icon" href={favicon} /> */}
           <link rel="apple-touch-icon" href={appleTouch} />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

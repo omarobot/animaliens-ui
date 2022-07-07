@@ -17,18 +17,20 @@ import React from "react";
 import { FiMenu } from "react-icons/fi";
 // import * as style from "../../components/Header/Tab.module.css";
 import newLogo from "../../images/assets/logo_face_white.svg";
+import nebula from "../../images/assets/nebula2.png";
 import * as style from "../Header/sidebar.module.css";
 
 const LinkItems = [
   { name: "          ", link: "/" },
   { name: "Store", link: "/explore" },
-  { name: "Lotto", link: "/tutorial" },
+  { name: "Tuition", link: "/tutorial" },
+  { name: "Raffles", link: "/raffles" },
+
   // { name: 'Rarities', link: '/tutorial'},
   // { name: 'Marketplace', link: '/tutorial'  },
 
   { name: "About Us", link: "/about" },
-  { name: "New Raffle", link: "/new-raffle" },
-  { name: "Raffles", link: "/raffles" },
+  // { name: "New Raffle", link: "/new-raffle" },
   // { name: 'How to Buy', link: '/tutorial'  },
 ];
 
@@ -82,6 +84,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
             cursor: "pointer",
             zIndex: 2,
             textAlign: "center",
+            marginTop: "50px",
+            padding: "10px 0 10px 0"
           }}
           onClick={() => {
             navigate("/");
@@ -90,8 +94,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
         >
           <img
             draggable={false}
-            width={!matches.lg ? 150 : 120}
-            src={newLogo}
+            width={!matches.lg ? 300 : 300}
+            src={nebula}
           />
         </div>
         <CloseButton

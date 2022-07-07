@@ -60,9 +60,12 @@ const Item = ({ bud, im, type, hasDouble }) => {
   React.useEffect(() => {
     const s = im.split("/");
     const hash = s[s.length - 1];
-    let link =
-      ipfsGateways[Math.floor(Math.random() * ipfsGateways.length)] + hash;
+    // let link =
+    //   ipfsGateways[Math.floor(Math.random() * ipfsGateways.length)] + hash;
     // getImageBase64(im, (data) => setImage("data:image/png;base64," + data));
+
+    let link = "https://gw3.easy-ipfs.com/ipfs/" + hash;
+
     const l = localStorage.getItem(hash);
     if (!l) {
       localStorage.setItem(hash, link);
@@ -201,8 +204,8 @@ const Item = ({ bud, im, type, hasDouble }) => {
             )}
           </div>
           <div style={{padding: '0px 15px'}}>
-            <div className="info">{`SpaceBud #${bud.id}`}</div>
-            <button
+            <div className="info">{`Animaliens #${bud.id}`}</div>
+            {/* <button
             className="price-btn"
                 >
                   <img
@@ -211,7 +214,7 @@ const Item = ({ bud, im, type, hasDouble }) => {
                     alt=""
                   />
                   4000
-                </button>
+                </button> */}
           </div>
         </Link>
       </div>
