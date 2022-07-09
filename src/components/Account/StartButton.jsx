@@ -227,6 +227,7 @@ const StartButton = (props) => {
         {/* <Box w={1} /> */}
         <Tooltip label={"Disconnect"}>
           <IconButton
+            style={{ color: "black" }}
             size={"xs"}
             rounded={"full"}
             icon={<SmallCloseIcon />}
@@ -256,6 +257,7 @@ const StartButton = (props) => {
             top: "20px",
             right: "3%",
             backgroundColor: "#30f100",
+            color: "black",
           }}
         >
           {/* <Image

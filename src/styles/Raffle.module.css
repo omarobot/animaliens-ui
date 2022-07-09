@@ -1,0 +1,60 @@
+.raffleBox {
+  background: #171717;
+  box-shadow: 11px 13px 12px 10px rgba(0, 0, 0, 0.66);
+  padding: 20px;
+  border-radius: 10px;
+  transition: 0.4s;
+}
+.singleRaffleBox {
+  background: #171717;
+  box-shadow: 11px 13px 12px 10px rgba(0, 0, 0, 0.66);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.raffleBox img {
+  border-radius: 10px;
+}
+.singleRaffleBox img {
+  border-radius: 10px;
+}
+
+.raffleBox:hover {
+  transform: translateY(-10px);
+  cursor: pointer;
+}
+.raffleBtn {
+  background: #30f100;
+  color: #171717;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.closedRaffleImg {
+  filter: grayscale(100%);
+}
+.ticketIcon {
+  color: #30f100;
+}
+.ticketIconGray {
+  color: #555555;
+}
+
+.raffleBtnGray {
+  background: #555555;
+  color: #30f100;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.inputField:focus {
+  border-color: #30f100 !important;
+}
+
+.minusBtn {
+}
+
+.plusBtn {
+}
