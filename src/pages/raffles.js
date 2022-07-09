@@ -12,21 +12,28 @@ import {
 import React, { useState } from "react";
 import Metadata from "../components/Metadata";
 import * as raffleStyles from "../styles/Raffle.module.css";
-import raffleImg from "../images/assets/pantha.webp";
 import { HiTicket } from "react-icons/hi";
 import Countdown from "react-countdown";
 import { navigate } from "gatsby";
+import kongs from "../images/assets/kongs.webp";
+import clay from "../images/assets/clay.webp";
+import disco from "../images/assets/disco.webp";
+import goats from "../images/assets/goats.webp";
+import yummi from "../images/assets/yummi.webp";
+import rocket from "../images/assets/rocketclub.webp";
+
+const raffleImg = "../../images/assets/";
 
 const raffles = [
   {
     _id: "6213f5a3a7361ccf1737be91",
-    name: "Monke #2618",
+    name: "Chilled Kongs #2618",
     symbol: "monke#2618",
     supply: 1,
     price: 10,
     endDate: "2022-02-25T22:00:00.000Z",
     ended: false,
-    image: "/monkerejects2618.png",
+    image: kongs,
     category: "NFT",
     winners: [
       {
@@ -42,13 +49,13 @@ const raffles = [
   },
   {
     _id: "6213f5a3a7361ccf1737be92",
-    name: "MonkeLabs #1454",
+    name: "Disco Solaris #1454",
     symbol: "monkelabs#1454",
     supply: 1,
     price: 10,
     endDate: "2022-02-23T08:00:00.000Z",
     ended: true,
-    image: "/monkelabs1454.gif",
+    image: disco,
     category: "NFT",
     winners: [
       {
@@ -62,12 +69,12 @@ const raffles = [
   },
   {
     _id: "6213f5a3a7361ccf1737b105",
-    name: "FFF #4416",
+    name: "Clay Nation #4416",
     symbol: "FFF#4416",
     supply: 1,
     price: 10,
     endDate: "2022-03-06T07:00:00.000Z",
-    image: "/FFF4416.jpeg",
+    image: clay,
     category: "NFT",
     winners: [
       {
@@ -82,13 +89,13 @@ const raffles = [
   },
   {
     _id: "6213f5a3a7361ccf1737b104",
-    name: "MonkeLabs #513",
+    name: "Boss Cat Rocket Club #513",
     symbol: "monkelabs#513",
     supply: 1,
     price: 10,
     endDate: "2022-03-06T07:00:00.000Z",
     ended: true,
-    image: "/MonkeLab513.gif",
+    image: rocket,
     category: "NFT",
     winners: [
       {
@@ -103,13 +110,13 @@ const raffles = [
   },
   {
     _id: "6213f5a3a7361ccf1737b100",
-    name: "Infinity Girls",
+    name: "Goat Tribe",
     symbol: "infinitygirls",
     supply: 30,
     price: 10,
     endDate: "2022-03-06T07:00:00.000Z",
     ended: false,
-    image: "/infinitygirls.gif",
+    image: goats,
     category: "Whitelist spots",
     winners: [
       {
@@ -254,12 +261,12 @@ const raffles = [
   },
   {
     _id: "6213f5a3a7361ccf1737b200",
-    name: "Quantum Trader #5693",
+    name: "Yummi Universe #5693",
     symbol: "QuantumTrader#5693",
     supply: 1,
     price: 10,
     endDate: "2022-03-12T10:00:00.000Z",
-    image: "/Quantum_Trader_5693.png",
+    image: yummi,
     category: "NFT",
     winners: [
       {
@@ -272,115 +279,115 @@ const raffles = [
     twitter: "https://twitter.com/QuantumTraders_",
     website: "https://www.yawww.io/",
   },
-  {
-    _id: "6213f5aba7361ccf1737be95",
-    name: "Cats On Crack",
-    symbol: "catsoncrack",
-    supply: 10,
-    price: 10,
-    endDate: "2022-02-23T08:00:00.000Z",
-    ended: true,
-    image: "/catsoncrack.jpeg",
-    website: "https://catsoncrack.xyz/",
-    twitter: "https://twitter.com/catsoncrack_",
-    category: "Whitelist spots",
-    winners: [
-      {
-        wallet: "BUBJ6c7CXLxTeB4RxXCNXLm5iHFGXujmSw9aTTX6z3u",
-        entries: 5,
-        claimed: true,
-      },
-      {
-        wallet: "Aet5jqp44n8X8y3gm6bzHXd6BpWTWFJNkG5GdaCAhUv9",
-        entries: 15,
-        claimed: true,
-      },
-      {
-        wallet: "2BfHRMiMdYpBn9GVhKZyaMBqpgchyGJNiRhYarAmg8gG",
-        entries: 20,
-        claimed: true,
-      },
-      {
-        wallet: "8JKMbMHgF7mPmt8d9QK9NHJFZU2n6TuH8DofykdSBptc",
-        entries: 3,
-        claimed: true,
-      },
-      {
-        wallet: "GAMJukrJwUf9fatECxEDV6kz7hvzLA51hfhq3EGeF6WP",
-        entries: 1,
-        claimed: true,
-      },
-      {
-        wallet: "FcH1hr2HF6rhpvcjUQ4ggvbJ9y228VSz7QnYdJrfex8G",
-        entries: 1,
-        claimed: true,
-      },
-      {
-        wallet: "6fevqx3pzSgwvYquHRBywkH2Sg6NTnZW6tt6CoaCBd9N",
-        entries: 1,
-        claimed: true,
-      },
-      {
-        wallet: "Z3mEG89HKsCpSyq5xx2z7srNN2VgHLsp5Dn5TagZwnq",
-        entries: 3,
-      },
-      {
-        wallet: "BYFdJ4K7LLahu7H9bSafDb1dGcKqqatgR9Zm8W8kYGp3",
-        entries: 20,
-        claimed: true,
-      },
-      {
-        wallet: "7nyuePN3uqGYad7sntL1ThLT3VxWzEkFG6iGP4WFbe7S",
-        entries: 6,
-        claimed: true,
-      },
-    ],
-    collectionSize: "6969",
-  },
-  {
-    _id: "6213f5a3a7361ccf1737b106",
-    name: "Solana Money Boy #3724",
-    symbol: "SMBoy#3724",
-    supply: 1,
-    price: 10,
-    endDate: "2022-03-06T07:00:00.000Z",
-    image: "/SolanaMoneyBoy3724.png",
-    category: "NFT",
-    winners: [
-      {
-        wallet: "8NfL1oNAwGyKX1ESHk1ffaP3nEXkEiHeL5qpXaGrATvh",
-        entries: 14,
-      },
-    ],
-    collectionSize: "4444",
-    discord: "https://discord.com/invite/Ju33zkjCGe",
-    twitter: "https://twitter.com/SolanaMoneyBoys",
-    website: "https://www.solanamoneyboys.com/",
-  },
-  {
-    _id: "6213f5a3a7361ccf1737b103",
-    name: "The Simians #344",
-    symbol: "thesimians#344",
-    supply: 1,
-    price: 10,
-    endDate: "2022-03-06T07:00:00.000Z",
-    image: "/TheSimians344.png",
-    category: "NFT",
-    winners: [
-      {
-        wallet: "4W9mfGkogM3vYxemp1We5sPcCGX3Dyz756k64ei4UZ95",
-        entries: 1,
-        claimed: true,
-      },
-    ],
-    collectionSize: "1110",
-    discord: "https://discord.gg/Simians",
-    twitter: "https://twitter.com/SimiansNFT",
-    website: "https://simiansuniverse.com/",
-  },
+  // {
+  //   _id: "6213f5aba7361ccf1737be95",
+  //   name: "Cats On Crack",
+  //   symbol: "catsoncrack",
+  //   supply: 10,
+  //   price: 10,
+  //   endDate: "2022-02-23T08:00:00.000Z",
+  //   ended: true,
+  //   image: "/catsoncrack.jpeg",
+  //   website: "https://catsoncrack.xyz/",
+  //   twitter: "https://twitter.com/catsoncrack_",
+  //   category: "Whitelist spots",
+  //   winners: [
+  //     {
+  //       wallet: "BUBJ6c7CXLxTeB4RxXCNXLm5iHFGXujmSw9aTTX6z3u",
+  //       entries: 5,
+  //       claimed: true,
+  //     },
+  //     {
+  //       wallet: "Aet5jqp44n8X8y3gm6bzHXd6BpWTWFJNkG5GdaCAhUv9",
+  //       entries: 15,
+  //       claimed: true,
+  //     },
+  //     {
+  //       wallet: "2BfHRMiMdYpBn9GVhKZyaMBqpgchyGJNiRhYarAmg8gG",
+  //       entries: 20,
+  //       claimed: true,
+  //     },
+  //     {
+  //       wallet: "8JKMbMHgF7mPmt8d9QK9NHJFZU2n6TuH8DofykdSBptc",
+  //       entries: 3,
+  //       claimed: true,
+  //     },
+  //     {
+  //       wallet: "GAMJukrJwUf9fatECxEDV6kz7hvzLA51hfhq3EGeF6WP",
+  //       entries: 1,
+  //       claimed: true,
+  //     },
+  //     {
+  //       wallet: "FcH1hr2HF6rhpvcjUQ4ggvbJ9y228VSz7QnYdJrfex8G",
+  //       entries: 1,
+  //       claimed: true,
+  //     },
+  //     {
+  //       wallet: "6fevqx3pzSgwvYquHRBywkH2Sg6NTnZW6tt6CoaCBd9N",
+  //       entries: 1,
+  //       claimed: true,
+  //     },
+  //     {
+  //       wallet: "Z3mEG89HKsCpSyq5xx2z7srNN2VgHLsp5Dn5TagZwnq",
+  //       entries: 3,
+  //     },
+  //     {
+  //       wallet: "BYFdJ4K7LLahu7H9bSafDb1dGcKqqatgR9Zm8W8kYGp3",
+  //       entries: 20,
+  //       claimed: true,
+  //     },
+  //     {
+  //       wallet: "7nyuePN3uqGYad7sntL1ThLT3VxWzEkFG6iGP4WFbe7S",
+  //       entries: 6,
+  //       claimed: true,
+  //     },
+  //   ],
+  //   collectionSize: "6969",
+  // },
+  // {
+  //   _id: "6213f5a3a7361ccf1737b106",
+  //   name: "Solana Money Boy #3724",
+  //   symbol: "SMBoy#3724",
+  //   supply: 1,
+  //   price: 10,
+  //   endDate: "2022-03-06T07:00:00.000Z",
+  //   image: "/SolanaMoneyBoy3724.png",
+  //   category: "NFT",
+  //   winners: [
+  //     {
+  //       wallet: "8NfL1oNAwGyKX1ESHk1ffaP3nEXkEiHeL5qpXaGrATvh",
+  //       entries: 14,
+  //     },
+  //   ],
+  //   collectionSize: "4444",
+  //   discord: "https://discord.com/invite/Ju33zkjCGe",
+  //   twitter: "https://twitter.com/SolanaMoneyBoys",
+  //   website: "https://www.solanamoneyboys.com/",
+  // },
+  // {
+  //   _id: "6213f5a3a7361ccf1737b103",
+  //   name: "The Simians #344",
+  //   symbol: "thesimians#344",
+  //   supply: 1,
+  //   price: 10,
+  //   endDate: "2022-03-06T07:00:00.000Z",
+  //   image: "/TheSimians344.png",
+  //   category: "NFT",
+  //   winners: [
+  //     {
+  //       wallet: "4W9mfGkogM3vYxemp1We5sPcCGX3Dyz756k64ei4UZ95",
+  //       entries: 1,
+  //       claimed: true,
+  //     },
+  //   ],
+  //   collectionSize: "1110",
+  //   discord: "https://discord.gg/Simians",
+  //   twitter: "https://twitter.com/SimiansNFT",
+  //   website: "https://simiansuniverse.com/",
+  // },
   {
     _id: "622ef3cfae15062720fddefe",
-    symbol: "NukedApe#2280",
+    symbol: "NukedApe #2280",
     __v: 0,
     category: "NFT",
     collectionSize: "4200",
@@ -403,7 +410,7 @@ const raffles = [
 
 const Raffles = () => {
   const [countdown, setCountdown] = useState("");
-  const Completionist = () => <span>Raffle closed!</span>;
+  const Completionist = () => <span> Raffle closed! </span>;
   const renderer = ({ hours, minutes, seconds, completed }) => {
     if (completed) {
       // Render a completed state
@@ -413,7 +420,7 @@ const Raffles = () => {
       // Render a countdown
       return (
         <span>
-          Ends in: {hours}:{minutes}:{seconds}
+          Ends in: {hours}: {minutes}: {seconds}{" "}
         </span>
       );
     }
@@ -428,70 +435,96 @@ const Raffles = () => {
         title="Raffle"
         description="Collect your unique SpaceBud as NFT on the Cardano blockchain."
       />
-      {/* main content  */}
+      {/* main content  */}{" "}
       <main>
         <Box p={2} m={20}>
-          <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing="40px">
-            {raffles.map((raffle) => (
+          <SimpleGrid
+            columns={{
+              sm: 1,
+              md: 2,
+              lg: 3,
+            }}
+            spacing="40px"
+          >
+            {" "}
+            {raffles.map((raffle, i) => (
               <Box key={raffle._id} height="100%">
                 <div className={raffleStyles.raffleBox}>
                   <img
                     className={`${
-                      countdown === "over"
-                        ? `${raffleStyles.closedRaffleImg}`
-                        : ""
+                      i > 4 ? `${raffleStyles.closedRaffleImg}` : ""
                     }`}
-                    src={raffleImg}
+                    src={raffle.image}
                     alt=""
                   />
-                  <Box sx={{ p: 2, textAlign: "center" }}>
+                  <Box
+                    sx={{
+                      p: 2,
+                      textAlign: "center",
+                    }}
+                  >
                     <Heading
                       as="h3"
                       size={"md"}
-                      sx={{ textAlign: "center", my: 4 }}
+                      sx={{
+                        textAlign: "center",
+                        my: 4,
+                      }}
                     >
-                      {raffle.name}
-                    </Heading>
-                    <Flex justifyContent="center" gap={20} sx={{ my: 4 }}>
+                      {" "}
+                      {raffle.name}{" "}
+                    </Heading>{" "}
+                    <Flex
+                      justifyContent="center"
+                      gap={20}
+                      sx={{
+                        my: 4,
+                      }}
+                    >
                       <Text
-                        sx={{ display: "flex", gap: 2, alignItems: "center" }}
+                        sx={{
+                          display: "flex",
+                          gap: 2,
+                          alignItems: "center",
+                        }}
                       >
                         <HiTicket
                           className={`${
-                            countdown === "over"
+                            i > 4
                               ? `${raffleStyles.ticketIconGray}`
                               : `${raffleStyles.ticketIcon}`
                           }`}
                         />{" "}
-                        100
-                      </Text>
-                      <span>20 winners</span>
-                    </Flex>
+                        888{" "}
+                      </Text>{" "}
+                      <span> 1 Winner(s) </span>{" "}
+                    </Flex>{" "}
                     <Box>
                       <Countdown
-                        date={Date.now() + 10000}
+                        date={Date.now() + 1000000}
                         renderer={renderer}
-                      />
-                    </Box>
+                      />{" "}
+                    </Box>{" "}
                     <Box>
                       <button
                         onClick={() => handleOnclick(raffle._id)}
                         className={`${
-                          countdown === "over"
+                          i > 4
                             ? `${raffleStyles.raffleBtnGray}`
                             : `${raffleStyles.raffleBtn}`
                         }`}
                       >
-                        {countdown !== "over" ? "Join Raffle" : "View Winners"}
-                      </button>
-                    </Box>
-                  </Box>
-                </div>
+                        {" "}
+                        {i <= 4 ? "Join Raffle" : "View Winners"}{" "}
+                      </button>{" "}
+                    </Box>{" "}
+                  </Box>{" "}
+                </div>{" "}
               </Box>
-            ))}
-          </SimpleGrid>
-        </Box>
-      </main>
+            ))}{" "}
+          </SimpleGrid>{" "}
+        </Box>{" "}
+      </main>{" "}
     </>
   );
 };

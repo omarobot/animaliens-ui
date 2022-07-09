@@ -33,6 +33,8 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 
+import kongs from "../../images/assets/kongs.webp";
+
 const winners = [
   {
     id: "1",
@@ -64,7 +66,7 @@ const RaffleDes = ({ params }) => {
   console.log(params.id);
   const [countdown, setCountdown] = useState("");
   const [tickets, setTickets] = useState(1);
-  const Completionist = () => <span></span>;
+  const Completionist = () => <span> </span>;
   const renderer = ({ hours, minutes, seconds, completed }) => {
     if (completed) {
       // Render a completed state
@@ -74,7 +76,7 @@ const RaffleDes = ({ params }) => {
       // Render a countdown
       return (
         <span>
-          Ends in: {hours}:{minutes}:{seconds}
+          Ends in: {hours}: {minutes}: {seconds}{" "}
         </span>
       );
     }
@@ -92,130 +94,244 @@ const RaffleDes = ({ params }) => {
         titleTwitter="SpaceBudz: Collectible Astronauts"
         title="Raffle"
         description="Collect your unique SpaceBud as NFT on the Cardano blockchain."
-      />
-      {/* main content  */}
+      />{" "}
+      {/* main content  */}{" "}
       <main>
         <Container maxW={"800px"} p={2} my={20}>
+          {" "}
           {countdown !== "over" ? (
             <Box>
-              <Flex justifyContent="center" gap={20} sx={{ my: 4 }}>
-                <Text sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-                  <HiTicket color="#30f100" /> Tickets sold: 100
-                </Text>
-                <Text sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-                  <AiFillFire color="#30f100" /> $DUST spent: 210
-                </Text>
-                <Text sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-                  <GiCrown color="#30f100" /> Unique wallets: 26
-                </Text>
-              </Flex>
+              <Flex
+                justifyContent="center"
+                gap={20}
+                sx={{
+                  my: 4,
+                }}
+              >
+                <Text
+                  sx={{
+                    display: "flex",
+                    gap: 2,
+                    alignItems: "center",
+                  }}
+                >
+                  <HiTicket color="#30f100" /> Tickets sold: 888{" "}
+                </Text>{" "}
+                <Text
+                  sx={{
+                    display: "flex",
+                    gap: 2,
+                    alignItems: "center",
+                  }}
+                >
+                  <AiFillFire color="#30f100" /> $IEN spent: 26640{" "}
+                </Text>{" "}
+                <Text
+                  sx={{
+                    display: "flex",
+                    gap: 2,
+                    alignItems: "center",
+                  }}
+                >
+                  <GiCrown color="#30f100" /> Unique wallets: 544{" "}
+                </Text>{" "}
+              </Flex>{" "}
             </Box>
           ) : (
-            <Box sx={{ textAlign: "center" }}>
-              <Box sx={{ display: "flex", justifyContent: "center" }}>
-                <img width={200} src={raffleImg} alt="" />
-              </Box>
-              <Box sx={{ my: 8 }}>
+            <Box
+              sx={{
+                textAlign: "center",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <img width={200} src={kongs} alt="" />
+              </Box>{" "}
+              <Box
+                sx={{
+                  my: 8,
+                }}
+              >
                 <Heading
                   as="h3"
                   size={"md"}
-                  sx={{ textAlign: "center", my: 4 }}
+                  sx={{
+                    textAlign: "center",
+                    my: 4,
+                  }}
                 >
-                  Name
-                </Heading>
-                <Flex justifyContent="center" gap={2} sx={{ my: 4 }}>
+                  Chilled Kongs #2618{" "}
+                </Heading>{" "}
+                <Flex
+                  justifyContent="center"
+                  gap={2}
+                  sx={{
+                    my: 4,
+                  }}
+                >
                   <a href="http://" target="_blank" rel="noopener noreferrer">
                     <FaDiscord color="#30f100" />
-                  </a>
+                  </a>{" "}
                   <a href="http://" target="_blank" rel="noopener noreferrer">
                     <FaTwitter color="#30f100" />
-                  </a>
-                </Flex>
-              </Box>
+                  </a>{" "}
+                </Flex>{" "}
+              </Box>{" "}
             </Box>
-          )}
-          <Box sx={{ mt: 20 }} className={raffleStyles.singleRaffleBox}>
+          )}{" "}
+          <Box
+            sx={{
+              mt: 20,
+            }}
+            className={raffleStyles.singleRaffleBox}
+          >
+            {" "}
             {countdown !== "over" ? (
               <div>
-                <Box sx={{ my: 8 }}>
+                <Box
+                  sx={{
+                    my: 8,
+                  }}
+                >
                   <Heading
                     as="h3"
                     size={"md"}
-                    sx={{ textAlign: "center", my: 4 }}
+                    sx={{
+                      textAlign: "center",
+                      my: 4,
+                    }}
                   >
-                    Name
-                  </Heading>
-                  <Flex justifyContent="center" gap={2} sx={{ my: 4 }}>
+                    Chilled Kongs #2618{" "}
+                  </Heading>{" "}
+                  <Flex
+                    justifyContent="center"
+                    gap={2}
+                    sx={{
+                      my: 4,
+                    }}
+                  >
                     <a href="http://" target="_blank" rel="noopener noreferrer">
                       <FaDiscord color="#30f100" />
-                    </a>
+                    </a>{" "}
                     <a href="http://" target="_blank" rel="noopener noreferrer">
                       <FaTwitter color="#30f100" />
-                    </a>
-                  </Flex>
-                </Box>
-                <Flex gap={20} sx={{ my: 4 }}>
+                    </a>{" "}
+                  </Flex>{" "}
+                </Box>{" "}
+                <Flex
+                  gap={20}
+                  sx={{
+                    my: 4,
+                  }}
+                >
                   <Box>
-                    <img width={200} src={raffleImg} alt="" />
-                  </Box>
+                    <img width={200} src={kongs} alt="" />
+                  </Box>{" "}
                   <Box>
-                    <Box sx={{ my: 4 }}>
-                      <Heading as="h3" size="md" sx={{ my: 2 }}>
-                        Whitelist Spots
-                      </Heading>
-                      <Text as="span">45</Text>
-                    </Box>
-                    <Box sx={{ mt: 4, mb: 8 }}>
-                      <Heading as="h3" size="md" sx={{ my: 2 }}>
-                        Price
-                      </Heading>
-                      <Text as="span">2 $DUST/ticket</Text>
-                    </Box>
+                    <Box
+                      sx={{
+                        my: 4,
+                      }}
+                    >
+                      <Heading
+                        as="h3"
+                        size="md"
+                        sx={{
+                          my: 2,
+                        }}
+                      >
+                        Winner(s){" "}
+                      </Heading>{" "}
+                      <Text as="span"> 1 </Text>{" "}
+                    </Box>{" "}
+                    <Box
+                      sx={{
+                        mt: 4,
+                        mb: 8,
+                      }}
+                    >
+                      <Heading
+                        as="h3"
+                        size="md"
+                        sx={{
+                          my: 2,
+                        }}
+                      >
+                        Price{" "}
+                      </Heading>{" "}
+                      <Text as="span"> 3 $IEN / ticket </Text>{" "}
+                    </Box>{" "}
                     <Box>
+                      {" "}
                       {/* <button className={raffleStyles.minusBtn}> - </button>
-                    <input
-                      className={raffleStyles.inputField}
-                      type="number"
-                      value={1}
-                    />
-                    <button className={raffleStyles.plusBtn}>+</button> */}
+                              <input
+                                className={raffleStyles.inputField}
+                                type="number"
+                                value={1}
+                              />
+                              <button className={raffleStyles.plusBtn}>+</button> */}{" "}
                       <NumberInput
                         onChange={handleOnChange}
                         defaultValue={1}
                         min={1}
                         max={20}
                       >
-                        <NumberInputField className={raffleStyles.inputField} />
+                        <NumberInputField className={raffleStyles.inputField} />{" "}
                         <NumberInputStepper>
                           <NumberIncrementStepper />
                           <NumberDecrementStepper />
-                        </NumberInputStepper>
-                      </NumberInput>
-                    </Box>
-                  </Box>
+                        </NumberInputStepper>{" "}
+                      </NumberInput>{" "}
+                    </Box>{" "}
+                  </Box>{" "}
                   <Box>
-                    <Box sx={{ my: 4 }}>
-                      <Heading as="h3" size="md" sx={{ my: 2 }}>
-                        Collection Size
-                      </Heading>
-                      <Text as="span">6666</Text>
-                    </Box>
-                    <Box sx={{ mt: 4, mb: 8 }}>
-                      <Heading as="h3" size="md" sx={{ my: 2 }}>
-                        Raffle Ends
-                      </Heading>
+                    <Box
+                      sx={{
+                        my: 4,
+                      }}
+                    >
+                      <Heading
+                        as="h3"
+                        size="md"
+                        sx={{
+                          my: 2,
+                        }}
+                      >
+                        Collection Size{" "}
+                      </Heading>{" "}
+                      <Text as="span"> 8888 </Text>{" "}
+                    </Box>{" "}
+                    <Box
+                      sx={{
+                        mt: 4,
+                        mb: 8,
+                      }}
+                    >
+                      <Heading
+                        as="h3"
+                        size="md"
+                        sx={{
+                          my: 2,
+                        }}
+                      >
+                        Raffle Ends{" "}
+                      </Heading>{" "}
                       <Box>
                         <Countdown
-                          date={Date.now() + 10000}
+                          date={Date.now() + 1000000}
                           renderer={renderer}
-                        />
-                      </Box>
-                    </Box>
+                        />{" "}
+                      </Box>{" "}
+                    </Box>{" "}
                     <Button colorScheme="green">
-                      Buy {tickets} ticket (s){" "}
-                    </Button>
-                  </Box>
-                </Flex>
+                      Buy {tickets} &nbsp;ticket(s){" "}
+                    </Button>{" "}
+                  </Box>{" "}
+                </Flex>{" "}
               </div>
             ) : (
               <div>
@@ -223,33 +339,32 @@ const RaffleDes = ({ params }) => {
                   <Table colorScheme="green" variant="unstyled">
                     <Thead>
                       <Tr>
-                        <Th>Wallet</Th>
-                        <Th>Entries</Th>
-                        <Th>Claim</Th>
-                      </Tr>
-                    </Thead>
+                        <Th> Wallet </Th> <Th> Entries </Th> <Th> Claim </Th>{" "}
+                      </Tr>{" "}
+                    </Thead>{" "}
                     <Tbody>
+                      {" "}
                       {winners.map((winner) => (
                         <Tr key={winner.id}>
-                          <Td>{winner.wallet}</Td>
-                          <Td>{winner.entries}</Td>
+                          <Td> {winner.wallet} </Td> <Td> {winner.entries} </Td>{" "}
                           <Td>
+                            {" "}
                             {winner.claim === "yes" ? (
-                              <Text color="#30f100">Claimed</Text>
+                              <Text color="#30f100"> Claimed </Text>
                             ) : (
                               ""
-                            )}
-                          </Td>
+                            )}{" "}
+                          </Td>{" "}
                         </Tr>
-                      ))}
-                    </Tbody>
-                  </Table>
-                </TableContainer>
+                      ))}{" "}
+                    </Tbody>{" "}
+                  </Table>{" "}
+                </TableContainer>{" "}
               </div>
-            )}
-          </Box>
-        </Container>
-      </main>
+            )}{" "}
+          </Box>{" "}
+        </Container>{" "}
+      </main>{" "}
     </>
   );
 };

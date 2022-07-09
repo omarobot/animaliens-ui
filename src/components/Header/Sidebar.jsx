@@ -79,13 +79,16 @@ const SidebarContent = ({ onClose, ...rest }) => {
         {/* Logo */}
         <div
           style={{
-            display: "flex",
+            // display: "flex",
             alignItems: "center",
             cursor: "pointer",
             zIndex: 2,
             textAlign: "center",
             marginTop: "50px",
-            padding: "10px 0 10px 0"
+            padding: "10px 0 10px 0",
+            color: "#2ff101",
+            fontSize: "14px"
+
           }}
           onClick={() => {
             navigate("/");
@@ -97,6 +100,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
             width={!matches.lg ? 300 : 300}
             src={nebula}
           />
+          <p>by Animaliens</p>
         </div>
         <CloseButton
           display={{ base: "flex", lg: "none" }}
