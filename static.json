@@ -15,6 +15,9 @@
         },
         "/icons/*.png": {
             "Cache-Control": "public, max-age=31536000, immutable"
+        },
+        "/modules/**": {
+            "Content-Type": "application/wasm"
         }
     },
     "https_only": true,
