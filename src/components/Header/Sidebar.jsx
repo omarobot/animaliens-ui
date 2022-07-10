@@ -29,7 +29,7 @@ const LinkItems = [
   // { name: 'Rarities', link: '/tutorial'},
   // { name: 'Marketplace', link: '/tutorial'  },
 
-  { name: "About Us", link: "/about" },
+  { name: "Auctions", link: "/about" },
   // { name: "New Raffle", link: "/new-raffle" },
   // { name: 'How to Buy', link: '/tutorial'  },
 ];
