@@ -35,6 +35,7 @@
     "charming": "^3.0.2",
     "easy-peasy": "^4.0.1",
     "focus-visible": "^5.2.0",
+    "framer-motion": "^4.1.17",
     "gatsby": "^3.9.1",
     "gatsby-background-image": "^1.5.3",
     "gatsby-image": "^3.9.0",
