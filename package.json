@@ -27,7 +27,6 @@
     "@emurgo/cardano-serialization-lib-browser": "^9.1.0",
     "@geist-ui/react": "^2.2.0",
     "@geist-ui/react-icons": "^1.0.1",
-    "@loadable/component": "^5.15.0",
     "@mdi/js": "^5.7.55",
     "@mdi/react": "^1.4.0",
     "@react-icons/all-files": "^4.1.0",
@@ -36,7 +35,6 @@
     "charming": "^3.0.2",
     "easy-peasy": "^4.0.1",
     "focus-visible": "^5.2.0",
-    "framer-motion": "^4.1.17",
     "gatsby": "^3.9.1",
     "gatsby-background-image": "^1.5.3",
     "gatsby-image": "^3.9.0",
@@ -71,7 +69,6 @@
     "react-reveal": "^1.2.2",
     "react-spinners": "^0.10.6",
     "react-spring": "^8.0.25",
-    "react-vertical-timeline-component": "^3.5.2",
     "styled-components": "^5.2.1"
   }
 }

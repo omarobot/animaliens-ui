@@ -25,11 +25,11 @@ import * as homeStyles from "../styles/Home.module.css";
 // import tech2Connect from "../images/assets/tech2Connect.png";
 // import cause from "../images/assets/cause.png";
 // import eayikies from "../images/assets/eayikies.png";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
+// import {
+//   VerticalTimeline,
+//   VerticalTimelineElement,
+// } from "react-vertical-timeline-component";
+// import "react-vertical-timeline-component/style.min.css";
 
 const Landing = (props) => {
   const matches = useBreakpoint();
@@ -205,144 +205,7 @@ const Landing = (props) => {
           >
             <h3 className="title"> ROADMAP </h3>{" "}
           </div>{" "}
-          <div>
-            <VerticalTimeline>
-              <VerticalTimelineElement
-                className="vertical-timeline-element--work"
-                contentStyle={{ background: "rgb(110 48 255)", color: "#fff" }}
-                // date="2011 - present"
-                iconStyle={{ background: "#30F100", color: "#fff" }}
-                icon=""
-              >
-                <h3 className="vertical-timeline-element-title">
-                  Create NFT Collection
-                </h3>
-                {/* <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4> */}
-                <p>8,888 handrawn, programmatically generated NFTs</p>
-              </VerticalTimelineElement>
-              <VerticalTimelineElement
-                className="vertical-timeline-element--work"
-                // date="2006 - 2008"
-                contentStyle={{ background: "rgb(110 48 255)", color: "#fff" }}
-                iconStyle={{ background: "#30F100", color: "#fff" }}
-                icon=""
-              >
-                <h3 className="vertical-timeline-element-title">
-                  Secret Traits
-                </h3>
-                <p>
-                  Each Animaliens will be encrypted with a secret trait within
-                  the metadata. The secret trait can only be unlocked inside
-                  Planet Diablo.
-                </p>
-              </VerticalTimelineElement>
-              <VerticalTimelineElement
-                className="vertical-timeline-element--work"
-                // date="2010 - 2011"
-                contentStyle={{ background: "rgb(110 48 255)", color: "#fff" }}
-                iconStyle={{ background: "#30F100", color: "#fff" }}
-                icon=""
-              >
-                <h3 className="vertical-timeline-element-title">Marketplace</h3>
-                {/* <h4 className="vertical-timeline-element-subtitle">
-                San Francisco, CA
-              </h4> */}
-                <p>
-                  Our marketplace will be our project store. Here you will be
-                  able to buy raffle tickets, participate in auctions, trade our
-                  NFTs without service fees, and much more. Eventually you will
-                  be able to make purchases using our project token, $IEN.
-                </p>
-              </VerticalTimelineElement>
-              <VerticalTimelineElement
-                className="vertical-timeline-element--work"
-                // date="2008 - 2010"
-                contentStyle={{ background: "rgb(110 48 255)", color: "#fff" }}
-                iconStyle={{ background: "#fff", color: "#fff" }}
-                icon=""
-              >
-                <h3 className="vertical-timeline-element-title">
-                  Alienlist (Whitelist)
-                </h3>
-                <p>
-                  Join our discord to embark on challenges and earn a whitelist
-                  spot.
-                </p>
-              </VerticalTimelineElement>
-              <VerticalTimelineElement
-                className="vertical-timeline-element--work"
-                // date="2006 - 2008"
-                contentStyle={{ background: "rgb(110 48 255)", color: "#fff" }}
-                iconStyle={{ background: "#fff", color: "#fff" }}
-                icon=""
-              >
-                <h3 className="vertical-timeline-element-title">
-                  Planet Urus (Mint)
-                </h3>
-                <p>
-                  Each Animaliens NFT you mint will automatically grant you a
-                  raffle ticket to our tuition contest (more info up top). You
-                  will also automatically be teleported to Planet Urus to begin
-                  your journey.
-                </p>
-              </VerticalTimelineElement>
-              <VerticalTimelineElement
-                className="vertical-timeline-element--education"
-                // date="April 2013"
-                contentStyle={{ background: "rgb(110 48 255)", color: "#fff" }}
-                iconStyle={{ background: "#fff", color: "#fff" }}
-                icon=""
-              >
-                <h3 className="vertical-timeline-element-title">Token</h3>
-                <p>
-                  We will be launching $IEN, our project's native token that
-                  will be used to power our ecosystem.
-                </p>
-              </VerticalTimelineElement>
-              <VerticalTimelineElement
-                className="vertical-timeline-element--education"
-                // date="November 2012"
-                contentStyle={{ background: "rgb(110 48 255)", color: "#fff" }}
-                iconStyle={{ background: "#fff", color: "#30F100" }}
-                icon=""
-              >
-                <h3 className="vertical-timeline-element-title">Staking</h3>
-                {/* <h4 className="vertical-timeline-element-subtitle">
-                Certification
-              </h4> */}
-                <p>
-                  You will be able to stake your NFTs to earn $IEN. You will be
-                  able to use $IEN to migrate to the other planets, purchase
-                  raffle tickets, buy other NFTs, merchandise, and much much
-                  more.
-                </p>
-              </VerticalTimelineElement>
-              <VerticalTimelineElement
-                className="vertical-timeline-element--education"
-                // date="2002 - 2006"
-                contentStyle={{ background: "rgb(110 48 255)", color: "#fff" }}
-                iconStyle={{ background: "#fff", color: "#fff" }}
-                icon=""
-              >
-                <h3 className="vertical-timeline-element-title">
-                  Planet Diablo (Passage)
-                </h3>
-                <p>
-                  Planet Diablo will open up for passage. Only 4,444 Animaliens
-                  will be allowed access. You can gain access on our starship by
-                  burning 1 Animalien or buying a boarding pass with $IEN.
-                </p>
-              </VerticalTimelineElement>
-              <VerticalTimelineElement
-                className="vertical-timeline-element--education"
-                // date="2002 - 2006"
-                contentStyle={{ background: "#fff", color: "rgb(110 48 255)" }}
-              >
-                <h3 className="vertical-timeline-element-year">2023</h3>
-              </VerticalTimelineElement>
-              {/* <VerticalTimelineElement /> */}
-            </VerticalTimeline>
-          </div>
+          <div></div>
           {/* road map  start */}{" "}
           {/* <div
             style={{
