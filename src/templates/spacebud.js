@@ -29,13 +29,13 @@ import Market from "../cardano/market";
 // import secrets from "../../secrets";
 import { UnitDisplay } from "../components/UnitDisplay";
 import Loader from "../cardano/loader";
-import Show from "../images/assets/show.svg";
-import cardano from "../images/assets/CARDANO-LOGO.svg";
-import greenDot from "../images/assets/green-dot.svg";
-import redDot from "../images/assets/red-dot.svg";
-import blueDot from "../images/assets/blue-dot.svg";
-import yellowDot from "../images/assets/yellow-dot.svg";
-import indigoDot from "../images/assets/indigo-dot.svg";
+// import Show from "../images/assets/show.svg";
+// import cardano from "../images/assets/CARDANO-LOGO.svg";
+// import greenDot from "../images/assets/green-dot.svg";
+// import redDot from "../images/assets/red-dot.svg";
+// import blueDot from "../images/assets/blue-dot.svg";
+// import yellowDot from "../images/assets/yellow-dot.svg";
+// import indigoDot from "../images/assets/indigo-dot.svg";
 import "../styles/spacebud.css";
 
 const secrets = {

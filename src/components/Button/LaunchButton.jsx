@@ -1,7 +1,7 @@
 import React from "react";
 import "./LaunchButton.scss";
 import charming from "charming";
-import Spaceship from "../../images/assets/spaceship.svg";
+// import Spaceship from "../../images/assets/spaceship.svg";
 
 const LaunchButton = (props) => {
   React.useEffect(() => {
@@ -43,7 +43,7 @@ const LaunchButton = (props) => {
 
         <div className="animation">
           <div className="rocket">
-            <img width={30} src={Spaceship}></img>
+            {/* <img width={30} src={Spaceship}></img> */}
           </div>
           <div className="smoke">
             <i></i>

@@ -6,10 +6,10 @@ import { Box, Link } from "@chakra-ui/layout";
 import * as aboutStyles from "../styles/About.module.css";
 
 //assets
-import zeen from "../images/assets/zame.webp";
-import leen from "../images/assets/lenn.webp";
-import boots from "../images/assets/boots.webp";
-import maq from "../images/assets/maq.webp";
+// import zeen from "../images/assets/zame.webp";
+// import leen from "../images/assets/lenn.webp";
+// import boots from "../images/assets/boots.webp";
+// import maq from "../images/assets/maq.webp";
 
 const About = () => {
   return (
@@ -77,15 +77,11 @@ const About = () => {
                 of educational equality.{" "}
               </p>{" "}
             </div>{" "}
-            <div>
-              <img src={zeen} alt="" />
-            </div>{" "}
+            <div>{/* <img src={zeen} alt="" /> */}</div>{" "}
           </div>
           {/* team members 2  */}{" "}
           <div className={aboutStyles.teamMember}>
-            <div>
-              <img src={leen} alt="" />
-            </div>{" "}
+            <div>{/* <img src={leen} alt="" /> */}</div>{" "}
             <div className={aboutStyles.memberDes}>
               <h3> LENN THE CREATOR </h3>{" "}
               <p>
@@ -111,15 +107,11 @@ const About = () => {
                 ensure children can thrive in the next digital frontier.{" "}
               </p>{" "}
             </div>{" "}
-            <div>
-              <img src={boots} alt="" />
-            </div>{" "}
+            <div>{/* <img src={boots} alt="" /> */}</div>{" "}
           </div>
           {/* team members 4  */}{" "}
           <div className={aboutStyles.teamMember}>
-            <div>
-              <img src={maq} alt="" />
-            </div>{" "}
+            <div>{/* <img src={maq} alt="" /> */}</div>{" "}
             <div className={aboutStyles.memberDes}>
               <h3> MAQ THE WISE </h3>{" "}
               <p>

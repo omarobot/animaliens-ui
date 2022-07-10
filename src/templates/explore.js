@@ -14,7 +14,7 @@ import { Checkbox } from "@chakra-ui/checkbox";
 import { Spinner } from "@chakra-ui/spinner";
 import { Stack } from "@chakra-ui/react";
 import { StackDivider } from "@chakra-ui/react";
-import arrow from "../images/assets/Arrow.svg";
+// import arrow from "../images/assets/Arrow.svg";
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -117,7 +117,10 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
       .then((res) => res.json())
       .then((res) => res.offers);
     offers.forEach(({ budId, offer }) => {
-      spacebudz[budId] = { ...spacebudz[budId], price: offer.amount };
+      spacebudz[budId] = {
+        ...spacebudz[budId],
+        price: offer.amount,
+      };
     });
     fullList.current = initialOrder.map((id) => spacebudz[id]);
 
@@ -152,14 +155,13 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
         }}
       >
         <FloatingButton onClick={() => window.scrollTo(0, 0)} />
-
         <div
           style={{
             width: "100%",
             maxWidth: 1400,
           }}
         >
-          {/* <Headroom> */}
+          {/* <Headroom> */}{" "}
           <div
             style={{
               width: "100%",
@@ -205,8 +207,8 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
                     return;
                   }
                 }}
-              />
-              <Box h={5} />
+              />{" "}
+              <Box h={5} />{" "}
               <div
                 style={{
                   width: "100%",
@@ -222,7 +224,10 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
                     colorScheme="purple"
                     variant="solid"
                     rounded="2xl"
-                    style={{ backgroundColor: "#30F100", color: "#000" }}
+                    style={{
+                      backgroundColor: "#30F100",
+                      color: "#000",
+                    }}
                     leftIcon={<Icon path={mdiFilterOutline} size={0.7} />}
                   >
                     {array &&
@@ -241,16 +246,18 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
                           alignItems="center"
                           justifyContent="center"
                         >
-                          {numberOfAppliedFilter()}
+                          {numberOfAppliedFilter()}{" "}
                         </Box>
                       )}
-                    Apply Filter
-                  </Button>
+                    Apply Filter{" "}
+                  </Button>{" "}
                   <Button
                     colorScheme="purple"
                     variant="ghost"
                     rounded="2xl"
-                    style={{ color: "#30F100" }}
+                    style={{
+                      color: "#30F100",
+                    }}
                     onClick={() => {
                       window.history.pushState({}, null, `/explore/`);
                       setFilters({
@@ -260,53 +267,49 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
                       });
                     }}
                   >
-                    Reset
-                  </Button>
-                </ButtonGroup>
-              </div>
-            </div>
-          </div>
+                    Reset{" "}
+                  </Button>{" "}
+                </ButtonGroup>{" "}
+              </div>{" "}
+            </div>{" "}
+          </div>{" "}
           {/* </Headroom> */}
-
           {/* new tabs  */}
-
           {/*  <Stack
-            className="tab-stack"
-            style={{
-              backgroundColor: "#414040",
-              width: "50%",
-              margin: "auto",
-              justifyContent: "center",
-              alignItems: "center",
-              boxShadow: " 0px 4px 4px rgba(0, 0, 0, 0.25)",
-              padding: "5px 0px 5px 10px",
-              borderRadius: 50,
-            }}
-            direction={["column", "row"]}
-            spacing="24px"
-            divider={<StackDivider borderColor="#000000" />}
-          >
-            <Box>PRICE</Box>
-            <Box>SKIN TYPE</Box>
-            <Box>ACCESORIES</Box>
-            <Box>SEARCH ID</Box>
-            <Box
-              style={{
-                backgroundColor: "#30F100",
-                color: "#fff",
-                padding: "5px 20px",
-                borderRadius: 50,
-                marginLeft: 40,
-              }}
-            >
-              <img src={arrow} alt="" />
-            </Box>
-          </Stack> */}
-
+                      className="tab-stack"
+                      style={{
+                        backgroundColor: "#414040",
+                        width: "50%",
+                        margin: "auto",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        boxShadow: " 0px 4px 4px rgba(0, 0, 0, 0.25)",
+                        padding: "5px 0px 5px 10px",
+                        borderRadius: 50,
+                      }}
+                      direction={["column", "row"]}
+                      spacing="24px"
+                      divider={<StackDivider borderColor="#000000" />}
+                    >
+                      <Box>PRICE</Box>
+                      <Box>SKIN TYPE</Box>
+                      <Box>ACCESORIES</Box>
+                      <Box>SEARCH ID</Box>
+                      <Box
+                        style={{
+                          backgroundColor: "#30F100",
+                          color: "#fff",
+                          padding: "5px 20px",
+                          borderRadius: 50,
+                          marginLeft: 40,
+                        }}
+                      >
+                        <img src={arrow} alt="" />
+                      </Box>
+                    </Stack> */}
           {/* new tabs  */}
-
           <div>
-            <Box h={5} />
+            <Box h={5} />{" "}
             <div
               style={{
                 display: "flex",
@@ -318,20 +321,40 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
               <SimpleGrid
                 columns={[1, null, 3]}
                 gap={3}
-                style={{ width: "100%", maxWidth: 700 }}
+                style={{
+                  width: "100%",
+                  maxWidth: 700,
+                }}
               >
                 <Box textAlign="center">
                   <div>
-                    <b style={{ fontSize: 16, color: "#777777" }}>
+                    <b
+                      style={{
+                        fontSize: 16,
+                        color: "#777777",
+                      }}
+                    >
                       Total SpaceBudz:
                     </b>{" "}
-                    10,000
-                  </div>
-                </Box>
-                <div style={{ textAlign: "center" }}>
-                  <b style={{ color: "#777777", fontSize: 16 }}>Result: </b>
-                  {array ? array.length.toLocaleString() : 0}
-                </div>
+                    10, 000{" "}
+                  </div>{" "}
+                </Box>{" "}
+                <div
+                  style={{
+                    textAlign: "center",
+                  }}
+                >
+                  <b
+                    style={{
+                      color: "#777777",
+                      fontSize: 16,
+                    }}
+                  >
+                    {" "}
+                    Result:{" "}
+                  </b>{" "}
+                  {array ? array.length.toLocaleString() : 0}{" "}
+                </div>{" "}
                 <div
                   style={{
                     display: "flex",
@@ -369,20 +392,43 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
                       alignItems: "center",
                     }}
                   >
-                    <div style={{ display: "flex", flexDirection: "column" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
                       {" "}
-                      <ChevronUp size={18} color={setColor(filters.order_id)} />
-                      <div style={{ marginBottom: -10 }} />
+                      <ChevronUp
+                        size={18}
+                        color={setColor(filters.order_id)}
+                      />{" "}
+                      <div
+                        style={{
+                          marginBottom: -10,
+                        }}
+                      />{" "}
                       <ChevronDown
                         size={18}
                         color={setColor(filters.order_id, false)}
-                      />
-                    </div>
-                    <div style={{ width: 3 }} />
-                    <b style={{ color: "#777777", fontSize: 16 }}>ID #</b>
-                  </div>
-                  {/* Order by price */}
-                  <Box w={3} />
+                      />{" "}
+                    </div>{" "}
+                    <div
+                      style={{
+                        width: 3,
+                      }}
+                    />{" "}
+                    <b
+                      style={{
+                        color: "#777777",
+                        fontSize: 16,
+                      }}
+                    >
+                      {" "}
+                      ID#{" "}
+                    </b>{" "}
+                  </div>{" "}
+                  {/* Order by price */} <Box w={3} />{" "}
                   <div
                     onClick={() => {
                       const f = filters;
@@ -413,23 +459,43 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
                       alignItems: "center",
                     }}
                   >
-                    <div style={{ display: "flex", flexDirection: "column" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
                       {" "}
                       <ChevronUp
                         size={18}
                         color={setColor(filters.order_price)}
-                      />
-                      <div style={{ marginBottom: -10 }} />
+                      />{" "}
+                      <div
+                        style={{
+                          marginBottom: -10,
+                        }}
+                      />{" "}
                       <ChevronDown
                         size={18}
                         color={setColor(filters.order_price, false)}
-                      />
-                    </div>
-                    <div style={{ width: 3 }} />
-                    <b style={{ color: "#777777", fontSize: 16 }}>Price</b>
-                  </div>
-                  {/* Filter on sale */}
-                  <Box w={3} />
+                      />{" "}
+                    </div>{" "}
+                    <div
+                      style={{
+                        width: 3,
+                      }}
+                    />{" "}
+                    <b
+                      style={{
+                        color: "#777777",
+                        fontSize: 16,
+                      }}
+                    >
+                      {" "}
+                      Price{" "}
+                    </b>{" "}
+                  </div>{" "}
+                  {/* Filter on sale */} <Box w={3} />{" "}
                   <div
                     style={{
                       textAlign: "center",
@@ -437,7 +503,12 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
                       alignItems: "center",
                     }}
                   >
-                    <div style={{ display: "flex", flexDirection: "column" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
                       {" "}
                       <Checkbox
                         isChecked={filters.on_sale}
@@ -463,17 +534,28 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
                             box-shadow: unset;
                           }
                         `}
-                      />
-                    </div>
-                    <div style={{ width: 5 }} />
-                    <b style={{ color: "#777777", fontSize: 16 }}>On Sale</b>
-                  </div>
-                </div>
-              </SimpleGrid>
-            </div>
-          </div>
-          {/* grids  */}
-          <Box h={8} />
+                      />{" "}
+                    </div>{" "}
+                    <div
+                      style={{
+                        width: 5,
+                      }}
+                    />{" "}
+                    <b
+                      style={{
+                        color: "#777777",
+                        fontSize: 16,
+                      }}
+                    >
+                      {" "}
+                      On Sale{" "}
+                    </b>{" "}
+                  </div>{" "}
+                </div>{" "}
+              </SimpleGrid>{" "}
+            </div>{" "}
+          </div>{" "}
+          {/* grids  */} <Box h={8} />{" "}
           <div
             style={{
               marginBottom: 100,
@@ -496,12 +578,12 @@ const Explore = ({ pageContext: { spacebudz, initialOrder }, location }) => {
                   type={"Buy"}
                 />
               )
-            )}
-          </div>
-        </div>
-      </div>
-      {/* FilterModal */}
-      <FilterModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+            )}{" "}
+          </div>{" "}
+        </div>{" "}
+      </div>{" "}
+      {/* FilterModal */}{" "}
+      <FilterModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />{" "}
     </>
   );
 };

@@ -1,7 +1,7 @@
 import { navigate } from "gatsby";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import React from "react";
-import newLogo from "../../images/assets/logo_face_white.svg";
+// import newLogo from "../../images/assets/logo_face_white.svg";
 import * as style from "./Tab.module.css";
 
 
@@ -46,7 +46,7 @@ const Header = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img draggable={false} width={!matches.md ? 120 : 45} src={newLogo} />
+          {/* <img draggable={false} width={!matches.md ? 120 : 45} src={newLogo} /> */}
         </div>
 
 {/* menu */}

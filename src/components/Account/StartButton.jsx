@@ -1,5 +1,5 @@
 import React from "react";
-import Background from "../../images/assets/startButton.svg";
+// import Background from "../../images/assets/startButton.svg";
 import * as style from "./StartButton.module.css";
 
 import { useBreakpoint } from "gatsby-plugin-breakpoints";

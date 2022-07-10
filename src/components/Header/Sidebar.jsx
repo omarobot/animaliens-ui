@@ -16,7 +16,7 @@ import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import React from "react";
 import { FiMenu } from "react-icons/fi";
 // import * as style from "../../components/Header/Tab.module.css";
-import newLogo from "../../images/assets/logo_face_white.svg";
+// import newLogo from "../../images/assets/logo_face_white.svg";
 import nebula from "../../images/assets/nebula2.png";
 import * as style from "../Header/sidebar.module.css";
 

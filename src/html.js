@@ -1,7 +1,7 @@
 import React from "react";
 
-import favicon from "./images/favicons/favicon.ico";
-import appleTouch from "./images/favicons/apple-touch-icon.png";
+// import favicon from "./images/favicons/favicon.ico";
+// import appleTouch from "./images/favicons/apple-touch-icon.png";
 
 export default class HTML extends React.Component {
   render() {
@@ -16,7 +16,7 @@ export default class HTML extends React.Component {
           />
           {this.props.headComponents}
           {/* <link rel="shortcut icon" href={favicon} /> */}
-          <link rel="apple-touch-icon" href={appleTouch} />
+          {/* <link rel="apple-touch-icon" href={appleTouch} /> */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
           <link
