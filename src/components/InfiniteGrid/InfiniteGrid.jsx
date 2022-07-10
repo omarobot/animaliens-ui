@@ -8,7 +8,6 @@ import styled, { keyframes } from "styled-components";
 import { Box } from "@chakra-ui/layout";
 import { UnitDisplay } from "../UnitDisplay";
 import { Spinner } from "@chakra-ui/spinner";
-import cardano from "../../images/assets/CARDANO-LOGO.svg";
 
 var converterEngine = function (input) {
   // fn BLOB => Binary => Base64 ?

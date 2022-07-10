@@ -14,7 +14,7 @@ import {
 import React, { useState } from "react";
 import Metadata from "../../components/Metadata";
 import * as raffleStyles from "../../styles/Raffle.module.css";
-import raffleImg from "../../images/assets/pantha.webp";
+// import raffleImg from "../../images/assets/pantha.webp";
 import { HiTicket } from "react-icons/hi";
 import { AiFillFire } from "react-icons/ai";
 import { GiCrown } from "react-icons/gi";

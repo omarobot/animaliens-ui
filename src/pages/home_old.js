@@ -10,7 +10,7 @@ import Metadata from "../components/Metadata";
 import { navigate } from "gatsby";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import { graphql, useStaticQuery } from "gatsby";
-import BackgroundImage from "gatsby-background-image";
+// import BackgroundImage from "gatsby-background-image";
 import styled from "styled-components";
 import Icon from "@mdi/react";
 import { mdiDiscord, mdiTelegram, mdiTwitter } from "@mdi/js";

@@ -9,7 +9,7 @@ import shuffle from "lodash/shuffle";
 import { Button } from "@chakra-ui/react";
 import Confetti from "react-confetti";
 // import HeadingImage from './images/heading.svg';
-import HeadingImage from "../images/assets/heading.svg";
+// import HeadingImage from "../images/assets/heading.svg";
 // import Alien from "../images/assets/drippy.png";
 
 const Tutorial = (props) => {
@@ -111,7 +111,7 @@ const Tutorial = (props) => {
   return (
     <div className="container" ref={confettiWrapper}>
       <div className="raffle-header">
-        <img className="banner-image" src={HeadingImage} alt="heading logo" />
+        {/* <img className="banner-image" src={HeadingImage} alt="heading logo" /> */}
         {/* <img className="alien" src={Alien} alt="heading logo" /> */}
 
         {!initialLoad && (

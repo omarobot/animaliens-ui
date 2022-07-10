@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from "gatsby";
-import BackgroundImage from "gatsby-background-image";
+// import BackgroundImage from "gatsby-background-image";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import React from "react";
 import styled from "styled-components";
