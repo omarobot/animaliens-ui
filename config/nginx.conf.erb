@@ -20,32 +20,20 @@ http {
 	access_log <%= ENV['NGINX_ACCESS_LOG_PATH'] || 'logs/nginx/access.log' %> l2met;
 	error_log <%= ENV['NGINX_ERROR_LOG_PATH'] || 'logs/nginx/error.log' %>;
 
+
 	include mime.types;
 	default_type application/octet-stream;
 	sendfile on;
 
 	# Must read the body in 5 seconds.
-	client_body_timeout 5;
-
-	upstream app_server {
-		server unix:/tmp/nginx.socket fail_timeout=0;
-	}
+	client_body_timeout <%= ENV['NGINX_CLIENT_BODY_TIMEOUT'] || 5 %>;
 
 	server {
 		listen <%= ENV["PORT"] %>;
 		server_name _;
 		keepalive_timeout 5;
+		client_max_body_size <%= ENV['NGINX_CLIENT_MAX_BODY_SIZE'] || 1 %>M;
 
-		location / {
-			# Uncomment this if statement to force SSL/redirect http -> https
-			# if ($http_x_forwarded_proto != "https") {
-			#   return 301 https://$host$request_uri;
-			# }
-
-			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-			proxy_set_header Host $http_host;
-			proxy_redirect off;
-			proxy_pass http://app_server;
-		}
+		root /app/public; # path to your app
 	}
 }
