@@ -34,7 +34,7 @@ const CONTRACT = () => {
 
 const CONTRACT_ADDRESS = () =>
   Loader.Cardano.Address.from_bech32(
-    "addr_test1wpuw9hhp2lsc78dzjtcwhkg4lv4p98up74cqjn7zy6c0djcr0zfk0"
+    "addr_test1wrfc08nm6zsrc5xncysezjhxkj30g0k2ushkfschgdky9dcamwdc8"
   );
 
 // Datums
