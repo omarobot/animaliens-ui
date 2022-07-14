@@ -23,6 +23,11 @@ http {
 
 	include mime.types;
 	default_type application/octet-stream;
+
+	types {
+		application/wasm wasm;
+	}
+		
 	sendfile on;
 
 	# Must read the body in 5 seconds.
