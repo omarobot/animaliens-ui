@@ -39,6 +39,14 @@ http {
 		keepalive_timeout 5;
 		client_max_body_size <%= ENV['NGINX_CLIENT_MAX_BODY_SIZE'] || 1 %>M;
 
+		port_in_redirect off;
+
 		root /app/public; # path to your app
+
+		location /{
+			expires 30d;
+ 			add_header Pragma "public";
+ 			add_header Cache-Control "public";
+		}
 	}
 }
