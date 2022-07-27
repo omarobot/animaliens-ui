@@ -11,7 +11,7 @@ import { mdiOpenInNew } from "@mdi/js";
 import { Spinner } from "@chakra-ui/spinner";
 import Loader from "../cardano/loader";
 
-const POLICY = "1ff89104c2c3826b21ea8a8471e383c26f31257f3b2d7889b8fe1763";
+const POLICY = "28341001f186ebe3b47f1515add13df3d8d02aafa19b7b9695ed4157";
 
 const secrets = {
   PROJECT_ID: "testnet1RD4umD3NGsxuutiWpxzJLjwv0O7j8Tp",

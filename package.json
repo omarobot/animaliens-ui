@@ -24,7 +24,7 @@
     "@egjs/react-infinitegrid": "^3.2.5",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
-    "@emurgo/cardano-serialization-lib-browser": "^9.1.0",
+    "@emurgo/cardano-serialization-lib-browser": "11.0.0-rc.6",
     "@geist-ui/react": "^2.2.0",
     "@geist-ui/react-icons": "^1.0.1",
     "@mdi/js": "^5.7.55",

@@ -414,14 +414,14 @@ const PaymentModal = ({
                   width: 20,
                 }}
               />{" "}
-              <img
+              {/* <img
                 style={{
                   cursor: "pointer",
                 }}
                 onClick={() => setShowQr(true)}
-                src={QrIcon}
+                src={''}
                 width="34px"
-              />
+              /> */}
             </div>{" "}
             <div
               style={{

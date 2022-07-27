@@ -72,10 +72,10 @@ const SpaceBud = ({ pageContext: { spacebud } }) => {
 
   const market = React.useRef();
 
-  const POLICY = "1ff89104c2c3826b21ea8a8471e383c26f31257f3b2d7889b8fe1763";
+  const POLICY = "28341001f186ebe3b47f1515add13df3d8d02aafa19b7b9695ed4157";
 
   const CONTRACT_ADDRESS =
-    "addr_test1wrfc08nm6zsrc5xncysezjhxkj30g0k2ushkfschgdky9dcamwdc8";
+    "addr_test1wr7u990kvqz8gc43sffs6yew8pd6x7v2jy25k7luzkl8y8ggen37w";
 
   const connectedAddresses = React.useRef([]);
 
