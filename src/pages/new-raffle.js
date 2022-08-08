@@ -15,11 +15,23 @@ import {
 import React, { useState } from "react";
 import Metadata from "../components/Metadata";
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
+import { db } from "../firebase-config";
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect } from "react";
 
 const NewRaffle = () => {
   const [startDate, setStartDate] = useState(new Date());
+  const [users, setUsers] = useState([]);
+  const userCollection = collection(db, "users");
+
+  useEffect(() => {
+    const getUsers = async () => {
+      const data = await getDocs(userCollection);
+      console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getUsers();
+  }, []);
   return (
     <>
       <Metadata
