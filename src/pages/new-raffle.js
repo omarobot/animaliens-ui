@@ -22,6 +22,9 @@ import { useEffect } from "react";
 import { ref, uploadBytes, getDownloadURL, getStorage } from "firebase/storage";
 
 const NewRaffle = () => {
+  // get admin from localStorage
+  const admin = localStorage.getItem("app-admin");
+
   // states
   const [endDate, setEndDate] = useState(new Date());
   const [users, setUsers] = useState([]);
@@ -113,68 +116,76 @@ const NewRaffle = () => {
       />
       {/* main content  */}
       <main>
-        <Container p={2} my={20}>
-          <Heading as="h2" size="xl" sx={{ textAlign: "center" }}>
-            Add new raffle
-          </Heading>
-          <div>
-            <form onSubmit={handleSubmit}>
-              <FormControl sx={{ my: 2 }}>
-                <FormLabel htmlFor="title">Title</FormLabel>
-                <Input
-                  sx={{ _focus: "none" }}
-                  onBlur={handleOnBlur}
-                  name="name"
-                  id="title"
-                  placeholder="Title"
-                />
-              </FormControl>
-              <FormControl sx={{ my: 2 }}>
-                <FormLabel htmlFor="description">Description</FormLabel>
-                <Textarea
-                  sx={{ _focus: "none" }}
-                  onBlur={handleOnBlur}
-                  name="description"
-                  placeholder="Description"
-                />
-              </FormControl>
-              <FormControl sx={{ my: 2 }}>
-                <FormLabel htmlFor="winners"># of winners</FormLabel>
-                <NumberInput
-                  onBlur={handleOnBlur}
-                  name="winners"
-                  max={50}
-                  min={0}
-                >
-                  <NumberInputField sx={{ _focus: "none" }} id="winners" />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
-              </FormControl>
-              <FormControl sx={{ my: 2 }}>
-                <FormLabel htmlFor="date">Date raffle ends</FormLabel>
-                <DatePicker
-                  className="date-picker"
-                  selected={endDate}
-                  onChange={(date) => setEndDate(date)}
-                />
-              </FormControl>
-              <FormControl sx={{ my: 2 }}>
-                <FormLabel htmlFor="image">Image</FormLabel>
-                <input
-                  onChange={(e) => setRaffleImg(e.target.files[0])}
-                  type="file"
-                  id="image"
-                />
-              </FormControl>
-              <Button mt={4} colorScheme="green" type="submit">
-                Submit
-              </Button>
-            </form>
-          </div>
-        </Container>
+        {admin ? (
+          <Container p={2} my={20}>
+            <Heading as="h2" size="xl" sx={{ textAlign: "center" }}>
+              Add new raffle
+            </Heading>
+            <div>
+              <form onSubmit={handleSubmit}>
+                <FormControl sx={{ my: 2 }}>
+                  <FormLabel htmlFor="title">Title</FormLabel>
+                  <Input
+                    sx={{ _focus: "none" }}
+                    onBlur={handleOnBlur}
+                    name="name"
+                    id="title"
+                    placeholder="Title"
+                  />
+                </FormControl>
+                <FormControl sx={{ my: 2 }}>
+                  <FormLabel htmlFor="description">Description</FormLabel>
+                  <Textarea
+                    sx={{ _focus: "none" }}
+                    onBlur={handleOnBlur}
+                    name="description"
+                    placeholder="Description"
+                  />
+                </FormControl>
+                <FormControl sx={{ my: 2 }}>
+                  <FormLabel htmlFor="winners"># of winners</FormLabel>
+                  <NumberInput
+                    onBlur={handleOnBlur}
+                    name="winners"
+                    max={50}
+                    min={0}
+                  >
+                    <NumberInputField sx={{ _focus: "none" }} id="winners" />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </FormControl>
+                <FormControl sx={{ my: 2 }}>
+                  <FormLabel htmlFor="date">Date raffle ends</FormLabel>
+                  <DatePicker
+                    className="date-picker"
+                    selected={endDate}
+                    onChange={(date) => setEndDate(date)}
+                  />
+                </FormControl>
+                <FormControl sx={{ my: 2 }}>
+                  <FormLabel htmlFor="image">Image</FormLabel>
+                  <input
+                    onChange={(e) => setRaffleImg(e.target.files[0])}
+                    type="file"
+                    id="image"
+                  />
+                </FormControl>
+                <Button mt={4} colorScheme="green" type="submit">
+                  Submit
+                </Button>
+              </form>
+            </div>
+          </Container>
+        ) : (
+          <Container p={2} my={20}>
+            <Heading as="h2" size="xl" sx={{ textAlign: "center" }}>
+              You don't have access to this page
+            </Heading>
+          </Container>
+        )}
       </main>
     </>
   );
