@@ -34,6 +34,9 @@ import {
 } from "@chakra-ui/react";
 
 import kongs from "../../images/assets/kongs.webp";
+import { collection, doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase-config";
+import { useEffect } from "react";
 
 const winners = [
   {
@@ -63,7 +66,19 @@ const winners = [
 ];
 
 const RaffleDes = ({ params }) => {
-  console.log(params.id);
+  const [raffle, setRaffle] = useState({});
+  // get single doc from firebase
+  const raffleCollection = collection(db, "raffles");
+
+  useEffect(() => {
+    const docRef = doc(raffleCollection, params.id);
+    getDoc(docRef).then((doc) => {
+      setRaffle({ ...doc.data(), id: doc.id });
+    });
+  }, [params.id]);
+
+  console.log(raffle);
+
   const [countdown, setCountdown] = useState("");
   const [tickets, setTickets] = useState(1);
   const Completionist = () => <span> </span>;
@@ -115,7 +130,7 @@ const RaffleDes = ({ params }) => {
                     alignItems: "center",
                   }}
                 >
-                  <HiTicket color="#30f100" /> Tickets sold: 888{" "}
+                  <HiTicket color="#30f100" /> Tickets sold: {raffle?.entries}{" "}
                 </Text>{" "}
                 <Text
                   sx={{
@@ -149,7 +164,7 @@ const RaffleDes = ({ params }) => {
                   justifyContent: "center",
                 }}
               >
-                <img width={200} src={kongs} alt="" />
+                <img width={200} src={raffle?.image} alt="" />
               </Box>{" "}
               <Box
                 sx={{
@@ -164,7 +179,7 @@ const RaffleDes = ({ params }) => {
                     my: 4,
                   }}
                 >
-                  Chilled Kongs #2618{" "}
+                  {raffle.name}{" "}
                 </Heading>{" "}
                 <Flex
                   justifyContent="center"
@@ -205,7 +220,7 @@ const RaffleDes = ({ params }) => {
                       my: 4,
                     }}
                   >
-                    Chilled Kongs #2618{" "}
+                    {raffle.name}{" "}
                   </Heading>{" "}
                   <Flex
                     justifyContent="center"
@@ -229,7 +244,7 @@ const RaffleDes = ({ params }) => {
                   }}
                 >
                   <Box>
-                    <img width={200} src={kongs} alt="" />
+                    <img width={200} src={raffle.image} alt="" />
                   </Box>{" "}
                   <Box>
                     <Box
@@ -321,10 +336,7 @@ const RaffleDes = ({ params }) => {
                         Raffle Ends{" "}
                       </Heading>{" "}
                       <Box>
-                        <Countdown
-                          date={Date.now() + 1000000}
-                          renderer={renderer}
-                        />{" "}
+                        <Countdown date={raffle.date} renderer={renderer} />{" "}
                       </Box>{" "}
                     </Box>{" "}
                     <Button colorScheme="green">
@@ -346,7 +358,7 @@ const RaffleDes = ({ params }) => {
                       {" "}
                       {winners.map((winner) => (
                         <Tr key={winner.id}>
-                          <Td> {winner.wallet} </Td> <Td> {winner.entries} </Td>{" "}
+                          <Td> {winner.wallet} </Td> <Td> {raffle.entries} </Td>{" "}
                           <Td>
                             {" "}
                             {winner.claim === "yes" ? (
