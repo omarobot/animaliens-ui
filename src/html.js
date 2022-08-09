@@ -18,7 +18,7 @@ export default class HTML extends React.Component {
           {/* <link rel="shortcut icon" href={favicon} /> */}
           {/* <link rel="apple-touch-icon" href={appleTouch} /> */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
           <link
             href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&display=swap"
             rel="stylesheet"

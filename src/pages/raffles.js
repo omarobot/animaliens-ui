@@ -501,7 +501,7 @@ const Raffles = () => {
                     </Flex>{" "}
                     <Box>
                       <Countdown
-                        date={Date.now() + 1000000}
+                        date={Date.now() + new Date(raffle.endDate).getTime()}
                         renderer={renderer}
                       />{" "}
                     </Box>{" "}

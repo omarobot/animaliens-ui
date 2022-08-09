@@ -23,60 +23,84 @@ import { ref, uploadBytes, getDownloadURL, getStorage } from "firebase/storage";
 
 const NewRaffle = () => {
   // states
-  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   const [users, setUsers] = useState([]);
   const [raffleImg, setRaffleImg] = useState(null);
   const [url, setURL] = useState("");
+  const [raffleInfo, setRaffleInfo] = useState({});
+
+  // get date and time in iso format
+  const date = new Date(endDate.toISOString());
+  const milliseconds = date.getTime();
 
   // firebase connection
   // upload image to firebase storage
   const storage = getStorage();
   const imagesRef = ref(storage, `rafflesImages/${raffleImg?.name}`);
 
+  // firebase collection
   const userCollection = collection(db, "users");
-
   const raffleCollection = collection(db, "raffles");
-  console.log(raffleImg);
 
-  const createUser = async () => {
-    const docRef = await addDoc(userCollection, {
-      firstname: "Suhag",
-      lastname: "Al Amin",
-    });
-    console.log("Document written with ID: ", docRef.id);
+  // useEffect(() => {
+  //   const getUsers = async () => {
+  //     const data = await getDocs(userCollection);
+  //     setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  //   };
+  //   getUsers();
+  // }, []);
+  // console.log(new Date().toISOString());
+
+  const handleOnBlur = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newValue = { ...raffleInfo };
+    newValue[field] = value;
+    setRaffleInfo(newValue);
   };
-  // createUser();
-
-  useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(userCollection);
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getUsers();
-  }, []);
 
   // handleSubmit
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // upload image to firebase storage
-    if (raffleImg === null) {
-      alert("Please select an image");
-      return;
+    const { name, description, winners } = raffleInfo;
+    if (!name || !description) {
+      alert("Please fill in all fields");
     } else {
-      uploadBytes(imagesRef, raffleImg)
-        .then((snapshot) => {
-          console.log("Uploaded a blob or file!");
-        })
-        .then(() => {
-          getDownloadURL(imagesRef).then((url) => {
-            console.log(url);
-            setURL(url);
+      // upload image to firebase storage
+      if (raffleImg === null) {
+        alert("Please select an image");
+        return;
+      } else {
+        // upload image
+        uploadBytes(imagesRef, raffleImg)
+          .then((snapshot) => {
+            // console.log("Uploaded a blob or file!");
+          })
+          .then(() => {
+            getDownloadURL(imagesRef).then((url) => {
+              setURL(url);
+            });
+          })
+          .catch((error) => {
+            alert(error);
           });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        // add raffle to firebase
+
+        raffleInfo.date = milliseconds;
+        raffleInfo.image = url;
+        raffleInfo.winners = !winners ? 0 : parseInt(raffleInfo.winners);
+
+        const addRaffle = async () => {
+          const docRef = await addDoc(raffleCollection, raffleInfo);
+          if (docRef.id) {
+            alert("Raffle added successfully!");
+          } else {
+            alert("Error adding raffle");
+          }
+        };
+        addRaffle();
+      }
     }
   };
 
@@ -97,15 +121,31 @@ const NewRaffle = () => {
             <form onSubmit={handleSubmit}>
               <FormControl sx={{ my: 2 }}>
                 <FormLabel htmlFor="title">Title</FormLabel>
-                <Input sx={{ _focus: "none" }} id="title" placeholder="Title" />
+                <Input
+                  sx={{ _focus: "none" }}
+                  onBlur={handleOnBlur}
+                  name="name"
+                  id="title"
+                  placeholder="Title"
+                />
               </FormControl>
               <FormControl sx={{ my: 2 }}>
                 <FormLabel htmlFor="description">Description</FormLabel>
-                <Textarea sx={{ _focus: "none" }} placeholder="Description" />
+                <Textarea
+                  sx={{ _focus: "none" }}
+                  onBlur={handleOnBlur}
+                  name="description"
+                  placeholder="Description"
+                />
               </FormControl>
               <FormControl sx={{ my: 2 }}>
                 <FormLabel htmlFor="winners"># of winners</FormLabel>
-                <NumberInput max={50} min={0}>
+                <NumberInput
+                  onBlur={handleOnBlur}
+                  name="winners"
+                  max={50}
+                  min={0}
+                >
                   <NumberInputField sx={{ _focus: "none" }} id="winners" />
                   <NumberInputStepper>
                     <NumberIncrementStepper />
@@ -117,8 +157,8 @@ const NewRaffle = () => {
                 <FormLabel htmlFor="date">Date raffle ends</FormLabel>
                 <DatePicker
                   className="date-picker"
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
+                  selected={endDate}
+                  onChange={(date) => setEndDate(date)}
                 />
               </FormControl>
               <FormControl sx={{ my: 2 }}>
