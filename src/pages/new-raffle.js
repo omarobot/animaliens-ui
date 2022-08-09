@@ -45,15 +45,6 @@ const NewRaffle = () => {
   const userCollection = collection(db, "users");
   const raffleCollection = collection(db, "raffles");
 
-  // useEffect(() => {
-  //   const getUsers = async () => {
-  //     const data = await getDocs(userCollection);
-  //     setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  //   };
-  //   getUsers();
-  // }, []);
-  // console.log(new Date().toISOString());
-
   const handleOnBlur = (e) => {
     const field = e.target.name;
     const value = e.target.value;
@@ -99,6 +90,7 @@ const NewRaffle = () => {
           const docRef = await addDoc(raffleCollection, raffleInfo);
           if (docRef.id) {
             alert("Raffle added successfully!");
+            window.location.reload();
           } else {
             alert("Error adding raffle");
           }

@@ -21,10 +21,14 @@ import disco from "../images/assets/disco.webp";
 import goats from "../images/assets/goats.webp";
 import yummi from "../images/assets/yummi.webp";
 import rocket from "../images/assets/rocketclub.webp";
+import { db, storage } from "../firebase-config";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import { useEffect } from "react";
+import { ref, uploadBytes, getDownloadURL, getStorage } from "firebase/storage";
 
 const raffleImg = "../../images/assets/";
 
-const raffles = [
+const raffles2 = [
   {
     _id: "6213f5a3a7361ccf1737be91",
     name: "Chilled Kongs #2618",
@@ -409,9 +413,23 @@ const raffles = [
 ];
 
 const Raffles = () => {
+  const [raffles, setRaffles] = useState([]);
+
+  // load data from firebase
+  const raffleCollection = collection(db, "raffles");
+
+  useEffect(() => {
+    const getRaffles = async () => {
+      const data = await getDocs(raffleCollection);
+      setRaffles(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getRaffles();
+  }, []);
+  console.log(raffles);
+
   const [countdown, setCountdown] = useState("");
   const Completionist = () => <span> Raffle closed! </span>;
-  const renderer = ({ hours, minutes, seconds, completed }) => {
+  const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       // Render a completed state
       setCountdown("over");
@@ -420,7 +438,7 @@ const Raffles = () => {
       // Render a countdown
       return (
         <span>
-          Ends in: {hours}: {minutes}: {seconds}{" "}
+          Ends in: {days} D: {hours} H: {minutes} M: {seconds} S
         </span>
       );
     }
@@ -448,11 +466,13 @@ const Raffles = () => {
           >
             {" "}
             {raffles.map((raffle, i) => (
-              <Box key={raffle._id} height="100%">
+              <Box key={raffle.id} height="100%">
                 <div className={raffleStyles.raffleBox}>
                   <img
                     className={`${
-                      i > 4 ? `${raffleStyles.closedRaffleImg}` : ""
+                      raffle.date < new Date()
+                        ? `${raffleStyles.closedRaffleImg}`
+                        : ""
                     }`}
                     src={raffle.image}
                     alt=""
@@ -490,33 +510,31 @@ const Raffles = () => {
                       >
                         <HiTicket
                           className={`${
-                            i > 4
+                            raffle.date < new Date()
                               ? `${raffleStyles.ticketIconGray}`
                               : `${raffleStyles.ticketIcon}`
                           }`}
                         />{" "}
-                        888{" "}
+                        {raffle.entries}
                       </Text>{" "}
-                      <span> 1 Winner(s) </span>{" "}
+                      <span> {raffle.winners} Winner(s) </span>{" "}
                     </Flex>{" "}
                     <Box>
-                      <Countdown
-                        date={Date.now() + new Date(raffle.endDate).getTime()}
-                        renderer={renderer}
-                      />{" "}
+                      <Countdown date={raffle.date} renderer={renderer} />{" "}
                     </Box>{" "}
                     <Box>
                       <button
-                        onClick={() => handleOnclick(raffle._id)}
+                        onClick={() => handleOnclick(raffle.id)}
                         className={`${
-                          i > 4
+                          raffle.date < new Date()
                             ? `${raffleStyles.raffleBtnGray}`
                             : `${raffleStyles.raffleBtn}`
                         }`}
                       >
-                        {" "}
-                        {i <= 4 ? "Join Raffle" : "View Winners"}{" "}
-                      </button>{" "}
+                        {raffle.date < new Date()
+                          ? "Join Raffle"
+                          : "View Winners"}
+                      </button>
                     </Box>{" "}
                   </Box>{" "}
                 </div>{" "}
