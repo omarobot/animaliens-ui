@@ -134,23 +134,26 @@ const RaffleDes = ({ params }) => {
     const updateRaffle = doc(raffleCollection, raffle.id);
     await updateDoc(updateRaffle, {
       wallets: arrayUnion(newWallet),
-    }).then(() => {
-      setIsLoading(false);
-    });
+    })
+      .then(() => {
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // check entries
   useEffect(() => {
+    let newTickets = 0;
     for (let i = 0; i < raffle.wallets?.length; i++) {
       const element = raffle.wallets[i];
       if (element?.walletAddress === walletAddress) {
-        // setIsClaimed(true);
-        console.log(element.tickets);
-        setNfts(nfts - element.tickets);
+        newTickets = newTickets + raffle.wallets[i].tickets;
+        setNfts(nfts - newTickets);
       }
     }
   }, [walletAddress, raffle.wallets]);
-  console.log(raffle.wallets);
 
   return (
     <>
@@ -391,24 +394,32 @@ const RaffleDes = ({ params }) => {
                         <Countdown date={raffle.date} renderer={renderer} />{" "}
                       </Box>{" "}
                     </Box>{" "}
-                    {isLoading ? (
-                      <Button
-                        onClick={handleSubmit}
-                        disabled={nftConnect ? false : true}
-                        colorScheme="green"
-                      >
-                        <Spinner />
+                    {nfts <= tickets ? (
+                      <Button disabled colorScheme="green">
+                        You already have max entries
                       </Button>
                     ) : (
-                      <Button
-                        onClick={handleSubmit}
-                        disabled={nftConnect ? false : true}
-                        colorScheme="green"
-                      >
-                        {nftConnect
-                          ? `Buy ${tickets} ticket(s)`
-                          : `Connect your wallet`}
-                      </Button>
+                      <>
+                        {isLoading ? (
+                          <Button
+                            onClick={handleSubmit}
+                            disabled={nftConnect ? false : true}
+                            colorScheme="green"
+                          >
+                            <Spinner />
+                          </Button>
+                        ) : (
+                          <Button
+                            onClick={handleSubmit}
+                            disabled={nftConnect ? false : true}
+                            colorScheme="green"
+                          >
+                            {nftConnect
+                              ? `Buy ${tickets} ticket(s)`
+                              : `Connect your wallet`}
+                          </Button>
+                        )}
+                      </>
                     )}
                   </Box>{" "}
                 </Flex>{" "}
