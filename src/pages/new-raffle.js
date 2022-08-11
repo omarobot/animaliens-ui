@@ -10,6 +10,7 @@ import {
   NumberInput,
   NumberInputField,
   NumberInputStepper,
+  Spinner,
   Textarea,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
@@ -27,10 +28,11 @@ const NewRaffle = () => {
 
   // states
   const [endDate, setEndDate] = useState(new Date());
-  const [users, setUsers] = useState([]);
   const [raffleImg, setRaffleImg] = useState(null);
   const [raffleInfo, setRaffleInfo] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
+  console.log(endDate);
   // get date and time in iso format
   const date = new Date(endDate.toISOString());
   const milliseconds = date.getTime();
@@ -54,17 +56,22 @@ const NewRaffle = () => {
 
   // handleSubmit
   const handleSubmit = (e) => {
+    setIsLoading(true);
     e.preventDefault();
 
     const { name, description, winners } = raffleInfo;
     if (!name || !description) {
       alert("Please fill in all fields");
+      setIsLoading(false);
+      return;
     } else {
       // upload image to firebase storage
       if (raffleImg === null) {
         alert("Please select an image");
+        setIsLoading(false);
         return;
       } else {
+        setIsLoading(true);
         // upload image
         uploadBytes(imagesRef, raffleImg)
           .then(() => {
@@ -81,6 +88,7 @@ const NewRaffle = () => {
               const docRef = await addDoc(raffleCollection, raffleInfo);
               if (docRef.id) {
                 alert("Raffle added successfully!");
+                setIsLoading(false);
                 window.location.reload();
               } else {
                 alert("Error adding raffle");
@@ -90,6 +98,7 @@ const NewRaffle = () => {
           })
           .catch((error) => {
             alert(error);
+            setIsLoading(false);
           });
       }
     }
@@ -148,6 +157,7 @@ const NewRaffle = () => {
                 <FormControl sx={{ my: 2 }}>
                   <FormLabel htmlFor="date">Date raffle ends</FormLabel>
                   <DatePicker
+                    showTimeSelect
                     className="date-picker"
                     selected={endDate}
                     onChange={(date) => setEndDate(date)}
@@ -161,8 +171,13 @@ const NewRaffle = () => {
                     id="image"
                   />
                 </FormControl>
-                <Button mt={4} colorScheme="green" type="submit">
-                  Submit
+                <Button
+                  mt={4}
+                  disabled={isLoading ? true : false}
+                  colorScheme="green"
+                  type="submit"
+                >
+                  {isLoading ? <Spinner /> : "Add Raffle"}
                 </Button>
               </form>
             </div>
