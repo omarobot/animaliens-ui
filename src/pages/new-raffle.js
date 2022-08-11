@@ -29,7 +29,6 @@ const NewRaffle = () => {
   const [endDate, setEndDate] = useState(new Date());
   const [users, setUsers] = useState([]);
   const [raffleImg, setRaffleImg] = useState(null);
-  const [url, setURL] = useState("");
   const [raffleInfo, setRaffleInfo] = useState({});
 
   // get date and time in iso format
@@ -68,34 +67,30 @@ const NewRaffle = () => {
       } else {
         // upload image
         uploadBytes(imagesRef, raffleImg)
-          .then((snapshot) => {
-            // console.log("Uploaded a blob or file!");
-          })
           .then(() => {
-            getDownloadURL(imagesRef).then((url) => {
-              setURL(url);
-            });
+            return getDownloadURL(imagesRef);
+          })
+          .then((url) => {
+            // add raffle to firebase
+            raffleInfo.date = milliseconds;
+            raffleInfo.image = url;
+            raffleInfo.winners = !winners ? 0 : parseInt(raffleInfo.winners);
+            raffleInfo.entries = 0;
+
+            const addRaffle = async () => {
+              const docRef = await addDoc(raffleCollection, raffleInfo);
+              if (docRef.id) {
+                alert("Raffle added successfully!");
+                window.location.reload();
+              } else {
+                alert("Error adding raffle");
+              }
+            };
+            addRaffle();
           })
           .catch((error) => {
             alert(error);
           });
-        // add raffle to firebase
-
-        raffleInfo.date = milliseconds;
-        raffleInfo.image = url;
-        raffleInfo.winners = !winners ? 0 : parseInt(raffleInfo.winners);
-        raffleInfo.entries = 0;
-
-        const addRaffle = async () => {
-          const docRef = await addDoc(raffleCollection, raffleInfo);
-          if (docRef.id) {
-            alert("Raffle added successfully!");
-            window.location.reload();
-          } else {
-            alert("Error adding raffle");
-          }
-        };
-        addRaffle();
       }
     }
   };

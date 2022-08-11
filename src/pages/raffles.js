@@ -425,7 +425,6 @@ const Raffles = () => {
     };
     getRaffles();
   }, []);
-  console.log(raffles);
 
   const [countdown, setCountdown] = useState("");
   const Completionist = () => <span> Raffle closed! </span>;
