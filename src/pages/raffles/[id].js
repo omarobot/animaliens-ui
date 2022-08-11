@@ -9,6 +9,7 @@ import {
   NumberInput,
   NumberInputField,
   NumberInputStepper,
+  Spinner,
   Text,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
@@ -34,7 +35,14 @@ import {
 } from "@chakra-ui/react";
 
 import kongs from "../../images/assets/kongs.webp";
-import { collection, doc, getDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  updateDoc,
+  setDoc,
+  arrayUnion,
+} from "firebase/firestore";
 import { db } from "../../firebase-config";
 import { useEffect } from "react";
 
@@ -72,6 +80,11 @@ const RaffleDes = ({ params }) => {
   const [nfts, setNfts] = useState(3);
   const [countdown, setCountdown] = useState("");
   const [tickets, setTickets] = useState(1);
+  const [walletAddress, setWalletAddress] = useState(
+    "C9Azhh87saDj884qmcpKhiewN2doby47sKb4hXG3Z9x6"
+  );
+  const [isLoading, setIsLoading] = useState(false);
+
   // get single doc from firebase
   const raffleCollection = collection(db, "raffles");
 
@@ -110,7 +123,21 @@ const RaffleDes = ({ params }) => {
       setTickets(nfts);
     }
   };
-  console.log(tickets);
+
+  // save to database
+  // wallet address, raffle id, tickets or entries
+
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    const newWallet = { walletAddress, tickets };
+    const updateRaffle = doc(raffleCollection, raffle.id);
+    await updateDoc(updateRaffle, {
+      walltes: arrayUnion(newWallet),
+    }).then(() => {
+      setIsLoading(false);
+    });
+  };
+
   return (
     <>
       <Metadata
@@ -350,11 +377,25 @@ const RaffleDes = ({ params }) => {
                         <Countdown date={raffle.date} renderer={renderer} />{" "}
                       </Box>{" "}
                     </Box>{" "}
-                    <Button colorScheme="green">
-                      {nftConnect
-                        ? `Buy ${tickets} ticket(s)`
-                        : `Connect your wallet`}
-                    </Button>{" "}
+                    {isLoading ? (
+                      <Button
+                        onClick={handleSubmit}
+                        disabled={nftConnect ? false : true}
+                        colorScheme="green"
+                      >
+                        <Spinner />
+                      </Button>
+                    ) : (
+                      <Button
+                        onClick={handleSubmit}
+                        disabled={nftConnect ? false : true}
+                        colorScheme="green"
+                      >
+                        {nftConnect
+                          ? `Buy ${tickets} ticket(s)`
+                          : `Connect your wallet`}
+                      </Button>
+                    )}
                   </Box>{" "}
                 </Flex>{" "}
                 {nfts <= tickets && (
