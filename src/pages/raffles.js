@@ -531,8 +531,8 @@ const Raffles = () => {
                         }`}
                       >
                         {raffle.date < new Date()
-                          ? "Join Raffle"
-                          : "View Winners"}
+                          ? "View Winners"
+                          : "Join Raffle"}
                       </button>
                     </Box>{" "}
                   </Box>{" "}

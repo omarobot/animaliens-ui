@@ -66,7 +66,12 @@ const winners = [
 ];
 
 const RaffleDes = ({ params }) => {
+  // states
   const [raffle, setRaffle] = useState({});
+  const [nftConnect, setNftConnect] = useState(true);
+  const [nfts, setNfts] = useState(3);
+  const [countdown, setCountdown] = useState("");
+  const [tickets, setTickets] = useState(1);
   // get single doc from firebase
   const raffleCollection = collection(db, "raffles");
 
@@ -77,12 +82,8 @@ const RaffleDes = ({ params }) => {
     });
   }, [params.id]);
 
-  console.log(raffle);
-
-  const [countdown, setCountdown] = useState("");
-  const [tickets, setTickets] = useState(1);
   const Completionist = () => <span> </span>;
-  const renderer = ({ hours, minutes, seconds, completed }) => {
+  const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       // Render a completed state
       setCountdown("over");
@@ -91,7 +92,7 @@ const RaffleDes = ({ params }) => {
       // Render a countdown
       return (
         <span>
-          Ends in: {hours}: {minutes}: {seconds}{" "}
+          Ends in: {days} D: {hours} H: {minutes} M: {seconds} S
         </span>
       );
     }
@@ -101,8 +102,15 @@ const RaffleDes = ({ params }) => {
   };
 
   const handleOnChange = (e) => {
-    setTickets(e);
+    const newTickets = parseInt(e);
+    // setTickets(e);
+    if (nfts >= newTickets) {
+      setTickets(newTickets);
+    } else {
+      setTickets(nfts);
+    }
   };
+  console.log(tickets);
   return (
     <>
       <Metadata
@@ -114,7 +122,7 @@ const RaffleDes = ({ params }) => {
       <main>
         <Container maxW={"800px"} p={2} my={20}>
           {" "}
-          {countdown !== "over" ? (
+          {raffle.date > new Date() ? (
             <Box>
               <Flex
                 justifyContent="center"
@@ -181,7 +189,7 @@ const RaffleDes = ({ params }) => {
                 >
                   {raffle.name}{" "}
                 </Heading>{" "}
-                <Flex
+                {/* <Flex
                   justifyContent="center"
                   gap={2}
                   sx={{
@@ -193,9 +201,9 @@ const RaffleDes = ({ params }) => {
                   </a>{" "}
                   <a href="http://" target="_blank" rel="noopener noreferrer">
                     <FaTwitter color="#30f100" />
-                  </a>{" "}
-                </Flex>{" "}
-              </Box>{" "}
+                  </a>
+                </Flex> */}
+              </Box>
             </Box>
           )}{" "}
           <Box
@@ -205,7 +213,7 @@ const RaffleDes = ({ params }) => {
             className={raffleStyles.singleRaffleBox}
           >
             {" "}
-            {countdown !== "over" ? (
+            {raffle.date > new Date() ? (
               <div>
                 <Box
                   sx={{
@@ -222,7 +230,7 @@ const RaffleDes = ({ params }) => {
                   >
                     {raffle.name}{" "}
                   </Heading>{" "}
-                  <Flex
+                  {/* <Flex
                     justifyContent="center"
                     gap={2}
                     sx={{
@@ -235,12 +243,13 @@ const RaffleDes = ({ params }) => {
                     <a href="http://" target="_blank" rel="noopener noreferrer">
                       <FaTwitter color="#30f100" />
                     </a>{" "}
-                  </Flex>{" "}
+                  </Flex>{" "} */}
                 </Box>{" "}
                 <Flex
-                  gap={20}
+                  gap={10}
                   sx={{
                     my: 4,
+                    alignItems: "end",
                   }}
                 >
                   <Box>
@@ -277,8 +286,8 @@ const RaffleDes = ({ params }) => {
                         }}
                       >
                         Price{" "}
-                      </Heading>{" "}
-                      <Text as="span"> 3 $IEN / ticket </Text>{" "}
+                      </Heading>
+                      <Text as="span"> 1 NFT / ticket </Text>{" "}
                     </Box>{" "}
                     <Box>
                       {" "}
@@ -291,20 +300,22 @@ const RaffleDes = ({ params }) => {
                               <button className={raffleStyles.plusBtn}>+</button> */}{" "}
                       <NumberInput
                         onChange={handleOnChange}
-                        defaultValue={1}
+                        defaultValue={tickets}
                         min={1}
-                        max={20}
+                        max={nfts}
+                        keepWithinRange={true}
+                        clampValueOnBlur={false}
                       >
                         <NumberInputField className={raffleStyles.inputField} />{" "}
                         <NumberInputStepper>
                           <NumberIncrementStepper />
                           <NumberDecrementStepper />
                         </NumberInputStepper>{" "}
-                      </NumberInput>{" "}
+                      </NumberInput>
                     </Box>{" "}
                   </Box>{" "}
                   <Box>
-                    <Box
+                    {/* <Box
                       sx={{
                         my: 4,
                       }}
@@ -319,7 +330,7 @@ const RaffleDes = ({ params }) => {
                         Collection Size{" "}
                       </Heading>{" "}
                       <Text as="span"> 8888 </Text>{" "}
-                    </Box>{" "}
+                    </Box>{" "} */}
                     <Box
                       sx={{
                         mt: 4,
@@ -340,10 +351,17 @@ const RaffleDes = ({ params }) => {
                       </Box>{" "}
                     </Box>{" "}
                     <Button colorScheme="green">
-                      Buy {tickets} &nbsp;ticket(s){" "}
+                      {nftConnect
+                        ? `Buy ${tickets} ticket(s)`
+                        : `Connect your wallet`}
                     </Button>{" "}
                   </Box>{" "}
                 </Flex>{" "}
+                {nfts <= tickets && (
+                  <Text sx={{ textAlign: "center" }}>
+                    You have only {nfts} NFTs available{" "}
+                  </Text>
+                )}
               </div>
             ) : (
               <div>
