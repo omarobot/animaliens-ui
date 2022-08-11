@@ -84,6 +84,7 @@ const RaffleDes = ({ params }) => {
     "C9Azhh87saDj884qmcpKhiewN2doby47sKb4hXG3Z9x6"
   );
   const [isLoading, setIsLoading] = useState(false);
+  const [isClaimed, setIsClaimed] = useState(false);
 
   // get single doc from firebase
   const raffleCollection = collection(db, "raffles");
@@ -132,11 +133,24 @@ const RaffleDes = ({ params }) => {
     const newWallet = { walletAddress, tickets };
     const updateRaffle = doc(raffleCollection, raffle.id);
     await updateDoc(updateRaffle, {
-      walltes: arrayUnion(newWallet),
+      wallets: arrayUnion(newWallet),
     }).then(() => {
       setIsLoading(false);
     });
   };
+
+  // check entries
+  useEffect(() => {
+    for (let i = 0; i < raffle.wallets?.length; i++) {
+      const element = raffle.wallets[i];
+      if (element?.walletAddress === walletAddress) {
+        // setIsClaimed(true);
+        console.log(element.tickets);
+        setNfts(nfts - element.tickets);
+      }
+    }
+  }, [walletAddress, raffle.wallets]);
+  console.log(raffle.wallets);
 
   return (
     <>

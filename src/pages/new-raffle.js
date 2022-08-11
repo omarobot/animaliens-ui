@@ -83,7 +83,7 @@ const NewRaffle = () => {
             raffleInfo.image = url;
             raffleInfo.winners = !winners ? 0 : parseInt(raffleInfo.winners);
             raffleInfo.entries = 0;
-            raffleInfo.walltes = [];
+            raffleInfo.wallets = [];
 
             const addRaffle = async () => {
               const docRef = await addDoc(raffleCollection, raffleInfo);
