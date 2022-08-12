@@ -34,6 +34,8 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 
+import spacebudz from "../../../metadata.json";
+
 import kongs from "../../images/assets/kongs.webp";
 import {
   collection,
@@ -45,6 +47,9 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase-config";
 import { useEffect } from "react";
+
+import { useStoreState } from "easy-peasy";
+import Loader from "../../cardano/loader";
 
 const winners = [
   {
@@ -72,6 +77,19 @@ const winners = [
     claim: "no",
   },
 ];
+
+const POLICY = "28341001f186ebe3b47f1515add13df3d8d02aafa19b7b9695ed4157";
+
+const secrets = {
+  PROJECT_ID: "testnet1RD4umD3NGsxuutiWpxzJLjwv0O7j8Tp",
+};
+
+function fromHex(hex) {
+  var str = "";
+  for (var i = 0; i < hex.length && hex.substr(i, 2) !== "00"; i += 2)
+    str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+  return str;
+}
 
 const RaffleDes = ({ params }) => {
   // states
@@ -155,6 +173,115 @@ const RaffleDes = ({ params }) => {
     }
   }, [walletAddress, raffle.wallets]);
 
+  //====== Connect Wallet Code =============
+
+  const [address, setAddress] = React.useState("");
+  const [tokens, setTokens] = React.useState({
+    owned: [],
+    bids: [],
+    offers: [],
+  });
+  const [isLoading2, setIsLoading2] = React.useState(true);
+  const connected = useStoreState((state) => state.connection.connected);
+  const didMount = React.useRef(false);
+  const isFirstConnect = React.useRef(true);
+  const fetchAddressBudz = async (address) => {
+    setIsLoading2(true);
+    setTokens(null);
+    const tokens = {
+      owned: [],
+      bids: [],
+      offers: [],
+    };
+    let amount;
+
+    const connectedAddresses = connected
+      ? (await window.cardano.selectedWallet.getUsedAddresses()).map((addr) =>
+          Loader.Cardano.Address.from_bytes(
+            Buffer.from(addr, "hex")
+          ).to_bech32()
+        )
+      : [];
+
+    const isOwner = (address) =>
+      connectedAddresses.length > 0
+        ? connectedAddresses.some((addr) => addr === address)
+        : false;
+
+    // if (connected === address) {
+    //   await Loader.load();
+    //   const value = Loader.Cardano.Value.from_bytes(
+    //     Buffer.from(await window.cardano.selectedWallet.getBalance(), "hex")
+    //   );
+
+    //   amount = valueToAssets(value);
+    // } else {
+    amount = await fetch(
+      `https://cardano-testnet.blockfrost.io/api/v0/addresses/${address}`,
+      {
+        headers: {
+          project_id: secrets.PROJECT_ID,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => res.amount);
+    // }
+    console.log(amount);
+
+    try {
+      const ownedAmount = amount
+        .filter((am) => am.unit.startsWith(POLICY))
+        .map((am) =>
+          parseInt(fromHex(am.unit.slice(56)).split("Animaliens")[1])
+        );
+      const owned = ownedAmount.map((id) => {
+        return {
+          ...spacebudz[id],
+          bidPrice: undefined,
+        };
+      });
+      tokens.owned = owned;
+      setTokens(tokens);
+
+      console.log(tokens);
+    } catch (e) {}
+    setTokens(tokens);
+    console.log(tokens);
+
+    setIsLoading2(false);
+  };
+  const update = async () => {
+    let address =
+      typeof window !== "undefined" &&
+      new URL(window.location.href).searchParams.get("address");
+    if (!address) {
+      address = connected;
+    }
+    setAddress(address);
+    fetchAddressBudz(address);
+  };
+  React.useEffect(() => {
+    if (didMount.current) {
+      if (connected && !isFirstConnect.current) console.log("");
+      // window.history.pushState({}, null, `/profile?address=${connected}`);
+      else isFirstConnect.current = false;
+    } else didMount.current = true;
+    window.scrollTo(0, 0);
+    update();
+  }, [connected]);
+  React.useEffect(() => {
+    let url = window.location.href;
+    const urlChange = setInterval(() => {
+      const newUrl = window.location.href;
+      if (url !== newUrl) {
+        url = newUrl;
+        update();
+      }
+    });
+    return () => clearInterval(urlChange);
+  }, []);
+
   return (
     <>
       <Metadata
@@ -184,7 +311,7 @@ const RaffleDes = ({ params }) => {
                 >
                   <HiTicket color="#30f100" /> Tickets sold: {raffle?.entries}{" "}
                 </Text>{" "}
-                <Text
+                {/* <Text
                   sx={{
                     display: "flex",
                     gap: 2,
@@ -192,7 +319,7 @@ const RaffleDes = ({ params }) => {
                   }}
                 >
                   <AiFillFire color="#30f100" /> $IEN spent: 26640{" "}
-                </Text>{" "}
+                </Text>{" "} */}
                 <Text
                   sx={{
                     display: "flex",
@@ -273,6 +400,28 @@ const RaffleDes = ({ params }) => {
                     }}
                   >
                     {raffle.name}{" "}
+                  </Heading>{" "}
+                  <Heading
+                    as="h3"
+                    size={"md"}
+                    sx={{
+                      textAlign: "center",
+                      my: 4,
+                      color: "green",
+                    }}
+                  >
+                    Address: {address}{" "}
+                  </Heading>{" "}
+                  <Heading
+                    as="h3"
+                    size={"md"}
+                    sx={{
+                      textAlign: "center",
+                      my: 4,
+                      color: "red",
+                    }}
+                  >
+                    Tokens: {tokens?.owned.length}{" "}
                   </Heading>{" "}
                   {/* <Flex
                     justifyContent="center"
