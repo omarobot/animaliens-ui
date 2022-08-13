@@ -22,7 +22,13 @@ import goats from "../images/assets/goats.webp";
 import yummi from "../images/assets/yummi.webp";
 import rocket from "../images/assets/rocketclub.webp";
 import { db, storage } from "../firebase-config";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  query,
+  orderBy,
+} from "firebase/firestore";
 import { useEffect } from "react";
 import { ref, uploadBytes, getDownloadURL, getStorage } from "firebase/storage";
 
@@ -419,8 +425,10 @@ const Raffles = () => {
   const raffleCollection = collection(db, "raffles");
 
   useEffect(() => {
+    const q = query(raffleCollection, orderBy("date", "desc"));
+
     const getRaffles = async () => {
-      const data = await getDocs(raffleCollection);
+      const data = await getDocs(q);
       setRaffles(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getRaffles();
