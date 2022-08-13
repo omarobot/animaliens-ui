@@ -96,12 +96,14 @@ const RaffleDes = ({ params }) => {
   const [walletAddress, setWalletAddress] = useState(
     "C9Azhh87saDj884qmcpKhiewN2doby47sKb4hXG3Z9x6"
   );
+  const [NFTAddress, setNFTAddress] = useState("animaliens123");
   const [isLoading, setIsLoading] = useState(false);
   const [isClaimed, setIsClaimed] = useState(false);
   const [entries, setEntries] = useState([]);
   const [ticketSold, setTicketSold] = useState(0);
   const [entriesByID, setEntriesByID] = useState(0);
   const [getOrderById, setGetOrderById] = useState([]);
+  const [nftExists, setNftExists] = useState(false);
 
   // get single doc from firebase
   // firebase collection
@@ -149,7 +151,12 @@ const RaffleDes = ({ params }) => {
 
   const handleSubmit = async () => {
     setIsLoading(true);
-    const newWallet = { walletAddress, tickets, raffleId: raffle.id };
+    const newWallet = {
+      walletAddress,
+      NFTAddress,
+      tickets,
+      raffleId: raffle.id,
+    };
     if (nfts !== 0) {
       const addTickets = async () => {
         const docRef = await addDoc(ticketsCollection, newWallet);
@@ -188,6 +195,9 @@ const RaffleDes = ({ params }) => {
         newTickets += element.tickets;
         setNfts(nfts - newTickets);
       }
+      if (element.NFTAddress === NFTAddress) {
+        setNftExists(true);
+      }
       if (element.raffleId === raffle.id) {
         allTickets += element.tickets;
         newEntriesByID += 1;
@@ -197,7 +207,7 @@ const RaffleDes = ({ params }) => {
       setTicketSold(allTickets);
       setEntriesByID(newEntriesByID);
     }
-  }, [entries, walletAddress, raffle.id]);
+  }, [entries, walletAddress, raffle.id, NFTAddress]);
 
   // update raffle entries
 
@@ -523,23 +533,27 @@ const RaffleDes = ({ params }) => {
                       <Text as="span"> 1 NFT / ticket </Text>{" "}
                     </Box>{" "}
                     <Box>
-                      {nfts > 0 && (
-                        <NumberInput
-                          onChange={handleOnChange}
-                          defaultValue={tickets}
-                          min={1}
-                          max={nfts}
-                          keepWithinRange={true}
-                          clampValueOnBlur={false}
-                        >
-                          <NumberInputField
-                            className={raffleStyles.inputField}
-                          />{" "}
-                          <NumberInputStepper>
-                            <NumberIncrementStepper />
-                            <NumberDecrementStepper />
-                          </NumberInputStepper>{" "}
-                        </NumberInput>
+                      {!nftExists && (
+                        <>
+                          {nfts > 0 && (
+                            <NumberInput
+                              onChange={handleOnChange}
+                              defaultValue={tickets}
+                              min={1}
+                              max={nfts}
+                              keepWithinRange={true}
+                              clampValueOnBlur={false}
+                            >
+                              <NumberInputField
+                                className={raffleStyles.inputField}
+                              />{" "}
+                              <NumberInputStepper>
+                                <NumberIncrementStepper />
+                                <NumberDecrementStepper />
+                              </NumberInputStepper>{" "}
+                            </NumberInput>
+                          )}
+                        </>
                       )}
                     </Box>{" "}
                   </Box>{" "}
@@ -579,7 +593,7 @@ const RaffleDes = ({ params }) => {
                         <Countdown date={raffle.date} renderer={renderer} />{" "}
                       </Box>{" "}
                     </Box>{" "}
-                    {nfts === 0 ? (
+                    {nfts === 0 || nftExists ? (
                       <Button disabled colorScheme="green">
                         You already have max entries
                       </Button>
@@ -609,15 +623,16 @@ const RaffleDes = ({ params }) => {
                   </Box>{" "}
                 </Flex>{" "}
                 <div>
-                  {nfts > 0 && (
-                    <>
-                      {nfts <= tickets && (
-                        <Text sx={{ textAlign: "center" }}>
-                          You have only {nfts} NFTs available
-                        </Text>
-                      )}
-                    </>
-                  )}
+                  {nfts > 0 ||
+                    (!nftExists && (
+                      <>
+                        {nfts <= tickets && (
+                          <Text sx={{ textAlign: "center" }}>
+                            You have only {nfts} NFTs available
+                          </Text>
+                        )}
+                      </>
+                    ))}
                 </div>
               </div>
             ) : (
