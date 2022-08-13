@@ -152,24 +152,12 @@ const RaffleDes = ({ params }) => {
   const handleSubmit = async () => {
     setIsLoading(true);
     const newWallet = { walletAddress, tickets, raffleId: raffle.id };
-    // const updateRaffle = doc(raffleCollection, raffle.id);
-    // await updateDoc(updateRaffle, {
-    //   wallets: arrayUnion(newWallet),
-    // })
-    //   .then(() => {
-    //     setIsLoading(false);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
     const addTickets = async () => {
       const docRef = await addDoc(ticketsCollection, newWallet);
       if (docRef.id) {
-        alert("Raffle added successfully!");
         setIsLoading(false);
-        // window.location.reload();
       } else {
-        alert("Error adding raffle");
+        setIsLoading(false);
       }
     };
     addTickets();
