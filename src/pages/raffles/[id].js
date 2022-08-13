@@ -153,7 +153,7 @@ const RaffleDes = ({ params }) => {
     setIsLoading(true);
     const newWallet = {
       walletAddress,
-      NFTAddress,
+      NFT: NFTAddress,
       tickets,
       raffleId: raffle.id,
     };
@@ -195,7 +195,7 @@ const RaffleDes = ({ params }) => {
         newTickets += element.tickets;
         setNfts(nfts - newTickets);
       }
-      if (element.NFTAddress === NFTAddress) {
+      if (element.NFT === NFTAddress) {
         setNftExists(true);
       }
       if (element.raffleId === raffle.id) {
