@@ -16,39 +16,32 @@ import React, { useState } from "react";
 import Metadata from "../../components/Metadata";
 import * as raffleStyles from "../../styles/Raffle.module.css";
 // import raffleImg from "../../images/assets/pantha.webp";
-import { HiTicket } from "react-icons/hi";
-import { AiFillFire } from "react-icons/ai";
-import { GiCrown } from "react-icons/gi";
-import { FaTwitter, FaDiscord } from "react-icons/fa";
-import { navigate } from "gatsby";
-import Countdown from "react-countdown";
 import {
   Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
   TableContainer,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
 } from "@chakra-ui/react";
+import { navigate } from "gatsby";
+import Countdown from "react-countdown";
+import { GiCrown } from "react-icons/gi";
+import { HiTicket } from "react-icons/hi";
 
 import spacebudz from "../../../metadata.json";
 
-import kongs from "../../images/assets/kongs.webp";
 import {
+  addDoc,
   collection,
   doc,
   getDoc,
-  updateDoc,
-  setDoc,
-  arrayUnion,
-  addDoc,
   getDocs,
+  updateDoc,
 } from "firebase/firestore";
-import { db } from "../../firebase-config";
 import { useEffect } from "react";
+import { db } from "../../firebase-config";
 
 import { useStoreState } from "easy-peasy";
 import Loader from "../../cardano/loader";
@@ -108,6 +101,7 @@ const RaffleDes = ({ params }) => {
   const [entries, setEntries] = useState([]);
   const [ticketSold, setTicketSold] = useState(0);
   const [entriesByID, setEntriesByID] = useState(0);
+  const [getOrderById, setGetOrderById] = useState([]);
 
   // get single doc from firebase
   // firebase collection
@@ -186,6 +180,7 @@ const RaffleDes = ({ params }) => {
     let newTickets = 0;
     let allTickets = 0;
     let newEntriesByID = 0;
+    const ordersById = [];
     for (let i = 0; i < entries.length; i++) {
       const element = entries[i];
 
@@ -196,7 +191,9 @@ const RaffleDes = ({ params }) => {
       if (element.raffleId === raffle.id) {
         allTickets += element.tickets;
         newEntriesByID += 1;
+        ordersById.push(element);
       }
+      setGetOrderById(ordersById);
       setTicketSold(allTickets);
       setEntriesByID(newEntriesByID);
     }
@@ -368,7 +365,8 @@ const RaffleDes = ({ params }) => {
                     alignItems: "center",
                   }}
                 >
-                  <GiCrown color="#30f100" /> Unique wallets: {entries.length}
+                  <GiCrown color="#30f100" /> Unique wallets:{" "}
+                  {getOrderById.length}
                 </Text>{" "}
               </Flex>{" "}
             </Box>
