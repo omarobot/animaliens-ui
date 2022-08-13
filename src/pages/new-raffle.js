@@ -43,7 +43,6 @@ const NewRaffle = () => {
   const imagesRef = ref(storage, `rafflesImages/${raffleImg?.name}`);
 
   // firebase collection
-  const userCollection = collection(db, "users");
   const raffleCollection = collection(db, "raffles");
 
   const handleOnBlur = (e) => {

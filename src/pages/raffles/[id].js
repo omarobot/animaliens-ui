@@ -42,6 +42,7 @@ import {
   updateDoc,
   setDoc,
   arrayUnion,
+  addDoc,
 } from "firebase/firestore";
 import { db } from "../../firebase-config";
 import { useEffect } from "react";
@@ -87,7 +88,9 @@ const RaffleDes = ({ params }) => {
   const [isClaimed, setIsClaimed] = useState(false);
 
   // get single doc from firebase
+  // firebase collection
   const raffleCollection = collection(db, "raffles");
+  const ticketsCollection = collection(db, "tickets");
 
   useEffect(() => {
     const docRef = doc(raffleCollection, params.id);
@@ -130,17 +133,28 @@ const RaffleDes = ({ params }) => {
 
   const handleSubmit = async () => {
     setIsLoading(true);
-    const newWallet = { walletAddress, tickets };
-    const updateRaffle = doc(raffleCollection, raffle.id);
-    await updateDoc(updateRaffle, {
-      wallets: arrayUnion(newWallet),
-    })
-      .then(() => {
+    const newWallet = { walletAddress, tickets, raffleId: raffle.id };
+    // const updateRaffle = doc(raffleCollection, raffle.id);
+    // await updateDoc(updateRaffle, {
+    //   wallets: arrayUnion(newWallet),
+    // })
+    //   .then(() => {
+    //     setIsLoading(false);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    const addTickets = async () => {
+      const docRef = await addDoc(ticketsCollection, newWallet);
+      if (docRef.id) {
+        alert("Raffle added successfully!");
         setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        // window.location.reload();
+      } else {
+        alert("Error adding raffle");
+      }
+    };
+    addTickets();
   };
 
   // check entries
