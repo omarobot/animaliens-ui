@@ -107,6 +107,7 @@ const RaffleDes = ({ params }) => {
   const [isClaimed, setIsClaimed] = useState(false);
   const [entries, setEntries] = useState([]);
   const [ticketSold, setTicketSold] = useState(0);
+  const [entriesByID, setEntriesByID] = useState(0);
 
   // get single doc from firebase
   // firebase collection
@@ -184,16 +185,34 @@ const RaffleDes = ({ params }) => {
   useEffect(() => {
     let newTickets = 0;
     let allTickets = 0;
+    let newEntriesByID = 0;
     for (let i = 0; i < entries.length; i++) {
       const element = entries[i];
-      allTickets += element.tickets;
-      setTicketSold(allTickets);
+
       if (element.walletAddress === walletAddress) {
         newTickets += element.tickets;
         setNfts(nfts - newTickets);
       }
+      if (element.raffleId === raffle.id) {
+        allTickets += element.tickets;
+        newEntriesByID += 1;
+      }
+      setTicketSold(allTickets);
+      setEntriesByID(newEntriesByID);
     }
-  }, [entries, walletAddress]);
+  }, [entries, walletAddress, raffle.id]);
+
+  // update raffle entries
+
+  const updateRaffle = async (id, entries) => {
+    if (id && entries >= 0) {
+      const raffleRef = doc(db, "raffles", id);
+      await updateDoc(raffleRef, {
+        entries: entriesByID,
+      });
+    }
+  };
+  updateRaffle(raffle?.id, raffle?.entries);
 
   //====== Connect Wallet Code =============
 
