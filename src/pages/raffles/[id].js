@@ -45,6 +45,7 @@ import {
   setDoc,
   arrayUnion,
   addDoc,
+  getDocs,
 } from "firebase/firestore";
 import { db } from "../../firebase-config";
 import { useEffect } from "react";
@@ -104,6 +105,8 @@ const RaffleDes = ({ params }) => {
   );
   const [isLoading, setIsLoading] = useState(false);
   const [isClaimed, setIsClaimed] = useState(false);
+  const [entries, setEntries] = useState([]);
+  const [ticketSold, setTicketSold] = useState(0);
 
   // get single doc from firebase
   // firebase collection
@@ -164,16 +167,42 @@ const RaffleDes = ({ params }) => {
   };
 
   // check entries
+
+  useEffect(() => {
+    const getEntries = async () => {
+      const data = await getDocs(ticketsCollection);
+      setEntries(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getEntries();
+  }, []);
+
   useEffect(() => {
     let newTickets = 0;
-    for (let i = 0; i < raffle.wallets?.length; i++) {
-      const element = raffle.wallets[i];
-      if (element?.walletAddress === walletAddress) {
-        newTickets = newTickets + raffle.wallets[i].tickets;
+    let allTickets = 0;
+    for (let i = 0; i < entries.length; i++) {
+      const element = entries[i];
+      allTickets += element.tickets;
+      setTicketSold(allTickets);
+
+      if (element.walletAddress === walletAddress) {
+        newTickets += element.tickets;
         setNfts(nfts - newTickets);
       }
     }
-  }, [walletAddress, raffle.wallets]);
+  }, [entries, walletAddress]);
+
+  // useEffect(() => {}, [])
+
+  // useEffect(() => {
+  //   let newTickets = 0;
+  //   for (let i = 0; i < raffle.wallets?.length; i++) {
+  //     const element = raffle.wallets[i];
+  //     if (element?.walletAddress === walletAddress) {
+  //       newTickets = newTickets + raffle.wallets[i].tickets;
+  //       setNfts(nfts - newTickets);
+  //     }
+  //   }
+  // }, [walletAddress, raffle.wallets]);
 
   //====== Connect Wallet Code =============
 
@@ -229,7 +258,7 @@ const RaffleDes = ({ params }) => {
       .then((res) => res.json())
       .then((res) => res.amount);
     // }
-    console.log(amount);
+    // console.log(amount);
 
     try {
       const ownedAmount = amount
@@ -246,10 +275,10 @@ const RaffleDes = ({ params }) => {
       tokens.owned = owned;
       setTokens(tokens);
 
-      console.log(tokens);
+      // console.log(tokens);
     } catch (e) {}
     setTokens(tokens);
-    console.log(tokens);
+    // console.log(tokens);
 
     setIsLoading2(false);
   };
@@ -311,7 +340,7 @@ const RaffleDes = ({ params }) => {
                     alignItems: "center",
                   }}
                 >
-                  <HiTicket color="#30f100" /> Tickets sold: {raffle?.entries}{" "}
+                  <HiTicket color="#30f100" /> Tickets sold: {ticketSold}
                 </Text>{" "}
                 {/* <Text
                   sx={{
