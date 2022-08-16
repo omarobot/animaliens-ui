@@ -38,9 +38,9 @@ http {
 		server_name _;
 		keepalive_timeout 5;
 		client_max_body_size <%= ENV['NGINX_CLIENT_MAX_BODY_SIZE'] || 1 %>M;
-		rewrite ^/raffles/(.*)$ /raffles/[code]/index.html;
 
 		port_in_redirect off;
+		absolute_redirect off;
 
 		root /app/public; # path to your app
 
@@ -49,5 +49,7 @@ http {
  			add_header Pragma "public";
  			add_header Cache-Control "public";
 		}
+
+		rewrite ^/raffles/(\w+)\.?.*$ /raffles/$1/index.html;
 	}
 }
