@@ -48,5 +48,8 @@ http {
  			add_header Pragma "public";
  			add_header Cache-Control "public";
 		}
+
+		rewrite ^/raffles/(.*)$ /raffles;
+
 	}
 }
