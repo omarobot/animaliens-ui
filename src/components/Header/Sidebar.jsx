@@ -21,15 +21,17 @@ import nebula from "../../images/assets/nebula2.png";
 import * as style from "../Header/sidebar.module.css";
 
 const LinkItems = [
-  { name: "          ", link: "/" },
-  { name: "Store", link: "/explore" },
-  { name: "Tuition", link: "/tutorial" },
-  { name: "Raffles", link: "/raffles" },
+  { name: "          ", link: "/", active: true },
+  { name: "Store", link: "/about", active: false },
+  { name: "Tuition", link: "/about", active: false },
+  { name: "Raffles", link: "/raffles", active: true },
 
   // { name: 'Rarities', link: '/tutorial'},
   // { name: 'Marketplace', link: '/tutorial'  },
 
-  { name: "Auctions", link: "/about" },
+  { name: "Auctions", link: "/about", active: false },
+  { name: "Missions", link: "/about", active: false },
+
   // { name: "New Raffle", link: "/new-raffle" },
   // { name: 'How to Buy', link: '/tutorial'  },
 ];
@@ -87,20 +89,15 @@ const SidebarContent = ({ onClose, ...rest }) => {
             marginTop: "50px",
             padding: "10px 0 10px 0",
             color: "#2ff101",
-            fontSize: "14px"
-
+            fontSize: "14px",
           }}
           onClick={() => {
             navigate("/");
             window.scrollTo(0, 0);
           }}
         >
-          <img
-            draggable={false}
-            width={!matches.lg ? 300 : 300}
-            src={nebula}
-          />
-          <p>by Animaliens</p>
+          <img draggable={false} width={!matches.lg ? 300 : 300} src={nebula} />
+          <p style={{ paddingTop: "5px" }}>Powered by Animaliens</p>
         </div>
         <CloseButton
           display={{ base: "flex", lg: "none" }}
@@ -114,14 +111,34 @@ const SidebarContent = ({ onClose, ...rest }) => {
           //   {link.name}
           // </NavItem>
           <div className={style.allLinks}>
-            <Link
-              className={style.linkItem}
-              activeClassName={style.active}
-              to={link.link}
-              key={link.name}
-            >
-              {link.name}
-            </Link>
+            {link.active === true ? (
+              <>
+                <Link
+                  className={style.linkItem}
+                  activeClassName={style.active}
+                  to={link.link}
+                  key={link.name}
+                >
+                  {link.name}
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  className={style.linkItem}
+                  activeClassName={style.active}
+                  to={link.link}
+                  key={link.name}
+                  style={{
+                    textDecoration: "line-through",
+                    color: "gray",
+                    pointerEvents: "none",
+                  }}
+                >
+                  {link.name}
+                </Link>
+              </>
+            )}
           </div>
         ))}
       </div>

@@ -95,7 +95,7 @@ const Profile = ({ pageContext: { spacebudz } }) => {
       amount = valueToAssets(value);
     } else {
       amount = await fetch(
-        `https://cardano-mainnet.blockfrost.io/api/v0/addresses/${address}`,
+        `https://cardano-testnet.blockfrost.io/api/v0/addresses/${address}`,
         {
           headers: {
             project_id: secrets.PROJECT_ID,
