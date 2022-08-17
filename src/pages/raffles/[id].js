@@ -400,6 +400,9 @@ const RaffleDes = ({ params }) => {
       setWalletConnected(true);
     } else {
       setWalletConnected(false);
+      setNftsHeld(0);
+      setEntries(0);
+      setNfts(0);
     }
 
     console.log(address);
@@ -449,7 +452,7 @@ const RaffleDes = ({ params }) => {
                   my: 4,
                 }}
               >
-                <Text
+                {/* <Text
                   sx={{
                     display: "flex",
                     gap: 2,
@@ -458,15 +461,7 @@ const RaffleDes = ({ params }) => {
                 >
                   <HiTicket color="#30f100" /> Total entries: {ticketSold}
                 </Text>{" "}
-                {/* <Text
-                  sx={{
-                    display: "flex",
-                    gap: 2,
-                    alignItems: "center",
-                  }}
-                >
-                  <AiFillFire color="#30f100" /> $IEN spent: 26640{" "}
-                </Text>{" "} */}
+
                 <Text
                   sx={{
                     display: "flex",
@@ -476,7 +471,7 @@ const RaffleDes = ({ params }) => {
                 >
                   <GiCrown color="#30f100" /> Unique wallets:{" "}
                   {getOrderById.length}
-                </Text>{" "}
+                </Text>{" "} */}
               </Flex>{" "}
             </Box>
           ) : (
@@ -549,14 +544,14 @@ const RaffleDes = ({ params }) => {
                   >
                     {raffle.name}{" "}
                   </Heading>{" "}
-                  {walletConnected ? (
+                  {walletConnected && nftsHeld && nftsHeld > 0 ? (
                     <>
                       <p
                         size={"sm"}
                         style={{
                           textAlign: "center",
                           my: 1,
-                          color: "#ffcb00",
+                          color: "rgb(48, 241, 0)",
                         }}
                       >
                         NFTs Detected: {nftsHeld}{" "}
@@ -618,7 +613,7 @@ const RaffleDes = ({ params }) => {
                             <NumberInput
                               onChange={handleOnChange}
                               defaultValue={nfts}
-                              min={1}
+                              min={nfts}
                               max={nfts}
                               keepWithinRange={true}
                               clampValueOnBlur={false}
@@ -674,10 +669,29 @@ const RaffleDes = ({ params }) => {
                     </Box>{" "}
                     {walletConnected === true ? (
                       <>
-                        {nfts === 0 ? (
-                          <Button disabled colorScheme="green">
-                            You already have max entries or no NFTs
-                          </Button>
+                        {nfts === 0 || !nftsHeld || nftsHeld === 0 ? (
+                          <>
+                            <Box
+                              sx={{
+                                mt: 4,
+                                mb: 8,
+                              }}
+                            >
+                              <Heading
+                                as="h3"
+                                size="md"
+                                sx={{
+                                  my: 2,
+                                  color: "red",
+                                }}
+                              >
+                                Oops, something is wrong.
+                              </Heading>{" "}
+                              <Box style={{ color: "red" }}>
+                                You already have max entries or no NFTs
+                              </Box>{" "}
+                            </Box>{" "}
+                          </>
                         ) : (
                           <>
                             {isLoading ? (
@@ -698,7 +712,7 @@ const RaffleDes = ({ params }) => {
                                 colorScheme="green"
                               >
                                 {nftConnect
-                                  ? `Buy ${tickets} ticket(s)`
+                                  ? `Buy ${nfts} ticket(s)`
                                   : `Connect your wallet`}
                               </Button>
                             )}
@@ -723,7 +737,9 @@ const RaffleDes = ({ params }) => {
                           >
                             No wallet detected!{" "}
                           </Heading>{" "}
-                          <Box>Please connect your wallet.</Box>{" "}
+                          <Box style={{ color: "red" }}>
+                            Please connect your wallet.
+                          </Box>{" "}
                         </Box>{" "}
                       </>
                     )}
@@ -763,7 +779,7 @@ const RaffleDes = ({ params }) => {
                     >
                       {" "}
                       <Text sx={{ textAlign: "center" }}>
-                        You have {entries} entries submitted. Good luck!
+                        You already have {entries} entries submitted. Good luck!
                       </Text>
                     </div>
                   ) : (
