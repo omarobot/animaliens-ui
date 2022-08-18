@@ -286,8 +286,8 @@ const StartButton = (props) => {
               {window.cardano &&
                 Object.keys(window.cardano)
                   .filter(
-                    (walletName) =>
-                      walletName == "nami" || walletName == "ccvault"
+                    (walletName) => walletName == "nami"
+                    //  || walletName == "ccvault"
                     // walletName === "flint"
                   )
                   .map((walletName) => (

@@ -327,18 +327,14 @@ const RaffleDes = ({ params }) => {
         let newEntriesByID = 0;
         let ordersById = [];
 
+        console.log("raffle id: =====");
+        console.log(params.id);
+        let raffId = params.id;
+
         setNftsHeld(tokens.owned.length);
 
         for (let i = 0; i < totalEntries.length; i++) {
           const element = totalEntries[i];
-
-          totalNftsOwned.forEach((n) => {
-            if (n.name === element.NFT) {
-              numNfts--;
-              existingEntries++;
-              namesOfUsedNfts.push(n.name);
-            }
-          });
 
           // if (element.walletAddress === walletAddress) {
           //   newTickets += element.tickets;
@@ -348,14 +344,21 @@ const RaffleDes = ({ params }) => {
             setNftExists(true);
           }
 
-          if (element.raffleId === raffle.id) {
-            allTickets++;
-            newEntriesByID += 1;
-            ordersById.push(element);
+          if (element.raffleId === raffId) {
+            totalNftsOwned.forEach((n) => {
+              if (n.name === element.NFT) {
+                numNfts--;
+                existingEntries++;
+                namesOfUsedNfts.push(n.name);
+              }
+            });
+            // allTickets++;
+            // newEntriesByID += 1;
+            // ordersById.push(element);
           }
-          setGetOrderById(ordersById);
-          setTicketSold(allTickets);
-          setEntriesByID(newEntriesByID);
+          // setGetOrderById(ordersById);
+          // setTicketSold(allTickets);
+          // setEntriesByID(newEntriesByID);
         }
 
         setNfts(numNfts);
@@ -617,6 +620,7 @@ const RaffleDes = ({ params }) => {
                               max={nfts}
                               keepWithinRange={true}
                               clampValueOnBlur={false}
+                              style={{ pointerEvents: "none" }}
                             >
                               <NumberInputField
                                 className={raffleStyles.inputField}
@@ -775,7 +779,12 @@ const RaffleDes = ({ params }) => {
                 <div>
                   {entries > 0 && walletConnected ? (
                     <div
-                      style={{ marginTop: "50px", color: "rgb(48, 241, 0)" }}
+                      style={{
+                        marginTop: "50px",
+                        color: "rgb(48, 241, 0)",
+                        border: "2px solid rgb(48, 241, 0)",
+                        padding: "5px",
+                      }}
                     >
                       {" "}
                       <Text sx={{ textAlign: "center" }}>
