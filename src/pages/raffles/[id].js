@@ -47,10 +47,16 @@ import { db } from "../../firebase-config";
 import { useStoreState } from "easy-peasy";
 import Loader from "../../cardano/loader";
 
-const POLICY = "28341001f186ebe3b47f1515add13df3d8d02aafa19b7b9695ed4157";
+// const POLICY = "28341001f186ebe3b47f1515add13df3d8d02aafa19b7b9695ed4157";
+
+// const secrets = {
+//   PROJECT_ID: "testnet1RD4umD3NGsxuutiWpxzJLjwv0O7j8Tp",
+// };
+
+const POLICY = "f45d8846c452fb24900ed28a640680a9b8307a9d4bacbd9568288559";
 
 const secrets = {
-  PROJECT_ID: "testnet1RD4umD3NGsxuutiWpxzJLjwv0O7j8Tp",
+  PROJECT_ID: "mainnetUIZaC3VVQqHx52mVjKBfovo16VQuftQ2",
 };
 
 function fromHex(hex) {
@@ -80,6 +86,9 @@ const RaffleDes = ({ params }) => {
   const [nftsHeld, setNftsHeld] = useState();
   const [nftNames, setNftNames] = useState();
 
+  const [uniqueEntries, setUniqueEntries] = useState();
+  const [uniqueWallets, setUniqueWallets] = useState();
+
   // get single doc from firebase
   // firebase collection
   const raffleCollection = collection(db, "raffles");
@@ -89,6 +98,7 @@ const RaffleDes = ({ params }) => {
     const docRef = doc(raffleCollection, params.id);
     getDoc(docRef).then((doc) => {
       setRaffle({ ...doc.data(), id: doc.id });
+      let raffle = { ...doc.data(), id: doc.id };
     });
   }, [params.id]);
 
@@ -280,7 +290,7 @@ const RaffleDes = ({ params }) => {
     //   amount = valueToAssets(value);
     // } else {
     amount = await fetch(
-      `https://cardano-testnet.blockfrost.io/api/v0/addresses/${address}`,
+      `https://cardano-mainnet.blockfrost.io/api/v0/addresses/${address}`,
       {
         headers: {
           project_id: secrets.PROJECT_ID,
@@ -307,7 +317,7 @@ const RaffleDes = ({ params }) => {
         const ownedAmount = amount
           .filter((am) => am.unit.startsWith(POLICY))
           .map((am) =>
-            parseInt(fromHex(am.unit.slice(56)).split("Animaliens")[1])
+            parseInt(fromHex(am.unit.slice(56)).split("TheChosenOnes")[1])
           );
         const owned = ownedAmount.map((id) => {
           return {
@@ -327,14 +337,26 @@ const RaffleDes = ({ params }) => {
         let newEntriesByID = 0;
         let ordersById = [];
 
-        console.log("raffle id: =====");
-        console.log(params.id);
+        // console.log("raffle id: =====");
+        // console.log(params.id);
         let raffId = params.id;
 
         setNftsHeld(tokens.owned.length);
 
+        let uniqueMap = new Map();
+
         for (let i = 0; i < totalEntries.length; i++) {
           const element = totalEntries[i];
+
+          if (
+            uniqueMap.get(element.walletAddress) &&
+            uniqueMap.get(element.walletAddress).length > 0
+          ) {
+            let values = uniqueMap.get(element.walletAddress);
+            values.push(element.NFT);
+          } else {
+            uniqueMap.set(element.walletAddress, [...element.NFT]);
+          }
 
           // if (element.walletAddress === walletAddress) {
           //   newTickets += element.tickets;
@@ -363,6 +385,23 @@ const RaffleDes = ({ params }) => {
 
         setNfts(numNfts);
         setEntries(existingEntries);
+
+        let mapKeys = [...uniqueMap.keys()];
+
+        let keyLength = 0;
+        mapKeys.forEach(() => {
+          keyLength++;
+        });
+
+        // console.log("unique entries");
+        // console.log(totalEntries.length);
+
+        // console.log("unique wallets");
+        // console.log(keyLength);
+        // console.log(mapKeys);
+
+        setUniqueEntries(totalEntries.length);
+        setUniqueWallets(mapKeys.length);
 
         let tempArr = [];
         totalNftsOwned.forEach((owned) => {
@@ -455,16 +494,6 @@ const RaffleDes = ({ params }) => {
                   my: 4,
                 }}
               >
-                {/* <Text
-                  sx={{
-                    display: "flex",
-                    gap: 2,
-                    alignItems: "center",
-                  }}
-                >
-                  <HiTicket color="#30f100" /> Total entries: {ticketSold}
-                </Text>{" "}
-
                 <Text
                   sx={{
                     display: "flex",
@@ -472,9 +501,17 @@ const RaffleDes = ({ params }) => {
                     alignItems: "center",
                   }}
                 >
-                  <GiCrown color="#30f100" /> Unique wallets:{" "}
-                  {getOrderById.length}
-                </Text>{" "} */}
+                  <HiTicket color="#30f100" /> Total entries: {uniqueEntries}
+                </Text>{" "}
+                <Text
+                  sx={{
+                    display: "flex",
+                    gap: 2,
+                    alignItems: "center",
+                  }}
+                >
+                  <GiCrown color="#30f100" /> Unique wallets: {uniqueWallets}
+                </Text>{" "}
               </Flex>{" "}
             </Box>
           ) : (
@@ -689,7 +726,7 @@ const RaffleDes = ({ params }) => {
                                   color: "red",
                                 }}
                               >
-                                Oops, something is wrong.
+                                Woah, not so fast.
                               </Heading>{" "}
                               <Box style={{ color: "red" }}>
                                 You already have max entries or no NFTs
@@ -788,7 +825,8 @@ const RaffleDes = ({ params }) => {
                     >
                       {" "}
                       <Text sx={{ textAlign: "center" }}>
-                        You already have {entries} entries submitted. Good luck!
+                        You already have {entries} entrie(s) submitted. Good
+                        luck!
                       </Text>
                     </div>
                   ) : (

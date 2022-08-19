@@ -408,7 +408,7 @@ const NoNami = (toast) => {
 };
 
 const WrongNetworkToast = async (toast, api) => {
-  if ((await api.getNetworkId()) === 0) return true;
+  if ((await api.getNetworkId()) === 1) return true;
   toast({
     position: "bottom-right",
     duration: 5000,

@@ -1,6 +1,6 @@
 import React from "react";
 
-// import favicon from "./images/favicons/favicon.ico";
+import favicon from "./images/favicons/favicon.png";
 // import appleTouch from "./images/favicons/apple-touch-icon.png";
 
 export default class HTML extends React.Component {
@@ -13,10 +13,10 @@ export default class HTML extends React.Component {
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-          {this.props.headComponents}
-          {/* <link rel="shortcut icon" href={favicon} /> */}
-          {/* <link rel="apple-touch-icon" href={appleTouch} /> */}
+          />{" "}
+          {this.props.headComponents}{" "}
+          <link rel="shortcut icon" href={favicon} />{" "}
+          {/* <link rel="apple-touch-icon" href={appleTouch} /> */}{" "}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
           <link
@@ -31,17 +31,22 @@ export default class HTML extends React.Component {
             href="https://fonts.googleapis.com/css2?family=Heebo:wght@900&display=swap"
             rel="stylesheet"
           />
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
-        </head>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js">
+            {" "}
+          </script>{" "}
+        </head>{" "}
         <body {...this.props.bodyAttributes}>
-          {this.props.preBodyComponents}
+          {" "}
+          {this.props.preBodyComponents}{" "}
           <div
             key={`body`}
             id="___gatsby"
-            dangerouslySetInnerHTML={{ __html: this.props.body }}
-          />
-          {this.props.postBodyComponents}
-        </body>
+            dangerouslySetInnerHTML={{
+              __html: this.props.body,
+            }}
+          />{" "}
+          {this.props.postBodyComponents}{" "}
+        </body>{" "}
       </html>
     );
   }

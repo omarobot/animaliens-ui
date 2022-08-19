@@ -522,10 +522,16 @@ const Raffles = () => {
                               : `${raffleStyles.ticketIcon}`
                           }`}
                         />{" "}
-                        {raffle.entries}
+                        {1}
                       </Text>{" "}
                       <span> {raffle.winners} Winner(s) </span>{" "}
                     </Flex>{" "}
+                    <Box style={{ marginBottom: "10px" }}>
+                      <span style={{ color: "#30f100" }}>
+                        {" "}
+                        {raffle.description}
+                      </span>{" "}
+                    </Box>{" "}
                     <Box>
                       <Countdown date={raffle.date} renderer={renderer} />{" "}
                     </Box>{" "}
