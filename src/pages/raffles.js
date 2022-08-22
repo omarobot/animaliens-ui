@@ -456,9 +456,9 @@ const Raffles = () => {
   return (
     <>
       <Metadata
-        titleTwitter="SpaceBudz: Collectible Astronauts"
+        titleTwitter="Animaliens: The Alien Collective"
         title="Raffle"
-        description="Collect your unique SpaceBud as NFT on the Cardano blockchain."
+        description="Collect your unique Animaliens NFT on the Cardano blockchain."
       />
       {/* main content  */}{" "}
       <main>

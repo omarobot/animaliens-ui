@@ -477,9 +477,9 @@ const RaffleDes = ({ params }) => {
   return (
     <>
       <Metadata
-        titleTwitter="SpaceBudz: Collectible Astronauts"
+        titleTwitter="Animaliens: The Alien Collective"
         title="Raffle"
-        description="Collect your unique SpaceBud as NFT on the Cardano blockchain."
+        description="Collect your unique Animaliens NFT on the Cardano blockchain."
       />{" "}
       {/* main content  */}{" "}
       <main>
@@ -852,11 +852,15 @@ const RaffleDes = ({ params }) => {
                   <Table colorScheme="green" variant="unstyled">
                     <Thead>
                       <Tr>
-                        <Th> Wallet </Th> <Th> Entries </Th> <Th> Claim </Th>{" "}
+                        <Th> Wallet </Th>{" "}
                       </Tr>{" "}
                     </Thead>{" "}
                     <Tbody>
-                      {" "}
+                      <Tr>
+                        <Td style={{ fontSize: "10px" }}>
+                          addr1q9d9ua6n90rgvuxlpg7p0quvtzdfz39xjxj0u5u22nyqcxf20hgg7qtd5fzmplqml075mp8dq4saw9f6ndp8xjqyzsgsgwvdp2
+                        </Td>
+                      </Tr>{" "}
                       {/* {winners.map((winner) => (
                         <Tr key={winner.id}>
                           <Td> {winner.wallet} </Td> <Td> {raffle.entries} </Td>{" "}
