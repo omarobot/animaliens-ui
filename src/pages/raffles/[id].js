@@ -163,78 +163,10 @@ const RaffleDes = ({ params }) => {
         .catch((error) => {
           alert("An error occured. Please try again");
         });
-
-      // console.log("Document written with generated ID: ", ref.id);
-
-      // .then(function () {
-      //   // ...
-      //   setIsLoading(false);
-      //   alert("Entries submitted successfully.");
-      //   window.location.reload();
-      // })
-      // .catch(() => {
-      //   alert("An error occured. Please try again");
-      // });
-      // addTickets();
     } else {
       alert("You don't have enough NFTs to buy tickets");
     }
-
-    // console.log();
-
-    // if (nfts !== 0) {
-    //   const addTickets = async () => {
-    //     const docRef = await addDoc(ticketsCollection, newWallet);
-    //     if (docRef.id) {
-    //       setIsLoading(false);
-    //       window.location.reload();
-    //     } else {
-    //       setIsLoading(false);
-    //     }
-    //   };
-    //   // addTickets();
-    // } else {
-    //   alert("You don't have enough NFTs to buy tickets");
-    // }
   };
-
-  // check entries
-
-  // useEffect(() => {
-  //   const getEntries = async () => {
-  //     const data = await getDocs(ticketsCollection);
-  //     setEntries(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  //   };
-  //   getEntries();
-  // }, []);
-
-  // useEffect(() => {
-  //   let newTickets = 0;
-  //   let allTickets = 0;
-  //   let newEntriesByID = 0;
-  //   const ordersById = [];
-  //   for (let i = 0; i < entries.length; i++) {
-  //     const element = entries[i];
-
-  //     if (element.walletAddress === walletAddress) {
-  //       newTickets += element.tickets;
-  //       setNfts(nfts - newTickets);
-  //     }
-  //     if (element.NFT === NFTAddress) {
-  //       setNftExists(true);
-  //     }
-  //     if (element.raffleId === raffle.id) {
-  //       allTickets += element.tickets;
-  //       newEntriesByID += 1;
-  //       ordersById.push(element);
-  //     }
-  //     setGetOrderById(ordersById);
-  //     setTicketSold(allTickets);
-  //     setEntriesByID(newEntriesByID);
-  //   }
-  // }, [entries, walletAddress, raffle.id, NFTAddress]);
-
-  // update raffle entries
 
   const updateRaffle = async (id, entries) => {
     if (id && entries >= 0) {
@@ -302,6 +234,16 @@ const RaffleDes = ({ params }) => {
     // }
     console.log(amount);
 
+    let animaliens = {};
+    for (let index = 1; index <= 4444; index++) {
+      animaliens[index] = {
+        name: "The Chosen Ones #" + index,
+      };
+    }
+    console.log("animaliens");
+
+    console.log(animaliens);
+
     const getEntries = async () => {
       const data = await getDocs(ticketsCollection);
 
@@ -313,6 +255,42 @@ const RaffleDes = ({ params }) => {
       let existingEntries = 0;
       let namesOfUsedNfts = [];
 
+      totalEntries = totalEntries.filter(
+        (entry) => entry.raffleId === params.id
+      );
+      console.log("new total entries");
+
+      console.log(totalEntries);
+
+      setUniqueEntries(totalEntries.length);
+      console.log("total entries");
+      console.log(totalEntries);
+
+      let uniqueMap = new Map();
+
+      if (totalEntries.length > 0) {
+        totalEntries.forEach((element) => {
+          if (
+            uniqueMap.get(element.walletAddress) &&
+            uniqueMap.get(element.walletAddress).length > 0
+          ) {
+            let values = uniqueMap.get(element.walletAddress);
+            values.push(element.NFT);
+          } else {
+            uniqueMap.set(element.walletAddress, [...element.NFT]);
+          }
+        });
+      }
+
+      let mapKeys = [...uniqueMap.keys()];
+
+      let keyLength = 0;
+      mapKeys.forEach(() => {
+        keyLength++;
+      });
+
+      setUniqueWallets(mapKeys.length);
+
       try {
         const ownedAmount = amount
           .filter((am) => am.unit.startsWith(POLICY))
@@ -321,7 +299,7 @@ const RaffleDes = ({ params }) => {
           );
         const owned = ownedAmount.map((id) => {
           return {
-            ...spacebudz[id],
+            ...animaliens[id],
             bidPrice: undefined,
           };
         });
@@ -343,20 +321,20 @@ const RaffleDes = ({ params }) => {
 
         setNftsHeld(tokens.owned.length);
 
-        let uniqueMap = new Map();
+        // let uniqueMap = new Map();
 
         for (let i = 0; i < totalEntries.length; i++) {
           const element = totalEntries[i];
 
-          if (
-            uniqueMap.get(element.walletAddress) &&
-            uniqueMap.get(element.walletAddress).length > 0
-          ) {
-            let values = uniqueMap.get(element.walletAddress);
-            values.push(element.NFT);
-          } else {
-            uniqueMap.set(element.walletAddress, [...element.NFT]);
-          }
+          // if (
+          //   uniqueMap.get(element.walletAddress) &&
+          //   uniqueMap.get(element.walletAddress).length > 0
+          // ) {
+          //   let values = uniqueMap.get(element.walletAddress);
+          //   values.push(element.NFT);
+          // } else {
+          //   uniqueMap.set(element.walletAddress, [...element.NFT]);
+          // }
 
           // if (element.walletAddress === walletAddress) {
           //   newTickets += element.tickets;
@@ -386,12 +364,12 @@ const RaffleDes = ({ params }) => {
         setNfts(numNfts);
         setEntries(existingEntries);
 
-        let mapKeys = [...uniqueMap.keys()];
+        // let mapKeys = [...uniqueMap.keys()];
 
-        let keyLength = 0;
-        mapKeys.forEach(() => {
-          keyLength++;
-        });
+        // let keyLength = 0;
+        // mapKeys.forEach(() => {
+        //   keyLength++;
+        // });
 
         // console.log("unique entries");
         // console.log(totalEntries.length);
@@ -400,8 +378,7 @@ const RaffleDes = ({ params }) => {
         // console.log(keyLength);
         // console.log(mapKeys);
 
-        setUniqueEntries(totalEntries.length);
-        setUniqueWallets(mapKeys.length);
+        // setUniqueWallets(mapKeys.length);
 
         let tempArr = [];
         totalNftsOwned.forEach((owned) => {
