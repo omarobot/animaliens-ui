@@ -75,18 +75,11 @@ if (
 
 const addressToBech32 = async () => {
   await Loader.load();
-  console.log("selected w");
-  console.log(window.cardano.selectedWallet);
-  console.log("used addresses");
-  console.log(window.cardano.selectedWallet.getUsedAddresses());
-  console.log("unused addresses");
-  console.log(window.cardano.selectedWallet.getUnusedAddresses());
   // const address = (await window.cardano.selectedWallet.getUsedAddresses())[0];
   const address =
     (await window.cardano.selectedWallet.getUsedAddresses())[0] ||
     (await window.cardano.selectedWallet.getUnusedAddresses())[0];
-  console.log("address to bech32");
-  console.log(address);
+
   return Loader.Cardano.Address.from_bytes(
     Buffer.from(address, "hex")
   ).to_bech32();
@@ -165,8 +158,7 @@ const StartButton = (props) => {
 
   const connectNami = async (w) => {
     const cardano = getCardano();
-    console.log("my wallet:");
-    console.log(w);
+
     let walletName = w;
     setIsLoading(true);
     onClose();
@@ -176,21 +168,13 @@ const StartButton = (props) => {
     const api = await cardano[walletName].enable().catch((e) => {});
     if (!api) return;
 
-    console.log("api");
-    console.log(api);
-
     window.cardano.selectedWallet = {
       walletName,
       ...cardano[walletName],
       ...api,
     };
 
-    console.log("selected wallet");
-    console.log(cardano.selectedWallet);
-
     const address = await addressToBech32();
-    console.log("address");
-    console.log(address);
 
     setConnected(address);
     localStorage.setItem(

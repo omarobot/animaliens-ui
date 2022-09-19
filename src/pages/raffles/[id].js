@@ -53,7 +53,7 @@ import Loader from "../../cardano/loader";
 //   PROJECT_ID: "testnet1RD4umD3NGsxuutiWpxzJLjwv0O7j8Tp",
 // };
 
-const POLICY = "f45d8846c452fb24900ed28a640680a9b8307a9d4bacbd9568288559";
+const POLICY = "e25f63ead710e65dfe69fbbb9945df9b2eb06b4694e765743ea71d43";
 
 const secrets = {
   PROJECT_ID: "mainnetUIZaC3VVQqHx52mVjKBfovo16VQuftQ2",
@@ -232,17 +232,13 @@ const RaffleDes = ({ params }) => {
       .then((res) => res.json())
       .then((res) => res.amount);
     // }
-    console.log(amount);
 
     let animaliens = {};
     for (let index = 1; index <= 4444; index++) {
       animaliens[index] = {
-        name: "The Chosen Ones #" + index,
+        name: "Chamalien #" + index,
       };
     }
-    console.log("animaliens");
-
-    console.log(animaliens);
 
     const getEntries = async () => {
       const data = await getDocs(ticketsCollection);
@@ -258,13 +254,8 @@ const RaffleDes = ({ params }) => {
       totalEntries = totalEntries.filter(
         (entry) => entry.raffleId === params.id
       );
-      console.log("new total entries");
-
-      console.log(totalEntries);
 
       setUniqueEntries(totalEntries.length);
-      console.log("total entries");
-      console.log(totalEntries);
 
       let uniqueMap = new Map();
 
@@ -295,14 +286,16 @@ const RaffleDes = ({ params }) => {
         const ownedAmount = amount
           .filter((am) => am.unit.startsWith(POLICY))
           .map((am) =>
-            parseInt(fromHex(am.unit.slice(56)).split("TheChosenOnes")[1])
+            parseInt(fromHex(am.unit.slice(56)).split("Chamalien")[1])
           );
+
         const owned = ownedAmount.map((id) => {
           return {
             ...animaliens[id],
             bidPrice: undefined,
           };
         });
+
         tokens.owned = owned;
         setTokens(tokens);
         setNFTAddress(tokens.owned[0].name);
