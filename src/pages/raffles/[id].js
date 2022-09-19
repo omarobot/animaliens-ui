@@ -300,7 +300,7 @@ const RaffleDes = ({ params }) => {
       .then((res) => res.json())
       .then((res) => res.amount);
     // }
-    // console.log(amount);
+    console.log(amount);
 
     const getEntries = async () => {
       const data = await getDocs(ticketsCollection);

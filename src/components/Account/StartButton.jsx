@@ -75,7 +75,18 @@ if (
 
 const addressToBech32 = async () => {
   await Loader.load();
-  const address = (await window.cardano.selectedWallet.getUsedAddresses())[0];
+  console.log("selected w");
+  console.log(window.cardano.selectedWallet);
+  console.log("used addresses");
+  console.log(window.cardano.selectedWallet.getUsedAddresses());
+  console.log("unused addresses");
+  console.log(window.cardano.selectedWallet.getUnusedAddresses());
+  // const address = (await window.cardano.selectedWallet.getUsedAddresses())[0];
+  const address =
+    (await window.cardano.selectedWallet.getUsedAddresses())[0] ||
+    (await window.cardano.selectedWallet.getUnusedAddresses())[0];
+  console.log("address to bech32");
+  console.log(address);
   return Loader.Cardano.Address.from_bytes(
     Buffer.from(address, "hex")
   ).to_bech32();
@@ -145,43 +156,99 @@ const StartButton = (props) => {
     }
   };
 
-  const connectNami = async () => {
-    let walletName = "nami";
+  const getCardano = () => {
+    const cardano = isBrowser() && window.cardano;
+    return cardano;
+  };
+
+  const isBrowser = () => typeof window !== "undefined";
+
+  const connectNami = async (w) => {
+    const cardano = getCardano();
+    console.log("my wallet:");
+    console.log(w);
+    let walletName = w;
     setIsLoading(true);
     onClose();
-    const api = await window.cardano[walletName].enable().catch((e) => {
-      console.log(e);
-    });
-    if (api) {
-      if (!(await checkStatus(toast, api))) {
-        setIsLoading(false);
-        return;
-      }
-      if (walletName === "flint") {
-        window.cardano.selectedWallet = {
-          ...window.cardano[walletName],
-          ...api,
-          experimental: {
-            getCollateral: api.getCollateral,
-          },
-        };
-      } else {
-        window.cardano.selectedWallet = {
-          ...window.cardano[walletName],
-          ...api,
-        };
-      }
-      const address = await addressToBech32();
-      setConnected(address);
-      localStorage.setItem(
-        "session",
-        JSON.stringify({
-          time: Date.now().toString(),
-          walletName,
-        })
-      );
-    }
+
+    if (!cardano[walletName]) return;
+
+    const api = await cardano[walletName].enable().catch((e) => {});
+    if (!api) return;
+
+    console.log("api");
+    console.log(api);
+
+    window.cardano.selectedWallet = {
+      walletName,
+      ...cardano[walletName],
+      ...api,
+    };
+
+    console.log("selected wallet");
+    console.log(cardano.selectedWallet);
+
+    const address = await addressToBech32();
+    console.log("address");
+    console.log(address);
+
+    setConnected(address);
+    localStorage.setItem(
+      "session",
+      JSON.stringify({
+        time: Date.now().toString(),
+        walletName,
+      })
+    );
+
     setIsLoading(false);
+
+    // const addressBech32 = getAddressBech32(
+    //   (await api.getUsedAddresses())[0] || (await api.getUnusedAddresses())[0]
+    // );
+
+    // let walletName = "nami";
+    // setIsLoading(true);
+    // onClose();
+    // const api = await window.cardano[walletName].enable().catch((e) => {
+    //   console.log(e);
+    // });
+    // console.log("api");
+    // console.log(api);
+    // if (api) {
+    //   if (!(await checkStatus(toast, api))) {
+    //     setIsLoading(false);
+    //     return;
+    //   }
+    //   // if (walletName === "flint") {
+    //   //   window.cardano.selectedWallet = {
+    //   //     ...window.cardano[walletName],
+    //   //     ...api,
+    //   //     experimental: {
+    //   //       getCollateral: api.getCollateral,
+    //   //     },
+    //   //   };
+    //   // } else {
+    //   console.log("selected wallet");
+    //   console.log(window.cardano.selectedWallet);
+    //   window.cardano.selectedWallet = {
+    //     ...window.cardano[walletName],
+    //     ...api,
+    //   };
+    //   // }
+    //   const address = await addressToBech32();
+    //   console.log("address");
+    //   console.log(address);
+    //   setConnected(address);
+    //   localStorage.setItem(
+    //     "session",
+    //     JSON.stringify({
+    //       time: Date.now().toString(),
+    //       walletName,
+    //     })
+    //   );
+    // }
+    // setIsLoading(false);
   };
 
   React.useEffect(() => {
@@ -286,8 +353,8 @@ const StartButton = (props) => {
               {window.cardano &&
                 Object.keys(window.cardano)
                   .filter(
-                    (walletName) => walletName == "nami"
-                    //  || walletName == "ccvault"
+                    (walletName) =>
+                      walletName == "nami" || walletName == "ccvault"
                     // walletName === "flint"
                   )
                   .map((walletName) => (
@@ -301,7 +368,10 @@ const StartButton = (props) => {
                       justifyContent={"center"}
                       flexDirection={"column"}
                       cursor={"pointer"}
-                      onClick={connectNami}
+                      onClick={() => {
+                        connectNami(walletName);
+                        // setOpen(true);
+                      }}
                     >
                       <Image
                         src={window.cardano[walletName].icon}
@@ -366,9 +436,9 @@ export default StartButton;
 
 const checkStatus = async (toast, api) => {
   return (
-    // NoNami(toast) &&
-    // (await window.cardano.enable().catch((e) => {})) &&
-    await WrongNetworkToast(toast, api)
+    NoNami(toast) &&
+    (await window.cardano.enable().catch((e) => {})) &&
+    (await WrongNetworkToast(toast, api))
   );
 };
 
