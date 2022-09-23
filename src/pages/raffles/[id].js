@@ -85,6 +85,7 @@ const RaffleDes = ({ params }) => {
   const [walletConnected, setWalletConnected] = useState(false);
   const [nftsHeld, setNftsHeld] = useState();
   const [nftNames, setNftNames] = useState();
+  const [winner, setWinner] = useState({});
 
   const [uniqueEntries, setUniqueEntries] = useState();
   const [uniqueWallets, setUniqueWallets] = useState();
@@ -99,6 +100,7 @@ const RaffleDes = ({ params }) => {
     getDoc(docRef).then((doc) => {
       setRaffle({ ...doc.data(), id: doc.id });
       let raffle = { ...doc.data(), id: doc.id };
+      setWinner(raffle.winner);
     });
   }, [params.id]);
 
@@ -254,6 +256,13 @@ const RaffleDes = ({ params }) => {
       totalEntries = totalEntries.filter(
         (entry) => entry.raffleId === params.id
       );
+
+      console.log("All entries:");
+
+      console.log(totalEntries);
+      console.log("Number 48");
+
+      console.log(totalEntries[47]);
 
       setUniqueEntries(totalEntries.length);
 
@@ -818,18 +827,46 @@ const RaffleDes = ({ params }) => {
               </div>
             ) : (
               <div>
+                <Box>
+                  <Flex
+                    justifyContent="center"
+                    gap={20}
+                    sx={{
+                      my: 4,
+                    }}
+                  >
+                    <Text
+                      sx={{
+                        display: "flex",
+                        gap: 2,
+                        alignItems: "center",
+                      }}
+                    >
+                      <HiTicket color="#30f100" /> Total entries:{" "}
+                      {uniqueEntries}
+                    </Text>{" "}
+                    <Text
+                      sx={{
+                        display: "flex",
+                        gap: 2,
+                        alignItems: "center",
+                      }}
+                    >
+                      <GiCrown color="#30f100" /> Unique wallets:{" "}
+                      {uniqueWallets}
+                    </Text>{" "}
+                  </Flex>{" "}
+                </Box>
                 <TableContainer>
                   <Table colorScheme="green" variant="unstyled">
                     <Thead>
                       <Tr>
-                        <Th> Wallet </Th>{" "}
+                        <Th> Winner(s) </Th>{" "}
                       </Tr>{" "}
                     </Thead>{" "}
                     <Tbody>
                       <Tr>
-                        <Td style={{ fontSize: "10px" }}>
-                          addr1q9d9ua6n90rgvuxlpg7p0quvtzdfz39xjxj0u5u22nyqcxf20hgg7qtd5fzmplqml075mp8dq4saw9f6ndp8xjqyzsgsgwvdp2
-                        </Td>
+                        <Td style={{ fontSize: "10px" }}>{raffle.winner} </Td>
                       </Tr>{" "}
                       {/* {winners.map((winner) => (
                         <Tr key={winner.id}>

@@ -429,7 +429,12 @@ const Raffles = () => {
 
     const getRaffles = async () => {
       const data = await getDocs(q);
-      setRaffles(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setRaffles(
+        data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }))
+      );
     };
     getRaffles();
   }, []);
@@ -445,7 +450,10 @@ const Raffles = () => {
       // Render a countdown
       return (
         <span>
-          Ends in: {days} D: {hours} H: {minutes} M: {seconds} S
+          Ends in: {days}
+          D: {hours}
+          H: {minutes}
+          M: {seconds}S{" "}
         </span>
       );
     }
@@ -459,7 +467,7 @@ const Raffles = () => {
         titleTwitter="Animaliens: The Alien Collective"
         title="Raffle"
         description="Collect your unique Animaliens NFT on the Cardano blockchain."
-      />
+      />{" "}
       {/* main content  */}{" "}
       <main>
         <Box p={2} m={20}>
@@ -522,14 +530,26 @@ const Raffles = () => {
                               : `${raffleStyles.ticketIcon}`
                           }`}
                         />{" "}
-                        {1}
+                        {1}{" "}
                       </Text>{" "}
-                      <span> {raffle.winners} Winner(s) </span>{" "}
-                    </Flex>{" "}
-                    <Box style={{ marginBottom: "10px" }}>
-                      <span style={{ color: "#30f100" }}>
+                      <span>
                         {" "}
-                        {raffle.description}
+                        {raffle.winners}
+                        &nbsp;Winner(s){" "}
+                      </span>{" "}
+                    </Flex>{" "}
+                    <Box
+                      style={{
+                        marginBottom: "10px",
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: "#30f100",
+                        }}
+                      >
+                        {" "}
+                        {raffle.description}{" "}
                       </span>{" "}
                     </Box>{" "}
                     <Box>
@@ -546,8 +566,8 @@ const Raffles = () => {
                       >
                         {raffle.date < new Date()
                           ? "View Winners"
-                          : "Join Raffle"}
-                      </button>
+                          : "Join Raffle"}{" "}
+                      </button>{" "}
                     </Box>{" "}
                   </Box>{" "}
                 </div>{" "}
