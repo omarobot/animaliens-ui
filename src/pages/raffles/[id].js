@@ -15,7 +15,6 @@ import {
 import React, { useState } from "react";
 import Metadata from "../../components/Metadata";
 import * as raffleStyles from "../../styles/Raffle.module.css";
-// import raffleImg from "../../images/assets/pantha.webp";
 import {
   Table,
   TableContainer,
@@ -47,8 +46,7 @@ import { db } from "../../firebase-config";
 import { useStoreState } from "easy-peasy";
 import Loader from "../../cardano/loader";
 
-// const POLICY = "28341001f186ebe3b47f1515add13df3d8d02aafa19b7b9695ed4157";
-
+// testnet
 // const secrets = {
 //   PROJECT_ID: "testnet1RD4umD3NGsxuutiWpxzJLjwv0O7j8Tp",
 // };
@@ -188,12 +186,10 @@ const RaffleDes = ({ params }) => {
     bids: [],
     offers: [],
   });
-  const [isLoading2, setIsLoading2] = React.useState(true);
   const connected = useStoreState((state) => state.connection.connected);
   const didMount = React.useRef(false);
   const isFirstConnect = React.useRef(true);
   const fetchAddressBudz = async (address) => {
-    setIsLoading2(true);
     setTokens(null);
     const tokens = {
       owned: [],
@@ -215,14 +211,6 @@ const RaffleDes = ({ params }) => {
         ? connectedAddresses.some((addr) => addr === address)
         : false;
 
-    // if (connected === address) {
-    //   await Loader.load();
-    //   const value = Loader.Cardano.Value.from_bytes(
-    //     Buffer.from(await window.cardano.selectedWallet.getBalance(), "hex")
-    //   );
-
-    //   amount = valueToAssets(value);
-    // } else {
     amount = await fetch(
       `https://cardano-mainnet.blockfrost.io/api/v0/addresses/${address}`,
       {
@@ -233,7 +221,6 @@ const RaffleDes = ({ params }) => {
     )
       .then((res) => res.json())
       .then((res) => res.amount);
-    // }
 
     let animaliens = {};
     for (let index = 1; index <= 4444; index++) {
@@ -257,14 +244,13 @@ const RaffleDes = ({ params }) => {
         (entry) => entry.raffleId === params.id
       );
 
-      console.log("All entries:");
-
-      console.log(totalEntries);
-      console.log("Number 48");
-
-      console.log(totalEntries[47]);
-
       setUniqueEntries(totalEntries.length);
+      // console.log("total entries:");
+      // console.log(totalEntries);
+      // console.log("number 135:");
+      // console.log(totalEntries[134]);
+      // console.log("number 3:");
+      // console.log(totalEntries[2]);
 
       let uniqueMap = new Map();
 
@@ -308,40 +294,18 @@ const RaffleDes = ({ params }) => {
         tokens.owned = owned;
         setTokens(tokens);
         setNFTAddress(tokens.owned[0].name);
-        // setNfts(tokens.owned.length);
-        // setNftsOwned(tokens.owned);
+
         setNftExists(false);
         let totalNftsOwned = tokens.owned;
         let numNfts = tokens.owned.length;
-        let allTickets = 0;
-        let newEntriesByID = 0;
-        let ordersById = [];
 
-        // console.log("raffle id: =====");
-        // console.log(params.id);
         let raffId = params.id;
 
         setNftsHeld(tokens.owned.length);
 
-        // let uniqueMap = new Map();
-
         for (let i = 0; i < totalEntries.length; i++) {
           const element = totalEntries[i];
 
-          // if (
-          //   uniqueMap.get(element.walletAddress) &&
-          //   uniqueMap.get(element.walletAddress).length > 0
-          // ) {
-          //   let values = uniqueMap.get(element.walletAddress);
-          //   values.push(element.NFT);
-          // } else {
-          //   uniqueMap.set(element.walletAddress, [...element.NFT]);
-          // }
-
-          // if (element.walletAddress === walletAddress) {
-          //   newTickets += element.tickets;
-          //   setNfts(nfts - newTickets);
-          // }
           if (element.NFT === NFTAddress) {
             setNftExists(true);
           }
@@ -354,33 +318,11 @@ const RaffleDes = ({ params }) => {
                 namesOfUsedNfts.push(n.name);
               }
             });
-            // allTickets++;
-            // newEntriesByID += 1;
-            // ordersById.push(element);
           }
-          // setGetOrderById(ordersById);
-          // setTicketSold(allTickets);
-          // setEntriesByID(newEntriesByID);
         }
 
         setNfts(numNfts);
         setEntries(existingEntries);
-
-        // let mapKeys = [...uniqueMap.keys()];
-
-        // let keyLength = 0;
-        // mapKeys.forEach(() => {
-        //   keyLength++;
-        // });
-
-        // console.log("unique entries");
-        // console.log(totalEntries.length);
-
-        // console.log("unique wallets");
-        // console.log(keyLength);
-        // console.log(mapKeys);
-
-        // setUniqueWallets(mapKeys.length);
 
         let tempArr = [];
         totalNftsOwned.forEach((owned) => {
@@ -396,19 +338,9 @@ const RaffleDes = ({ params }) => {
         });
 
         setNftNames(tempArr);
-
-        // console.log(tokens);
-        // console.log("all tickets: " + allTickets);
-        // console.log("orders: " + ordersById);
-        // console.log("entries: " + entriesByID);
       } catch (e) {}
     };
     getEntries();
-
-    // setTokens(tokens);
-    // console.log(tokens);
-
-    setIsLoading2(false);
   };
   const update = async () => {
     let address =
@@ -522,20 +454,6 @@ const RaffleDes = ({ params }) => {
                 >
                   {raffle.name}{" "}
                 </Heading>{" "}
-                {/* <Flex
-                  justifyContent="center"
-                  gap={2}
-                  sx={{
-                    my: 4,
-                  }}
-                >
-                  <a href="http://" target="_blank" rel="noopener noreferrer">
-                    <FaDiscord color="#30f100" />
-                  </a>{" "}
-                  <a href="http://" target="_blank" rel="noopener noreferrer">
-                    <FaTwitter color="#30f100" />
-                  </a>
-                </Flex> */}
               </Box>
             </Box>
           )}{" "}
@@ -652,22 +570,6 @@ const RaffleDes = ({ params }) => {
                     </Box>{" "}
                   </Box>{" "}
                   <Box>
-                    {/* <Box
-                      sx={{
-                        my: 4,
-                      }}
-                    >
-                      <Heading
-                        as="h3"
-                        size="md"
-                        sx={{
-                          my: 2,
-                        }}
-                      >
-                        Collection Size{" "}
-                      </Heading>{" "}
-                      <Text as="span"> 8888 </Text>{" "}
-                    </Box>{" "} */}
                     <Box
                       sx={{
                         mt: 4,
@@ -763,33 +665,6 @@ const RaffleDes = ({ params }) => {
                         </Box>{" "}
                       </>
                     )}
-                    {/* {nfts === 0 ? (
-                      <Button disabled colorScheme="green">
-                        You already have max entries or no NFTs
-                      </Button>
-                    ) : (
-                      <>
-                        {isLoading ? (
-                          <Button
-                            onClick={handleSubmit}
-                            disabled={nftConnect ? false : true}
-                            colorScheme="green"
-                          >
-                            <Spinner />
-                          </Button>
-                        ) : (
-                          <Button
-                            onClick={handleSubmit}
-                            disabled={nftConnect ? false : true}
-                            colorScheme="green"
-                          >
-                            {nftConnect
-                              ? `Buy ${tickets} ticket(s)`
-                              : `Connect your wallet`}
-                          </Button>
-                        )}
-                      </>
-                    )} */}
                   </Box>{" "}
                 </Flex>{" "}
                 <div>
@@ -812,18 +687,6 @@ const RaffleDes = ({ params }) => {
                     ""
                   )}
                 </div>
-                {/* <div>
-                  {nfts > 0 ||
-                    (!nftExists && (
-                      <>
-                        {nfts <= tickets && (
-                          <Text sx={{ textAlign: "center" }}>
-                            You have only {nfts} NFTs available
-                          </Text>
-                        )}
-                      </>
-                    ))}
-                </div> */}
               </div>
             ) : (
               <div>
@@ -868,19 +731,9 @@ const RaffleDes = ({ params }) => {
                       <Tr>
                         <Td style={{ fontSize: "10px" }}>{raffle.winner} </Td>
                       </Tr>{" "}
-                      {/* {winners.map((winner) => (
-                        <Tr key={winner.id}>
-                          <Td> {winner.wallet} </Td> <Td> {raffle.entries} </Td>{" "}
-                          <Td>
-                            {" "}
-                            {winner.claim === "yes" ? (
-                              <Text color="#30f100"> Claimed </Text>
-                            ) : (
-                              ""
-                            )}{" "}
-                          </Td>{" "}
-                        </Tr>
-                      ))}{" "} */}
+                      <Tr>
+                        <Td style={{ fontSize: "10px" }}>{raffle.winner2} </Td>
+                      </Tr>{" "}
                     </Tbody>{" "}
                   </Table>{" "}
                 </TableContainer>{" "}
