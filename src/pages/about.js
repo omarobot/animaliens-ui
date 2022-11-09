@@ -1,17 +1,33 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import Metadata from "../components/Metadata";
 import { Box, Link } from "@chakra-ui/layout";
 // css
 import * as aboutStyles from "../styles/About.module.css";
+import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 
-//assets
-// import zeen from "../images/assets/zame.webp";
-// import leen from "../images/assets/lenn.webp";
-// import boots from "../images/assets/boots.webp";
-// import maq from "../images/assets/maq.webp";
+mapboxgl.accessToken =
+  "pk.eyJ1Ijoic2F1Y2lzbSIsImEiOiJjbGE2Z2x3cmcwdDYyM25uOGw1cGIyZGZtIn0.9wMEOwdt-scbkYdOA2PPIw";
 
 const About = () => {
+  const mapContainer = useRef(null);
+  const map = useRef(null);
+  const [lng, setLng] = useState(-70.9);
+  const [lat, setLat] = useState(42.35);
+  const [zoom, setZoom] = useState(12);
+
+  useEffect(() => {
+    if (map.current) return; // initialize map only once
+    map.current = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: "mapbox://styles/saucism/cla6lah0k000015lhwerthdmh",
+      center: [lng, lat],
+      zoom: zoom,
+    });
+
+    new mapboxgl.Marker().setLngLat([lng, lat]).addTo(map.current);
+  });
+
   return (
     <>
       <Metadata
@@ -21,9 +37,23 @@ const About = () => {
       />{" "}
       {/* main body  */}{" "}
       <main>
-        {" "}
-        {/* mission  start */}
-        {/* NFTS end */}{" "}
+        <Box
+          style={{
+            width: "100%",
+            height: "100vh",
+          }}
+          // p={2}
+          // m={20}
+        >
+          <div
+            ref={mapContainer}
+            className="map-container"
+            style={{
+              position: "fixed !important",
+              height: "100vh",
+            }}
+          />{" "}
+        </Box>
       </main>{" "}
     </>
   );
