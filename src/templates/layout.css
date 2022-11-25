@@ -1,15 +1,16 @@
 #sidebar {
   width: 15%;
+
 }
 
 #bodyContent {
-  width: 85%;
+  width: 80%;
   background: #000;
   color: #fff;
 }
 
 #connect-btn {
-  background: #30f100;
+  /* background: #30f100; */
   color: #000;
   position: absolute;
   top: 20px;
@@ -20,14 +21,28 @@
   border-radius: 50px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 990px) {
+  #bodyContent {
+    width: 100%;
+  }
+
   #sidebar {
     width: auto;
     position: absolute;
     left: 0;
     top: 0;
   }
+}
+
+/* @media only screen and (max-width: 768px) {
+  #sidebar {
+    width: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
   #bodyContent {
     width: 100%;
   }
-}
+} */

@@ -1,0 +1,80 @@
+.video-section {
+    margin-top: 100px !important;
+
+    width: 90%;
+}
+
+.vid-prop {
+    border-radius: 30px;
+}
+
+.video-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.video-title h3 {
+    font-family: 'Chakra Petch';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30.8855px;
+    color: #FFFFFF;
+}
+
+.tag-img {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.tag-img p {
+
+    font-family: 'Chakra Petch';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16.8855px;
+    color: #FFFFFF;
+
+}
+
+.log {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.log img {
+    margin: 0 2px;
+    width: 30px;
+}
+
+.video-heart {
+    font-family: 'Chakra Petch';
+    font-style: normal;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    font-size: 19.0765px;
+}
+
+.video-heart img {
+    width: 30px;
+    margin-right: 9px;
+}
+
+@media (max-width:768px) {
+    .video-section {
+
+        width: 100%;
+    }
+
+}
+
+@media (max-width:550px) {
+    .video-title h3 {
+        font-size: 24px;
+    }
+}

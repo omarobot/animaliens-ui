@@ -4,7 +4,7 @@ import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import React from "react";
 import styled from "styled-components";
 import Metadata from "../components/Metadata";
-import alien from "../images/assets/ezgif.com-gif-maker.gif";
+import alien from "../images/assets/nebula entrada.gif";
 // import raffels from "../images/assets/Raffles-1.svg";
 // import roadMap1 from "../images/assets/road-map-1.jpg";
 // import roadMap2 from "../images/assets/road-map-2.jpg";
@@ -42,11 +42,11 @@ const Landing = (props) => {
         description="Welcome to the allien collective invading the Cardano blockchain."
       />{" "}
       {/* main body  */}{" "}
-      <main>
+      <main className="landin">
         {" "}
         {/* top banner  */}{" "}
         <div className={homeStyles.alien}>
-          <img src={alien} alt="" />
+          {/* <img src={alien} alt="" /> */}
         </div>
         {/* project  */}
       </main>{" "}

@@ -21,6 +21,8 @@ import disco from "../images/assets/disco.webp";
 import goats from "../images/assets/goats.webp";
 import yummi from "../images/assets/yummi.webp";
 import rocket from "../images/assets/rocketclub.webp";
+import "../styles/custom.css";
+
 import { db, storage } from "../firebase-config";
 import {
   collection,
@@ -471,6 +473,7 @@ const Raffles = () => {
       {/* main content  */}{" "}
       <main>
         <Box p={2} m={20}>
+          <h1 className="raffle_heading">RAFFLES</h1>
           <SimpleGrid
             columns={{
               sm: 1,
@@ -482,7 +485,13 @@ const Raffles = () => {
             {" "}
             {raffles.map((raffle, i) => (
               <Box key={raffle.id} height="100%">
-                <div className={raffleStyles.raffleBox}>
+                <div
+                  className={`${
+                    raffle.date < new Date()
+                      ? `${raffleStyles.raffleBox}`
+                      : `${raffleStyles.raffleBox}` + " " + "closedRaffle"
+                  }`}
+                >
                   <img
                     className={`${
                       raffle.date < new Date()
@@ -516,7 +525,7 @@ const Raffles = () => {
                         my: 4,
                       }}
                     >
-                      <Text
+                      {/* <Text
                         sx={{
                           display: "flex",
                           gap: 2,
@@ -531,14 +540,17 @@ const Raffles = () => {
                           }`}
                         />{" "}
                         {1}{" "}
-                      </Text>{" "}
+                      </Text>{" "} */}
                       <span>
                         {" "}
                         {raffle.winners}
                         &nbsp;Winner(s){" "}
                       </span>{" "}
+                      <Box>
+                        <Countdown date={raffle.date} renderer={renderer} />{" "}
+                      </Box>{" "}
                     </Flex>{" "}
-                    <Box
+                    {/* <Box
                       style={{
                         marginBottom: "10px",
                       }}
@@ -551,24 +563,24 @@ const Raffles = () => {
                         {" "}
                         {raffle.description}{" "}
                       </span>{" "}
-                    </Box>{" "}
-                    <Box>
+                    </Box>{" "} */}
+                    {/* <Box>
                       <Countdown date={raffle.date} renderer={renderer} />{" "}
-                    </Box>{" "}
-                    <Box>
-                      <button
-                        onClick={() => handleOnclick(raffle.id)}
-                        className={`${
-                          raffle.date < new Date()
-                            ? `${raffleStyles.raffleBtnGray}`
-                            : `${raffleStyles.raffleBtn}`
-                        }`}
-                      >
-                        {raffle.date < new Date()
-                          ? "View Winners"
-                          : "Join Raffle"}{" "}
-                      </button>{" "}
-                    </Box>{" "}
+                    </Box>{" "} */}
+                  </Box>{" "}
+                  <Box className="clickBtn">
+                    <button
+                      onClick={() => handleOnclick(raffle.id)}
+                      className={`${
+                        raffle.date < new Date()
+                          ? `${raffleStyles.raffleBtnGray}`
+                          : `${raffleStyles.raffleBtn}`
+                      }`}
+                    >
+                      {raffle.date < new Date()
+                        ? "View Winners"
+                        : "Join Raffle"}{" "}
+                    </button>{" "}
                   </Box>{" "}
                 </div>{" "}
               </Box>
