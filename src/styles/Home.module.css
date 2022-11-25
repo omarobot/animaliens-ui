@@ -1,8 +1,15 @@
-.alien {
-  background: url(../images/assets/animaliens-text-bg.png) no-repeat center
-    center;
+/* .alien {
+  background: url(../images/assets/nebula\ entrada.gif) no-repeat center center;
   background-size: cover;
   padding: 180px 0;
+} */
+
+.alien {
+  background: url(../images/assets/nebula\ entrada.gif) no-repeat center center;
+  width: 100%;
+  background-size: cover;
+  padding: 0;
+  height: 100vh;
 }
 
 .alien img {
@@ -10,6 +17,7 @@
   margin: auto;
   margin-bottom: -4px;
 }
+
 /* project  */
 .project {
   padding: 40px 0;
@@ -18,11 +26,16 @@
   text-align: center;
 }
 
+.css-1ogy11k {
+  z-index: 9;
+}
+
 .project h3 {
   font-size: 64px;
   font-weight: 700;
   margin-bottom: 20px;
 }
+
 .project p {
   font-size: 24px;
   text-align: justify;
@@ -62,20 +75,24 @@
   justify-content: space-around;
   gap: 100px;
 }
+
 .royalitiesRafflexBox h3 {
   font-size: 64px;
   font-weight: 700;
   margin-bottom: 20px;
   display: block;
 }
+
 .royalitiesRafflexBox img {
   width: 70%;
   margin-top: -35px;
 }
+
 .royalitiesDes h4 {
   font-size: 64px;
   font-weight: 700;
 }
+
 .royalitiesDes span {
   font-size: 24px;
 }
@@ -88,6 +105,7 @@
 .teamSection {
   padding: 40px 0;
 }
+
 .team {
   display: flex;
   gap: 40px;
@@ -97,6 +115,7 @@
 .teamMember {
   text-align: center;
 }
+
 .memberImg {
   border: 1px solid #c4c4c4;
   border-radius: 40px;
@@ -117,6 +136,7 @@ h4 {
   gap: 20px;
   text-align: center;
 }
+
 .supportLogo img {
   width: 20%;
   margin: auto;
@@ -127,26 +147,33 @@ h4 {
   p {
     font-size: 20px !important;
   }
+
   .alien img {
     width: 80%;
   }
+
   /* project responsive */
   .project {
     width: 80%;
   }
+
   .project h3 {
     font-size: 36px !important;
   }
+
   /* titles  */
   .royalitiesRafflexBox h3 {
     font-size: 36px !important;
   }
+
   .teamSection h2 {
     font-size: 36px !important;
   }
+
   .supporting h3 {
     font-size: 36px !important;
   }
+
   /* royalities raffels responsive  */
 
   .royalitiesRafflexBox {
@@ -154,24 +181,30 @@ h4 {
     justify-content: center;
     text-align: center;
   }
+
   .royalitiesRafflexBox img {
     margin: auto;
   }
+
   .royalities {
     display: flex;
     flex-direction: column-reverse;
   }
+
   .royalitiesDes {
     display: flex;
     justify-content: center;
   }
+
   .raffels {
     width: 80% !important;
   }
+
   /* roadmap */
   .roadmap img {
     width: 80% !important;
   }
+
   /* team responsive  */
   .team {
     flex-direction: column;

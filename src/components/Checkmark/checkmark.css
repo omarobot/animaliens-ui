@@ -5,7 +5,7 @@
  */
 
 :root {
-  --checkmark-fill-color: #7ac142;
+  --checkmark-fill-color: #5f26e0;
   --checkmark-arrow-color: #fff;
   --checkmark-arrow-thickness: 5;
 }
@@ -47,10 +47,12 @@
 }
 
 @keyframes scale {
+
   0%,
   100% {
     transform: none;
   }
+
   50% {
     transform: scale3d(1.1, 1.1, 1);
   }

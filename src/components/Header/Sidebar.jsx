@@ -17,6 +17,7 @@ import React from "react";
 import { FiMenu } from "react-icons/fi";
 // import * as style from "../../components/Header/Tab.module.css";
 // import newLogo from "../../images/assets/logo_face_white.svg";
+import NewLogo from '../../images/assets/Nebula Logo.png'
 import nebula from "../../images/assets/nebula2.png";
 import * as style from "../Header/sidebar.module.css";
 
@@ -31,6 +32,8 @@ const LinkItems = [
 
   { name: "Auctions", link: "/about", active: false },
   { name: "Missions", link: "/about", active: false },
+  { name: "THEHUB", link: "/thehub", active: true },
+  { name: "KNOWLEDGE", link: "/knowledge", active: true },
 
   // { name: "New Raffle", link: "/new-raffle" },
   // { name: 'How to Buy', link: '/tutorial'  },
@@ -96,8 +99,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
             window.scrollTo(0, 0);
           }}
         >
-          <img draggable={false} width={!matches.lg ? 300 : 300} src={nebula} />
-          <p style={{ paddingTop: "5px" }}>Powered by Animaliens</p>
+          <img draggable={false} width={!matches.lg ? 300 : 300} src={NewLogo} />
+          {/* <p style={{ paddingTop: "5px" }}>Powered by Animaliens</p> */}
         </div>
         <CloseButton
           display={{ base: "flex", lg: "none" }}

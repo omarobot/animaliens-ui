@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+.raffle_heading {
+    font-family: 'Chakra Petch', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 132.858px;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+
+}
+
+.closedRaffle {
+    border: 3px solid #5F26E0 !important;
+    /* background: ; */
+
+}
+
+.Raffle-module--raffleBox--j4uHf {
+    border-radius: 40px !important;
+    padding: 0 !important;
+    position: relative;
+}
+
+.Raffle-module--raffleBox--j4uHf img {
+    border-radius: 40px;
+    /* min-height: 410px; */
+}
+
+.Raffle-module--raffleBox--j4uHf .css-1aj0tm4 {
+    position: absolute;
+    background: rgba(176, 176, 176, 0.72);
+    border-radius: 20px;
+    top: 0px;
+    left: 0;
+    margin: 17px;
+    right: 0;
+}
+
+.Raffle-module--raffleBox--j4uHf .css-1aj0tm4 .chakra-heading.css-1d97h20 {
+    font-family: 'Chakra Petch';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23.6327px;
+    line-height: 31px;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+}
+
+/* .css-0:first-child {
+    display: none;
+} */
+
+.css-3et9av {
+    margin-top: 0;
+    flex-direction: row-reverse !important;
+    gap: initial !important;
+    margin-bottom: 5px;
+    justify-content: space-between !important;
+}
+
+.clickBtn {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.chakra-heading.css-1d97h20 {
+    margin: 0;
+}
+
+.Raffle-module--raffleBtn--esPIE {
+
+
+    background: linear-gradient(323.89deg, #5F26E0 2.39%, #CF4DD3 97.61%) !important;
+
+    font-family: 'Chakra Petch';
+    font-style: normal;
+    font-weight: 700 !important;
+    font-size: 19.5393px;
+
+    border-radius: 30px;
+    color: #FFFFFF !important;
+
+
+}
+
+.Raffle-module--raffleBtnGray--CCxN2 {
+
+
+    /* border-image-source: linear-gradient(90deg, #5F26E0 -1.92%, #CF4DD3 101.92%); */
+    position: relative;
+    background-color: transparent !important;
+    border: 3px solid #5F26E0;
+    font-family: 'Chakra Petch';
+    font-style: normal;
+    font-weight: 700 !important;
+    font-size: 19.5393px;
+
+    border-radius: 30px !important;
+    color: #FFFFFF !important;
+
+
+    border-width: 4px;
+    border-style: solid;
+    /* border-image: linear-gradient(to right, #5F26E0, #CF4DD3) 1; */
+
+}
+
+.css-3et9av {
+    margin-bottom: 3px !important;
+    margin-top: 5px !important;
+}
+
+.css-47z8w0 {
+
+    top: 50% !important;
+    left: 20px !important;
+    transform: translate(0%, -50%) !important;
+    height: 90vh !important;
+    border-radius: 30px;
+    z-index: 9999;
+    width: 16vw !important;
+}
+
+.css-r1285y {
+    margin: 0 1rem !important;
+}
+
+.css-r1285y div {
+    margin-top: 30px !important;
+}
+
+.sidebar-module--linkItem--knlQK {
+    margin: 0 auto !important;
+}
+
+#bodyContent>.landin {
+    width: 100%;
+    position: absolute;
+    background: #000;
+    color: #fff;
+    z-index: 0;
+    background-repeat: no-repeat;
+    height: 100vh;
+    left: 0;
+}
+
+.sidebar-module--linkItem--knlQK:hover {
+    background: -webkit-linear-gradient(90.27deg, #5F26E0, #CF4DD3);
+    -webkit-background-clip: text;
+
+    transition: all 0.4s ease;
+    -webkit-text-fill-color: transparent;
+}
+
+.sidebar-module--active--HqaVF {
+    /* background: linear-gradient(127.27deg, #5F26E0 -68.29%, #CF4DD3 557.89%); */
+    background: -webkit-linear-gradient(90.27deg, #5F26E0, #CF4DD3);
+    -webkit-background-clip: text;
+    transition: all 0.4s ease;
+    -webkit-text-fill-color: transparent;
+}
+
+.css-r1285y p {
+    font-size: 17px;
+    background: -webkit-linear-gradient(29.27deg, #5F26E0, #CF4DD3) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.chakra-button.css-1eeolci {
+    color: white !important;
+    z-index: 999;
+    background-image: linear-gradient(to right, #5f26e0, #7e29dd, #952eda, #aa36d7, #bb3fd5, #c259dd, #c96fe4, #d084ea, #d5a6f5, #ddc5fd, #ebe3ff, #ffffff) !important;
+}
+
+.chakra-button.css-5jnj91 {
+    z-index: 9;
+    color: white !important;
+    background-image: linear-gradient(to right, #5f26e0, #7e29dd, #952eda, #aa36d7, #bb3fd5, #c259dd, #c96fe4, #d084ea, #d5a6f5, #ddc5fd, #ebe3ff, #ffffff) !important;
+}
+
+@media (max-width:1400px) {
+
+    .css-10klw3m {
+        min-width: 335px;
+
+    }
+
+    .css-n1ozge {
+        margin: 3rem 2rem !important;
+    }
+}
+
+@media (max-width:1266px) {
+    .css-10klw3m {
+        min-width: 320px;
+    }
+
+}
+
+@media (max-width:1150px) {
+    .css-10klw3m {
+        min-width: auto;
+    }
+
+    .raffle_heading {
+        font-size: 100px;
+
+    }
+}
+
+@media (max-width:980px) {
+    .raffle_heading {
+        font-size: 50px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width:500px) {
+    .raffle_heading {
+        font-size: 22px;
+    }
+
+    .Raffle-module--raffleBox--j4uHf img {
+        min-height: 300px;
+    }
+
+    .css-n1ozge {
+        margin: 3rem 1.2rem !important;
+    }
+
+    .Raffle-module--raffleBox--j4uHf .css-1aj0tm4 {
+        margin: 15px 10px;
+    }
+}
