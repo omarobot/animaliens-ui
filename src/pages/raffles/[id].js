@@ -28,7 +28,7 @@ import { navigate } from "gatsby";
 import Countdown from "react-countdown";
 import { GiCrown } from "react-icons/gi";
 import { HiTicket } from "react-icons/hi";
-
+import "./id.css";
 import spacebudz from "../../../metadata.json";
 
 import {
@@ -395,7 +395,7 @@ const RaffleDes = ({ params }) => {
       {/* main content  */}{" "}
       <main>
         <Container maxW={"800px"} p={2} my={20}>
-          {" "}
+          <h1 className="raffle_heading">RAFFLES</h1>
           {raffle.date > new Date() ? (
             <Box>
               <Flex
@@ -431,7 +431,7 @@ const RaffleDes = ({ params }) => {
                 textAlign: "center",
               }}
             >
-              <Box
+              {/* <Box
                 sx={{
                   display: "flex",
                   justifyContent: "center",
@@ -454,7 +454,7 @@ const RaffleDes = ({ params }) => {
                 >
                   {raffle.name}{" "}
                 </Heading>{" "}
-              </Box>
+              </Box> */}
             </Box>
           )}{" "}
           <Box
@@ -690,53 +690,87 @@ const RaffleDes = ({ params }) => {
               </div>
             ) : (
               <div>
-                <Box>
-                  <Flex
-                    justifyContent="center"
-                    gap={20}
-                    sx={{
-                      my: 4,
-                    }}
-                  >
-                    <Text
+                <div className="id-flex">
+                  <div className="raffle-imgs">
+                    <Box
                       sx={{
                         display: "flex",
-                        gap: 2,
-                        alignItems: "center",
+                        justifyContent: "center",
                       }}
                     >
-                      <HiTicket color="#30f100" /> Total entries:{" "}
-                      {uniqueEntries}
-                    </Text>{" "}
-                    <Text
+                      <img width={200} src={raffle?.image} alt="" />
+                    </Box>{" "}
+                  </div>
+                  <div className="raffle-add">
+                    <Box
                       sx={{
-                        display: "flex",
-                        gap: 2,
-                        alignItems: "center",
+                        my: 8,
                       }}
                     >
-                      <GiCrown color="#30f100" /> Unique wallets:{" "}
-                      {uniqueWallets}
-                    </Text>{" "}
-                  </Flex>{" "}
-                </Box>
-                <TableContainer>
-                  <Table colorScheme="green" variant="unstyled">
-                    <Thead>
-                      <Tr>
-                        <Th> Winner(s) </Th>{" "}
-                      </Tr>{" "}
-                    </Thead>{" "}
-                    <Tbody>
-                      <Tr>
-                        <Td style={{ fontSize: "10px" }}>{raffle.winner} </Td>
-                      </Tr>{" "}
-                      <Tr>
-                        <Td style={{ fontSize: "10px" }}>{raffle.winner2} </Td>
-                      </Tr>{" "}
-                    </Tbody>{" "}
-                  </Table>{" "}
-                </TableContainer>{" "}
+                      <Heading
+                        as="h3"
+                        size={"md"}
+                        sx={{
+                          textAlign: "center",
+                          my: 4,
+                        }}
+                      >
+                        {raffle.name}{" "}
+                      </Heading>{" "}
+                    </Box>
+                    <TableContainer>
+                      <Table colorScheme="green" variant="unstyled">
+                        <Thead>
+                          <Tr className="tra">
+                            <Th> Winner(s) </Th>{" "}
+                          </Tr>{" "}
+                        </Thead>{" "}
+                        <Tbody>
+                          <Tr className="tra">
+                            <Td style={{ fontSize: "10px" }} className="top-wa">
+                              {raffle.winner}{" "}
+                            </Td>
+                          </Tr>{" "}
+                          <Tr>
+                            <Td style={{ fontSize: "10px" }}>
+                              {raffle.winner2}{" "}
+                            </Td>
+                          </Tr>{" "}
+                        </Tbody>{" "}
+                      </Table>{" "}
+                    </TableContainer>{" "}
+                    <Box>
+                      <Flex
+                        justifyContent="center"
+                        gap={20}
+                        sx={{
+                          my: 4,
+                        }}
+                      >
+                        <Text
+                          sx={{
+                            display: "flex",
+                            gap: 2,
+                            alignItems: "center",
+                          }}
+                        >
+                          <HiTicket color="#30f100" /> Total entries:{" "}
+                          {uniqueEntries}
+                        </Text>{" "}
+                        <Text
+                          sx={{
+                            display: "flex",
+                            gap: 2,
+                            alignItems: "center",
+                          }}
+                        >
+                          <GiCrown color="#30f100" /> Unique wallets:{" "}
+                          {uniqueWallets}
+                        </Text>{" "}
+                      </Flex>{" "}
+                    </Box>
+                  </div>
+                </div>
               </div>
             )}{" "}
           </Box>{" "}

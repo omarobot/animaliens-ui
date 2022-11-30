@@ -1,0 +1,12 @@
+.main-hub {
+    margin: 5rem;
+}
+
+.section-heading h1 {
+    font-family: 'Chakra Petch';
+    font-style: normal;
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 41.8182px;
+    color: #FFFFFF;
+}

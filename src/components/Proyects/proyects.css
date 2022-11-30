@@ -1,0 +1,133 @@
+.proyect-cards {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.indiv-proyect {
+    width: 31%;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 30px;
+    min-height: 450px;
+}
+
+.proyect1 {
+    background-color: #AB60E4;
+}
+
+.proyect2 {
+    background-color: #6143E4;
+}
+
+.proyect3 {
+    background-color: #FF4064;
+}
+
+.img-logo {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.img-logo img {
+
+    width: 120px;
+}
+
+.proyect-anim img {
+    width: 300px;
+
+}
+
+.trands {
+    margin-left: -5px;
+
+}
+
+.proyect-anim {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    margin: 0 auto;
+}
+
+
+.anlogo {
+    font-family: 'Chakra Petch';
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+
+}
+
+.curly {
+
+    font-style: italic;
+}
+
+.false {
+    justify-content: right !important;
+}
+
+.false h3 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28.157px;
+
+    color: #FFFFFF;
+
+}
+
+.melogo {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.melogo img {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+@media (max-width:1200px) {
+    .indiv-proyect {
+        min-height: 400px;
+    }
+
+    .slide-right img {
+        width: 200px;
+    }
+}
+
+@media (max-width:800px) {
+
+    .proyect-cards {
+        flex-wrap: wrap;
+    }
+
+    .indiv-proyect {
+        width: 48%;
+    }
+
+    .proyect3 {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width:580px) {
+
+
+    .indiv-proyect {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+
+}
