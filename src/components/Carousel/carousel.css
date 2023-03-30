@@ -1,0 +1,146 @@
+.discover-slider {
+    margin-top: 10px !important;
+    width: 100%;
+
+    margin: 0 auto;
+}
+
+.slick-dots li button:before {
+    color: rgb(255, 255, 255) !important;
+}
+
+.slick-dots li.slick-active button:before {
+    color: white !important;
+    opacity: 1 !important;
+}
+
+.indiv-slide {
+    background: rgb(53, 71, 245);
+    background: linear-gradient(40deg, rgba(53, 71, 245, 1) 0%, rgba(199, 93, 235, 1) 38%, rgba(254, 185, 213, 1) 59%, rgba(221, 26, 94, 1) 100%);
+    min-height: 280px;
+    border-radius: 30px;
+    margin: 0 15px;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 25px 30px 0 30px;
+}
+
+.slide-right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.slide-right img {
+    width: 250px;
+}
+
+.bg1 {
+    background: rgb(255, 140, 194) !important;
+    background: linear-gradient(218deg, rgba(255, 140, 194, 1) 0%, rgba(235, 27, 89, 1) 62%, rgba(219, 10, 183, 1) 98%, rgba(214, 214, 214, 1) 100%) !important;
+}
+
+.no-margin {
+    margin-left: 0px !important;
+}
+
+.card-head {
+    font-family: 'Chakra Petch';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36.2005px;
+
+    color: #FFFFFF;
+
+}
+
+.small-par {
+    font-family: 'Chakra Petch';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26.8182px;
+    margin-top: -3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #FFFFFF;
+
+}
+
+.petch-font {
+    font-family: 'Chakra Petch';
+
+    font-style: italic;
+}
+
+.anim-tag {
+    font-weight:
+        500;
+    font-size: 20.8182px;
+    margin-left: 25px;
+    margin-top: -3px;
+
+    color: #FFFFFF;
+
+}
+
+.card-bttn button {
+    font-family: 'Chakra Petch';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15.5393px;
+    color: #FFFFFF;
+    border: 2px solid white;
+    padding: 5px 10px;
+    border-radius: 20px;
+
+}
+
+.card-bttn {
+    margin-top: 20px;
+    margin-left: 5px;
+}
+
+.small-img {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.small-img img {
+    width: 50px;
+    display: inline;
+}
+
+.anin img {
+    width: 110px;
+}
+
+@media (max-width:1200px) {
+    .indiv-slide {
+        padding: 25px 11px 0px;
+    }
+}
+
+@media (max-width:990px) {
+    .section-slide {
+        margin-top: 70px;
+    }
+}
+
+@media (max-width:768px) {
+    .indiv-slide {
+        min-height: 260px;
+        padding: 25px 11px;
+
+    }
+}
+
+@media (max-width:400px) {
+    .slide-right img {
+        width: 170px;
+    }
+}

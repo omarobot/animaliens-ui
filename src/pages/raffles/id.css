@@ -1,0 +1,126 @@
+.id-flex {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.Raffle-module--singleRaffleBox--GUTpu {
+    padding: 0 !important;
+    border: 4px solid #5F26E0;
+    border-radius: 20px !important;
+}
+
+.Raffle-module--singleRaffleBox--GUTpu img {
+    width: 100%;
+    border-radius: 20px !important;
+}
+
+.chakra-heading.css-1d97h20 {
+    /* padding: 0 1.2rem; */
+    font-family: 'Chakra Petch';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 54.0688px;
+    text-align: left !important;
+    color: #FFFFFF;
+
+}
+
+.raffle-add {
+    padding: 10px 15px !important;
+}
+
+
+
+.css-15wjwcp {
+
+    padding: 1.3rem 0 !important;
+    font-family: 'Chakra Petch' !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    font-size: 39.0492px !important;
+    color: #FFFFFF !important;
+}
+
+.css-mzt97k {
+    margin: 0 !important;
+}
+
+.top-wa {
+    background: linear-gradient(273.22deg, #CF4DD3 9.84%, #6729DF 91.03%);
+    border-radius: 30px;
+    padding: 10px 10px !important;
+}
+
+.tra {
+    margin: 8px 0;
+
+}
+
+.css-1ktp5rg {
+    padding: 0 8px 0px 8px;
+    font-family: 'Chakra Petch';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21.7763px;
+
+
+    color: #FFFFFF;
+
+}
+
+.css-1ktp5rg svg {
+    display: none;
+
+
+}
+
+.css-1l4w6pd,
+.css-1l4w6pd img {
+    height: 100%;
+}
+
+
+.raffle_heading {
+    box-sizing: border-box;
+}
+
+@media (max-width:800px) {
+    .Raffle-module--singleRaffleBox--GUTpu img {
+        width: auto;
+        border-radius: 20px !important;
+    }
+
+    .chakra-heading.css-1d97h20 {
+        font-size: 35px;
+    }
+
+    .css-15wjwcp {
+        font-size: 25px !important;
+    }
+
+    .css-1ktp5rg {
+        font-size: 15px !important;
+    }
+
+    .css-m0ngsp {
+        margin-top: 1.5rem !important;
+    }
+
+    .id-flex {
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width:550px) {
+    .css-1utqz6x {
+        padding: 0 20px !important;
+
+        box-sizing: border-box !important;
+    }
+
+    .css-1ktp5rg {
+        font-size: 13px !important;
+    }
+}

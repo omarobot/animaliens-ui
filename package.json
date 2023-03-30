@@ -68,8 +68,10 @@
     "react-planet": "^1.0.1",
     "react-qr-code": "^1.1.1",
     "react-reveal": "^1.2.2",
+    "react-slick": "^0.29.0",
     "react-spinners": "^0.10.6",
     "react-spring": "^8.0.25",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.2.1"
   }
 }
