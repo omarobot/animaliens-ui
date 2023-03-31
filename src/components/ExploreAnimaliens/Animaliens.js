@@ -1,13 +1,9 @@
 import React from "react";
 import "./Animaliens.css";
-import Proyect1 from "../../images/assets/proyect1.png";
 import Proyect2 from "../../images/assets/proyect2.png";
 import Coming1 from "../../images/assets/update/coming1.png";
-import C4 from "../../images/assetS/update/c4.png";
 import AnimLog from "../../images/assets/Animaliens Logo.png";
-
 import Exp6 from "../../images/assets/update/exp6.png";
-import Coch from "../../images/assets/update/coch.png";
 import Golden from "../../images/assets/update/golden.png";
 import AnimLogo from "../../images/assets/Animaliens Logo.png";
 const Animaliens = () => {

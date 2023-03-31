@@ -32,8 +32,8 @@ const LinkItems = [
 
   { name: "Auctions", link: "/about", active: false },
   { name: "Missions", link: "/about", active: false },
-  { name: "THEHUB", link: "/thehub", active: true },
-  { name: "KNOWLEDGE", link: "/knowledge", active: true },
+  { name: "UNIVERSECITY", link: "/universecity", active: true },
+  // { name: "KNOWLEDGE", link: "/knowledge", active: true },
 
   // { name: "New Raffle", link: "/new-raffle" },
   // { name: 'How to Buy', link: '/tutorial'  },

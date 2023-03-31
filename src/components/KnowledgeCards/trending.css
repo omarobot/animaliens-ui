@@ -1,0 +1,9 @@
+.no-flex {
+  display: block !important;
+}
+.no-flex .indiv-card {
+  width: 95% !important;
+}
+.no-flex .indiv-card .card-detail {
+  position: relative !important;
+}

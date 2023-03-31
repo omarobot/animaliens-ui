@@ -1,20 +1,12 @@
 import React from "react";
+import CourseIntro from "../../components/CourseIntro/CourseIntro";
 
-const Card1 = () => {
+const Universecity = () => {
   return (
-    <div className="css-n1ozge no-margin">
-      <h1
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          fontFamily: "Chakra Petch",
-        }}
-      >
-        Individual Card
-      </h1>
+    <div className="css-n1ozge ">
+      <CourseIntro />
     </div>
   );
 };
 
-export default Card1;
+export default Universecity;

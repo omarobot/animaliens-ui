@@ -51,7 +51,7 @@ const Proyects = () => {
   return (
     <div className="proyects">
       <div className="section-heading normal-slow">
-        <h1>PROYECTS</h1>
+        <h1>Projects</h1>
         <Link to="/">
           <p>EXPLORE ALL PROJECTS {">"}</p>
         </Link>

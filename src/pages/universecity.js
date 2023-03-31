@@ -1,19 +1,19 @@
 import React from "react";
 import Carousel from "../components/Carousel/carousel";
-import Explore from "../components/Explore/explore";
 import Proyects from "../components/Proyects/proyects";
 import Trending from "../components/TrendingCards/trending";
+import Universecity from "../components/Universecity/Universecity";
 import "../styles/thehub.css";
 
-const Universecity = () => {
+const Thehub = () => {
   return (
-    <div className="css-n1ozge ">
-      <Carousel />
+    <div className="css-n1ozge">
+      {/* <Carousel />
       <Trending />
-      <Proyects />
-      <Explore />
+      <Proyects /> */}
+      <Universecity />
     </div>
   );
 };
 
-export default Universecity;
+export default Thehub;
