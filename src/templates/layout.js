@@ -15,7 +15,7 @@ const Layout = (props) => {
           width: "100%",
           display: "flex",
           // alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "space-between",
         }}
       >
         <div id="sidebar">

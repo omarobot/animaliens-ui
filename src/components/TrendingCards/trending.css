@@ -1,155 +1,145 @@
 .trending-section {
-    margin-top: 40px;
-    margin-bottom: 100px;
+  margin-top: 60px;
+  margin-bottom: 165px;
 }
 
 .video-cards {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /* align-items: center; */
-
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* align-items: center; */
 }
 
 .indiv-card {
-    width: 32%;
-    min-height: 200px;
-    position: relative;
-    border-radius: 30px;
+  width: 32%;
+  min-height: 200px;
+  position: relative;
+  border-radius: 30px;
 }
 
 .round-card {
-    border-radius: 30px;
-    width: 100%;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-
+  border-radius: 30px;
+  width: 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .card-detail {
-    box-sizing: border-box;
-    background: #2D2D2D;
-    border-radius: 26px;
-    position: absolute;
-    width: 100%;
-    padding: 15px;
-    /* bottom: -40px; */
+  box-sizing: border-box;
+  background: #2d2d2d;
+  border-radius: 26px;
+  position: absolute;
+  width: 100%;
+  padding: 15px;
+  /* bottom: -40px; */
 
-    margin-top: -37px;
-    height: 130px;
-}
-
-.pos1 {
-    margin-top: -60px;
-}
-
-.pos2 {
-    margin-top: -67px;
+  margin-top: -37px;
+  height: 130px;
 }
 
 .detail-upper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .detail-left h3 {
-    font-family: 'Chakra Petch';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 22.8182px;
+  font-family: "Chakra Petch";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22.8182px;
 
-    color: #FFFFFF;
-
+  color: #ffffff;
 }
 
 .detail-right {
-    font-family: 'Chakra Petch';
-    font-style: normal;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    font-size: 18.0765px;
+  font-family: "Chakra Petch";
+  font-style: normal;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  font-size: 18.0765px;
 }
 
 .detail-right img {
-    margin-right: 7px;
+  margin-right: 7px;
 }
 
 .card-btn {
-    margin-top: 35px;
+  margin-top: 10px;
 }
 
 .card-btn button {
-    font-family: 'Chakra Petch';
-    font-style: normal;
-    font-weight: 700;
-    padding: 4px 13px;
-    border: none;
-    font-size: 12.0691px;
-    color: #FFFFFF;
-    background: linear-gradient(40deg, rgba(53, 71, 245, 1) 0%, rgba(199, 93, 235, 1) 38%, rgb(255, 107, 166) 59%, rgba(221, 26, 94, 1) 100%);
-    border-radius: 30px;
-    outline: none;
+  font-family: "Chakra Petch";
+  font-style: normal;
+  font-weight: 700;
+  padding: 4px 13px;
+  border: none;
+  font-size: 12.0691px;
+  color: #ffffff;
+  background: linear-gradient(
+    40deg,
+    rgba(53, 71, 245, 1) 0%,
+    rgba(199, 93, 235, 1) 38%,
+    rgb(255, 107, 166) 59%,
+    rgba(221, 26, 94, 1) 100%
+  );
+  border-radius: 30px;
+  outline: none;
 }
 
 .no-mar {
-    margin-top: 10px !important;
+  margin-top: 10px !important;
 }
 
 .anim {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .anim img {
-    width: 110px;
+  width: 150px;
 }
-
+.animsa img {
+  width: 80px;
+}
+.crown img {
+  width: 30px;
+}
 .anim span {
-
-    font-family: 'Chakra Petch' !important;
-    font-style: italic;
+  font-family: "Chakra Petch" !important;
+  font-style: italic;
 }
 
-@media (min-width:1500px) {
-    .pos1 {
-        margin-top: -80px;
-    }
+@media (max-width: 800px) {
+  .video-cards {
+    flex-wrap: wrap;
+  }
 
-    .pos2 {
-        margin-top: -87px;
-    }
+  .indiv-card {
+    width: 47%;
+  }
 
+  .slip {
+    margin-top: 90px;
+  }
 }
 
-@media (max-width:800px) {
+@media (max-width: 580px) {
+  .indiv-card {
+    margin-top: 110px !important;
+    width: 100%;
+  }
+  .slip {
+    margin-top: 110px;
+  }
 
-    .video-cards {
-        flex-wrap: wrap;
-    }
+  .slip {
+    margin-top: 90px;
+  }
 
-    .indiv-card {
-        width: 47%;
-    }
-
-    .slip {
-        margin-top: 90px;
-    }
-}
-
-@media (max-width:580px) {
-    .indiv-card {
-        margin-top: 110px;
-        width: 100%;
-    }
-
-    .slip {
-        margin-top: 90px;
-    }
-
-    .non-slip {
-        margin-top: 0 !important;
-    }
+  .non-slip {
+    margin-top: 0 !important;
+  }
 }

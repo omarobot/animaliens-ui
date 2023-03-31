@@ -1,0 +1,20 @@
+.small-txt {
+  font-size: 30px !important;
+}
+.exlpore-logo {
+  margin: 45px 0;
+}
+.exlpore-logo img {
+  width: 200px;
+}
+.exp-5 {
+  background: linear-gradient(110.67deg, #363ede -3.26%, #2bd3ff 107.93%);
+}
+.exp-6 {
+  background: linear-gradient(110.67deg, #8076e9 2.65%, #4537dc 97.35%);
+}
+.exp-7 {
+  background-image: url(../../images/assets/update/bg2.png);
+  background-size: cover;
+  background-position: center;
+}

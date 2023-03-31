@@ -1,11 +1,14 @@
 import React from "react";
 import "./trending.css";
+import { Link } from "gatsby";
 import Card1 from "../../images/assets/Card1.png";
 import Card2 from "../../images/assets/Card2.png";
 import Card3 from "../../images/assets/Card3.png";
 import AnimLog from "../../images/assets/Animaliens Logo.png";
 import Heart from "../../images/assets/Heart.png";
 import EmptyHeart from "../../images/assets/Emptyheart.png";
+import Wild from "../../images/assets/update/Component 1.png";
+import Crown from "../../images/assets/update/crown.png";
 const Trending = () => {
   return (
     <div className="trending-section">
@@ -18,15 +21,20 @@ const Trending = () => {
           <div className="card-detail">
             <div className="detail-upper">
               <div className="detail-left">
-                <h3>Plutus 101</h3>
+                <h3>Introduction</h3>
               </div>
               <div className="detail-right">
                 <img src={Heart} alt="" />
                 24
               </div>
             </div>
-            <div className="card-btn">
-              <button>Explore Now</button>
+            <h3 className="animsa">
+              <img src={Wild} alt="" />
+            </h3>
+            <div className="card-btn no-mar">
+              <Link to="/courses/1">
+                <button>Explore Now</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -44,8 +52,10 @@ const Trending = () => {
             <h3 className="anim">
               <img src={AnimLog} alt="" />
             </h3>
-            <div className="card-btn no-mar">
-              <button>Explore Now</button>
+            <div className="card-btn ">
+              <Link to="/courses/2">
+                <button>Explore Now</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -60,8 +70,13 @@ const Trending = () => {
                 <img src={EmptyHeart} alt="" />
               </div>
             </div>
-            <div className="card-btn">
-              <button>Explore Now</button>
+            <h3 className="crown">
+              <img src={Crown} alt="" />
+            </h3>
+            <div className="card-btn ">
+              <Link to="/courses/3">
+                <button>Explore Now</button>
+              </Link>
             </div>
           </div>
         </div>
