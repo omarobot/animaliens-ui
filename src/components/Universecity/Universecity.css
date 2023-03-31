@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+.universe-bg {
+  background-image: url(../../images/assets/update/Emptyheart.png);
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.ui-content {
+  width: 80%;
+  margin-right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  flex-direction: column;
+}
+.ui-content h3 {
+  font-family: "Chakra Petch", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 27.8182px;
+  line-height: 54px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.btn-txet {
+  border: 6px solid white;
+  border-radius: 25px;
+  padding: 0 15px;
+}
+.logo-img {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+  text-align: center;
+  margin: 20px 0 50px 0;
+}
+.logo-img img {
+  text-align: center;
+  margin: 0 auto;
+}
+.hidden {
+  display: none !important;
+}
+.red-clr {
+  color: #be272d !important;
+  margin-bottom: 30px;
+
+  border-color: #be272d !important;
+}
