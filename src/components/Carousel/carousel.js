@@ -59,7 +59,9 @@ const Carousel = () => {
                   </div>
                 </p>
                 <div className="card-bttn">
-                  <button>Explore Now</button>
+                  <a href="/courses">
+                    <button>Explore Now</button>
+                  </a>
                 </div>
               </div>
               <div className="slide-right">

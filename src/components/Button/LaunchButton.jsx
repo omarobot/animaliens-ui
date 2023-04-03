@@ -1,5 +1,4 @@
 import React from "react";
-import "./LaunchButton.scss";
 import charming from "charming";
 // import Spaceship from "../../images/assets/spaceship.svg";
 

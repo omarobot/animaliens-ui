@@ -1,7 +1,7 @@
 .customInput {
   border-radius: 25px;
   border-style: solid;
-  border-color: #30f100;
+  border-color: #5F26E0;
   background-color: #535353;
   border-width: 2px;
   font-size: 15px;
@@ -10,15 +10,15 @@
   padding-left: 20px;
   padding-right: 10px;
   outline: none;
-  caret-color: #30f100;
-  color: #30f100;
+  caret-color: #5F26E0;
+  color: #5F26E0;
   transition: 0.2s;
   width: 100%;
 }
 
 ::placeholder {
   opacity: 1;
-  color: #30f100;
+  color: #5F26E0;
 }
 
 /* .customInput:focus {

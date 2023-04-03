@@ -27,7 +27,7 @@
 }
 
 .raffleBtn {
-  background: #30f100;
+  background: #5F26E0;
   color: #171717;
   padding: 10px 20px;
   border-radius: 5px;
@@ -39,7 +39,7 @@
 }
 
 .ticketIcon {
-  color: #30f100;
+  color: #5F26E0;
 }
 
 .ticketIconGray {
@@ -48,14 +48,14 @@
 
 .raffleBtnGray {
   background: #555555;
-  color: #30f100;
+  color: #5F26E0;
   padding: 10px 20px;
   border-radius: 5px;
   margin: 10px 0;
 }
 
 .inputField:focus {
-  border-color: #30f100 !important;
+  border-color: #5F26E0 !important;
 }
 
 .minusBtn {}

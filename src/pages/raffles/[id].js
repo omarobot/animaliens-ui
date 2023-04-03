@@ -74,11 +74,8 @@ const RaffleDes = ({ params }) => {
   const [walletAddress, setWalletAddress] = useState();
   const [NFTAddress, setNFTAddress] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [isClaimed, setIsClaimed] = useState(false);
   const [entries, setEntries] = useState([]);
-  const [ticketSold, setTicketSold] = useState();
   const [entriesByID, setEntriesByID] = useState(0);
-  const [getOrderById, setGetOrderById] = useState([]);
   const [nftExists, setNftExists] = useState(false);
   const [walletConnected, setWalletConnected] = useState(false);
   const [nftsHeld, setNftsHeld] = useState();
@@ -297,11 +294,12 @@ const RaffleDes = ({ params }) => {
 
         setNftExists(false);
         let totalNftsOwned = tokens.owned;
+        // let numNfts = tokens.owned.length;
         let numNfts = tokens.owned.length;
 
         let raffId = params.id;
 
-        setNftsHeld(tokens.owned.length);
+        setNftsHeld(3);
 
         for (let i = 0; i < totalEntries.length; i++) {
           const element = totalEntries[i];
@@ -391,306 +389,21 @@ const RaffleDes = ({ params }) => {
         titleTwitter="Animaliens: The Alien Collective"
         title="Raffle"
         description="Collect your unique Animaliens NFT on the Cardano blockchain."
-      />{" "}
-      {/* main content  */}{" "}
+      />
+      {/* main content  */}
       <main>
         <Container maxW={"800px"} p={2} my={20}>
           <h1 className="raffle_heading">RAFFLES</h1>
-          {raffle.date > new Date() ? (
-            <Box>
-              <Flex
-                justifyContent="center"
-                gap={20}
-                sx={{
-                  my: 4,
-                }}
-              >
-                <Text
-                  sx={{
-                    display: "flex",
-                    gap: 2,
-                    alignItems: "center",
-                  }}
-                >
-                  <HiTicket color="#30f100" /> Total entries: {uniqueEntries}
-                </Text>{" "}
-                <Text
-                  sx={{
-                    display: "flex",
-                    gap: 2,
-                    alignItems: "center",
-                  }}
-                >
-                  <GiCrown color="#30f100" /> Unique wallets: {uniqueWallets}
-                </Text>{" "}
-              </Flex>{" "}
-            </Box>
-          ) : (
-            <Box
-              sx={{
-                textAlign: "center",
-              }}
-            >
-              {/* <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <img width={200} src={raffle?.image} alt="" />
-              </Box>{" "}
-              <Box
-                sx={{
-                  my: 8,
-                }}
-              >
-                <Heading
-                  as="h3"
-                  size={"md"}
-                  sx={{
-                    textAlign: "center",
-                    my: 4,
-                  }}
-                >
-                  {raffle.name}{" "}
-                </Heading>{" "}
-              </Box> */}
-            </Box>
-          )}{" "}
+
           <Box
             sx={{
               mt: 20,
             }}
             className={raffleStyles.singleRaffleBox}
           >
-            {" "}
             {raffle.date > new Date() ? (
               <div>
-                <Box
-                  sx={{
-                    my: 8,
-                  }}
-                >
-                  <Heading
-                    as="h3"
-                    size={"md"}
-                    sx={{
-                      textAlign: "center",
-                      my: 4,
-                    }}
-                  >
-                    {raffle.name}{" "}
-                  </Heading>{" "}
-                  {walletConnected && nftsHeld && nftsHeld > 0 ? (
-                    <>
-                      <p
-                        size={"sm"}
-                        style={{
-                          textAlign: "center",
-                          my: 1,
-                          color: "rgb(48, 241, 0)",
-                        }}
-                      >
-                        NFTs Detected: {nftsHeld}{" "}
-                      </p>{" "}
-                    </>
-                  ) : (
-                    ""
-                  )}
-                </Box>{" "}
-                <Flex
-                  gap={10}
-                  sx={{
-                    my: 4,
-                    alignItems: "end",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Box>
-                    <img width={200} src={raffle.image} alt="" />
-                  </Box>{" "}
-                  <Box>
-                    <Box
-                      sx={{
-                        my: 4,
-                      }}
-                    >
-                      <Heading
-                        as="h3"
-                        size="md"
-                        sx={{
-                          my: 2,
-                        }}
-                      >
-                        Winner(s){" "}
-                      </Heading>{" "}
-                      <Text as="span"> 1 </Text>{" "}
-                    </Box>{" "}
-                    <Box
-                      sx={{
-                        mt: 4,
-                        mb: 8,
-                      }}
-                    >
-                      <Heading
-                        as="h3"
-                        size="md"
-                        sx={{
-                          my: 2,
-                        }}
-                      >
-                        Price{" "}
-                      </Heading>
-                      <Text as="span"> 1 NFT = 1 Ticket </Text>{" "}
-                    </Box>{" "}
-                    <Box>
-                      {!nftExists && (
-                        <>
-                          {nfts > 0 && (
-                            <NumberInput
-                              onChange={handleOnChange}
-                              defaultValue={nfts}
-                              min={nfts}
-                              max={nfts}
-                              keepWithinRange={true}
-                              clampValueOnBlur={false}
-                              style={{ pointerEvents: "none" }}
-                            >
-                              <NumberInputField
-                                className={raffleStyles.inputField}
-                              />{" "}
-                              <NumberInputStepper>
-                                <NumberIncrementStepper />
-                                <NumberDecrementStepper />
-                              </NumberInputStepper>{" "}
-                            </NumberInput>
-                          )}
-                        </>
-                      )}
-                    </Box>{" "}
-                  </Box>{" "}
-                  <Box>
-                    <Box
-                      sx={{
-                        mt: 4,
-                        mb: 8,
-                      }}
-                    >
-                      <Heading
-                        as="h3"
-                        size="md"
-                        sx={{
-                          my: 2,
-                        }}
-                      >
-                        Raffle Ends{" "}
-                      </Heading>{" "}
-                      <Box>
-                        <Countdown date={raffle.date} renderer={renderer} />{" "}
-                      </Box>{" "}
-                    </Box>{" "}
-                    {walletConnected === true ? (
-                      <>
-                        {nfts === 0 || !nftsHeld || nftsHeld === 0 ? (
-                          <>
-                            <Box
-                              sx={{
-                                mt: 4,
-                                mb: 8,
-                              }}
-                            >
-                              <Heading
-                                as="h3"
-                                size="md"
-                                sx={{
-                                  my: 2,
-                                  color: "red",
-                                }}
-                              >
-                                Woah, not so fast.
-                              </Heading>{" "}
-                              <Box style={{ color: "red" }}>
-                                You already have max entries or no NFTs
-                              </Box>{" "}
-                            </Box>{" "}
-                          </>
-                        ) : (
-                          <>
-                            {isLoading ? (
-                              <Box>
-                                <Heading></Heading>
-                                <Button
-                                  onClick={handleSubmit}
-                                  disabled={nftConnect ? false : true}
-                                  colorScheme="green"
-                                >
-                                  <Spinner />
-                                </Button>
-                              </Box>
-                            ) : (
-                              <Button
-                                onClick={handleSubmit}
-                                disabled={nftConnect ? false : true}
-                                colorScheme="green"
-                              >
-                                {nftConnect
-                                  ? `Buy ${nfts} ticket(s)`
-                                  : `Connect your wallet`}
-                              </Button>
-                            )}
-                          </>
-                        )}
-                      </>
-                    ) : (
-                      <>
-                        <Box
-                          sx={{
-                            mt: 4,
-                            mb: 8,
-                          }}
-                        >
-                          <Heading
-                            as="h3"
-                            size="md"
-                            sx={{
-                              my: 2,
-                              color: "red",
-                            }}
-                          >
-                            No wallet detected!{" "}
-                          </Heading>{" "}
-                          <Box style={{ color: "red" }}>
-                            Please connect your wallet.
-                          </Box>{" "}
-                        </Box>{" "}
-                      </>
-                    )}
-                  </Box>{" "}
-                </Flex>{" "}
-                <div>
-                  {entries > 0 && walletConnected ? (
-                    <div
-                      style={{
-                        marginTop: "50px",
-                        color: "rgb(48, 241, 0)",
-                        border: "2px solid rgb(48, 241, 0)",
-                        padding: "5px",
-                      }}
-                    >
-                      {" "}
-                      <Text sx={{ textAlign: "center" }}>
-                        You already have {entries} entrie(s) submitted. Good
-                        luck!
-                      </Text>
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </div>
-              </div>
-            ) : (
-              <div>
-                <div className="id-flex">
+                <div className="id-flex  only-active">
                   <div className="raffle-imgs">
                     <Box
                       sx={{
@@ -698,8 +411,8 @@ const RaffleDes = ({ params }) => {
                         justifyContent: "center",
                       }}
                     >
-                      <img width={200} src={raffle?.image} alt="" />
-                    </Box>{" "}
+                      <img width={200} src={raffle.image} alt="" />
+                    </Box>
                   </div>
                   <div className="raffle-add">
                     <Box
@@ -715,30 +428,337 @@ const RaffleDes = ({ params }) => {
                           my: 4,
                         }}
                       >
-                        {raffle.name}{" "}
-                      </Heading>{" "}
+                        {raffle.name}
+                      </Heading>
+                    </Box>
+                    <div
+                      colorScheme="green"
+                      variant="unstyled"
+                      class="chakra-table css-5605sr"
+                    >
+                      <div class="css-0">
+                        <div class="tra css-0">
+                          <div class="css-15wjwcp">
+                            <Countdown date={raffle.date} renderer={renderer} />{" "}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <Box
+                      sx={{
+                        my: 8,
+                      }}
+                    >
+                      {walletConnected && nftsHeld && nftsHeld > 0 ? (
+                        <>
+                          <p
+                            size={"sm"}
+                            style={{
+                              textAlign: "center",
+                              my: 1,
+                              color: "rgb(48, 241, 0)",
+                            }}
+                          >
+                            NFTs Detected: {nftsHeld}
+                          </p>
+                        </>
+                      ) : (
+                        ""
+                      )}
+                    </Box>
+                    <Flex
+                      gap={10}
+                      sx={{
+                        my: 4,
+                        alignItems: "end",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <Box>
+                        {/* <Box
+                      sx={{
+                        my: 4,
+                      }}
+                    >
+                      <Heading
+                        as="h3"
+                        size="md"
+                        sx={{
+                          my: 2,
+                        }}
+                      >
+                        Winner(s)
+                      </Heading>
+                      <Text as="span"> 1 </Text>
+                    </Box>
+                    <Box
+                      sx={{
+                        mt: 4,
+                        mb: 8,
+                      }}
+                    >
+                      <Heading
+                        as="h3"
+                        size="md"
+                        sx={{
+                          my: 2,
+                        }}
+                      >
+                        Price
+                      </Heading>
+                      <Text as="span"> 1 NFT = 1 Ticket </Text>
+                    </Box> */}
+                        <Box>
+                          {!nftExists && (
+                            <>
+                              {nfts > 0 && (
+                                <NumberInput
+                                  onChange={handleOnChange}
+                                  defaultValue={nfts}
+                                  min={nfts}
+                                  max={nfts}
+                                  keepWithinRange={true}
+                                  clampValueOnBlur={false}
+                                  style={{ pointerEvents: "none" }}
+                                >
+                                  <NumberInputField
+                                    className={raffleStyles.inputField}
+                                  />
+                                  <NumberInputStepper>
+                                    <NumberIncrementStepper />
+                                    <NumberDecrementStepper />
+                                  </NumberInputStepper>
+                                </NumberInput>
+                              )}
+                            </>
+                          )}
+                        </Box>
+                      </Box>
+                      <Box>
+                        {walletConnected === true ? (
+                          <>
+                            {nfts === 0 || !nftsHeld || nftsHeld === 0 ? (
+                              <>
+                                <Box
+                                  sx={{
+                                    mt: 4,
+                                    mb: 8,
+                                  }}
+                                >
+                                  <Heading
+                                    as="h3"
+                                    size="md"
+                                    sx={{
+                                      my: 2,
+                                      color: "red",
+                                    }}
+                                  >
+                                    Woah, not so fast.
+                                  </Heading>
+                                  <Box style={{ color: "red" }}>
+                                    You already have max entries or no NFTs
+                                  </Box>
+                                </Box>
+                              </>
+                            ) : (
+                              <>
+                                {isLoading ? (
+                                  <Box>
+                                    <Heading></Heading>
+                                    <Button
+                                      onClick={handleSubmit}
+                                      disabled={nftConnect ? false : true}
+                                      colorScheme="green"
+                                    >
+                                      <Spinner />
+                                    </Button>
+                                  </Box>
+                                ) : (
+                                  <Button
+                                    onClick={handleSubmit}
+                                    disabled={nftConnect ? false : true}
+                                    colorScheme="green"
+                                  >
+                                    {nftConnect
+                                      ? `Buy ${nfts} ticket(s)`
+                                      : `Connect your wallet`}
+                                  </Button>
+                                )}
+                              </>
+                            )}
+                          </>
+                        ) : (
+                          <>
+                            <Box
+                              sx={{
+                                mt: 4,
+                                mb: 8,
+                              }}
+                            >
+                              <Heading
+                                as="h3"
+                                size="md"
+                                sx={{
+                                  my: 2,
+                                  color: "red",
+                                }}
+                              >
+                                No wallet detected!
+                              </Heading>
+                              <Box style={{ color: "red" }}>
+                                Please connect your wallet.
+                              </Box>
+                            </Box>
+                          </>
+                        )}
+                      </Box>
+                    </Flex>
+                    <div>
+                      {entries > 0 && walletConnected ? (
+                        <div
+                          style={{
+                            marginTop: "50px",
+                            color: "rgb(48, 241, 0)",
+                            border: "2px solid rgb(48, 241, 0)",
+                            padding: "5px",
+                          }}
+                        >
+                          <Text sx={{ textAlign: "center" }}>
+                            You already have {entries} entrie(s) submitted. Good
+                            luck!
+                          </Text>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                    {raffle.date > new Date() ? (
+                      <Box className="active-wal">
+                        <Flex
+                          justifyContent="center"
+                          gap={20}
+                          sx={{
+                            my: 4,
+                          }}
+                        >
+                          <Text
+                            sx={{
+                              display: "flex",
+                              gap: 2,
+                              alignItems: "center",
+                            }}
+                          >
+                            <HiTicket color="#30f100" /> Total entries:{" "}
+                            {uniqueEntries}
+                          </Text>
+                          <Text
+                            sx={{
+                              display: "flex",
+                              gap: 2,
+                              alignItems: "center",
+                            }}
+                          >
+                            <GiCrown color="#30f100" /> Unique wallets:{" "}
+                            {uniqueWallets}
+                          </Text>
+                        </Flex>
+                      </Box>
+                    ) : (
+                      <Box
+                        sx={{
+                          textAlign: "center",
+                        }}
+                      >
+                        {/* <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <img width={200} src={raffle?.image} alt="" />
+              </Box>
+              <Box
+                sx={{
+                  my: 8,
+                }}
+              >
+                <Heading
+                  as="h3"
+                  size={"md"}
+                  sx={{
+                    textAlign: "center",
+                    my: 4,
+                  }}
+                >
+                  {raffle.name}
+                </Heading>
+              </Box> */}
+                      </Box>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <div className="id-flex">
+                  <div className="raffle-imgs">
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <img width={200} src={raffle?.image} alt="" />
+                    </Box>
+                  </div>
+                  <div className="raffle-add">
+                    <Box
+                      sx={{
+                        my: 8,
+                      }}
+                    >
+                      <Heading
+                        as="h3"
+                        size={"md"}
+                        sx={{
+                          textAlign: "center",
+                          my: 4,
+                        }}
+                      >
+                        {raffle.name}
+                      </Heading>
                     </Box>
                     <TableContainer>
-                      <Table colorScheme="green" variant="unstyled">
-                        <Thead>
-                          <Tr className="tra">
-                            <Th> Winner(s) </Th>{" "}
-                          </Tr>{" "}
-                        </Thead>{" "}
-                        <Tbody>
-                          <Tr className="tra">
-                            <Td style={{ fontSize: "10px" }} className="top-wa">
-                              {raffle.winner}{" "}
-                            </Td>
-                          </Tr>{" "}
-                          <Tr>
-                            <Td style={{ fontSize: "10px" }}>
-                              {raffle.winner2}{" "}
-                            </Td>
-                          </Tr>{" "}
-                        </Tbody>{" "}
-                      </Table>{" "}
-                    </TableContainer>{" "}
+                      <div
+                        colorScheme="green"
+                        variant="unstyled"
+                        class="chakra-table css-5605sr"
+                      >
+                        <div class="css-0">
+                          <div class="tra css-0">
+                            <div class="css-15wjwcp"> Winner(s) </div>
+                          </div>
+                        </div>
+                        <div class="css-0">
+                          <div className="tra">
+                            <div
+                              style={{ fontSize: "10px" }}
+                              className="top-wa"
+                            >
+                              <div className="overf">{raffle.winner} </div>
+                            </div>
+                          </div>
+                          <div class="css-0">
+                            <div
+                              style={{ fontSize: "10px" }}
+                              class="css-1vmvwla overf"
+                            >
+                              {raffle.winner2}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </TableContainer>
                     <Box>
                       <Flex
                         justifyContent="center"
@@ -754,9 +774,9 @@ const RaffleDes = ({ params }) => {
                             alignItems: "center",
                           }}
                         >
-                          <HiTicket color="#30f100" /> Total entries:{" "}
+                          <HiTicket color="#30f100" /> Total entries:
                           {uniqueEntries}
-                        </Text>{" "}
+                        </Text>
                         <Text
                           sx={{
                             display: "flex",
@@ -764,18 +784,18 @@ const RaffleDes = ({ params }) => {
                             alignItems: "center",
                           }}
                         >
-                          <GiCrown color="#30f100" /> Unique wallets:{" "}
+                          <GiCrown color="#30f100" /> Unique wallets:
                           {uniqueWallets}
-                        </Text>{" "}
-                      </Flex>{" "}
+                        </Text>
+                      </Flex>
                     </Box>
                   </div>
                 </div>
               </div>
-            )}{" "}
-          </Box>{" "}
-        </Container>{" "}
-      </main>{" "}
+            )}
+          </Box>
+        </Container>
+      </main>
     </>
   );
 };

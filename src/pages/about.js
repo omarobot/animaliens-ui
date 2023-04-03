@@ -12,15 +12,15 @@ mapboxgl.accessToken =
 const About = () => {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(-70.9);
-  const [lat, setLat] = useState(42.35);
-  const [zoom, setZoom] = useState(12);
+  const [lng, setLng] = useState(118.24);
+  const [lat, setLat] = useState(34.05);
+  const [zoom, setZoom] = useState(10);
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: "mapbox://styles/saucism/cla6lah0k000015lhwerthdmh",
+      style: "mapbox://styles/mapbox/dark-v11",
       center: [lng, lat],
       zoom: zoom,
     });

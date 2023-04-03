@@ -17,23 +17,23 @@ import React from "react";
 import { FiMenu } from "react-icons/fi";
 // import * as style from "../../components/Header/Tab.module.css";
 // import newLogo from "../../images/assets/logo_face_white.svg";
-import NewLogo from '../../images/assets/Nebula Logo.png'
+import NewLogo from "../../images/assets/Nebula Logo.png";
 import nebula from "../../images/assets/nebula2.png";
 import * as style from "../Header/sidebar.module.css";
 
 const LinkItems = [
   { name: "          ", link: "/", active: true },
-  { name: "Store", link: "/about", active: false },
-  { name: "Tuition", link: "/about", active: false },
-  { name: "Raffles", link: "/raffles", active: true },
+  // { name: "Store", link: "/about", active: false },
+  // { name: "Tuition", link: "/about", active: false },
+  // { name: "Raffles", link: "/raffles", active: true },
 
   // { name: 'Rarities', link: '/tutorial'},
   // { name: 'Marketplace', link: '/tutorial'  },
 
-  { name: "Auctions", link: "/about", active: false },
-  { name: "Missions", link: "/about", active: false },
-  { name: "THEHUB", link: "/thehub", active: true },
-  { name: "KNOWLEDGE", link: "/knowledge", active: true },
+  { name: "Universecity", link: "/universecity", active: true },
+  { name: "Compass", link: "/about", active: true },
+  { name: "Raffles", link: "/raffles", active: true },
+  { name: "Tuition", link: "/tutorial", active: true },
 
   // { name: "New Raffle", link: "/new-raffle" },
   // { name: 'How to Buy', link: '/tutorial'  },
@@ -99,7 +99,11 @@ const SidebarContent = ({ onClose, ...rest }) => {
             window.scrollTo(0, 0);
           }}
         >
-          <img draggable={false} width={!matches.lg ? 300 : 300} src={NewLogo} />
+          <img
+            draggable={false}
+            width={!matches.lg ? 300 : 300}
+            src={NewLogo}
+          />
           {/* <p style={{ paddingTop: "5px" }}>Powered by Animaliens</p> */}
         </div>
         <CloseButton

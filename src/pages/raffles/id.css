@@ -11,9 +11,12 @@
 }
 
 .Raffle-module--singleRaffleBox--GUTpu img {
-    width: 100%;
+    width: 285px;
     border-radius: 20px !important;
 }
+
+
+
 
 .chakra-heading.css-1d97h20 {
     /* padding: 0 1.2rem; */
@@ -28,13 +31,45 @@
 
 .raffle-add {
     padding: 10px 15px !important;
+    min-width: 75%;
 }
 
+.css-64fodi {
+    border: 1px solid #5F26E0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box;
+}
 
+.css-1jj9yua {
+    border-color: #5F26E0 !important;
+    width: 30px !important;
+}
+
+.css-mxool3:last-of-type {
+    border-color: #5F26E0 !important;
+}
+
+.css-onkibi {
+    background: -webkit-linear-gradient(273.22deg, #CF4DD3 9.84%, #6729DF 91.03%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #6f32ff !important;
+}
+
+.css-5w5n0l {
+    color: white !important;
+    z-index: 999;
+    border-radius: 40px !important;
+    background-image: linear-gradient(to right, #5f26e0, #7e29dd, #952eda, #aa36d7, #bb3fd5, #c259dd) !important
+}
+
+.active-wal {
+    margin-top: 25px;
+}
 
 .css-15wjwcp {
 
-    padding: 1.3rem 0 !important;
+    padding: 0 0 !important;
     font-family: 'Chakra Petch' !important;
     font-style: normal !important;
     font-weight: 700 !important;
@@ -75,14 +110,25 @@
 
 }
 
-.css-1l4w6pd,
-.css-1l4w6pd img {
-    height: 100%;
+.raffle-imgs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.css-1l4w6pd {
+    display: block !important;
+    /* display: -webkit-flex; */
+    display: block !important;
+
+}
 
 .raffle_heading {
     box-sizing: border-box;
+}
+
+.css-1utqz6x {
+    max-width: 90% !important;
 }
 
 @media (max-width:800px) {
@@ -113,6 +159,14 @@
 
 }
 
+@media (max-width:600px) {
+    .css-1utqz6x {
+        max-width: 95% !important;
+    }
+
+
+}
+
 @media (max-width:550px) {
     .css-1utqz6x {
         padding: 0 20px !important;
@@ -122,5 +176,13 @@
 
     .css-1ktp5rg {
         font-size: 13px !important;
+    }
+
+    .css-15wjwcp {
+        font-size: 20px !important;
+    }
+
+    .css-5w5n0l {
+        font-size: 15px !important;
     }
 }

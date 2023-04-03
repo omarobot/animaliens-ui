@@ -16,9 +16,11 @@
 }
 
 .linkItem:hover {
-  color: #30f100;
+  background: -webkit-linear-gradient(90.27deg, #5F26E0, #CF4DD3);
+  -webkit-background-clip: text;
 }
 
 .active {
-  color: #30f100 !important;
+  background: -webkit-linear-gradient(90.27deg, #5F26E0, #CF4DD3);
+  -webkit-background-clip: text;
 }

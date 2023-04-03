@@ -250,7 +250,7 @@ const StartButton = (props) => {
           position: "absolute",
           top: "20px",
           right: "3%",
-          border: "2px solid #30f100",
+          border: "2px solid #5F26E0",
           borderRadius: "10px",
           padding: "10px",
         }}
