@@ -29,6 +29,10 @@
   text-transform: uppercase;
   color: #ffffff;
 }
+.css-n1ozge {
+  padding: var(--chakra-space-2);
+  margin: var(--chakra-space-20);
+}
 .btn-txet {
   border: 6px solid white;
   border-radius: 25px;

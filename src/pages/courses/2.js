@@ -1,18 +1,10 @@
 import React from "react";
+import CourseIntro from "../../components/CourseIntro/CourseIntro";
 
 const Card2 = () => {
   return (
-    <div className="css-n1ozge no-margin">
-      <h1
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          fontFamily: "Chakra Petch",
-        }}
-      >
-        Individual Card
-      </h1>
+    <div className="css-n1ozge ">
+      <CourseIntro />
     </div>
   );
 };

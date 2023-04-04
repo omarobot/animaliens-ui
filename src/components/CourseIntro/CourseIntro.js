@@ -25,21 +25,33 @@ const CourseIntro = () => {
               </div>
             </div>
             <div className="holder-heading">
-              <Link to="/knowledge">START COURSE</Link>
+              <Link to="/courses/1/lesson/1">START COURSE</Link>
             </div>
             <div className="brief-coulmns">
-              <div className="indiv-brief holder-bg1">
-                <h1>#1 INTRO</h1>
-                <p>LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT.</p>
-              </div>
-              <div className="indiv-brief holder-bg2">
-                <h1>#2 HOW DOES PS WORK?</h1>
-                <p>LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT.</p>
-              </div>
-              <div className="indiv-brief holder-bg3">
-                <h1>#3 DIGITALIZING YOUR WORK</h1>
-                <p>LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT.</p>
-              </div>
+              <Link to="/courses/1/lesson/1">
+                <div className="indiv-brief holder-bg1">
+                  <h1>#1 INTRO</h1>
+                  <p>
+                    LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT.
+                  </p>
+                </div>
+              </Link>
+              <Link to="/courses/1/lesson/2">
+                <div className="indiv-brief holder-bg2">
+                  <h1>#2 HOW DOES PS WORK?</h1>
+                  <p>
+                    LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT.
+                  </p>
+                </div>
+              </Link>
+              <Link to="/courses/1/lesson/3">
+                <div className="indiv-brief holder-bg3">
+                  <h1>#3 DIGITALIZING YOUR WORK</h1>
+                  <p>
+                    LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT.
+                  </p>
+                </div>
+              </Link>
             </div>
           </div>
         </>
