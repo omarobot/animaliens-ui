@@ -2,13 +2,13 @@ import React from "react";
 import "./carousel.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 import AnimLogo from "../../images/assets/Animaliens Logo.png";
 import Wild from "../../images/assets/Wild.png";
 import Tangs from "../../images/assets/Tangs.png";
 import Proyect1 from "../../images/assets/proyect1.png";
 import Proyect2 from "../../images/assets/proyect2.png";
 import Proyect3 from "../../images/assets/proyect3.png";
-import Slider from "react-slick";
 const Carousel = () => {
   var settings = {
     dots: true,
@@ -39,7 +39,7 @@ const Carousel = () => {
     ],
   };
   return (
-    <div className="section-slide">
+    <div className="section-slide my-8">
       <div className="section-heading">
         <h1>DISCOVER</h1>
       </div>

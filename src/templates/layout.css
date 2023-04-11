@@ -1,12 +1,12 @@
 #sidebar {
   width: 15%;
-
 }
 
 #bodyContent {
   width: 80%;
   background: #000;
   color: #fff;
+  margin-right: 15px;
 }
 
 #connect-btn {
@@ -24,6 +24,7 @@
 @media only screen and (max-width: 990px) {
   #bodyContent {
     width: 100%;
+    margin-right: 0;
   }
 
   #sidebar {

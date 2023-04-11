@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Universecity.css";
+import { Link } from "gatsby";
 import RecLogo from "../../images/assets/update/Rectangle.png";
 const Universecity = () => {
   const [walletConnected, setwalletConnected] = useState(false);
@@ -37,7 +38,7 @@ const Universecity = () => {
             CONNECT YOUR WALLET
           </h3>
         )}
-        <Link to="">
+        <Link to="/universecity/universecityData">
           <h3 className={AnimFound ? "btn-txet" : "hidden"}>START LEARNING</h3>
         </Link>
       </div>

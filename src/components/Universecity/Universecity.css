@@ -29,6 +29,10 @@
   text-transform: uppercase;
   color: #ffffff;
 }
+.css-n1ozge {
+  padding: var(--chakra-space-2);
+  margin: var(--chakra-space-20);
+}
 .btn-txet {
   border: 6px solid white;
   border-radius: 25px;
@@ -53,4 +57,38 @@
   margin-bottom: 30px;
 
   border-color: #be272d !important;
+}
+@media (max-width: 1200px) {
+  .logo-img {
+    width: 100%;
+  }
+}
+@media (max-width: 991px) {
+  .ui-content {
+    width: 100%;
+    padding: 20px;
+  }
+  .universe-bg {
+    position: static;
+  }
+}
+@media (max-width: 600px) {
+  .ui-content h3 {
+    font-size: 22px;
+  }
+  .btn-txet {
+    border-width: 5px;
+  }
+  .btn-txet.red-clr {
+    font-size: 18px !important;
+    border-width: 4px !important;
+  }
+}
+@media (max-width: 420px) {
+  .ui-content h3 {
+    font-size: 20px;
+  }
+  .btn-txet.red-clr {
+    font-size: 16px !important;
+  }
 }
