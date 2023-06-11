@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Universecity.css";
 import RecLogo from "../../images/assets/update/Rectangle.png";
+import { Link } from "@chakra-ui/layout";
+
 const Universecity = () => {
   const [walletConnected, setwalletConnected] = useState(false);
   const [AnimFound, setAnimFound] = useState(false);
@@ -18,29 +20,31 @@ const Universecity = () => {
   return (
     <div className="universe-bg">
       <div className="ui-content">
-        <h3>WELCOME TO</h3>
+        <h3> WELCOME TO </h3>{" "}
         <div className="logo-img">
           <img src={RecLogo} alt="" />
         </div>
-
         {walletConnected ? (
           <>
             <h3 className={AnimFound ? "hidden" : "btn-txet red-clr  "}>
-              NO ANIMALIENS FOUND ON WALLET
-            </h3>
+              NO ANIMALIENS FOUND ON WALLET{" "}
+            </h3>{" "}
             <h3 className={AnimFound ? "hidden" : "btn-txet"} onClick={AnimBuy}>
-              BUY ANIMALIENS
-            </h3>
+              BUY ANIMALIENS{" "}
+            </h3>{" "}
           </>
         ) : (
           <h3 className="btn-txet" onClick={walletToggle}>
-            CONNECT YOUR WALLET
+            CONNECT YOUR WALLET{" "}
           </h3>
-        )}
+        )}{" "}
         <Link to="">
-          <h3 className={AnimFound ? "btn-txet" : "hidden"}>START LEARNING</h3>
-        </Link>
-      </div>
+          <h3 className={AnimFound ? "btn-txet" : "hidden"}>
+            {" "}
+            START LEARNING{" "}
+          </h3>{" "}
+        </Link>{" "}
+      </div>{" "}
     </div>
   );
 };
