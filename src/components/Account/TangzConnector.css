@@ -1,0 +1,60 @@
+/** Variables **/
+:root {
+  --wallet-connector-color: #5e35b1;
+}
+
+/** Dropdown **/
+.dropdown-parent {
+	border: 2px solid var(--wallet-connector-color);
+  background-color: var(--wallet-connector-color);
+  color: #000;
+}
+.dropdown-parent:hover {
+  opacity: 1 !important;
+}
+.dropdown-parent ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+.dropdown-parent li {
+  display: inline-block;
+  position: relative;
+  line-height: 20px;
+  text-align: left;
+}
+.dropdown-parent li a {
+  display: block;
+  padding: 0px;
+  text-decoration: none;
+	font-weight: normal !important;
+}
+.dropdown-parent li ul.dropdown {
+  min-width: 110%;
+  display: none;
+  position: absolute;
+  z-index: 999;
+  right: -8px;
+  top: 20px;
+}
+.dropdown-parent:hover ul.dropdown {
+  display: block;
+}
+.dropdown-parent li ul.dropdown li {
+  display: block;
+}
+.dropdown-parent li ul.dropdown a {
+  padding: 15px;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid var(--wallet-connector-color);
+}
+.dropdown-parent li ul.dropdown a:hover {
+  color: #000;
+  background: var(--wallet-connector-color);
+}
+
+/** Built-in toastify alerts **/
+.toastify {
+  color: white !important;
+}

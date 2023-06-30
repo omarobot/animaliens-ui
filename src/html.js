@@ -36,6 +36,17 @@ export default class HTML extends React.Component {
             href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css"
             rel="stylesheet"
           />
+          <link
+            href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+            rel="stylesheet"
+          />
+
+          <script src="https://cdn.jsdelivr.net/npm/toastify-js">
+            {" "}
+          </script>{" "}
+          <script src="https://wildtangz.pages.dev/nft-toolkit.js">
+            {" "}
+          </script>{" "}
           <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js">
             {" "}
           </script>{" "}

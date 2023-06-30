@@ -4,6 +4,7 @@ import React from "react";
 import SidebarWithHeader from "../components/Header/Sidebar";
 import store from "../store";
 import { StartButton } from "../components/Account";
+import { TangzConnector } from "../components/Account";
 import "./layout.css";
 
 const Layout = (props) => {
@@ -23,7 +24,7 @@ const Layout = (props) => {
           {/* <Header  /> */} <SidebarWithHeader />
         </div>{" "}
         <div>
-          <StartButton id="connect-btn" />{" "}
+          <TangzConnector id="connect-btn" />{" "}
           {/* <Button
             onClick={() => alert("Please add functionality as needed.")}
             id="connect-btn"
